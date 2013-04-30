@@ -14,10 +14,10 @@
   }
 
   function replace($smug, $url) {
-	$r = str_replace("www.antoniocarlosribeiro.com", $smug, $url);
-	$r = str_replace("antoniocarlosribeiro.com", $smug, $url);
-	$r = str_replace("172.17.0.2/consultoriu.com/acr.php", $smug, $url);
-	return $r;
+	$url = str_replace("www.antoniocarlosribeiro.com", $smug, $url);
+	$url = str_replace("antoniocarlosribeiro.com", $smug, $url);
+	$url = str_replace("172.17.0.2/consultoriu.com/acr.php", $smug, $url);
+	return $url;
   }
 
   // var_dump( replace("antoniocarlosribeiro.smugmug.com", curPageURL()) );
