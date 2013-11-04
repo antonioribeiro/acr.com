@@ -13,5 +13,10 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	// $response = new \Symfony\Component\HttpFoundation\Response;
+	// $response->setStatusCode(399);
+	// return $response->send();
+	// return $response;
+
+	return View::make('layouts.first');
 });
