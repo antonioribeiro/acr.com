@@ -1,5 +1,5 @@
 {
-    "name": "pragmarx/laravel-construe",
+    "name": "pragmarx/construe",
     "description": "",
     "authors": [
         {
@@ -16,7 +16,7 @@
             "src/migrations"
         ],
         "psr-0": {
-            "Pragmarx\\LaravelConstrue\\": "src/"
+            "Pragmarx\\Construe\\": "src/"
         }
     },
     "minimum-stability": "dev"

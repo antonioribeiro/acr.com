@@ -1,8 +1,9 @@
-<?php namespace Pragmarx\LaravelConstrue;
+<?php namespace Pragmarx\Construe;
 
 use Illuminate\Support\ServiceProvider;
+use Pragmarx\Construe\Construe;
 
-class LaravelConstrueServiceProvider extends ServiceProvider {
+class ConstrueServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,7 +19,7 @@ class LaravelConstrueServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('pragmarx/laravel-construe');
+		$this->package('pragmarx/construe');
 	}
 
 	/**
@@ -28,7 +29,12 @@ class LaravelConstrueServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app['construe'] = $this->app->share(function($app)
+		{
+			return new Construe(
+
+			);
+		});
 	}
 
 	/**
