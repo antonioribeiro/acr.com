@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/test', function()
 {
-	$c = $new Construe;
-	
-	return View::make('layouts.first');
+	return View::make('test');
 });
+
+// Route::get('/', function()
+// {
+// 	$c = $new Construe;
+	
+// 	return View::make('layouts.first');
+// });

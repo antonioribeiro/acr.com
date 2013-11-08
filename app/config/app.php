@@ -106,7 +106,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'PragmaRX\Construe\ConstrueServiceProvider',
+		// 'PragmaRX\Construe\ConstrueServiceProvider',
 
 	),
 

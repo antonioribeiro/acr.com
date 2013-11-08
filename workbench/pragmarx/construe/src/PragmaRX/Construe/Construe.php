@@ -28,7 +28,7 @@ class Construe
 	private $currentCountryID;
 	private $did;
 
-	private $language
+	private $language;
 
 	function __construct() 
 	{
@@ -116,34 +116,34 @@ class Construe
 	}
 
 	private function loadLanguages() {
-		$query = \DB::select("select cl.language_id, cl.country_id , l.name language_name , c.name country_name , concat(l.name,' (', c.name, ')') as regional_name, cl.enabled  from countries_languages cl  join languages l on l.id = cl.language_id  join countries c on c.id = cl.country_id;");
+		// $query = \DB::select("select cl.language_id, cl.country_id , l.name language_name , c.name country_name , concat(l.name,' (', c.name, ')') as regional_name, cl.enabled  from countries_languages cl  join languages l on l.id = cl.language_id  join countries c on c.id = cl.country_id;");
 		
-		foreach ($query as $record) {
-				$this->languages[$record->language_id."-".$record->country_id] = array(
-																						  'language_id' => $record->language_id
-																						, 'country_id' => $record->country_id
-																						, 'language_name' => $record->language_name
-																						, 'country_name' => $record->country_name
-																						, 'regional_name' => $record->regional_name
-																						, 'enabled' => $record->enabled
-																				);
-		}
+		// foreach ($query as $record) {
+		// 		$this->languages[$record->language_id."-".$record->country_id] = array(
+		// 																				  'language_id' => $record->language_id
+		// 																				, 'country_id' => $record->country_id
+		// 																				, 'language_name' => $record->language_name
+		// 																				, 'country_name' => $record->country_name
+		// 																				, 'regional_name' => $record->regional_name
+		// 																				, 'enabled' => $record->enabled
+		// 																		);
+		// }
 	}
 
 	private function loadMessages() {
 		$this->messages = array();    
 		
-		$query = \DB::table('messages')->where('language_id', '=', $this->getDefaultLanguage())->where('country_id','=', $this->getDefaultCountry())->get();
-		foreach ($query as $record) {
-			$messageID = $this->buildMessageID($record->message_hash, $record->language_id, $record->country_id, $record->module_id);
-			$this->messages[$messageID] = $record->message;
-		}
+		// $query = \DB::table('messages')->where('language_id', '=', $this->getDefaultLanguage())->where('country_id','=', $this->getDefaultCountry())->get();
+		// foreach ($query as $record) {
+		// 	$messageID = $this->buildMessageID($record->message_hash, $record->language_id, $record->country_id, $record->module_id);
+		// 	$this->messages[$messageID] = $record->message;
+		// }
 
-		$query = \DB::table('messages')->where('language_id', '=', $this->currentLanguageID)->where('country_id','=', $this->currentCountryID)->get();
-		foreach ($query as $record) {
-			$messageID = $this->buildMessageID($record->message_hash, $record->language_id, $record->country_id, $record->module_id);
-			$this->messages[$messageID] = $record->message;
-		}
+		// $query = \DB::table('messages')->where('language_id', '=', $this->currentLanguageID)->where('country_id','=', $this->currentCountryID)->get();
+		// foreach ($query as $record) {
+		// 	$messageID = $this->buildMessageID($record->message_hash, $record->language_id, $record->country_id, $record->module_id);
+		// 	$this->messages[$messageID] = $record->message;
+		// }
 	}
 
 	private function removePrefixAndSuffix(&$message, &$prefix, &$suffix) {

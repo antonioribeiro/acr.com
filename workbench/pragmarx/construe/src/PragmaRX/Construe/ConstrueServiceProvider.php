@@ -1,7 +1,7 @@
-<?php namespace Pragmarx\Construe;
+<?php namespace PragmaRX\Construe;
 
 use Illuminate\Support\ServiceProvider;
-use Pragmarx\Construe\Construe;
+use PragmaRX\Construe\Construe;
 
 class ConstrueServiceProvider extends ServiceProvider {
 
