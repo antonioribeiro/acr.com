@@ -1,5 +1,24 @@
-<?php namespace PragmaRX\Support;
+<?php namespace PragmaRX\Construe\Support;
+/**
+ * Part of the Construe package.
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the 3-clause BSD License.
+ *
+ * This source file is subject to the 3-clause BSD License that is
+ * bundled with this package in the LICENSE file.  It is also available at
+ * the following URL: http://www.opensource.org/licenses/BSD-3-Clause
+ *
+ * @package    Construe
+ * @version    1.0.0
+ * @author     Antonio Carlos Ribeiro @ PragmaRX
+ * @license    BSD License (3-clause)
+ * @copyright  (c) 2013, PragmaRX
+ * @link       http://pragmarx.com
+ */
 
+use PragmaRX\Construe\Support\Sentence;
 use Countable;
 
 class SentenceBag implements Countable {
@@ -25,10 +44,28 @@ class SentenceBag implements Countable {
 	 */
 	protected $suffix;
 
+	/**
+	 * Delimiters for prefixes and suffixes
+	 * 
+	 * @var array
+	 */
 	protected $prefixSuffixDelimiters = array( 
 												"!"=>1,"\\"=>1,"\""=>1,"#"=>1,"\$"=>1,"%"=>1,"&"=>1,"'"=>1,"("=>1,")"=>1,"*"=>1,"+"=>1,","=>1,"-"=>1,"."=>1,"/"=>1,":"=>1,";"=>1,"<"=>1,"="=>1,">"=>1,"?"=>1,"@"=>1,"["=>1,"]"=>1,"^"=>1,"_"=>1,"`"=>1,"{"=>1,"|"=>1," "=>1,"}"=>1 
 											);
 
+	/**
+	 * Variable demimiter - prefix
+	 * 
+	 * @var string
+	 */
+	protected $variableDelimiterPrefix = '[-';
+
+	/**
+	 * Variable demimiter - suffix
+	 * 
+	 * @var string
+	 */
+	protected $variableDelimiterSuffix = '-]';
 
 	/**
 	 * Create a new sentence bag instance.
@@ -36,11 +73,13 @@ class SentenceBag implements Countable {
 	 * @param  array  $sentences
 	 * @return void
 	 */
-	public function __construct($paragraph, $delimiter = '.')
+	public function __construct(Config $config, $paragraph, $delimiter = '.')
 	{
 		$this->delimiter = $delimiter;
 
-		$this->parse($paragraph);
+		$this->config = $config;
+
+		$this->parseParagraph($paragraph);
 	}
 
 	/**
@@ -49,7 +88,7 @@ class SentenceBag implements Countable {
 	 * @param  string/array $sentences
 	 * @return void
 	 */
-	public function parse($sentences)
+	public function parseParagraph($sentences)
 	{
 		if(is_string($sentences))
 		{
@@ -64,6 +103,17 @@ class SentenceBag implements Countable {
 		{
 			$this->add( $this->parseSentence($sentence) );
 		}
+	}
+
+	public function removePrefixAndSuffix($sentences)
+	{
+		$sentences = $this->parseSentence($sentences);
+
+		$this->prefix = $sentences->prefix;
+
+		$this->suffix = $sentences->suffix;
+
+		return $sentences->sentence;
 	}
 
 	/**
@@ -103,11 +153,7 @@ class SentenceBag implements Countable {
 			$suffix = '';
 		}
 
-		return array(
-						'prefix' => $prefix, 
-						'sentence' => $sentence, 
-						'suffix' => $suffix
-					);
+		return new Sentence($prefix, $sentence, $suffix);
 	}
 
 	/**
@@ -128,7 +174,7 @@ class SentenceBag implements Countable {
 	 */
 	public function add($sentence)
 	{
-		return $this->sentences[] = $string;
+		return $this->sentences[] = $sentence;
 	}
 
 	/**
@@ -153,11 +199,13 @@ class SentenceBag implements Countable {
 	 * @param  string  $key
 	 * @return string
 	 */
-	public function put($key, $string)
+	public function put($key, $sentence)
 	{
 		if (array_key_exists($key, $this->sentences))
 		{
-			$this->sentences[$key] = $string;
+			$sentence = $this->parseSentence($sentence);
+
+			$this->sentences[$key] = $sentence;
 		}
 	}
 
@@ -167,17 +215,7 @@ class SentenceBag implements Countable {
 	 * @param  string  $format
 	 * @return array
 	 */
-	public function all($format = null)
-	{
-		return $this->sentences;
-	}
-
-	/**
-	 * Get the raw sentences in the container.
-	 *
-	 * @return array
-	 */
-	public function getSentences()
+	public function all()
 	{
 		return $this->sentences;
 	}
@@ -199,7 +237,7 @@ class SentenceBag implements Countable {
 	 */
 	public function getDelimiter()
 	{
-		return $this->format;
+		return $this->delimiter;
 	}
 
 	/**
@@ -213,6 +251,26 @@ class SentenceBag implements Countable {
 		$this->delimiter = $delimiter;
 
 		return $this;
+	}
+
+	/**
+	 * Get the default main prefix.
+	 *
+	 * @return string
+	 */
+	public function getPrefix()
+	{
+		return $this->prefix;
+	}
+
+	/**
+	 * Get the default main prefix.
+	 *
+	 * @return string
+	 */
+	public function getSuffix()
+	{
+		return $this->suffix;
 	}
 
 	/**
@@ -252,7 +310,19 @@ class SentenceBag implements Countable {
 	 */
 	public function getParagraph()	
 	{
-		$sentences = $this->joinSentences();
+		$sentences = $this->joinSentences('sentence');
+
+		return $this->prefix . $sentences . $this->suffix;
+	}
+
+	/**
+	 * Join the sentences back in its paragraph form
+	 * 
+	 * @return string
+	 */
+	public function getTranslatedParagraph()	
+	{
+		$sentences = $this->joinSentences('translated');
 
 		return $this->prefix . $sentences . $this->suffix;
 	}
@@ -262,15 +332,15 @@ class SentenceBag implements Countable {
 	 * 
 	 * @return string
 	 */
-	public function joinSentences()
+	public function joinSentences($property = 'sentence')
 	{
-		$sentences = '';
+		$sentences = array();
 
 		foreach($this->sentences as $key => $sentence)
 		{
-			$sentences .= $sentence['prefix'] . $sentence['sentence'] . $sentence['suffix'];
+			$sentences[] = $sentence->prefix . $sentence->$property . $sentence->suffix;
 		}
 
-		return $sentences;
+		return implode($this->getDelimiter(), $sentences);
 	}
 }

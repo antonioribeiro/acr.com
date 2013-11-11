@@ -19,7 +19,7 @@
  * @link       http://pragmarx.com
  */
 
-use PragmaRX\Construe\Locale;
+use PragmaRX\Construe\Support\Locale;
 
 class LocaleTest extends PHPUnit_Framework_TestCase {
 

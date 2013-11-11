@@ -20,6 +20,8 @@
  */
 
 use PragmaRX\Construe\Support\SentenceBag;
+use PragmaRX\Construe\Support\Config;
+use Illuminate\Filesystem\Filesystem;
 
 class SentenceTest extends PHPUnit_Framework_TestCase {
 
@@ -27,7 +29,7 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 	{
 		$this->paragraph = '<#This is a string [with some delimiters inside the string] for testing purposes||. ||This is a second one#>';
 
-		$this->sentence = new SentenceBag($this->paragraph);
+		$this->sentence = new SentenceBag(new Config(new Filesystem), $this->paragraph);
 	}
 
 	public function testParseSentences()
@@ -48,9 +50,9 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 
 	public function testSentencePrefixesAndSuffixes()
 	{
-		$this->assertEquals($this->sentence->get(0)['suffix'], '||');
+		$this->assertEquals($this->sentence->get(0)->suffix, '||');
 
-		$this->assertEquals($this->sentence->get(1)['prefix'], ' ||');
+		$this->assertEquals($this->sentence->get(1)->prefix, ' ||');
 	}
 
 	public function testPutSentence()
@@ -59,7 +61,7 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 
 		$this->sentence->put(0, $sentence);
 
-		$this->assertEquals($this->sentence->get(0)['sentence'], $sentence);
+		$this->assertEquals($this->sentence->get(0)->sentence, $sentence);
 	}
 
 	public function testgetSentenceBag()

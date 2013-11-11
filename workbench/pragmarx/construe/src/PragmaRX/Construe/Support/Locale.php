@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Construe;
+<?php namespace PragmaRX\Construe\Support;
 /**
  * Part of the Construe package.
  *

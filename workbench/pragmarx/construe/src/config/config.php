@@ -52,7 +52,7 @@ return array(
 
 	'default_language_id' => 'en',
 
-	'default_country_id' => 'US',
+	'default_country_id' => 'us',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -64,9 +64,23 @@ return array(
 	|
 	*/
 
-	'variable_delimiter_prefix' => '|-';
+	'variable_delimiter_prefix' => '|-',
 
-	'variable_delimiter_suffix' => '-|';
+	'variable_delimiter_suffix' => '-|',
+
+	/*
+	|--------------------------------------------------------------------------
+	| Prefix and Suffix Delimiters
+	|--------------------------------------------------------------------------
+	|
+	| This option sets the characters that should be ignored if prefixing or suffixing a sentence
+	|
+	|
+	*/
+
+	'prefix_suffix_delimiters'  => array( 
+												"!"=>1,"\\"=>1,"\""=>1,"#"=>1,"\$"=>1,"%"=>1,"&"=>1,"'"=>1,"("=>1,")"=>1,"*"=>1,"+"=>1,","=>1,"-"=>1,"."=>1,"/"=>1,":"=>1,";"=>1,"<"=>1,"="=>1,">"=>1,"?"=>1,"@"=>1,"["=>1,"]"=>1,"^"=>1,"_"=>1,"`"=>1,"{"=>1,"|"=>1," "=>1,"}"=>1 
+											),
 
 	/*
 	|--------------------------------------------------------------------------

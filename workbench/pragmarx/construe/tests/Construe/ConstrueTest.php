@@ -20,9 +20,15 @@
  */
 
 use PragmaRX\Construe\Construe;
+use PragmaRX\Construe\Support\Sentence;
+use PragmaRX\Construe\Support\Locale;
+use PragmaRX\Construe\Support\SentenceBag;
+use PragmaRX\Construe\Support\Config;
+use PragmaRX\Construe\Messages\Laravel\Message;
+use Illuminate\Filesystem\Filesystem;
 use Mockery as m;
 
-class ConstrueLoaderTest extends PHPUnit_Framework_TestCase {
+class ConstrueTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Setup resources and dependencies.
@@ -31,9 +37,30 @@ class ConstrueLoaderTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
+		$this->paragraph = "Hello, welcome to |-application name-|'s test cases!";
+
+		$this->translatedIntermediaryParagraph = 'Olá, seja bem-vindo aos casos de testes do |-application name-|';
+
+		$this->translatedParagraph = 'Olá, seja bem-vindo aos casos de testes do Construe!';
+
+		$this->replacableVariables = array('application name' => 'Construe');
+
+		$this->module = 0;
+
 		$this->construe = new Construe(
-			$this->locale = m::mock('PragmaRX\Construe\Locale')
+			$this->config = new Config(new Filesystem),
+			$this->locale = new Locale('pt', 'br'),
+			$this->sentenceBag = new SentenceBag($this->config, $this->paragraph),
+			$this->message = m::mock('PragmaRX\Construe\Messages\Laravel\Message')
 		);
+
+		$this->sentenceObject = new Sentence('',$this->paragraph,'');
+
+		$this->translatedSentenceObject = new Sentence('',$this->paragraph,'');
+		$this->translatedSentenceObject->translated = $this->translatedParagraph;
+
+		$this->translatedIntermediaryObject = new Sentence('',$this->paragraph,'');
+		$this->translatedIntermediaryObject->translated = $this->translatedIntermediaryParagraph;
 	}
 
 	/**
@@ -46,20 +73,29 @@ class ConstrueLoaderTest extends PHPUnit_Framework_TestCase {
 		m::close();
 	}
 
-	public function testTranslation()
+	public function testGetSetModule()
 	{
-		// $this->requireLanguage();
+		$this->construe->setModule(123);
 
-		// $t = $this->construe->translate('home');
-
-		// $this->assertEquals($t, 'casa');
+		$this->assertEquals(123, $this->construe->getModule());
 	}
 
-	public function requireLanguage()
+	public function testGetSetLocale()
 	{
-		$this->locale->shouldReceive('getLanguage')->once()->andReturn('en');
+		$l = new Locale;
 
-		$this->locale->shouldReceive('getCountry')->once()->andReturn('us');
+		$this->construe->setLocale($l);
+
+		$this->assertEquals($l, $this->construe->getLocale());
+	}
+
+	public function testTranslation()
+	{
+		$this->message->shouldReceive('findMessage')->once()->andReturn($this->translatedIntermediaryObject);
+
+		$t = $this->construe->translate($this->paragraph, $this->replacableVariables);
+
+		$this->assertEquals($t, $this->translatedParagraph);
 	}
 
 }

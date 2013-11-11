@@ -18,17 +18,14 @@
  * @link       http://pragmarx.com
  */
 
-use PragmaRX\Construe\Locale;
+use PragmaRX\Construe\Support\Locale;
+use PragmaRX\Construe\Support\SentenceBag;
+use PragmaRX\Construe\Support\Sentence;
+use PragmaRX\Construe\Support\Config;
+use PragmaRX\Construe\Messages\MessageInterface;
 
 class Construe
 {
-	public $languages = array();
-	public $messages = array();
-
-	private $currentLanguage;
-	private $currentCountry;
-	private $did;
-
 	private $module = 0;
 
 	private $locale;
@@ -38,27 +35,15 @@ class Construe
 	 * 
 	 * @param Locale $locale
 	 */
-	public function __construct(Locale $locale) 
+	public function __construct(Config $config, Locale $locale, SentenceBag $paragraph, MessageInterface $messageRepository) 
 	{
-		$this->setLocale($locale);
-	}
+		$this->locale = $locale;
 
-	/**
-	 * Translate a group of sentences
-	 * 
-	 * @param  string  $sentences
-	 * @param  Locale  $locale
-	 * @param  integer $module
-	 * @param  array  $variables
-	 * @return string
-	 */
-	public function translate($sentences, $locale = null, $module = 0, $variables = null)
-	{
-		$translated = $this->translateSentences($this->sentences, $locale ?: $this->locale, $module ?: $this->module);
+		$this->config = $config;
 
-		$translated = $this->replaceVariables($translated, $variables);
+		$this->paragraph = $paragraph;
 
-		return $translated;
+		$this->messageRepository = $messageRepository;
 	}
 
 	/**
@@ -102,59 +87,115 @@ class Construe
 	}
 
 	/**
-	 * Iterate tru the sentences and translate one by one
+	 * Translate a group of paragraph
 	 * 
-	 * @param  string $sentences
+	 * @param  string  $paragraph
+	 * @param  Locale  $locale
+	 * @param  integer $module
+	 * @param  array  $variables
+	 * @return string
+	 */
+	public function translate($paragraph, array $variables = null, $locale = null, $module = 0)
+	{
+		return $this->replaceVariables(
+										$this->translateParagraph($paragraph, $locale ?: $this->locale, $module ?: $this->module), 
+										$variables
+									);
+	}
+
+	/**
+	 * Iterate tru the paragraph and translate one by one
+	 * 
+	 * @param  string $paragraph
 	 * @param  Locale $locale
 	 * @param  integer $module
 	 * @return string
 	 */
-	private function translateSentences($sentences, Locale $locale, $module)
+	private function translateParagraph($paragraph, Locale $locale, $module)
 	{
-		$this->sentences->parse($sentences);
+		$this->paragraph->parseParagraph($paragraph);
 
-		$this->locale->getLanguage();
-		$this->locale->getCountry();
-
-		foreach($this->sentences as $sentence)
+		foreach($this->paragraph->all() as $sentence)
 		{
-			$sentence->string = $this->translateSentence($sentence->string);
+			$sentence->translated = $this->translateSentence($sentence, $locale, $module);
 		}
 
-		return 'casa';
+		return $this->paragraph->getTranslatedParagraph();
 	}
 
-	// public function translateMessages($messages, $languageID, $countryID, $module) {
-	// 	$this->removePrefixAndSuffix($messages, $prefix, $suffix);
-	// 	$m = explode(".", $messages);
-	// 	foreach($m as $key => $message) {
-	// 		$this->removePrefixAndSuffix($message, $messagePrefix, $messageSuffix); /// spaces and punctuation before and after should not be translated
-
-	// 		$m[$key] = $messagePrefix . $this->translateMessage($message, $languageID, $countryID, $module) . $messageSuffix;
-	// 	}
-	// 	$messages = $prefix . implode(".",$m) . $suffix;
-	// 	return $messages;
-	// }
-
-
-	private function replaceVariables($translated, $replacements)
+	/**
+	 * Receives a sentence and translate it
+	 * 
+	 * @param  Sentence $sentence
+	 * @param  Locale $locale
+	 * @param  int $module
+	 * @return string
+	 */
+	private function translateSentence($sentence, $locale, $module)
 	{
-		if(is_array($replacements))
+		return $this->messageRepository->findMessage($sentence, $locale, $module)->translated;
+	}
+
+	/**
+	 * Replace all user variables by its respective values
+	 * 
+	 * @param  string $translated
+	 * @param  array $variables
+	 * @return strinf
+	 */
+	private function replaceVariables($string, array $variables)
+	{
+		if(is_array($variables))
 		{
-			foreach($replacements as $key => $string) {
-				$translated = str_replace(
-											static::variableDelimiterPrefix()."$key".static::variableDelimiterSuffix(), 
-											$string, 
-											$translated
-										);
+			foreach($variables as $key => $variable) {
+				$string = $this->replaceVariable($key, $variable, $string);
 			}
 		}
 
-		return $translated;
+		return $string;
+	}
+
+	/**
+	 * Replace one user variables by its respective value
+	 * 
+	 * @param  string $key
+	 * @param  string $variable
+	 * @param  string $translated
+	 * @return string
+	 */
+	private function replaceVariable($key, $variable, $translated)
+	{
+		return str_replace(
+							$this->config->get('variable_delimiter_prefix') . "$key" . $this->config->get('variable_delimiter_suffix'), 
+							$variable, 
+							$translated
+						);
 	}
 
 }
 
+	// private function translateSentence($sentence, $locale, $module)
+	// {
+	// 	$sentence->messageID = $this->buildMessageID($sentence, $locale, $module);
+
+	// 	$originalMessage = $this->getMessage($sentenceID);
+
+	// 	if (!isset($originalMessage) or empty($originalMessage)) {
+	// 		$this->newMessage($sentenceID, $this->getDefaultLanguage(), $this->getDefaultCountry(), $module, $hash, $sentence);
+	// 	}
+
+	// 	if (!$this->isDefaultLanguage($languageID, $countryID)) {
+	// 		$sentenceID = $this->buildMessageID($hash, $this->language, $this->country, $module);
+	// 		$translatedMessage = $this->getMessage($sentenceID);
+	// 		if ( isset($translatedMessage) and !empty($translatedMessage) ) {
+	// 			return $translatedMessage;
+	// 		}
+	// 		\Log::warning("not found = $sentence - $hash - $sentenceID");
+	// 		$this->newMessage($sentenceID, $this->language, $this->country, $module, $hash, $sentence);
+	// 	}
+
+	// 	return $sentence;
+	// }
 
 	// 	$this->loadLanguages();
 	// 	$this->loadMessages();
@@ -202,31 +243,6 @@ class Construe
 	// 	$translator = \App::make('erobin.translator');
 
 	// 	return ($translator->debug() ? '{' : '').$translated.($translator->debug() ? '}' : '');
-	// }
-
-	// private function translateMessage($message, $languageID, $countryID, $module)
-	// {
-	// 	$this->setCurrentLanguage($languageID, $countryID);
-
-	// 	$hash = SHA1($message);
-	// 	$messageID = $this->buildMessageID($hash, $this->getDefaultLanguage(), $this->getDefaultCountry(), $module);
-	// 	$originalMessage = $this->getMessage($messageID);
-
-	// 	if (!isset($originalMessage) or empty($originalMessage)) {
-	// 		$this->newMessage($messageID, $this->getDefaultLanguage(), $this->getDefaultCountry(), $module, $hash, $message);
-	// 	}
-
-	// 	if (!$this->isDefaultLanguage($languageID, $countryID)) {
-	// 		$messageID = $this->buildMessageID($hash, $this->language, $this->country, $module);
-	// 		$translatedMessage = $this->getMessage($messageID);
-	// 		if ( isset($translatedMessage) and !empty($translatedMessage) ) {
-	// 			return $translatedMessage;
-	// 		}
-	// 		\Log::warning("not found = $message - $hash - $messageID");
-	// 		$this->newMessage($messageID, $this->language, $this->country, $module, $hash, $message);
-	// 	}
-
-	// 	return $message;
 	// }
 
 	// private function newMessage($messageID, $languageID, $countryID, $module, $hash, $message) {
@@ -281,10 +297,6 @@ class Construe
 	// 	}
 	// }
 
-	// private function buildMessageID($hash, $languageID, $countryID, $module) {
-	// 	return SHA1("$hash, $languageID, $countryID, $module");
-	// }
-	
 	// private function getMessage($messageID) {
 	// 	if (!isset($this->messages[$messageID])) {
 	// 		\Log::warning("not found! |$messageID|");
