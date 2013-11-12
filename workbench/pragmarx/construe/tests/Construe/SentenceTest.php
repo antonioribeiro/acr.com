@@ -69,7 +69,7 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 		$this->assertInstanceOf('PragmaRX\Construe\Support\SentenceBag', $this->sentence->getSentenceBag());
 	}
 
-	public function testDelimiters()
+	public function testGetSetDelimiter()
 	{
 		$this->sentence->setDelimiter('|');
 

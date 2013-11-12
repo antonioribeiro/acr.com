@@ -18,9 +18,7 @@
     "require-dev": {
         "mockery/mockery": "0.8.0",
         "illuminate/database": "4.1.x",
-        "illuminate/filesystem": "4.1.x",
-        "illuminate/foundation": "4.1.x",
-        "orchestra/testbench": "2.1.*"
+        "illuminate/filesystem": "4.1.x"
     },    
 
     "autoload": {

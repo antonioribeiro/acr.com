@@ -25,7 +25,7 @@ trait MessageTraits {
 
 	protected $messageId;
 
-	public function findMessage(Sentence $sentence, Locale $locale, $module)
+	public function findById(Sentence $sentence, Locale $locale, $module)
 	{
 		$message = parent::find(
 								parent::buildMessageId($sentence, $locale, $module)

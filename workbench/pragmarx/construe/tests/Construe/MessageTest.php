@@ -24,13 +24,11 @@ use PragmaRX\Construe\Support\Locale;
 use PragmaRX\Construe\Support\SentenceBag;
 use PragmaRX\Construe\Support\Config;
 use Illuminate\Filesystem\Filesystem;
-
-
 use PragmaRX\Construe\Messages\Laravel\Message;
 use PragmaRX\Construe\Support\Sentence;
 use Mockery as m;
 
-class MessageTest extends Orchestra\Testbench\TestCase {
+class MessageTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Setup resources and dependencies.
@@ -49,7 +47,9 @@ class MessageTest extends Orchestra\Testbench\TestCase {
 
 		$this->module = 0;
 
-		$this->message = new Message;
+		// $this->message = new Message;
+		
+		// $this->message->setResolver();
 	}
 
 	/**
@@ -64,7 +64,7 @@ class MessageTest extends Orchestra\Testbench\TestCase {
 
 	public function testIntantiation()
 	{
-		return $this->message;
+		// return $this->message;
 	}
 
 	public function testMessageId()
