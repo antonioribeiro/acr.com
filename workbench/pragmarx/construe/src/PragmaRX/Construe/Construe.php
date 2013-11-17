@@ -22,20 +22,31 @@ use PragmaRX\Construe\Support\Locale;
 use PragmaRX\Construe\Support\SentenceBag;
 use PragmaRX\Construe\Support\Sentence;
 use PragmaRX\Construe\Support\Config;
-use PragmaRX\Construe\Messages\MessageInterface;
+use PragmaRX\Construe\Repositories\Data\DataRepository;
 
 class Construe
 {
+	private $config;
+
 	private $module = 0;
 
 	private $locale;
+
+	private $paragraph;
+
+	private $dataRepository;
 
 	/**
 	 * Initialize Construe object
 	 * 
 	 * @param Locale $locale
 	 */
-	public function __construct(Config $config, Locale $locale, SentenceBag $paragraph, MessageInterface $messageRepository) 
+	public function __construct(
+									Config $config, 
+									Locale $locale, 
+									SentenceBag $paragraph, 
+									DataRepository $dataRepository
+								) 
 	{
 		$this->locale = $locale;
 
@@ -43,7 +54,7 @@ class Construe
 
 		$this->paragraph = $paragraph;
 
-		$this->messageRepository = $messageRepository;
+		$this->dataRepository = $dataRepository;
 	}
 
 	/**
@@ -133,7 +144,7 @@ class Construe
 	 */
 	private function translateSentence($sentence, $locale, $module)
 	{
-		return $this->messageRepository->findMessage($sentence, $locale, $module)->translated;
+		return $this->dataRepository->findTranslation($sentence, $locale, $module)->translated;
 	}
 
 	/**
@@ -145,7 +156,7 @@ class Construe
 	 */
 	private function replaceVariables($string, array $variables)
 	{
-		if(is_array($variables))
+		if (is_array($variables))
 		{
 			foreach($variables as $key => $variable) {
 				$string = $this->replaceVariable($key, $variable, $string);
@@ -321,7 +332,7 @@ class Construe
 	// }
 
 	// private function getLanguages() {
-	// 	if(!isset($this->languages))  {
+	// 	if (!isset($this->languages))  {
 	// 		$this->loadLanguages();
 	// 	}
 	// 	return $this->languages;

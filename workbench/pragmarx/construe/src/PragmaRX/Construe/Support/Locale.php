@@ -53,7 +53,7 @@ class Locale
 	 */
 	public function setLanguage($language)
 	{
-		if($language == null)
+		if ($language == null)
 		{
 			$language = $this->language ?: 'en'; // if everything else fails, english is the last resort
 		}
@@ -78,7 +78,7 @@ class Locale
 	 */
 	public function setCountry($country)
 	{
-		if($country == null)
+		if ($country == null)
 		{
 			$country = $this->country ?: 'us'; // if everything else fails, US is the last resort
 		}

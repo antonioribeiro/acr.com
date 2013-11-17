@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Construe\Messages;
+<?php namespace PragmaRX\Construe\Repositories\Messages;
 /**
  * Part of the Construe package.
  *
@@ -18,6 +18,22 @@
  * @link       http://pragmarx.com
  */
 
-interface MessageInterface {
+use PragmaRX\Construe\Support\Sentence;
+
+class Message extends MessageBase implements MessageInterface {
 	
+	public function find(Sentence $sentence)
+	{
+		$model = $this->model->find($sentence->getId());
+
+		if ( ! $model)
+		{
+			$model = $this->model->create(['hash' => $sentence->getHash()]);
+		}
+
+		$sentence->setId($model->id);
+
+		return $sentence;
+	}
+
 }

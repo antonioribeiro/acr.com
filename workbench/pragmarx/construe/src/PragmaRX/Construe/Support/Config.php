@@ -33,7 +33,7 @@ class Config {
 
 	public function get($key, $default = null)
 	{
-		if( ! isset($this->config[$key]))
+		if ( ! isset($this->config[$key]))
 		{
 			return $default;
 		}
@@ -48,7 +48,7 @@ class Config {
 
 	public function loadConfig()
 	{
-		if(isset($app) && isset($app['config']))
+		if (isset($app) && isset($app['config']))
 		{
 			$this->config = $app->config['package::pragmarx/construe'];
 		}

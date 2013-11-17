@@ -24,7 +24,7 @@ use PragmaRX\Construe\Support\Locale;
 use PragmaRX\Construe\Support\SentenceBag;
 use PragmaRX\Construe\Support\Config;
 use Illuminate\Filesystem\Filesystem;
-use PragmaRX\Construe\Messages\Laravel\Message;
+use PragmaRX\Construe\Repositories\Messages\Laravel\Message;
 use PragmaRX\Construe\Support\Sentence;
 use Mockery as m;
 

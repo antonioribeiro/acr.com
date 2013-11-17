@@ -20,4 +20,11 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+	public function delegate()
+	{
+		$this->fooBar = App::make('FooBar', array($this));
+
+		dd($this->foobar);
+	}
+
 }

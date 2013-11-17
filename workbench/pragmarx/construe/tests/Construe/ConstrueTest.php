@@ -19,14 +19,16 @@
  * @link       http://pragmarx.com
  */
 
+use Mockery as m;
+
 use PragmaRX\Construe\Construe;
 use PragmaRX\Construe\Support\Sentence;
 use PragmaRX\Construe\Support\Locale;
 use PragmaRX\Construe\Support\SentenceBag;
 use PragmaRX\Construe\Support\Config;
-use PragmaRX\Construe\Messages\Laravel\Message;
+use PragmaRX\Construe\Repositories\Data\DataRepository;
+use PragmaRX\Construe\Repositories\Messages\Laravel\Message;
 use Illuminate\Filesystem\Filesystem;
-use Mockery as m;
 
 class ConstrueTest extends PHPUnit_Framework_TestCase {
 
@@ -51,7 +53,8 @@ class ConstrueTest extends PHPUnit_Framework_TestCase {
 			$this->config = new Config(new Filesystem),
 			$this->locale = new Locale('pt', 'br'),
 			$this->sentenceBag = new SentenceBag($this->config, $this->paragraph),
-			$this->message = m::mock('PragmaRX\Construe\Messages\Laravel\Message')
+			$this->dataRepository = m::mock('PragmaRX\Construe\Repositories\Data\DataRepository'),
+			$this->message = m::mock('PragmaRX\Construe\Repositories\Messages\Laravel\Message')
 		);
 
 		$this->sentenceObject = new Sentence('',$this->paragraph,'');
@@ -91,7 +94,7 @@ class ConstrueTest extends PHPUnit_Framework_TestCase {
 
 	public function testTranslation()
 	{
-		$this->message->shouldReceive('findMessage')->once()->andReturn($this->translatedIntermediaryObject);
+		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translatedIntermediaryObject);
 
 		$t = $this->construe->translate($this->paragraph, $this->replacableVariables);
 

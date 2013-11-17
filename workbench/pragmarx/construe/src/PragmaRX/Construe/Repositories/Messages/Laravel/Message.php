@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Construe\Messages\Laravel;
+<?php namespace PragmaRX\Construe\Repositories\Messages\Laravel;
 /**
  * Part of the Construe package.
  *
@@ -18,13 +18,8 @@
  * @link       http://pragmarx.com
  */
 
-use PragmaRX\Construe\Messages\MessageTraits;
-use PragmaRX\Construe\Messages\MessageInterface;
-use PragmaRX\Construe\Messages\MessageAbstract;
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model implements MessageInterface {
-	use MessageTraits;
-
+class Message extends Model {
 	
 }

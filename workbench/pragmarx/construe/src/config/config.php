@@ -141,7 +141,7 @@ return array(
 		|
 		*/
 
-		'model' => 'PragmaRX\Construe\Messages\Eloquent\Messages',
+		'model' => 'PragmaRX\Construe\Repositories\Messages\Eloquent\Messages',
 
 	),
 

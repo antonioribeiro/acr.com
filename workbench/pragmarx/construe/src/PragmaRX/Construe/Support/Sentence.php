@@ -32,7 +32,7 @@ class Sentence {
 	 * 
 	 * @var string
 	 */
-	public $sentence;
+	private $sentence;
 
 	/**
 	 * Translated sentence
@@ -44,9 +44,23 @@ class Sentence {
 	/**
 	 * Sentence unique ID
 	 * 
+	 * @var integer
+	 */
+	private $id;
+
+	/**
+	 * Sentence hash
+	 * 
 	 * @var string
 	 */
-	public $sentenceUID;
+	private $hash;
+
+	/**
+	 * Sentence module
+	 * 
+	 * @var string
+	 */
+	private $module;
 
 	/**
 	 * Suffix
@@ -70,4 +84,58 @@ class Sentence {
 		$this->suffix = $suffix;
 	}
 
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
+
+	public function getHash()
+	{
+		if ( ! $this->hash)
+		{
+			$this->hash = SHA1($this->getSentence().$this->getModule());
+		}
+
+		return $this->hash;
+	}
+
+	public function setHash($hash)
+	{
+		$this->hash = $hash;
+	}
+
+	public function getModule()
+	{
+		if ( ! $this->module)
+		{
+			$this->module = 0; /// default module is zero, what's the problem of this being hardcoded?
+		}
+
+		return $this->module;
+	}
+
+	public function setModule($Module)
+	{
+		$this->module = $Module;
+	}
+
+	public function getSentence()
+	{
+		return $this->sentence;
+	}
+
+	public function setSentence($Sentence)
+	{
+		$this->sentence = $Sentence;
+	}
+
+	public function getProperty($property)
+	{
+		return $this->$property;
+	}
 }

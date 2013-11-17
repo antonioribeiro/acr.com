@@ -61,7 +61,7 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 
 		$this->sentence->put(0, $sentence);
 
-		$this->assertEquals($this->sentence->get(0)->sentence, $sentence);
+		$this->assertEquals($this->sentence->get(0)->getSentence(), $sentence);
 	}
 
 	public function testgetSentenceBag()

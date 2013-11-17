@@ -90,7 +90,7 @@ class SentenceBag implements Countable {
 	 */
 	public function parseParagraph($sentences)
 	{
-		if(is_string($sentences))
+		if (is_string($sentences))
 		{
 			$sentences = $this->removePrefixAndSuffix($sentences);
 
@@ -113,7 +113,7 @@ class SentenceBag implements Countable {
 
 		$this->suffix = $sentences->suffix;
 
-		return $sentences->sentence;
+		return $sentences->getSentence();
 	}
 
 	/**
@@ -338,7 +338,7 @@ class SentenceBag implements Countable {
 
 		foreach($this->sentences as $key => $sentence)
 		{
-			$sentences[] = $sentence->prefix . $sentence->$property . $sentence->suffix;
+			$sentences[] = $sentence->prefix . $sentence->getProperty($property) . $sentence->suffix;
 		}
 
 		return implode($this->getDelimiter(), $sentences);
