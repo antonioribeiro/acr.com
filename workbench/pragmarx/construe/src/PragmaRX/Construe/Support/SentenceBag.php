@@ -130,13 +130,13 @@ class SentenceBag implements Countable {
 		/// This is old and should be done using Regex now, anyone apply? :)
 
 		$i = 0;
-		while ($i < strlen($sentence) and isset($this->prefixSuffixDelimiters[$sentence[$i]])) {
+		while ($i < strlen($sentence) and isset($this->config->get('prefix_suffix_delimiters')[$sentence[$i]])) {
 			$prefix .= $sentence[$i];
 			$i++;
 		}
 
 		$i = strlen($sentence)-1;
-		while ($i > -1 and isset($this->prefixSuffixDelimiters[$sentence[$i]])) {
+		while ($i > -1 and isset($this->config->get('prefix_suffix_delimiters')[$sentence[$i]])) {
 			$suffix = $sentence[$i] . $suffix;
 			$i--;
 		}

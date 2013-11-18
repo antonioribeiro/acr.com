@@ -50,4 +50,9 @@ class DataRepository implements DataRepositoryInterface {
 		return $this->translation->find($this->findSentence($sentence), $locale);
 	}
 
+	public function addTranslation(Sentence $sentence, Locale $locale)
+	{
+		return $this->translation->add($this->findSentence($sentence), $locale);
+	}
+
 }

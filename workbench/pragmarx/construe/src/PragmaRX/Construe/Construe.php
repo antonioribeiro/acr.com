@@ -46,7 +46,7 @@ class Construe
 									Locale $locale, 
 									SentenceBag $paragraph, 
 									DataRepository $dataRepository
-								) 
+								)
 	{
 		$this->locale = $locale;
 

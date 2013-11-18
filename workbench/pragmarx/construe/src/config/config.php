@@ -129,19 +129,21 @@ return array(
 	|
 	*/
 
-	'messages' => array(
+	'models' => array(
 
 		/*
 		|--------------------------------------------------------------------------
 		| Model
 		|--------------------------------------------------------------------------
 		|
-		| When using the "eloquent" driver, we need to know which
-		| Eloquent models should be used throughout Sentry.
+		| When using the "eloquent" driver, we need to know which Eloquent models 
+		| should be used.
 		|
 		*/
 
-		'model' => 'PragmaRX\Construe\Repositories\Messages\Eloquent\Messages',
+		'messages' => 'PragmaRX\Construe\Repositories\Messages\Laravel\Message',
+
+		'translations' => 'PragmaRX\Construe\Repositories\Messages\Laravel\Translation',
 
 	),
 

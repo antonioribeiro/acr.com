@@ -111,9 +111,13 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 	public function testAddTranslation()
 	{
+		$this->modelMessageMock->shouldReceive('find')->once()->andReturn($this->record);
+
+		$this->modelTranslationMock->shouldReceive('create')->once()->andReturn($this->translatedRecord);
+
 		$sentence = $this->dataRepository->addTranslation($this->sentence, $this->locale);
 
-		$this->assertEquals($sentence->translated, $this->message);
+		$this->assertEquals($sentence->translated, $this->translatedRecord->translated);
 	}
 
 }
