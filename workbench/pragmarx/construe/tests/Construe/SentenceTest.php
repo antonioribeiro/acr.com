@@ -29,56 +29,69 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 	{
 		$this->paragraph = '<#This is a string [with some delimiters inside the string] for testing purposes||. ||This is a second one#>';
 
-		$this->sentence = new SentenceBag(new Config(new Filesystem), $this->paragraph);
+		$this->sentenceBag = new SentenceBag(new Config(new Filesystem));
+
+		$this->sentenceBag->parseParagraph($this->paragraph);
+	}
+
+	public function testEmptySentences()
+	{
+		$this->sentenceBag->parseParagraph(null); /// remove the previously parsed paragraph
+
+		$this->assertFalse($this->sentenceBag->any());
+
+		$this->assertTrue($this->sentenceBag->isEmpty());
+
+		$this->assertEquals($this->sentenceBag->count(), 0);
 	}
 
 	public function testParseSentences()
 	{
-		$this->assertTrue($this->sentence->any());
+		$this->assertTrue($this->sentenceBag->any());
 
-		$this->assertFalse($this->sentence->isEmpty());
+		$this->assertFalse($this->sentenceBag->isEmpty());
 
-		$this->assertEquals($this->sentence->count(), 2);
+		$this->assertEquals($this->sentenceBag->count(), 2);
 	}
 
 	public function testMainPrefixesAndSuffixes()
 	{
-		$this->assertEquals($this->sentence->getPrefix(), '<#');
+		$this->assertEquals($this->sentenceBag->getPrefix(), '<#');
 
-		$this->assertEquals($this->sentence->getSuffix(), '#>');
+		$this->assertEquals($this->sentenceBag->getSuffix(), '#>');
 	}
 
 	public function testSentencePrefixesAndSuffixes()
 	{
-		$this->assertEquals($this->sentence->get(0)->suffix, '||');
+		$this->assertEquals($this->sentenceBag->get(0)->suffix, '||');
 
-		$this->assertEquals($this->sentence->get(1)->prefix, ' ||');
+		$this->assertEquals($this->sentenceBag->get(1)->prefix, ' ||');
 	}
 
 	public function testPutSentence()
 	{
 		$sentence = 'new sentence';
 
-		$this->sentence->put(0, $sentence);
+		$this->sentenceBag->put(0, $sentence);
 
-		$this->assertEquals($this->sentence->get(0)->getSentence(), $sentence);
+		$this->assertEquals($this->sentenceBag->get(0)->getSentence(), $sentence);
 	}
 
 	public function testgetSentenceBag()
 	{
-		$this->assertInstanceOf('PragmaRX\Construe\Support\SentenceBag', $this->sentence->getSentenceBag());
+		$this->assertInstanceOf('PragmaRX\Construe\Support\SentenceBag', $this->sentenceBag->getSentenceBag());
 	}
 
 	public function testGetSetDelimiter()
 	{
-		$this->sentence->setDelimiter('|');
+		$this->sentenceBag->setDelimiter('|');
 
-		$this->assertEquals($this->sentence->getDelimiter(), '|');
+		$this->assertEquals($this->sentenceBag->getDelimiter(), '|');
 	}
 
 	public function testGetParagraph()
 	{
-		$this->assertEquals($this->sentence->getParagraph(), $this->paragraph);
+		$this->assertEquals($this->sentenceBag->getParagraph(), $this->paragraph);
 	}
 
 }

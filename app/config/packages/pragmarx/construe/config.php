@@ -122,40 +122,24 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Tables
+	| Messages
 	|--------------------------------------------------------------------------
 	|
-	| You can change the tables names used by construe:
-	|
-	*/
-
-	'tables' => array(
-
-		'messages' => 'construe_messages',
-
-		'translations' => 'construe_translations',
-
-		'languages' => 'construe_languages',
-
-		'countries' => 'construe_countries',
-
-		'country_languages' => 'construe_country_languages',
-
-		'modules' => 'construe_modules',
-
-	),
-
-	/*
-	|--------------------------------------------------------------------------
-	| Models
-	|--------------------------------------------------------------------------
-	|
-	| When using the "eloquent" driver, we need to know which Eloquent models 
-	| should be used.
+	| Configuration specific to the messages management component of Construe.
 	|
 	*/
 
 	'models' => array(
+
+		/*
+		|--------------------------------------------------------------------------
+		| Model
+		|--------------------------------------------------------------------------
+		|
+		| When using the "eloquent" driver, we need to know which Eloquent models 
+		| should be used.
+		|
+		*/
 
 		'messages' => 'PragmaRX\Construe\Repositories\Messages\Laravel\Message',
 

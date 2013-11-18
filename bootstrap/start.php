@@ -24,11 +24,15 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(function()
+{
 
-	'local' => array('your-machine-name'),
+  /// Add to .htaccess:
+  ///    SetEnv LARAVEL_ENV "development"
 
-));
+  return getenv('LARAVEL_ENV') ?: 'development';
+
+});
 
 /*
 |--------------------------------------------------------------------------

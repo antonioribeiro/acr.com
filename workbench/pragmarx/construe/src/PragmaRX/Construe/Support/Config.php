@@ -24,8 +24,10 @@ class Config {
 
 	protected $config;
 
-	public function __construct(Filesystem $files)
+	public function __construct(Filesystem $files, $app = null)
 	{
+		$this->app = $app;
+
 		$this->files = $files;
 
 		$this->loadConfig();
@@ -48,9 +50,9 @@ class Config {
 
 	public function loadConfig()
 	{
-		if (isset($app) && isset($app['config']))
+		if (isset($this->app) && $this->app['config'])
 		{
-			$this->config = $app->config['package::pragmarx/construe'];
+			$this->config = $this->app->config;
 		}
 		else
 		{

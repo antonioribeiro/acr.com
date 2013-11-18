@@ -20,7 +20,7 @@ return [
 			'host'     => 'localhost',
 			'database' => 'antoniocarlosribeiro',
 			'username' => 'antoniocarlos',
-			'password' => 'foda-se',
+			'password' => 'antoniocarlospassword',
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',

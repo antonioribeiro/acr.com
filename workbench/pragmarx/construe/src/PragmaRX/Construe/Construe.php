@@ -30,6 +30,8 @@ class Construe
 
 	private $module = 0;
 
+	public $x = 'aaaaaaaa';
+
 	private $locale;
 
 	private $paragraph;

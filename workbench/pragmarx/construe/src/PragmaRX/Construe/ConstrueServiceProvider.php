@@ -1,9 +1,12 @@
 <?php namespace PragmaRX\Construe;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Filesystem\Filesystem;
+
 
 use PragmaRX\Construe\Construe;
 
+use PragmaRX\Construe\Support\Locale;
 use PragmaRX\Construe\Support\SentenceBag;
 use PragmaRX\Construe\Support\Config;
 
@@ -27,7 +30,7 @@ class ConstrueServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('pragmarx/construe');
+		$this->package('pragmarx/construe', 'pragmarx/construe');
 	}
 
 	/**
@@ -44,6 +47,8 @@ class ConstrueServiceProvider extends ServiceProvider {
 		$this->registerSentenceBag();
 		
 		$this->registerDataRepository();
+
+		$this->registerConstrue();
 	}
 
 	/**
@@ -60,7 +65,7 @@ class ConstrueServiceProvider extends ServiceProvider {
 	{
 		$this->app['construe.config'] = $this->app->share(function($app)
 		{
-			return new Config(new Filesystem);
+			return new Config(new Filesystem, $app);
 		});
 	}
 
@@ -80,32 +85,32 @@ class ConstrueServiceProvider extends ServiceProvider {
 		});
 	}
 
-	private function registerDataRepository();
+	private function registerDataRepository()
 	{
-		$messageClass = $app['config']['pragmarx/construe::models.messages'];
-		$translationClass = $app['config']['pragmarx/construe::models.translations'];
-
 		$this->app['construe.dataRepository'] = $this->app->share(function($app)
 		{
+			$messageModel = new $this->app['config']['pragmarx/construe::models.messages'];
+			$translationModel = new $this->app['config']['pragmarx/construe::models.translations'];
+
 			return new DataRepository( 
-										new Message(new $messageClass),
-										new Translation(new $translationClass)
+										new Message(new $messageModel),
+										new Translation(new $translationModel)
 									);
 		});
 	}
 
-	private function registerConstrue();
+	private function registerConstrue()
 	{
 		$this->app['construe'] = $this->app->share(function($app)
 		{
 			$app['construe.loaded'] = true;
 
 			return new Construe(
-				$app['construe.config'],
-				$app['construe.locale'],
-				$app['construe.sentenceBag'],
-				$app['construe.dataRepository']
-			);
+									$app['construe.config'],
+									$app['construe.locale'],
+									$app['construe.sentenceBag'],
+									$app['construe.dataRepository']
+								);
 		});
 	}
 

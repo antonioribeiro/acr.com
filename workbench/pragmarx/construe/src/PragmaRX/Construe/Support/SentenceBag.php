@@ -73,7 +73,7 @@ class SentenceBag implements Countable {
 	 * @param  array  $sentences
 	 * @return void
 	 */
-	public function __construct(Config $config, $paragraph, $delimiter = '.')
+	public function __construct(Config $config, $paragraph = null, $delimiter = '.')
 	{
 		$this->delimiter = $delimiter;
 
@@ -90,18 +90,21 @@ class SentenceBag implements Countable {
 	 */
 	public function parseParagraph($sentences)
 	{
-		if (is_string($sentences))
-		{
-			$sentences = $this->removePrefixAndSuffix($sentences);
-
-			$sentences = explode($this->delimiter, $sentences);
-		}
-
 		$this->clear();
 
-		foreach($sentences as $key => $sentence)
+		if($sentences)
 		{
-			$this->add( $this->parseSentence($sentence) );
+			if (is_string($sentences))
+			{
+				$sentences = $this->removePrefixAndSuffix($sentences);
+
+				$sentences = explode($this->delimiter, $sentences);
+			}
+
+			foreach($sentences as $key => $sentence)
+			{
+				$this->add( $this->parseSentence($sentence) );
+			}
 		}
 	}
 
@@ -122,7 +125,7 @@ class SentenceBag implements Countable {
 	 * @param  string $sentence
 	 * @return array
 	 */
-	private function parseSentence($sentence) 
+	private function parseSentence($sentence)
 	{
 		$prefix = '';
 		$suffix = '';

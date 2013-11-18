@@ -13,7 +13,9 @@
 
 Route::get('/test', function()
 {
-	return View::make('test');
+	var_dump( Construe::translate('minha mensagem') );
+
+	return "View::make('test');";
 });
 
 // Route::get('/', function()
