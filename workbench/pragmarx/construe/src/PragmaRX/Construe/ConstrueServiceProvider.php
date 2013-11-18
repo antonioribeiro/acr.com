@@ -3,7 +3,6 @@
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Filesystem\Filesystem;
 
-
 use PragmaRX\Construe\Construe;
 
 use PragmaRX\Construe\Support\Locale;
@@ -90,7 +89,10 @@ class ConstrueServiceProvider extends ServiceProvider {
 		$this->app['construe.dataRepository'] = $this->app->share(function($app)
 		{
 			$messageModel = new $this->app['config']['pragmarx/construe::models.messages'];
+			$messageModel->setTable($this->app['config']['pragmarx/construe::tables.messages']);
+
 			$translationModel = new $this->app['config']['pragmarx/construe::models.translations'];
+			$translationModel->setTable($this->app['config']['pragmarx/construe::tables.translations']);
 
 			return new DataRepository( 
 										new Message(new $messageModel),

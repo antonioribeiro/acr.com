@@ -25,6 +25,8 @@ abstract class MessageBase {
 
 	public function __construct($model)
 	{
+		throw new \Exception;
+
 		$this->model = $model;
 	}
 

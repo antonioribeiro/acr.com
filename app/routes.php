@@ -11,8 +11,14 @@
 |
 */
 
+use App\Models\MyNamespace\User;
+
 Route::get('/test', function()
 {
+	$a = new User();
+
+	dd($a);
+
 	var_dump( Construe::translate('minha mensagem') );
 
 	return "View::make('test');";
