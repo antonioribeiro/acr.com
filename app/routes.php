@@ -11,11 +11,9 @@
 |
 */
 
-use App\Models\MyNamespace\User;
-
 Route::get('/test', function()
 {
-	$a = new User();
+	$a = new MyNamespace\Product();
 
 	dd($a);
 
