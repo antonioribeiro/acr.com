@@ -106,7 +106,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'PragmaRX\Construe\ConstrueServiceProvider',
+		'PragmaRX\Glottos\GlottosServiceProvider',
+		'Onigoetz\Profiler\Support\Laravel\ProfilerServiceProvider',
 
 	),
 
@@ -173,7 +174,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Construe'        => 'PragmaRX\Construe\Facades\Laravel\Construe',
+		'Glottos'         => 'PragmaRX\Glottos\Facades\Laravel\Glottos',
+		'Stopwatch' 	  => 'Onigoetz\Profiler\Stopwatch',
 
 	),
 

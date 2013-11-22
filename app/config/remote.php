@@ -29,9 +29,9 @@ return array(
 	'connections' => array(
 
 		'production' => array(
-			'host'     => '',
-			'username' => '',
-			'password' => '',
+			'host'     => 'localhost:922',
+			'username' => 'antoniocarlos',
+			'password' => 'foda-se',
 			'key'      => '',
 			'root'     => '/var/www',
 		),
