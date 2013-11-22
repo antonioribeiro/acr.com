@@ -82,4 +82,29 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 		$this->assertFalse($locale->is('pt+pt'));
 	}
 
+	public function testMake()
+	{
+		$locale1 = Locale::make('pt-br');
+
+		$locale2 = Locale::make(new Locale('pt-br'));
+
+		$this->assertEquals($locale1, $locale2);
+
+		$locale3 = Locale::make(new Locale('pt-pt'));
+
+		$this->assertNotEquals($locale1, $locale3);
+
+		$locale4 = Locale::make('');
+
+		$this->assertEquals($locale4->getLanguage(), '');
+
+		$this->assertEquals($locale4->getCountry(), '');
+
+		$locale5 = Locale::make('', 'pt-br'); // fallback
+
+		$this->assertEquals($locale5, $locale2);
+
+		$this->assertNotEquals($locale5, $locale3);
+	}
+
 }

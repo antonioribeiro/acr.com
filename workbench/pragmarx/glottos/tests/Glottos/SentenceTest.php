@@ -30,6 +30,8 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 	{
 		$this->message = 'This is a string sentence';
 
+		$this->translation = 'This is a translated string sentence';
+
 		$this->messageHash = '3235e90356d697c9d0ff7910ad99632fa2a8520e'; /// for 'This is a string sentence0'
 
 		$this->config = m::mock('PragmaRX\Glottos\Support\Config');
@@ -38,14 +40,20 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 
 		$this->messageKey = 'key::'.$this->message;
 
+		$this->module = 0;
+
 		$this->messageWrongKey = 'key:::'.$this->message;
 
-		$this->sentence = new Sentence($this->message, '', '', 0, new Mode('natural'));
+		$this->sentence = new Sentence($this->message, $this->module, new Mode('natural'));
+
+		$this->translatedSentence = new Sentence($this->message, $this->module, new Mode('natural'));
+
+		$this->translatedSentence->setTranslation($this->translation);
 	}
 
 	public function testModuleIsZero()
 	{
-		$this->assertTrue($this->sentence->getModule() === 0);
+		$this->assertTrue($this->sentence->getModule() === $this->module);
 	}
 
 	public function testGetSetModule()
@@ -84,7 +92,7 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 		$this->sentence->setSentence($this->message);
 		$this->assertNotEquals($this->sentence->getHash(), $this->messageHash);
 
-		$this->sentence->setModule(0);
+		$this->sentence->setModule($this->module);
 		$this->assertEquals($this->sentence->getHash(), $this->messageHash);
 	}
 
@@ -103,7 +111,40 @@ class SentenceTest extends PHPUnit_Framework_TestCase {
 		$this->sentence->setSentence($this->messageWrongKey);
 		$this->assertNotEquals($this->sentence->getSentence(), $this->message);
 		$this->assertEquals('key', $this->sentence->getMode());
+
+		$this->sentence = new Sentence('key::key_string', $this->module, new Mode('natural'));
+		$this->assertEquals('key_string', $this->sentence->getSentence());
+		$this->assertEquals('key', $this->sentence->getMode());
+	}
+
+	public function testMake()
+	{
+		$sentence = Sentence::make($this->message, $this->module, new Mode('natural'));
+
+		$this->assertEquals($this->sentence, $sentence);
+
+		$sentence = Sentence::make('wrong', $this->module, new Mode('natural'));
+
+		$this->assertNotEquals($this->sentence, $sentence);
+	}
+
+	public function testMakeTranslation()
+	{
+		$translation = Sentence::makeTranslation($this->message, $this->translation, $this->module, new Mode('natural'));
+
+		$this->assertEquals($this->translatedSentence, $translation);
+
+		$translation = Sentence::makeTranslation($this->message, 'wrong', $this->module, new Mode('natural'));
+
+		$this->assertNotEquals($this->translatedSentence, $translation);
+
+	}
+
+	public function testPrefixSuffix()
+	{
+		$this->sentence = new Sentence("#<$this->message>#", $this->module, new Mode('natural'));
+
+		$this->assertEquals("#<$this->message>#", $this->sentence->getSentence());
 	}
 
 }
-

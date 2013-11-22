@@ -67,13 +67,11 @@ class DataRepository implements DataRepositoryInterface {
 		return new Locale($this->config->get('default_language_id').'-'.$this->config->get('default_country_id'));
 	}
 
-	public function addTranslation(Sentence $sentence, Locale $locale)
+	public function addTranslation(Sentence $translation, Locale $locale)
 	{
-		$sentence = $this->findSentence($sentence);
+		$this->translation->add($translation, $locale);
 
-		$this->translation->add($sentence, $locale);
-
-		return $sentence;
+		return $translation;
 	}
 
 }

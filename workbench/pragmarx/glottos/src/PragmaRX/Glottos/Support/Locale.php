@@ -143,4 +143,26 @@ class Locale
 		       && $this->getCountry() == $country;
 	}
 
+	public static function make($locale, $fallback = null)
+	{
+		if (empty($locale) && ! is_null($fallback))
+		{
+			$locale = Locale::make($fallback);
+		}
+		else
+		if ( ! empty($locale))
+		{
+			if ( is_string($locale) )
+			{
+				$locale = new Locale($locale);
+			}
+		}
+
+		if(empty($locale))
+		{
+			$locale = new Locale();
+		}
+
+		return $locale;
+	}
 }

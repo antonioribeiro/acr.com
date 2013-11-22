@@ -42,7 +42,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
 
 		$this->messageId = 'e3e85fec2dc174602ccb8d081befe00cc46e52da';
 
-		$this->sentence = new Sentence($this->paragraph, '', '', 0, new Mode);
+		$this->sentence = new Sentence($this->paragraph, 0, new Mode);
 
 		$this->locale = new Locale('pt', 'br');
 

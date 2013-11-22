@@ -29,44 +29,15 @@ class SentenceBag implements Countable {
 	 *
 	 * @var array
 	 */
-	protected $sentences = array();
+	private $sentences = array();
 
-	/**
-	 * Paragraph prefix
-	 * 
-	 * @var string
-	 */
-	protected $prefix;
+	private $prefix;
 
-	/**
-	 * Paragraph suffix
-	 * 
-	 * @var string
-	 */
-	protected $suffix;
+	private $suffix;
 
-	/**
-	 * Delimiters for prefixes and suffixes
-	 * 
-	 * @var array
-	 */
-	protected $prefixSuffixDelimiters = array( 
-												"!"=>1,"\\"=>1,"\""=>1,"#"=>1,"\$"=>1,"%"=>1,"&"=>1,"'"=>1,"("=>1,")"=>1,"*"=>1,"+"=>1,","=>1,"-"=>1,"."=>1,"/"=>1,":"=>1,";"=>1,"<"=>1,"="=>1,">"=>1,"?"=>1,"@"=>1,"["=>1,"]"=>1,"^"=>1,"_"=>1,"`"=>1,"{"=>1,"|"=>1," "=>1,"}"=>1 
-											);
+	private $delimiter;
 
-	/**
-	 * Variable demimiter - prefix
-	 * 
-	 * @var string
-	 */
-	protected $variableDelimiterPrefix = '[-';
-
-	/**
-	 * Variable demimiter - suffix
-	 * 
-	 * @var string
-	 */
-	protected $variableDelimiterSuffix = '-]';
+	private $config;
 
 	/**
 	 * Create a new sentence bag instance.
@@ -89,75 +60,47 @@ class SentenceBag implements Countable {
 	 * @param  string/array $sentences
 	 * @return void
 	 */
-	public function parseParagraph($sentences, $module = 0)
+	public function parseParagraph($paragraph, $module = 0)
 	{
 		$this->clear();
 
-		if($sentences)
+		if(! empty($paragraph))
 		{
-			if (is_string($sentences))
+			if (is_string($paragraph))
 			{
-				$sentences = $this->removePrefixAndSuffix($sentences);
-
-				$sentences = explode($this->delimiter, $sentences);
+				$paragraph = $this->explodeParagraph($paragraph);
 			}
 
-			foreach($sentences as $key => $sentence)
+			foreach($paragraph as $key => $sentence)
 			{
 				$this->add( $this->parseSentence($sentence, $module) );
 			}
 		}
 	}
 
-	public function removePrefixAndSuffix($sentences)
+	private function explodeParagraph($paragraph)
 	{
-		$sentences = $this->parseSentence($sentences);
+		$paragraph = $this->parseRemovePrefixAndSuffix($paragraph);
 
-		$this->prefix = $sentences->prefix;
+		return explode($this->delimiter, $paragraph);
+	}
 
-		$this->suffix = $sentences->suffix;
+	private function parseRemovePrefixAndSuffix($paragraph)
+	{
+		SentenceParser::parse($paragraph, $this->prefix, $this->suffix, $this->config);
 
-		return $sentences->getSentence();
+		return $paragraph;
 	}
 
 	/**
-	 * Parse a sentence by removing prefixes and suffixes from it
+	 * Transform a message into a sentence
 	 * 
 	 * @param  string $sentence
 	 * @return array
 	 */
 	private function parseSentence($sentence, $module = null)
 	{
-		$prefix = '';
-		$suffix = '';
-
-		/// This is old and should be done using Regex now, anyone apply? :)
-
-		$i = 0;
-		while ($i < strlen($sentence) and isset($this->config->get('prefix_suffix_delimiters')[$sentence[$i]])) {
-			$prefix .= $sentence[$i];
-			$i++;
-		}
-
-		$i = strlen($sentence)-1;
-		while ($i > -1 and isset($this->config->get('prefix_suffix_delimiters')[$sentence[$i]])) {
-			$suffix = $sentence[$i] . $suffix;
-			$i--;
-		}
-
-		if ($prefix != $this->variableDelimiterPrefix) {
-			$sentence = substr($sentence,strlen($prefix));	
-		} else {
-			$prefix = '';
-		}
-		
-		if ($suffix != $this->variableDelimiterSuffix) {
-			$sentence = substr($sentence,0,strlen($sentence)-strlen($suffix));
-		} else {
-			$suffix = '';
-		}
-
-		return new Sentence($sentence, $prefix, $suffix, $module, new Mode($this->config->get('mode')));
+		return new Sentence($sentence, $module, new Mode($this->config->get('mode')), $this->config);
 	}
 
 	/**
@@ -167,6 +110,10 @@ class SentenceBag implements Countable {
 	 */
 	public function clear()
 	{
+		$this->prefix = '';
+
+		$this->suffix = '';
+
 		$this->sentences = array();
 	}
 
@@ -258,26 +205,6 @@ class SentenceBag implements Countable {
 	}
 
 	/**
-	 * Get the default main prefix.
-	 *
-	 * @return string
-	 */
-	public function getPrefix()
-	{
-		return $this->prefix;
-	}
-
-	/**
-	 * Get the default main prefix.
-	 *
-	 * @return string
-	 */
-	public function getSuffix()
-	{
-		return $this->suffix;
-	}
-
-	/**
 	 * Determine if the sentence bag has any sentences.
 	 *
 	 * @return bool
@@ -314,9 +241,7 @@ class SentenceBag implements Countable {
 	 */
 	public function getParagraph()	
 	{
-		$sentences = $this->joinSentences('sentence');
-
-		return $this->prefix . $sentences . $this->suffix;
+		return $this->joinSentences('sentence');
 	}
 
 	/**
@@ -326,9 +251,7 @@ class SentenceBag implements Countable {
 	 */
 	public function getTranslatedParagraph()	
 	{
-		$sentences = $this->joinSentences('translation');
-
-		return $this->prefix . $sentences . $this->suffix;
+		return $this->joinSentences('translation');
 	}
 
 	/**
@@ -342,9 +265,12 @@ class SentenceBag implements Countable {
 
 		foreach($this->sentences as $key => $sentence)
 		{
-			$sentences[] = $sentence->prefix . $sentence->getProperty($property) . $sentence->suffix;
+				echo "|".$sentence->getSentence()."|<br>";
+				echo "|".$sentence->getTranslation()."|<br>";
+
+			$sentences[] = $sentence->getProperty($property);
 		}
 
-		return implode($this->getDelimiter(), $sentences);
+		return $this->prefix . implode($this->getDelimiter(), $sentences) . $this->suffix;
 	}
 }

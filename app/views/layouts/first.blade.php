@@ -55,15 +55,15 @@
                             </div>
                             <div class="language">
                                 <a href="{{ URL::to('/') }}/language/eng">
-                                    <i  class="fa fa-eye"></i> english
+                                    <i  class="fa fa-eye"></i> {{g('português')}}
                                 </a>
                             </div>
 
                             <div class="nav-collapse collapse">
                                 <ul class="nav pull-right" id="navigation">
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech">TECNOLOGIA</a></li>
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/photo">FOTOGRAFIA</a></li>
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact">CONTATO</a></li>
+                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech">{{g('TECHNOLOGY')}}</a></li>
+                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/photo">{{g('PHOTOGRAPHY')}}</a></li>
+                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact">{{g('CONTACT')}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                     <div class="span12">
                         <hgroup id="intro" style="display: none">
                             <h2>Antonio Carlos Ribeiro</h2>
-                            <h3>Tecnologia &amp; Fotografia</h3>
+                            <h3>{{g('Tecnology')}} &amp; {{g('Photography')}}</h3>
                         </hgroup>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>Tecnologia</h2>
+                            <h2>{{g('Tecnology')}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -106,10 +106,10 @@
                 <div class="row-fluid">
                     <div class="span12 content">
                         <div class="row-fluid">
-                            <p class="quote"><a href="{{ URL::to('/') }}/#/contact">Soluções em Tecnologia da Informação, Arquitetura de Sistemas e Web e Servidores Linux. Clique para entrar em contato.</a></p>
+                            <p class="quote"><a href="{{ URL::to('/') }}/#/contact">{{g('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.')}}</a></p>
                             <br>
                             <br>
-                            <p class="quote"><a href="{{ URL::to('/') }}/blog">Eu também escrevo sobre TI, desenvolvimento, soluções, PHP e Laravel. Clique para ir ao Blog.</a></p>
+                            <p class="quote"><a href="{{ URL::to('/') }}/blog">{{g('I also write some articles about IT, development, solutions, PHP and Laravel. Click to access the Blog.')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>Fotografia</h2>
+                            <h2>{{g('Photography')}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -132,7 +132,7 @@
                 <div class="row-fluid">
                     <div class="span12 content">
                         <div class="row-fluid">
-                            <p class="quote"><a href="http://antoniocarlosribeiro.smugmug.com">As fotografias estão no Smugmug, clique para vê-las.</a></p>
+                            <p class="quote"><a href="http://antoniocarlosribeiro.smugmug.com">{{g('My photos are hosted by Smugmug, click to see them.')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>Contato</h2>
+                            <h2>{{g('Contact')}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -156,7 +156,7 @@
 
                         <div class="row-fluid">
                             <div class="span6">
-                                <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> Me Encontre</h2>
+                                <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{g('Find Me')}}</h2>
                                 <ul>
                                     <li><i  class="fa fa-building"></i> Rua Professor Quintino do Vale, 26 / 205</li>
                                     <li><i  class="fa-road"></i> Rio de Janeiro - Brasil - 20.250-030</li>
@@ -167,7 +167,7 @@
                                 <div id="map_canvas"></div>
                             </div>
                             <div class="span6">
-                                <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> Me Envie Uma Mensagem</h2>
+                                <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> {{g('Send Me a Message')}}</h2>
                                 <form>
                                     <fieldset>
                                         <div class="control-group">
@@ -186,7 +186,7 @@
                                             <div class="controls">
                                                 <textarea class="span12" name="message" id="textarea" rows="9" placeholder="Mensagem"></textarea>
                                             </div>
-                                            <button class="btn btn-default">Enviar Mensagem</button>
+                                            <button class="btn btn-default">{{g('Send Message')}}</button>
                                         </div>
                                     </fieldset>
                                 </form>

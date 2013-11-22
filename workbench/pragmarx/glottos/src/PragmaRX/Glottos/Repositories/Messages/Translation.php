@@ -39,12 +39,13 @@ class Translation extends MessageBase implements MessageInterface {
 		if (is_null($model))
 		{
 			$sentence->translationFound = false;
-			$sentence->translation = $sentence->translation ?: $sentence->getSentence();
+
+			$sentence->setTranslation($sentence->getTranslation() ?: $sentence->getSentence());
 		}
 		else
 		{
 			$sentence->translationFound = true;
-			$sentence->translation = $model->message;
+			$sentence->setTranslation($model->message);
 		}
 
 		if( ! $cached )
@@ -61,7 +62,7 @@ class Translation extends MessageBase implements MessageInterface {
 										'message_id' => $translation->getId(),
 										'language_id' => $locale->getLanguage(),
 										'country_id' => $locale->getCountry(),
-										'message' => $translation->translation,
+										'message' => $translation->getTranslation(),
 										'translator_id' => isset($translation->translator) ? $translation->translator : null,
 									));
 

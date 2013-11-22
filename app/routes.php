@@ -13,11 +13,13 @@
 
 Route::get('/test', function()
 {
-	Glottos::addTranslation('Home', 'Principal', 'pt-br');
+	// Glottos::addTranslation('Home', 'Principal', 'pt-br');
+	// Glottos::addTranslation('key::photography', 'Photography');
+	// Glottos::addTranslation('key::technology', 'Technology');
 
-	var_dump( Glottos::translate('Home') );
-
-	var_dump( Glottos::translate('key::home') );
+	var_dump( Glottos::translate('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.') );
+	// var_dump( Glottos::translate('Home', 'pt-br') );
+	// var_dump( Glottos::translate('key::photography') );
 
 	// // Stopwatch::start('Glottos::translate(my:message)');
 

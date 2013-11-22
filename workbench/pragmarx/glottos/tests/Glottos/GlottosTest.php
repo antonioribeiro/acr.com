@@ -41,11 +41,11 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->paragraph = "Hello, welcome to |-application name-|'s test cases!";
+		$this->paragraph = "-->Hello, welcome to |-application name-|'s test cases!<--";
+
+		$this->translatedParagraph = '-->Olá, seja bem-vindo aos casos de testes do Glottos!<--';
 
 		$this->translationIntermediaryParagraph = 'Olá, seja bem-vindo aos casos de testes do |-application name-|';
-
-		$this->translatedParagraph = 'Olá, seja bem-vindo aos casos de testes do Glottos!';
 
 		$this->replacableVariables = array('application name' => 'Glottos', 'variable' => 'name');
 
@@ -60,16 +60,17 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 			$this->locale = new Locale($this->language, $this->country),
 			$this->sentenceBag = new SentenceBag($this->config, $this->paragraph),
 			$this->dataRepository = m::mock('PragmaRX\Glottos\Repositories\Data\DataRepository'),
-			$this->cache = new Cache()
+			$this->cache = new Cache(),
+			$this->mode = new Mode()
 		);
 
-		$this->sentenceObject = new Sentence($this->paragraph, '', '', 0, new Mode);
+		$this->sentenceObject = new Sentence($this->paragraph, 0, new Mode);
 
-		$this->translationSentenceObject = new Sentence($this->paragraph, '', '', 0, new Mode);
-		$this->translationSentenceObject->translation = $this->translatedParagraph;
+		$this->translationSentenceObject = new Sentence($this->paragraph, 0, new Mode);
+		$this->translationSentenceObject->setTranslation($this->translatedParagraph);
 
-		$this->translationIntermediaryObject = new Sentence($this->paragraph, '', '', 0, new Mode);
-		$this->translationIntermediaryObject->translation = $this->translationIntermediaryParagraph;
+		$this->translationIntermediaryObject = new Sentence($this->paragraph, 0, new Mode);
+		$this->translationIntermediaryObject->setTranslation($this->translationIntermediaryParagraph);
 	}
 
 	/**
@@ -111,30 +112,33 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 	public function testTranslation()
 	{
 		$this->glottos->addVariable('application name', 'Glottos');
+
 		$this->glottos->addVariable('variable', 'name');
 
 		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translationIntermediaryObject);
+
 		$t = $this->glottos->translate($this->paragraph);
 
 		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translationIntermediaryObject);
+
 		$t = $this->glottos->translate($this->paragraph, 'pt-br');
 
-		$this->assertEquals($t, $this->translatedParagraph);
+		$this->assertEquals($this->translatedParagraph, $t);
 	}
 
 	public function testAddTranslation()
 	{
-		// $this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translationIntermediaryObject);
+		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translationIntermediaryObject);
 		$this->dataRepository->shouldReceive('addTranslation')->once()->andReturn($this->translationIntermediaryObject);
 
 		$t = $this->glottos->addTranslation($this->paragraph, $this->translationIntermediaryParagraph, $this->locale);
 
 		$this->assertEquals($t, $this->translationIntermediaryObject);
 
-
+		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translationIntermediaryObject);
 		$this->dataRepository->shouldReceive('addTranslation')->once()->andReturn($this->translationIntermediaryObject);
 
-		$t = $this->glottos->addTranslation($this->paragraph, $this->translationIntermediaryParagraph, $this->language, $this->country);
+		$t = $this->glottos->addTranslation($this->paragraph, $this->translationIntermediaryParagraph, $this->language.'-'.$this->country, $this->module, $this->mode);
 
 		$this->assertEquals($t, $this->translationIntermediaryObject);
 	}

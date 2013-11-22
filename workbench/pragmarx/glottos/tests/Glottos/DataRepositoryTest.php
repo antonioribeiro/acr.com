@@ -47,10 +47,10 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->translationRecord->id = 1;
 		$this->translationRecord->message = $this->translation;
 
-		$this->sentence = new Sentence($this->message, '', '', 0, new Mode);
+		$this->sentence = new Sentence($this->message, 0, new Mode);
 
-		$this->translatedSentence = new Sentence($this->message, '', '', 0, new Mode);
-		$this->translatedSentence->translation = $this->translationRecord->message;
+		$this->translatedSentence = new Sentence($this->message, 0, new Mode);
+		$this->translatedSentence->setTranslation($this->translationRecord->message);
 		$this->translatedSentence->setId(1);
 
 		$this->language = 'en';
@@ -58,7 +58,7 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 		$this->locale = new Locale($this->language, $this->country);
 
-		$this->foundSentence = new Sentence($this->message, '', '', 0, new Mode);
+		$this->foundSentence = new Sentence($this->message, 0, new Mode);
 		$this->foundSentence->setId(1);
 
 		$this->modelMessageMock = m::mock('stdClass');
@@ -118,21 +118,24 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 		$sentence = $this->dataRepository->findTranslation($this->sentence, $this->locale);
 
-		$this->assertEquals($sentence->translation, $this->translationRecord->message);
+		$this->assertEquals($sentence->getTranslation(), $this->translationRecord->message);
 		$this->assertTrue($sentence->translationFound);
 	}
 
 	public function testTranslationNotFound()
 	{
 		$this->modelMessageMock->shouldReceive('where')->once()->andReturn($this->modelMessageMock);
+
 		$this->modelMessageMock->shouldReceive('first')->once()->andReturn($this->record);
 
 		$this->modelTranslationMock->shouldReceive('where')->times(3)->andReturn($this->modelTranslationMock);
+
 		$this->modelTranslationMock->shouldReceive('first')->once()->andReturn(null);
 
 		$sentence = $this->dataRepository->findTranslation($this->sentence, $this->locale);
 
-		$this->assertEquals($sentence->translation, $this->message);
+		$this->assertEquals($sentence->getTranslation(), $this->message);
+
 		$this->assertFalse($sentence->translationFound);
 	}
 

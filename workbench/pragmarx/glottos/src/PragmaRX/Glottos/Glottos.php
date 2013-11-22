@@ -52,7 +52,8 @@ class Glottos
 									Locale $locale, 
 									SentenceBag $paragraph, 
 									DataRepository $dataRepository,
-									Cache $cache
+									Cache $cache,
+									Mode $mode
 								)
 	{
 		$this->locale = $locale;
@@ -64,6 +65,8 @@ class Glottos
 		$this->dataRepository = $dataRepository;
 
 		$this->cache = $cache;
+
+		$this->mode = $mode;
 	}
 
 	/**
@@ -85,6 +88,18 @@ class Glottos
 	{
 		return $this->module;
 	}
+
+
+	public function setMode($mode)
+	{
+		$this->mode = $mode;
+	}
+
+	public function getMode()
+	{
+		return $this->mode;
+	}
+
 
 	/**
 	 * Locale setter
@@ -176,13 +191,13 @@ class Glottos
 	 * @param  integer $module
 	 * @return string
 	 */
-	private function translateParagraph($paragraph, $locale, $module)
+	private function translateParagraph($paragraph, Locale $locale, $module)
 	{
 		$this->paragraph->parseParagraph($paragraph, $module);
 
 		foreach($this->paragraph->all() as $sentence)
 		{
-			$sentence->translation = $this->translateSentence($sentence, $locale, $module);
+			$sentence->setTranslation($this->translateSentence($sentence, $locale, $module));
 		}
 
 		return $this->paragraph->getTranslatedParagraph();
@@ -196,25 +211,13 @@ class Glottos
 	 * @param  int $module
 	 * @return string
 	 */
-	private function translateSentence($sentence, $locale, $module)
+	private function translateSentence(Sentence $sentence, Locale $locale)
 	{
-		return $this->findTranslation($sentence, $locale, $module)->translation;
+		return $this->findTranslation($sentence, $locale)->getTranslation();
 	}
 
-	private function findTranslation($message, $locale, $module)
+	private function findTranslation(Sentence $translation, Locale $locale)
 	{
-		if( ! $message instanceof Sentence)
-		{
-			$translation = new Sentence($message, '', '', $module, new Mode($this->config->get('mode')));
-		}
-
-		$translation->translation = $translation;
-
-		if ($locale && ! $locale instanceof Locale)
-		{
-			$locale = new Locale($locale);
-		}
-
 		return $this->dataRepository->findTranslation($translation, $locale);
 	}
 
@@ -251,16 +254,19 @@ class Glottos
 						);
 	}
 
-	public function addTranslation($message, $translation, $locale = null, $module = 0)
+	public function addTranslation($message, $translatedMessage, $locale = null, $module = 0)
 	{
-		$translation = $this->findTranslation($translation, $locale, $module);
+		$module = $module ?: $this->module;
 
-		dd($translation);
+		$locale = Locale::make($locale, $this->locale);
+
+		$translation = Sentence::makeTranslation($message, $translatedMessage, $module, $this->mode);
+
+		$translation = $this->findTranslation($translation, $locale);
 
 		if(! $translation->translationFound)
 		{
-
-			return $this->dataRepository->addTranslation($sentence, $locale ?: $this->locale, $module);
+			return $this->dataRepository->addTranslation($translation, $locale, $module);
 		}
 
 		return $translation;

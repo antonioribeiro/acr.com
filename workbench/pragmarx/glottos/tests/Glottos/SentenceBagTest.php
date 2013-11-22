@@ -27,7 +27,10 @@ class SentenceBagTest extends PHPUnit_Framework_TestCase {
 
 	public function setup()
 	{
-		$this->paragraph = '<#This is a string [with some delimiters inside the string] for testing purposes||. ||This is a second one#>';
+		$this->part1 = 'This is a string [with some delimiters inside the string] for testing purposes||';
+		$this->part2 = ' ||This is a second one';
+
+		$this->paragraph = "<#".$this->part1.".".$this->part2."."."#>";
 
 		$this->sentenceBag = new SentenceBag(new Config(new Filesystem));
 
@@ -52,13 +55,12 @@ class SentenceBagTest extends PHPUnit_Framework_TestCase {
 		$this->assertFalse($this->sentenceBag->isEmpty());
 
 		$this->assertEquals($this->sentenceBag->count(), 2);
-	}
 
-	public function testMainPrefixesAndSuffixes()
-	{
-		$this->assertEquals($this->sentenceBag->getPrefix(), '<#');
+		$this->assertEquals($this->part1, $this->sentenceBag->get(0)->getSentence());
+		$this->assertEquals($this->part1, $this->sentenceBag->get(0)->getTranslation());
 
-		$this->assertEquals($this->sentenceBag->getSuffix(), '#>');
+		$this->assertEquals($this->part2, $this->sentenceBag->get(1)->getSentence());
+		$this->assertEquals($this->part2, $this->sentenceBag->get(1)->getTranslation());
 	}
 
 	public function testSentencePrefixesAndSuffixes()
@@ -92,6 +94,30 @@ class SentenceBagTest extends PHPUnit_Framework_TestCase {
 	public function testGetParagraph()
 	{
 		$this->assertEquals($this->sentenceBag->getParagraph(), $this->paragraph);
+	}
+
+	public function testGetParagraphDifferentMode()
+	{
+		$this->sentenceBag->parseParagraph('natural::paragraph');
+
+		$this->assertEquals('natural', $this->sentenceBag->get(0)->getMode());
+
+		$this->sentenceBag->parseParagraph('key::paragraph');
+
+		$this->assertEquals('key', $this->sentenceBag->get(0)->getMode());
+	}
+
+	public function testAllParts()
+	{
+		$sentenceBag = new SentenceBag(new Config(new Filesystem));
+
+		$sentenceBag->parseParagraph('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.');
+
+		$this->assertEquals('IT Solutions, Systems Architecture, Web Solutions and Linux Servers', $sentenceBag->get(0)->getSentence());
+		$this->assertEquals('IT Solutions, Systems Architecture, Web Solutions and Linux Servers', $sentenceBag->get(0)->getTranslation());
+
+		$this->assertEquals(' Click here to contact me', $sentenceBag->get(1)->getSentence());
+		$this->assertEquals(' Click here to contact me', $sentenceBag->get(1)->getTranslation());
 	}
 
 }

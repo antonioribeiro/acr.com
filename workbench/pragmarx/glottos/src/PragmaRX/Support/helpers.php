@@ -13,4 +13,20 @@ if ( ! function_exists('g'))
 	{
 		return Glottos::translate($string, $locale, $module);
 	}
+
 }
+
+if ( ! function_exists('kk'))
+{
+	function kk($data)
+	{
+		echo "<pre>";
+
+		var_dump($data);
+
+		echo "</pre>";
+
+		die;
+	}
+}
+

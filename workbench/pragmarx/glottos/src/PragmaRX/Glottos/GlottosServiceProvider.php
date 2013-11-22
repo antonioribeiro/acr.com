@@ -8,6 +8,7 @@ use PragmaRX\Glottos\Glottos;
 use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Config;
+use PragmaRX\Glottos\Support\Mode;
 
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 use PragmaRX\Glottos\Repositories\Data\DataRepository;
@@ -49,6 +50,8 @@ class GlottosServiceProvider extends ServiceProvider {
 		$this->registerCache();
 
 		$this->registerDataRepository();
+
+		$this->registerMode();
 
 		$this->registerGlottos();
 	}
@@ -111,6 +114,14 @@ class GlottosServiceProvider extends ServiceProvider {
 		});
 	}
 
+	private function registerMode()
+	{
+		$this->app['glottos.mode'] = $this->app->share(function($app)
+		{
+			return new Mode($this->app['config']['pragmarx/glottos::mode']);
+		});
+	}
+
 	private function registerGlottos()
 	{
 		$this->app['glottos'] = $this->app->share(function($app)
@@ -122,7 +133,8 @@ class GlottosServiceProvider extends ServiceProvider {
 									$app['glottos.locale'],
 									$app['glottos.sentenceBag'],
 									$app['glottos.dataRepository'],
-									$app['glottos.cache']
+									$app['glottos.cache'],
+									$app['glottos.mode']
 								);
 		});
 	}

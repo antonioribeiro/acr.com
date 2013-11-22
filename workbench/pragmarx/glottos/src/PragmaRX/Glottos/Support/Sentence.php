@@ -39,7 +39,7 @@ class Sentence {
 	 * 
 	 * @var string
 	 */
-	public $translation;
+	protected $translation;
 
 	/**
 	 * Translation was found?
@@ -47,6 +47,20 @@ class Sentence {
 	 * @var boolean
 	 */
 	public $translationFound;
+
+	/**
+	 * Variable demimiter - prefix
+	 * 
+	 * @var string
+	 */
+	protected $variableDelimiterPrefix = '[-';
+
+	/**
+	 * Variable demimiter - suffix
+	 * 
+	 * @var string
+	 */
+	protected $variableDelimiterSuffix = '-]';
 
 	/**
 	 * Sentence unique ID
@@ -88,17 +102,15 @@ class Sentence {
 	 * @param  array  $sentences
 	 * @return void
 	 */
-	public function __construct($sentence, $prefix = '', $suffix = '', $module = 0, Mode $mode)
+	public function __construct($sentence, $module = 0, Mode $mode, $config = null)
 	{
-		$this->prefix = $prefix;
-
-		$this->setSentence($sentence);
-
-		$this->suffix = $suffix;
-
 		$this->module = $module;
 
 		$this->mode = $mode;
+
+		$this->config = $config;
+
+		$this->setSentence($sentence);
 	}
 
 	public function getId()
@@ -143,13 +155,11 @@ class Sentence {
 
 	public function getSentence()
 	{
-		return $this->sentence;
+		return $this->getProperty('sentence');
 	}
 
 	public function setSentence($sentence)
 	{
-		if( ! is_string($sentence)) dd( debug_backtrace() );
-
 		preg_match("/^(natural|key)::(.*)/", $sentence, $matches);
 
 		if(count($matches) == 3)
@@ -160,12 +170,14 @@ class Sentence {
 
 		$this->sentence = $sentence;
 
+		SentenceParser::parse($this->sentence, $this->prefix, $this->suffix, $this->config);
+
 		$this->calculateHash();
 	}
 
 	public function getTranslation()
 	{
-		return $this->translation;
+		return $this->getProperty('translation');
 	}
 
 	public function setTranslation($translation)
@@ -185,6 +197,21 @@ class Sentence {
 
 	public function getProperty($property)
 	{
-		return $this->$property;
+		return $this->prefix . $this->$property . $this->suffix;
 	}
+
+	public static function make($message, $module, $mode)
+	{
+		return new Sentence($message, $module, $mode);
+	}
+
+	public static function makeTranslation($message, $translation, $module, $mode)
+	{
+		$sentence = new Sentence($message, $module, $mode);
+
+		$sentence->translation = $translation;
+
+		return $sentence;
+	}
+
 }
