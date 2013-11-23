@@ -24,7 +24,9 @@ class Cache {
 
 	public function get($key)
 	{
-		return isset($this->memory[$key]) ? unserialize($this->memory[$key]) : null;
+		return isset($this->memory[$key]) 
+		             ? unserialize($this->memory[$key]) 
+		             : null;
 	}
 
 	public function put($key, $value)

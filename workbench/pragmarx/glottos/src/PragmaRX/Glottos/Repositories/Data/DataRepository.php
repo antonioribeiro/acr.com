@@ -22,6 +22,7 @@ use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Repositories\Messages\MessageInterface;
+use PragmaRX\Glottos\Repositories\Locales\LocaleRepositoryInterface;
 
 class DataRepository implements DataRepositoryInterface {
 
@@ -29,11 +30,13 @@ class DataRepository implements DataRepositoryInterface {
 
 	private $translation;
 
-	public function __construct(MessageInterface $message, MessageInterface $translation, Config $config)
+	public function __construct(MessageInterface $message, MessageInterface $translation, LocaleRepositoryInterface $localeRepository, Config $config)
 	{
 		$this->message = $message;
 
 		$this->translation = $translation;
+
+		$this->localeRepository = $localeRepository;
 
 		$this->config = $config;
 	}
@@ -62,9 +65,9 @@ class DataRepository implements DataRepositoryInterface {
 		return $translation;
 	}
 
-	private function getDefaultLocale()
+	public function getDefaultLocale()
 	{
-		return new Locale($this->config->get('default_language_id').'-'.$this->config->get('default_country_id'));
+		return Locale::make($this->config->get('default_language_id').'-'.$this->config->get('default_country_id'));
 	}
 
 	public function addTranslation(Sentence $translation, Locale $locale)
@@ -72,6 +75,16 @@ class DataRepository implements DataRepositoryInterface {
 		$this->translation->add($translation, $locale);
 
 		return $translation;
+	}
+
+	public function localeIsAvailable($locale)
+	{
+		if ($this->getDefaultLocale()->is($locale))
+		{
+			return true;
+		}
+
+		return $this->localeRepository->localeIsAvailable(Locale::make($locale));
 	}
 
 }

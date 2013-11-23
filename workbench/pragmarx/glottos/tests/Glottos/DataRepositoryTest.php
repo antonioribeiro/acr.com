@@ -22,8 +22,15 @@
 use Mockery as m;
 
 use PragmaRX\Glottos\Repositories\Data\DataRepository;
+
 use PragmaRX\Glottos\Repositories\Messages\Message;
 use PragmaRX\Glottos\Repositories\Messages\Translation;
+
+use PragmaRX\Glottos\Repositories\Locales\LocaleRepository;
+use PragmaRX\Glottos\Repositories\Locales\Language;
+use PragmaRX\Glottos\Repositories\Locales\Country;
+use PragmaRX\Glottos\Repositories\Locales\CountryLanguage;
+
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Locale;
@@ -64,6 +71,13 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->modelMessageMock = m::mock('stdClass');
 		$this->modelTranslationMock = m::mock('stdClass');
 
+		$this->modelLanguageMock = m::mock('PragmaRX\Glottos\Repositories\Locales\Language');
+		$this->modelCountryMock = m::mock('PragmaRX\Glottos\Repositories\Locales\Country');
+		$this->modelLanguageCountryMock  = m::mock('PragmaRX\Glottos\Repositories\Locales\CountryLanguage');
+
+		$this->modelLanguageCountryReturnMock = m::mock('stdClass');
+		$this->modelLanguageCountryReturnMock->enabled = true;
+
 		$this->config = m::mock('PragmaRX\Glottos\Support\Config');
 
 		$this->cache = new Cache();
@@ -71,6 +85,7 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->dataRepository = new DataRepository( 
 													$this->messageRepository = new Message($this->modelMessageMock, $this->cache),
 													$this->translationRepository = new Translation($this->modelTranslationMock, $this->cache),
+													$this->translationRepository = new LocaleRepository($this->modelLanguageMock, $this->modelCountryMock, $this->modelLanguageCountryMock, $this->cache),
 													$this->config
 												);
 	}
@@ -155,4 +170,26 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($addedSentence, $this->translatedSentence);
 	}
 
+	public function testDefaultLocale()
+	{
+		$this->config->shouldReceive('get')->with('default_language_id')->andReturn($this->language);
+		$this->config->shouldReceive('get')->with('default_country_id')->andReturn($this->country);
+
+		$this->assertEquals($this->locale, $this->dataRepository->getDefaultLocale());
+	}
+
+	public function testLocaleIsAvailable()
+	{
+		$this->config->shouldReceive('get')->with('default_language_id')->andReturn($this->language);
+		$this->config->shouldReceive('get')->with('default_country_id')->andReturn($this->country);
+
+		$this->assertTrue($this->dataRepository->localeIsAvailable($this->locale));
+
+		$this->modelLanguageCountryMock->shouldReceive('find')->andReturn($this->modelLanguageCountryReturnMock);
+		$this->assertTrue($this->dataRepository->localeIsAvailable('pt-br'));
+
+		$this->modelLanguageCountryReturnMock->enabled = false;
+		$this->modelLanguageCountryMock->shouldReceive('find')->andReturn($this->modelLanguageCountryReturnMock);
+		$this->assertFalse($this->dataRepository->localeIsAvailable('pt-pt'));
+	}
 }

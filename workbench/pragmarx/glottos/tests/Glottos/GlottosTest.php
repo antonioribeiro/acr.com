@@ -51,9 +51,9 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 		$this->module = 0;
 
-		$this->language = 'pt';
+		$this->language = 'en';
 
-		$this->country = 'br';
+		$this->country = 'us';
 
 		$this->glottos = new Glottos(
 			$this->config = new Config(new Filesystem),
@@ -142,4 +142,23 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($t, $this->translationIntermediaryObject);
 	}
+
+	public function testLocale()
+	{
+		$this->assertEquals($this->language.'-'.$this->country, $this->glottos->getTextLocale());
+
+		$this->assertEquals($this->locale, $this->glottos->getLocale());
+	}
+
+	public function testLocaleIsAvailable()
+	{
+		$this->dataRepository->shouldReceive('localeIsAvailable')->once()->andReturn(true);
+
+		$this->assertTrue($this->glottos->localeIsAvailable('en-us'));
+
+		$this->dataRepository->shouldReceive('localeIsAvailable')->once()->andReturn(false);
+
+		$this->assertFalse($this->glottos->localeIsAvailable('zz-zz'));
+	}
+
 }

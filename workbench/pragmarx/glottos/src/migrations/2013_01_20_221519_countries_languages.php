@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CountryLanguages extends Migration {
+class CountriesLanguages extends Migration {
 
     /**
      * Run the migrations.
@@ -11,7 +11,7 @@ class CountryLanguages extends Migration {
      */
     public function up()
     {
-        Schema::create('glottos_country_languages', function($table)
+        Schema::create('glottos_countries_languages', function($table)
         {
             $table->increments('id',3);
 
@@ -33,7 +33,7 @@ class CountryLanguages extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('glottos_country_languages');
+        Schema::dropIfExists('glottos_countries_languages');
     }
 
 }

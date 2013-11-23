@@ -13,7 +13,18 @@
 
 App::before(function($request)
 {
-	//
+	/*
+	|--------------------------------------------------------------------------
+	| Guess the language to be used
+	|--------------------------------------------------------------------------
+	|
+	*/
+
+	ACR\Services\Language::guess( 
+									Auth::guest() ? null : Auth::user(), 
+									App::make('session'),
+									App::make('glottos')
+								);
 });
 
 

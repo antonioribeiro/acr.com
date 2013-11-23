@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Repositories\Messages;
+<?php namespace PragmaRX\Glottos\Repositories\Locales;
 /**
  * Part of the Glottos package.
  *
@@ -18,15 +18,23 @@
  * @link       http://pragmarx.com
  */
 
-use PragmaRX\Glottos\Repositories\Cache\Cache;
+class Language extends LocaleBase implements LanguageInterface {
 
-abstract class MessageBase {
-
-	public function __construct($model, Cache $cache)
+	public function find($language)
 	{
-		$this->model = $model;
+		$cacheKey = __CLASS__.__FUNCTION__.$language;
 
-		$this->cache = $cache;
+		if( ! $cached = $model = $this->cache->get($cacheKey))
+		{
+			$model = $this->model->find($language);
+		}
+	
+		if( ! $cached && $model )
+		{
+			$this->cache->put($cacheKey, $model);
+		}
+
+		return $model;
 	}
 
 }

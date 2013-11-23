@@ -180,8 +180,14 @@ return array(
 	|
 	*/
 
-	'messages_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Message',
+	'message_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Message',
 
-	'translations_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Translation',
+	'translation_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Translation',
+
+	'language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Language',
+
+	'country_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Country',
+
+	'country_language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\CountryLanguage',
 
 );

@@ -105,7 +105,9 @@ class Locale
 				$locale = preg_split("/(\||\+|_|\*|#|\.|-|:|\\\|\/)/", $language);
 
 				$language = $locale[0];
-				$country = isset($locale[1]) ? $locale[1] : '';
+				$country = isset($locale[1]) 
+							? $locale[1] 
+							: '';
 			}
 		}
 	}

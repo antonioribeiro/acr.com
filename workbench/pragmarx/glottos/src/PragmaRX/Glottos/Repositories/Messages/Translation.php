@@ -64,7 +64,9 @@ class Translation extends MessageBase implements MessageInterface {
 										'language_id' => $locale->getLanguage(),
 										'country_id' => $locale->getCountry(),
 										'message' => $translation->getTranslation(),
-										'translator_id' => isset($translation->translator) ? $translation->translator : null,
+										'translator_id' => isset($translation->translator) 
+														   ? $translation->translator 
+														   : null,
 									));
 
 		return $model;

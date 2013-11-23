@@ -152,6 +152,16 @@ class Glottos
 	}
 
 	/**
+	 * Locale getter
+	 * 
+	 * @return Locale
+	 */
+	public function getTextLocale()
+	{
+		return $this->locale->getLanguage() . '-' . $this->locale->getCountry();
+	}
+
+	/**
 	 * Translate a group of paragraph
 	 * 
 	 * @param  string  $paragraph
@@ -258,221 +268,14 @@ class Glottos
 
 		return $translation;
 	}
+
+	public function getDefaultLocale()
+	{
+		return $this->dataRepository->getDefaultLocale();
+	}
+
+	public function localeIsAvailable($locale)
+	{
+		return $this->dataRepository->localeIsAvailable($locale);
+	}
 }
-
-	// private function translateSentence($sentence, $locale, $module)
-	// {
-	// 	$sentence->messageID = $this->buildMessageID($sentence, $locale, $module);
-
-	// 	$originalMessage = $this->getMessage($sentenceID);
-
-	// 	if (!isset($originalMessage) or empty($originalMessage)) {
-	// 		$this->newMessage($sentenceID, $this->getDefaultLanguage(), $this->getDefaultCountry(), $module, $hash, $sentence);
-	// 	}
-
-	// 	if (!$this->isDefaultLanguage($languageID, $countryID)) {
-	// 		$sentenceID = $this->buildMessageID($hash, $this->language, $this->country, $module);
-	// 		$translationMessage = $this->getMessage($sentenceID);
-	// 		if ( isset($translationMessage) and !empty($translationMessage) ) {
-	// 			return $translationMessage;
-	// 		}
-	// 		\Log::warning("not found = $sentence - $hash - $sentenceID");
-	// 		$this->newMessage($sentenceID, $this->language, $this->country, $module, $hash, $sentence);
-	// 	}
-
-	// 	return $sentence;
-	// }
-
-	// 	$this->loadLanguages();
-	// 	$this->loadMessages();
-
-	// private function loadLanguages() {
-	// 	// $query = \DB::select("select cl.language_id, cl.country_id , l.name language_name , c.name country_name , concat(l.name,' (', c.name, ')') as regional_name, cl.enabled  from countries_languages cl  join languages l on l.id = cl.language_id  join countries c on c.id = cl.country_id;");
-		
-	// 	// foreach ($query as $record) {
-	// 	// 		$this->languages[$record->language_id."-".$record->country_id] = array(
-	// 	// 																				  'language_id' => $record->language_id
-	// 	// 																				, 'country_id' => $record->country_id
-	// 	// 																				, 'language_name' => $record->language_name
-	// 	// 																				, 'country_name' => $record->country_name
-	// 	// 																				, 'regional_name' => $record->regional_name
-	// 	// 																				, 'enabled' => $record->enabled
-	// 	// 																		);
-	// 	// }
-	// }
-
-	// private function loadMessages() {
-	// 	$this->messages = array();    
-		
-	// 	// $query = \DB::table('messages')->where('language_id', '=', $this->getDefaultLanguage())->where('country_id','=', $this->getDefaultCountry())->get();
-	// 	// foreach ($query as $record) {
-	// 	// 	$messageID = $this->buildMessageID($record->message_hash, $record->language_id, $record->country_id, $record->module_id);
-	// 	// 	$this->messages[$messageID] = $record->message;
-	// 	// }
-
-	// 	// $query = \DB::table('messages')->where('language_id', '=', $this->language)->where('country_id','=', $this->country)->get();
-	// 	// foreach ($query as $record) {
-	// 	// 	$messageID = $this->buildMessageID($record->message_hash, $record->language_id, $record->country_id, $record->module_id);
-	// 	// 	$this->messages[$messageID] = $record->message;
-	// 	// }
-	// }
-	// static function translate($messages, $module = 0, $replacements)
-	// {
-	// 	if (\Auth::check()) {
-	// 		$language = \Auth::user()->language_id;
-	// 		$country = \Auth::user()->country_id;
-	// 	} else {
-	// 		$language = \Session::get('languageID');
-	// 		$country = \Session::get('countryID');
-	// 	}
-
-	// 	$translator = \App::make('erobin.translator');
-
-	// 	return ($translator->debug() ? '{' : '').$translation.($translator->debug() ? '}' : '');
-	// }
-
-	// private function newMessage($messageID, $languageID, $countryID, $module, $hash, $message) {
-	// 	try 
-	// 	{
-	// 		$model = new \Message;
-	// 		$model->language_id = $languageID;
-	// 		$model->country_id = $countryID;
-	// 		$model->module_id = $module;
-	// 		$model->message_hash = $hash; // this hash is the untranslation form of the message
-	// 		$model->message = $message; // this is the message already translation
-	// 		$model->save();
-	// 		$result = $message;
-	// 	} 
-	// 	catch (\Exception $e) {
-	// 		dd($e);
-	// 	}
-	// 	$this->setMessage($messageID,$message);
-	// }
-	
-	// private function isDefaultLanguage($lID, $cID) {
-	// 	return ($lID == $this->getDefaultLanguage()) and ($cID = $this->getDefaultCountry());
-	// }
-
-	// private function removePrefixAndSuffix(&$message, &$prefix, &$suffix) {
-	// 	$prefix = '';
-	// 	$suffix = '';
-		
-	// 	$chars = array( "!"=>1,"\\"=>1,"\""=>1,"#"=>1,"\$"=>1,"%"=>1,"&"=>1,"'"=>1,"("=>1,")"=>1,"*"=>1,"+"=>1,","=>1,"-"=>1,"."=>1,"/"=>1,":"=>1,";"=>1,"<"=>1,"="=>1,">"=>1,"?"=>1,"@"=>1,"["=>1,"]"=>1,"^"=>1,"_"=>1,"`"=>1,"{"=>1,"|"=>1," "=>1,"}"=>1 );
-
-	// 	$i = 0;
-	// 	while ($i < strlen($message) and isset($chars[$message[$i]])) {
-	// 		$prefix .= $message[$i];
-	// 		$i++;
-	// 	}
-	// 	$i = strlen($message)-1;
-	// 	while ($i > -1 and isset($chars[$message[$i]])) {
-	// 		$suffix = $message[$i] . $suffix;
-	// 		$i--;
-	// 	}
-
-	// 	if ($prefix != $this->variableDelimiterPrefix) {
-	// 		$message = substr($message,strlen($prefix));	
-	// 	} else {
-	// 		$prefix = '';
-	// 	}
-		
-	// 	if ($suffix != $this->variableDelimiterSuffix) {
-	// 		$message = substr($message,0,strlen($message)-strlen($suffix));
-	// 	} else {
-	// 		$suffix = '';
-	// 	}
-	// }
-
-	// private function getMessage($messageID) {
-	// 	if (!isset($this->messages[$messageID])) {
-	// 		\Log::warning("not found! |$messageID|");
-	// 		if (!$this->did) {
-	// 			foreach($this->messages as $key => $data) {
-	// 				\Log::warning("$key => $data");
-	// 			}
-	// 			$this->did = true;  
-	// 		}
-	// 		foreach($this->messages as $key => $message) {
-	// 			if ($key == $messageID) {
-	// 				\Log::warning("FOUND! |$key| == |$messageID|");
-	// 			}
-	// 		}
-	// 	}
-
-	// 	return isset($this->messages[$messageID]) ? $this->messages[$messageID] : NULL;
-	// }
-	
-	// private function setMessage($messageID,$message) {
-	// 	return $this->messages[$messageID] = $message;
-	// }
-
-	// private function getLanguages() {
-	// 	if (!isset($this->languages))  {
-	// 		$this->loadLanguages();
-	// 	}
-	// 	return $this->languages;
-	// }
-
-	// static function languages()
-	// {
-	// 	$translator = \App::make('erobin.translator');
-	// 	return $translator->getLanguages();
-	// }
-
-	// static function languageName($language_id, $country_id) {
-	// 	$translator = \App::make('erobin.translator');
-	// 	return $translator->languages[$language_id."-".$country_id]['regional_name'];
-	// }
-
-	// public function debug() {
-	// 	return \Config::get('app.debugTranslation');
-	// }
-
-	// private function getDefaultLanguage() {
-	// 	$l = \Config::get('app.defaultLanguage');
-	// 	if (!isset($l) or empty($l)) {
-	// 		$l = self::DEFAULT_LANGUAGE_ID;
-	// 	}
-	// 	return $l;
-	// }
-
-	// private function getDefaultCountry() {
-	// 	$c = \Config::get('app.defaultCountry');
-	// 	if (!isset($c) or empty($c)) {
-	// 		$c = self::DEFAULT_COUNTRY_ID;
-	// 	}
-	// 	return $c;
-	// }
-
-	// private function setCurrentLanguage($languageID, $countryID) {
-	// 	if (!isset($languageID)) {
-	// 		if (!isset($this->language)) {
-	// 			$languageID = $this->getDefaultLanguage();
-	// 		} else {
-	// 			$languageID = $this->language;
-	// 		}
-	// 	}
-
-	// 	if (!isset($countryID)) {
-	// 		if (!isset($this->country)) {
-	// 			$countryID = $this->getDefaultCountry();
-	// 		} else {
-	// 			$countryID = $this->country;
-	// 		}
-	// 	}
-
-	// 	if ($this->language != $languageID or $this->country != $countryID) {
-	// 		$this->language = $languageID;
-	// 		$this->country = $countryID;
-
-	// 		$this->loadMessages();
-	// 	}
-	// }
-
-	// static function variableDelimiterPrefix() {
-	// 	return \App::make('erobin.translator')->variableDelimiterPrefix;
-	// }
-
-	// static function variableDelimiterSuffix() {
-	// 	return \App::make('erobin.translator')->variableDelimiterSuffix;
-	// }

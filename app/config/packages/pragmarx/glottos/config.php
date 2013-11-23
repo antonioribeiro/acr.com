@@ -157,22 +157,18 @@ return array(
 	|
 	*/
 
-	'cookie' => array(
+	/*
+	|--------------------------------------------------------------------------
+	| Default Cookie Key
+	|--------------------------------------------------------------------------
+	|
+	| This option allows you to specify the default cookie key used by Sentry.
+	|
+	| Supported: string
+	|
+	*/
 
-		/*
-		|--------------------------------------------------------------------------
-		| Default Cookie Key
-		|--------------------------------------------------------------------------
-		|
-		| This option allows you to specify the default cookie key used by Sentry.
-		|
-		| Supported: string
-		|
-		*/
-
-		'key' => 'pragmarx_glottos',
-
- 	),
+	'cookie_key' => 'pragmarx_glottos',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -184,12 +180,14 @@ return array(
 	|
 	*/
 
-	'models' => array(
+	'message_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Message',
 
-		'messages' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Message',
+	'translation_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Translation',
 
-		'translations' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Translation',
+	'language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Language',
 
-	),
+	'countrie_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Country',
+
+	'country_language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\CountryLanguage',
 
 );

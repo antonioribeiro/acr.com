@@ -15,6 +15,11 @@ use PragmaRX\Glottos\Repositories\Data\DataRepository;
 use PragmaRX\Glottos\Repositories\Messages\Message;
 use PragmaRX\Glottos\Repositories\Messages\Translation;
 
+use PragmaRX\Glottos\Repositories\Locales\LocaleRepository;
+use PragmaRX\Glottos\Repositories\Locales\Language;
+use PragmaRX\Glottos\Repositories\Locales\Country;
+use PragmaRX\Glottos\Repositories\Locales\CountryLanguage;
+
 class GlottosServiceProvider extends ServiceProvider {
 
 	/**
@@ -102,13 +107,26 @@ class GlottosServiceProvider extends ServiceProvider {
 	{
 		$this->app['glottos.dataRepository'] = $this->app->share(function($app)
 		{
-			$messageModel = new $this->app['config']['pragmarx/glottos::messages_model'];
+			$messageModel = $this->app['config']['pragmarx/glottos::message_model'];
 
-			$translationModel = new $this->app['config']['pragmarx/glottos::translations_model'];
+			$translationModel = $this->app['config']['pragmarx/glottos::translation_model'];
+
+			$languageModel = $this->app['config']['pragmarx/glottos::language_model'];
+
+			$countryModel = $this->app['config']['pragmarx/glottos::country_model'];
+
+			$countryLanguageModel = $this->app['config']['pragmarx/glottos::country_language_model'];
+
+			$localeRepository = new LocaleRepository(
+														new Language(new $languageModel, $this->app['glottos.cache']), 
+														new Country(new $countryModel, $this->app['glottos.cache']), 
+														new CountryLanguage(new $countryLanguageModel, $this->app['glottos.cache'])
+													);
 
 			return new DataRepository( 
 										new Message(new $messageModel, $this->app['glottos.cache']),
 										new Translation(new $translationModel, $this->app['glottos.cache']),
+										$localeRepository,
 										$this->app['glottos.config']
 									);
 		});

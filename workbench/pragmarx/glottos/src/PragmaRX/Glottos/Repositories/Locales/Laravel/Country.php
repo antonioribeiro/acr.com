@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Repositories\Messages;
+<?php namespace PragmaRX\Glottos\Repositories\Locales\Laravel;
 /**
  * Part of the Glottos package.
  *
@@ -18,15 +18,12 @@
  * @link       http://pragmarx.com
  */
 
-use PragmaRX\Glottos\Repositories\Cache\Cache;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-abstract class MessageBase {
+class Country extends Eloquent {
 
-	public function __construct($model, Cache $cache)
-	{
-		$this->model = $model;
+	protected $table = 'glottos_country';
 
-		$this->cache = $cache;
-	}
+	protected $guarded = array();
 
 }

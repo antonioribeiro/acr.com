@@ -54,8 +54,8 @@
                                 </a>
                             </div>
                             <div class="language">
-                                <a href="{{ URL::to('/') }}/language/eng">
-                                    <i  class="fa fa-eye"></i> {{g('português')}}
+                                <a href="{{ $switchLanguageUrl }}">
+                                    <i  class="fa fa-eye"></i> {{ g($switchLanguageTitle) }}
                                 </a>
                             </div>
 
