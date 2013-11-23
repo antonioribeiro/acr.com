@@ -18,7 +18,7 @@
  * @link       http://pragmarx.com
  */
 
-class Cache {
+class Cache implements CacheInterface {
 	
 	private $memory = array();
 
@@ -29,9 +29,39 @@ class Cache {
 		             : null;
 	}
 
-	public function put($key, $value)
+	public function put($key, $value, $minutes = 0)
 	{
 		return $this->memory[$key] = serialize($value);
 	}
 
+	public function increment($key, $value = 1)
+	{
+		throw new \Exception("Increment operations not supported by this driver.");	
+	}
+
+	public function decrement($key, $value = 1)
+	{
+		throw new \Exception("Decrement operations not supported by this driver.");	
+	}
+
+	public function forever($key, $value)
+	{
+		$this->put($key, $value);
+	}
+
+	public function forget($key)
+	{
+		unset($this->memory[$key]);
+	}
+
+	public function flush()
+	{
+		$this->memory = array();
+	}
+
+	public function getPrefix()
+	{
+		return '';
+	}
+	
 }
