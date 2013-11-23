@@ -197,23 +197,10 @@ class Glottos
 
 		foreach($this->paragraph->all() as $sentence)
 		{
-			$sentence->setTranslation($this->translateSentence($sentence, $locale, $module));
+			$sentence->setTranslation($this->findTranslation($sentence, $locale, $module)->getTranslation());
 		}
 
 		return $this->paragraph->getTranslatedParagraph();
-	}
-
-	/**
-	 * Receives a sentence and translate it
-	 * 
-	 * @param  Sentence $sentence
-	 * @param  Locale $locale
-	 * @param  int $module
-	 * @return string
-	 */
-	private function translateSentence(Sentence $sentence, Locale $locale)
-	{
-		return $this->findTranslation($sentence, $locale)->getTranslation();
 	}
 
 	private function findTranslation(Sentence $translation, Locale $locale)

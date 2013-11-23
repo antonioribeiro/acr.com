@@ -265,10 +265,7 @@ class SentenceBag implements Countable {
 
 		foreach($this->sentences as $key => $sentence)
 		{
-				echo "|".$sentence->getSentence()."|<br>";
-				echo "|".$sentence->getTranslation()."|<br>";
-
-			$sentences[] = $sentence->getProperty($property);
+			$sentences[] = $sentence->getProperty($property, true);
 		}
 
 		return $this->prefix . implode($this->getDelimiter(), $sentences) . $this->suffix;

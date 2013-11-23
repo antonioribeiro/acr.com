@@ -118,7 +118,8 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 		$sentence = $this->dataRepository->findTranslation($this->sentence, $this->locale);
 
-		$this->assertEquals($sentence->getTranslation(), $this->translationRecord->message);
+		$this->assertEquals($sentence->getFullTranslation(), $this->translationRecord->message);
+
 		$this->assertTrue($sentence->translationFound);
 	}
 
@@ -134,7 +135,7 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 		$sentence = $this->dataRepository->findTranslation($this->sentence, $this->locale);
 
-		$this->assertEquals($sentence->getTranslation(), $this->message);
+		$this->assertEquals($sentence->getFullTranslation(), $this->message);
 
 		$this->assertFalse($sentence->translationFound);
 	}
@@ -145,8 +146,9 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 		$addedSentence = $this->dataRepository->addTranslation($this->translatedSentence, $this->locale);
 
-		$this->assertEquals($this->translatedSentence->getSentence(), $this->message);
-		$this->assertEquals($this->translatedSentence->getTranslation(), $this->translation);
+		$this->assertEquals($this->translatedSentence->getFullSentence(), $this->message);
+
+		$this->assertEquals($this->translatedSentence->getFullTranslation(), $this->translation);
 
 		$this->assertEquals(1, $this->translatedSentence->getId());
 

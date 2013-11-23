@@ -56,11 +56,9 @@ class SentenceBagTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($this->sentenceBag->count(), 2);
 
-		$this->assertEquals($this->part1, $this->sentenceBag->get(0)->getSentence());
-		$this->assertEquals($this->part1, $this->sentenceBag->get(0)->getTranslation());
+		$this->assertEquals($this->part1, $this->sentenceBag->get(0)->getFullSentence());
 
-		$this->assertEquals($this->part2, $this->sentenceBag->get(1)->getSentence());
-		$this->assertEquals($this->part2, $this->sentenceBag->get(1)->getTranslation());
+		$this->assertEquals($this->part2, $this->sentenceBag->get(1)->getFullSentence());
 	}
 
 	public function testSentencePrefixesAndSuffixes()
@@ -113,11 +111,9 @@ class SentenceBagTest extends PHPUnit_Framework_TestCase {
 
 		$sentenceBag->parseParagraph('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.');
 
-		$this->assertEquals('IT Solutions, Systems Architecture, Web Solutions and Linux Servers', $sentenceBag->get(0)->getSentence());
-		$this->assertEquals('IT Solutions, Systems Architecture, Web Solutions and Linux Servers', $sentenceBag->get(0)->getTranslation());
+		$this->assertEquals('IT Solutions, Systems Architecture, Web Solutions and Linux Servers', $sentenceBag->get(0)->getFullSentence());
 
-		$this->assertEquals(' Click here to contact me', $sentenceBag->get(1)->getSentence());
-		$this->assertEquals(' Click here to contact me', $sentenceBag->get(1)->getTranslation());
+		$this->assertEquals(' Click here to contact me', $sentenceBag->get(1)->getFullSentence());
 	}
 
 }

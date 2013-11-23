@@ -49,20 +49,6 @@ class Sentence {
 	public $translationFound;
 
 	/**
-	 * Variable demimiter - prefix
-	 * 
-	 * @var string
-	 */
-	protected $variableDelimiterPrefix = '[-';
-
-	/**
-	 * Variable demimiter - suffix
-	 * 
-	 * @var string
-	 */
-	protected $variableDelimiterSuffix = '-]';
-
-	/**
 	 * Sentence unique ID
 	 * 
 	 * @var integer
@@ -153,9 +139,14 @@ class Sentence {
 		}
 	}
 
-	public function getSentence()
+	public function getFullSentence()
 	{
-		return $this->getProperty('sentence');
+		return $this->getProperty('sentence', true);
+	}
+
+	public function getSentence($full = false)
+	{
+		return $this->getProperty('sentence', $full);
 	}
 
 	public function setSentence($sentence)
@@ -175,9 +166,14 @@ class Sentence {
 		$this->calculateHash();
 	}
 
-	public function getTranslation()
+	public function getFullTranslation()
 	{
-		return $this->getProperty('translation');
+		return $this->getProperty('translation', true);
+	}
+
+	public function getTranslation($full = false)
+	{
+		return $this->getProperty('translation', $full);
 	}
 
 	public function setTranslation($translation)
@@ -195,9 +191,9 @@ class Sentence {
 		$this->mode->set($mode);
 	}
 
-	public function getProperty($property)
+	public function getProperty($property, $full)
 	{
-		return $this->prefix . $this->$property . $this->suffix;
+		return ($full ? $this->prefix : '') . $this->$property . ($full ? $this->suffix : '');
 	}
 
 	public static function make($message, $module, $mode)

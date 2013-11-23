@@ -45,6 +45,7 @@ class Translation extends MessageBase implements MessageInterface {
 		else
 		{
 			$sentence->translationFound = true;
+			
 			$sentence->setTranslation($model->message);
 		}
 

@@ -20,13 +20,18 @@ if ( ! function_exists('kk'))
 {
 	function kk($data)
 	{
+		k($data);
+		
+		die;
+	}
+
+	function k($data)
+	{
 		echo "<pre>";
 
 		var_dump($data);
 
 		echo "</pre>";
-
-		die;
 	}
 }
 
