@@ -276,6 +276,6 @@ class Glottos
 
 	public function localeIsAvailable($locale)
 	{
-		return $this->dataRepository->localeIsAvailable($locale);
+		return $this->dataRepository->localeIsAvailable(Locale::make($locale));
 	}
 }

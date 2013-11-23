@@ -11,8 +11,6 @@
 |
 */
 
-$a = new PragmaRX\Glottos\Repositories\Locales\Laravel\Country;
-
 Route::get('/test', function()
 {
 	// Glottos::addTranslation('Home', 'Principal', 'pt-br');

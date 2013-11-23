@@ -497,9 +497,9 @@ class GlottosTableSeeds extends Migration {
 
         DB::table('glottos_countries_languages')->insert($glottos_countries_languages_rows);
 
-        DB::table('glottos_countries_languages')->where('language_id', 'pt')->where('country_id', 'BR')->update(array('enabled' => true));
+        DB::table('glottos_countries_languages')->where('language_id', 'pt')->where('country_id', 'br')->update(array('enabled' => true));
 
-        DB::table('glottos_countries_languages')->where('language_id', 'en')->where('country_id', 'US')->update(array('enabled' => true));
+        DB::table('glottos_countries_languages')->where('language_id', 'en')->where('country_id', 'us')->update(array('enabled' => true));
     }
 
     /**

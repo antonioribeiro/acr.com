@@ -18,7 +18,7 @@ class Language {
 		{
 	        $lang = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtolower(strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',')) : '';
 
-	        if(! $glottos->languageIsAvailable($lang))
+	        if(! $glottos->localeIsAvailable($lang))
 	        {
 	        	$lang = $glottos->getTextLocale();
 	        }

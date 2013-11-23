@@ -62,8 +62,11 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 		$this->language = 'en';
 		$this->country = 'us';
+		$this->ptBr = 'pt-br';
 
-		$this->locale = new Locale($this->language, $this->country);
+		$this->locale = Locale::make($this->language.'-'.$this->country);
+
+		$this->localePtBr = Locale::make($this->ptBr);
 
 		$this->foundSentence = new Sentence($this->message, 0, new Mode);
 		$this->foundSentence->setId(1);
@@ -186,7 +189,8 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue($this->dataRepository->localeIsAvailable($this->locale));
 
 		$this->modelLanguageCountryMock->shouldReceive('find')->andReturn($this->modelLanguageCountryReturnMock);
-		$this->assertTrue($this->dataRepository->localeIsAvailable('pt-br'));
+
+		$this->assertTrue($this->dataRepository->localeIsAvailable($this->localePtBr));
 
 		$this->modelLanguageCountryReturnMock->enabled = false;
 		$this->modelLanguageCountryMock->shouldReceive('find')->andReturn($this->modelLanguageCountryReturnMock);
