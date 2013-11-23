@@ -278,4 +278,10 @@ class Glottos
 	{
 		return $this->dataRepository->localeIsAvailable(Locale::make($locale));
 	}
+
+	public function getAllLanguages()
+	{
+		return $this->dataRepository->getAllLanguages();
+	}
+
 }

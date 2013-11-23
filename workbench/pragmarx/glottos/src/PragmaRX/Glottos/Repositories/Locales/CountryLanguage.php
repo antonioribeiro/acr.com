@@ -43,4 +43,9 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 		return $model;
 	}
 
+	public function all()
+	{
+		return $this->model->with('language')->with('country')->get();
+	}
+
 }

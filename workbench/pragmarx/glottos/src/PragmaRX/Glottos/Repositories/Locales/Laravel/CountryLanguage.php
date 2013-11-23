@@ -26,4 +26,14 @@ class CountryLanguage extends Eloquent {
 
 	protected $guarded = array();
 
+	public function language()
+	{
+		return $this->belongsTo('PragmaRX\Glottos\Repositories\Locales\Laravel\Language');
+	}
+
+	public function country()
+	{
+		return $this->belongsTo('PragmaRX\Glottos\Repositories\Locales\Laravel\Country');
+	}
+
 }

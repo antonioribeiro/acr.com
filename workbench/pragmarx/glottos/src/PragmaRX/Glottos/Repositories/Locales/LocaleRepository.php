@@ -22,6 +22,12 @@ use PragmaRX\Glottos\Support\Locale;
 
 class LocaleRepository implements LocaleRepositoryInterface {
 
+	private $language;
+
+	private $country;
+
+	private $countryLanguage;
+
 	public function __construct(Language $language, Country $country, CountryLanguage $countryLanguage)
 	{
 		$this->language = $language;
@@ -38,6 +44,11 @@ class LocaleRepository implements LocaleRepositoryInterface {
 		return is_null($countryLanguage) 
 			   ? false 
 			   : $countryLanguage->enabled;
+	}
+
+	public function getAllLanguages()
+	{
+		return $this->countryLanguage->all();
 	}
 
 }

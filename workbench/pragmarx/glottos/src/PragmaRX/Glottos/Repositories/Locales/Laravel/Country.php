@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Country extends Eloquent {
 
-	protected $table = 'glottos_country';
+	protected $table = 'glottos_countries';
 
 	protected $guarded = array();
 

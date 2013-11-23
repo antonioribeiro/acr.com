@@ -52,10 +52,7 @@ Route::get('/test', function()
 	// Glottos::addTranslation('my:message', 'Esta é a minha mensagem do Módulo 2', 'pt-br', 2);
 });
 
-Route::get('/', function()
-{
-	return View::make('home.layout');
-});
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
 
 Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'LanguageController@select'));
 
@@ -63,4 +60,9 @@ Route::get('login', array('as' => 'login.form', 'uses' => 'LogonController@form'
 
 Route::post('login', array('as' => 'login.do', 'uses' => 'LogonController@login'));
 
-Route::get('admin', array('as' => 'language.select', 'before' => 'auth', 'uses' => 'AdminController@index'));
+Route::group(array('before' => 'auth'), function()
+{
+
+	Route::get('admin', array('as' => 'admin.index', 'uses' => 'AdminController@index'));
+
+});

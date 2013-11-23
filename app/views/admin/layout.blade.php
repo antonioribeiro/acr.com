@@ -29,11 +29,11 @@
 		<div class="container">
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="{{ URL::route('home') }}">acr.com</a></li>
+					<li class="active"><a href="{{ URL::route('admin.index') }}">Languages</a></li>
+					<li><a href="{{ URL::route('admin.index') }}">Translate</a></li>
 				</ul>
-				<h3 class="text-muted">admin</h3>
+				<h3 class="text-muted">ACR.com Admin</h3>
 			</div>
 
 			@include('admin._partials.messages')

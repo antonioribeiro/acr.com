@@ -30,6 +30,8 @@ class DataRepository implements DataRepositoryInterface {
 
 	private $translation;
 
+	private $localeRepository;
+
 	public function __construct(MessageInterface $message, MessageInterface $translation, LocaleRepositoryInterface $localeRepository, Config $config)
 	{
 		$this->message = $message;
@@ -85,6 +87,11 @@ class DataRepository implements DataRepositoryInterface {
 		}
 
 		return $this->localeRepository->localeIsAvailable(Locale::make($locale));
+	}
+
+	public function getAllLanguages()
+	{
+		return $this->localeRepository->getAllLanguages();
 	}
 
 }

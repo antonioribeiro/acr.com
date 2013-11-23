@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Language extends Eloquent {
 
-	protected $table = 'glottos_language';
+	protected $table = 'glottos_languages';
 
 	protected $guarded = array();
 
