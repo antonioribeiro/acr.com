@@ -54,7 +54,13 @@ Route::get('/test', function()
 
 Route::get('/', function()
 {
-	return View::make('layouts.first');
+	return View::make('home.layout');
 });
 
 Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'LanguageController@select'));
+
+Route::get('login', array('as' => 'login.form', 'uses' => 'LogonController@form'));
+
+Route::post('login', array('as' => 'login.do', 'uses' => 'LogonController@login'));
+
+Route::get('admin', array('as' => 'language.select', 'before' => 'auth', 'uses' => 'AdminController@index'));

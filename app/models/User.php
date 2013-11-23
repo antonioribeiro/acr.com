@@ -1,4 +1,4 @@
-<?php namespace App\Models\MyNamespace;
+<?php
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;

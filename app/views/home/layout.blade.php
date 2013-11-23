@@ -10,11 +10,11 @@
         <meta name="author" content="Superthe.me" />
         <meta charset="utf-8" />
 
-        <link href="{{ asset('assets/layouts/first/css/bootstrap.min.css') }}" rel="stylesheet" media="screen" />
-        <link href="{{ asset('assets/layouts/first/css/font-awesome.min.css') }}" rel="stylesheet" media="screen" />
-        <link href="{{ asset('assets/layouts/first/css/flexslider.css') }}" rel="stylesheet" media="screen" />
-        <link href="{{ asset('assets/layouts/first/css/jquery.vegas.css') }}" rel="stylesheet" media="screen" />
-        <link href="{{ asset('assets/layouts/first/css/style.min.css') }}" rel="stylesheet" media="screen" />
+        <link href="{{ asset('assets/layouts/home/css/bootstrap.min.css') }}" rel="stylesheet" media="screen" />
+        <link href="{{ asset('assets/layouts/home/css/font-awesome.min.css') }}" rel="stylesheet" media="screen" />
+        <link href="{{ asset('assets/layouts/home/css/flexslider.css') }}" rel="stylesheet" media="screen" />
+        <link href="{{ asset('assets/layouts/home/css/jquery.vegas.css') }}" rel="stylesheet" media="screen" />
+        <link href="{{ asset('assets/layouts/home/css/style.min.css') }}" rel="stylesheet" media="screen" />
 
         <!--[if IE 7]>
         <link href="css/font-awesome-ie7.css" rel="stylesheet">
@@ -202,16 +202,16 @@
     <div style="display: none;" id="lightbox"><img id="bigimg" src="" /></div>
 
     <!-- scripts -->
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/signals.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/crossroads.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/hasher.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/jquery.vegas.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/jquery.flexslider-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/signals.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/crossroads.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/hasher.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/jquery.vegas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/jquery.flexslider-min.js') }}"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/googlemaps.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/layouts/first/js/theme.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/googlemaps.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/theme.js') }}"></script>
 
 </body>
 

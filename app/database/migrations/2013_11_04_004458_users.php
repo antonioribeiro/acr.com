@@ -11,7 +11,24 @@ class Users extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::create('users', function($table)
+		{
+			$table->increments('id');
+
+			$table->text('email')->unique();
+
+			$table->text('password');
+
+			$table->text('name');
+
+			$table->timestamps();
+		});
+
+		$user = new User;
+		$user->name = 'Antonio Carlos Ribeiro';
+		$user->email = 'acr@antoniocarlosribeiro.com';
+		$user->password = '$2y$08$1UemL1yG5MPfR3B4lvRwgeXDoIctBbfWYyiU5mefdhq1jpQTMWQOO';
+		$user->save();
 	}
 
 	/**
@@ -21,7 +38,7 @@ class Users extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::dropIfExists('users');
 	}
 
 }
