@@ -6,13 +6,24 @@ class AdminController extends BaseController {
 	{
 		$languages = Glottos::getAllLanguages();
 
-		foreach($languages as $language)
-		{
-			kk($language);	
-		}
-		
+		return View::make('admin.pages.index')->with('languages', $languages);
+	}
 
-		return View::make('admin.pages.index');
+	public function enableLanguage($id)
+	{
+		return $this->enableDisableLanguage($id, true);
+	}
+
+	public function disableLanguage($id)
+	{
+		return $this->enableDisableLanguage($id, false);
+	}
+
+	public function enableDisableLanguage($id, $enable)
+	{
+		Glottos::enableDisableLanguage($id, $enable);
+
+		return Redirect::back();
 	}
 
 }

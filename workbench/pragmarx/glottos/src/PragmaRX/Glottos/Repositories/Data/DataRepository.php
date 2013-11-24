@@ -94,4 +94,8 @@ class DataRepository implements DataRepositoryInterface {
 		return $this->localeRepository->getAllLanguages();
 	}
 
+	public function enableDisableLanguage($id, $enable)
+	{
+		return $this->localeRepository->enableDisableLanguage($id, $enable);
+	}
 }

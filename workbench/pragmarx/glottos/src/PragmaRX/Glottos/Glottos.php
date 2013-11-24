@@ -284,4 +284,9 @@ class Glottos
 		return $this->dataRepository->getAllLanguages();
 	}
 
+	public function enableDisableLanguage($id, $enable)
+	{
+		return $this->dataRepository->enableDisableLanguage($id, $enable);
+	}
+
 }

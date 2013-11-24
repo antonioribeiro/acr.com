@@ -64,5 +64,7 @@ Route::group(array('before' => 'auth'), function()
 {
 
 	Route::get('admin', array('as' => 'admin.index', 'uses' => 'AdminController@index'));
+	Route::get('admin/language/{id}/enable', array('as' => 'admin.language.enable', 'uses' => 'AdminController@enableLanguage'));
+	Route::get('admin/language/{id}/disable', array('as' => 'admin.language.disable', 'uses' => 'AdminController@disableLanguage'));
 
 });

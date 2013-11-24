@@ -43,9 +43,40 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 		return $model;
 	}
 
+	public function findById($id)
+	{
+		$cacheKey = __CLASS__.__FUNCTION__.'id'.$id;
+
+		if( ! $cached = $model = $this->cache->get($cacheKey))
+		{
+			$model = $this->model->find($id);
+
+		}
+	
+		if( ! $cached && $model )
+		{
+			$this->cache->put($cacheKey, $model);
+		}
+
+		return $model;
+	}
+	
 	public function all()
 	{
-		return $this->model->with('language')->with('country')->get();
+		return $this->model
+				->with('language')
+				->with('country')
+				->orderBy('enabled', 'desc')
+				->orderBy('regional_name')
+				->get();
 	}
 
+	public function enableDisableLanguage($id, $enable)
+	{
+		$language = $this->findById($id);
+
+		$language->enabled = $enable;
+
+		$language->save();
+	}
 }
