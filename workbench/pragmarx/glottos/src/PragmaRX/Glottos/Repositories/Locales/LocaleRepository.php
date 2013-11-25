@@ -46,13 +46,18 @@ class LocaleRepository implements LocaleRepositoryInterface {
 			   : $countryLanguage->enabled;
 	}
 
-	public function getAllLanguages()
+	public function getLanguages($column = null, $operand = null, $value = null)
 	{
-		return $this->countryLanguage->all();
+		return $this->countryLanguage->all($column, $operand, $value);
 	}
 
 	public function enableDisableLanguage($id, $enable)
 	{
 		return $this->countryLanguage->enableDisableLanguage($id, $enable);
+	}
+
+	public function getLanguageStats()
+	{
+		return $this->countryLanguage->getStats();
 	}
 }

@@ -1,4 +1,6 @@
-<?php
+<?php namespace ACR\Controllers;
+
+use \View;
 
 class HomeController extends BaseController {
 

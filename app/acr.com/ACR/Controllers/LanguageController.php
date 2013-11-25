@@ -1,4 +1,7 @@
-<?php
+<?php namespace ACR\Controllers;
+
+use \Session;
+use \Redirect;
 
 class LanguageController extends BaseController {
 
@@ -10,4 +13,3 @@ class LanguageController extends BaseController {
 	}
 
 }
-

@@ -1,4 +1,7 @@
-<?php
+<?php namespace ACR\Controllers;
+
+use \Controller;
+use \View;
 
 class BaseController extends Controller {
 

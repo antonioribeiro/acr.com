@@ -13,11 +13,13 @@
 
 Route::get('/test', function()
 {
+	// Glottos::translate('key::photography');
+
 	// Glottos::addTranslation('Home', 'Principal', 'pt-br');
 	// Glottos::addTranslation('key::photography', 'Photography');
 	// Glottos::addTranslation('key::technology', 'Technology');
 
-	var_dump( Glottos::translate('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.') );
+	// var_dump( Glottos::translate('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.') );
 	// var_dump( Glottos::translate('Home', 'pt-br') );
 	// var_dump( Glottos::translate('key::photography') );
 
@@ -52,21 +54,27 @@ Route::get('/test', function()
 	// Glottos::addTranslation('my:message', 'Esta é a minha mensagem do Módulo 2', 'pt-br', 2);
 });
 
-Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
+Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
 
-Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'LanguageController@select'));
+Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'ACR\Controllers\LanguageController@select'));
 
-Route::get('login', array('as' => 'login.form', 'uses' => 'LogonController@form'));
+Route::get('login', array('as' => 'login.form', 'uses' => 'ACR\Controllers\LogonController@form'));
 
-Route::post('login', array('as' => 'login.do', 'uses' => 'LogonController@login'));
+Route::post('login', array('as' => 'login.do', 'uses' => 'ACR\Controllers\LogonController@login'));
 
-Route::get('logout', array('as' => 'logout.do', 'uses' => 'LogonController@logout'));
+Route::get('logout', array('as' => 'logout.do', 'uses' => 'ACR\Controllers\LogonController@logout'));
 
 Route::group(array('before' => 'auth'), function()
 {
 
-	Route::get('admin', array('as' => 'admin.index', 'uses' => 'AdminController@index'));
-	Route::get('admin/language/{id}/enable', array('as' => 'admin.language.enable', 'uses' => 'AdminController@enableLanguage'));
-	Route::get('admin/language/{id}/disable', array('as' => 'admin.language.disable', 'uses' => 'AdminController@disableLanguage'));
+	Route::get('admin', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
+
+	Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
+
+	Route::get('languages/{filter?}', array('as' => 'admin.languages.index', 'uses' => 'ACR\Controllers\Admin\LanguagesController@index'));
+
+	Route::get('languages/{id}/enable', array('as' => 'admin.languages.enable', 'uses' => 'ACR\Controllers\Admin\LanguagesController@enableLanguage'));
+
+	Route::get('languages/{id}/disable', array('as' => 'admin.languages.disable', 'uses' => 'ACR\Controllers\Admin\LanguagesController@disableLanguage'));
 
 });

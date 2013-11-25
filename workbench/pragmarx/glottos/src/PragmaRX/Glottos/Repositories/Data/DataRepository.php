@@ -91,11 +91,26 @@ class DataRepository implements DataRepositoryInterface {
 
 	public function getAllLanguages()
 	{
-		return $this->localeRepository->getAllLanguages();
+		return $this->localeRepository->getLanguages();
+	}
+
+	public function getEnabledLanguages()
+	{
+		return $this->localeRepository->getLanguages('enabled', '=', 'true');
+	}
+
+	public function getDisabledLanguages()
+	{
+		return $this->localeRepository->getLanguages('enabled', '=', 'false');
 	}
 
 	public function enableDisableLanguage($id, $enable)
 	{
 		return $this->localeRepository->enableDisableLanguage($id, $enable);
+	}
+
+	public function getLanguageStats()
+	{
+		return $this->localeRepository->getLanguageStats();
 	}
 }

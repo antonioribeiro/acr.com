@@ -9,11 +9,11 @@
     <title>Antonio Carlos Ribeiro - Admin</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/templates/sb-admin/css/bootstrap.css" rel="stylesheet">
+    <link href="{{ asset('assets//templates/sb-admin/css/bootstrap.css') }}" rel="stylesheet">
 
-    <!-- Add custom CSS here -->
-    <link href="assets/templates/sb-admin/css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/templates/sb-admin/font-awesome/css/font-awesome.min.css">
+    <link href="assets/templates/sb-admin/css/" rel="stylesheet">
+    <link href="{{ asset('assets//templates/sb-admin/css/sb-admin.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets//templates/sb-admin/font-awesome/css/font-awesome.min.css') }}">
   </head>
 
   <body>
@@ -24,7 +24,7 @@
       <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="{{ URL::route('admin.index') }}">Antonio Carlos Ribeiro - Admin</a>
+          <a class="navbar-brand" href="{{ URL::route('admin.languages.index') }}">Antonio Carlos Ribeiro - Admin</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -81,8 +81,8 @@
 			<div class="header">
 				<ul class="nav nav-pills pull-right">
 					<li><a href="{{ URL::route('home') }}">acr.com</a></li>
-					<li class="active"><a href="{{ URL::route('admin.index') }}">Languages</a></li>
-					<li><a href="{{ URL::route('admin.index') }}">Translate</a></li>
+					<li class="active"><a href="{{ URL::route('admin.languages.index') }}">Languages</a></li>
+					<li><a href="{{ URL::route('admin.languages.index') }}">Translate</a></li>
 				</ul>
 				<h3 class="text-muted">ACR.com Admin</h3>
 			</div>

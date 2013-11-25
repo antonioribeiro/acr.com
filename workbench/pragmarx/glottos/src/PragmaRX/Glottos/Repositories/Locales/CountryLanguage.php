@@ -61,14 +61,20 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 		return $model;
 	}
 	
-	public function all()
+	public function all($column = null, $operand = null, $value = null)
 	{
-		return $this->model
+		$rows = $this->model
 				->with('language')
 				->with('country')
 				->orderBy('enabled', 'desc')
-				->orderBy('regional_name')
-				->get();
+				->orderBy('regional_name');
+
+		if($column)
+		{
+			$rows->where($column, $operand, $value);
+		}
+
+		return $rows->get();
 	}
 
 	public function enableDisableLanguage($id, $enable)
@@ -79,4 +85,25 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 
 		$language->save();
 	}
+
+	public function getStats()
+	{
+		// this thing belongs to the data repository, but we would have to 
+		// make the repository do stuff on database, so where to put this thing?
+
+		$db = $this->model->getConnection();
+
+		$rows = $db->select( $db->raw(
+
+			'select 
+			  (select count(*) from glottos_countries_languages where enabled = true) as languages
+			, (select count(*) from glottos_countries_languages) as total_languages
+			, (select count(*) from glottos_messages) as unique
+			, (select count(*) from glottos_translations) as translated
+
+			') );
+
+		return $rows;		
+	}
+
 }

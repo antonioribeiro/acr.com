@@ -284,9 +284,24 @@ class Glottos
 		return $this->dataRepository->getAllLanguages();
 	}
 
+	public function getEnabledLanguages()
+	{
+		return $this->dataRepository->getEnabledLanguages();
+	}
+
+	public function getDisabledLanguages()
+	{
+		return $this->dataRepository->getDisabledLanguages();
+	}
+
 	public function enableDisableLanguage($id, $enable)
 	{
 		return $this->dataRepository->enableDisableLanguage($id, $enable);
+	}
+
+	public function getLanguageStats()
+	{
+		return $this->dataRepository->getLanguageStats();
 	}
 
 }

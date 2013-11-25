@@ -16,19 +16,26 @@
 	<div class="row">
 		<div class="col-lg-10 col-md-offset-1">
 			<div class="table-responsive">
+	            <p>
+	              <div class="btn-group btn-group-justified">
+	                <a href="{{ URL::route('admin.languages.index', ['all']) }}" class="btn btn-default {{$filtered == 'all' ?  'active' : ''}}">All</a>
+	                <a href="{{ URL::route('admin.languages.index', ['enabled']) }}" class="btn btn-default {{$filtered == 'enabled' ?  'active' : ''}}">Enabled</a>
+	                <a href="{{ URL::route('admin.languages.index', ['disabled']) }}" class="btn btn-default {{$filtered == 'disabled' ?  'active' : ''}}">Disabled</a>
+	              </div>
+	            </p>
+
 				<table class="table table-bordered table-striped">
 					@foreach($languages as $language)
 						<tr>
-							<td>{{ $language->regional_name }}</td>
-							<td>
+							<td>{{ $language->regional_name }}
 								<div  class="pull-right">
-									<a href="{{ URL::route('admin.language.'.($language->enabled ? 'disable' : 'enable'), $language->id) }}">
+									<a href="{{ URL::route('admin.languages.'.($language->enabled ? 'disable' : 'enable'), $language->id) }}">
 										<button type="button" class="btn btn-default btn-xs">
 											translations
 										</button>
 									</a>
 
-									<a href="{{ URL::route('admin.language.'.($language->enabled ? 'disable' : 'enable'), $language->id) }}">
+									<a href="{{ URL::route('admin.languages.'.($language->enabled ? 'disable' : 'enable'), $language->id) }}">
 										<button type="button" class="btn btn-{{ $language->enabled ? 'danger' : 'success' }} btn-xs">
 											@if($language->enabled)
 												disable
