@@ -304,4 +304,13 @@ class Glottos
 		return $this->dataRepository->getLanguageStats();
 	}
 
+	public function getTranslations($localePrimary = null, $localeSecondary = null)
+	{
+		return $this->dataRepository->getTranslations(Locale::make($localePrimary), Locale::make($localeSecondary));
+	}
+
+	public function findLocale($locale)
+	{
+		return $this->dataRepository->findLocale(Locale::make($locale));
+	}	
 }

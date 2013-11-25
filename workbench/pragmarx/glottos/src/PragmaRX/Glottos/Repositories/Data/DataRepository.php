@@ -113,4 +113,15 @@ class DataRepository implements DataRepositoryInterface {
 	{
 		return $this->localeRepository->getLanguageStats();
 	}
+
+	public function getTranslations(Locale $localePrimary = null, Locale $localeSecondary = null)
+	{
+		return $this->translation->getAll($localePrimary, $localeSecondary);
+	}
+
+	public function findLocale(Locale $locale)
+	{
+		 return $this->localeRepository->find($locale);
+	}
+	
 }

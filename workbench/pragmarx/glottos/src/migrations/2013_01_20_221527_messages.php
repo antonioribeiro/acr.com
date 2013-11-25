@@ -15,7 +15,9 @@ class Messages extends Migration {
         {
             $table->increments('id',3);
 
-            $table->string('hash',40); // this is the original untranslated message hash
+            $table->text('hash',40); // this is the original untranslated message hash
+
+            $table->text('key')->nullable();
 
             $table->timestamps();                       
         });

@@ -161,4 +161,38 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 		$this->assertFalse($this->glottos->localeIsAvailable('zz-zz'));
 	}
 
+	public function testZgetAllLanguages()
+	{
+		return $this->dataRepository->getAllLanguages();
+	}
+
+	public function testZgetEnabledLanguages()
+	{
+		return $this->dataRepository->getEnabledLanguages();
+	}
+
+	public function testZgetDisabledLanguages()
+	{
+		return $this->dataRepository->getDisabledLanguages();
+	}
+
+	public function testZenableDisableLanguage($id, $enable)
+	{
+		return $this->dataRepository->enableDisableLanguage($id, $enable);
+	}
+
+	public function testZgetLanguageStats()
+	{
+		return $this->dataRepository->getLanguageStats();
+	}
+
+	public function testZgetTranslations($locale = null)
+	{
+		return $this->dataRepository->getTranslations(Locale::make($locale));
+	}
+
+	public function findLocale($locale)
+	{
+		return $this->dataRepository->findLocale(Locale::make($locale));
+	}	
 }

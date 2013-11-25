@@ -29,6 +29,8 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 		if( ! $cached = $model = $this->cache->get($cacheKey))
 		{
 			$model = $this->model
+							->with('language')
+							->with('country')
 							->where('language_id', $locale->getLanguage())
 							->where('country_id', $locale->getCountry())
 							->first();
@@ -63,7 +65,16 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 	
 	public function all($column = null, $operand = null, $value = null)
 	{
+		// $this->model->getConnection()->listen(function($sql, $bindings, $time) { var_dump($sql); var_dump($bindings); die; });
+
 		$rows = $this->model
+				->select($this->model->getConnection()->raw('
+					  id
+					, language_id
+					, country_id
+					, regional_name
+					, (select count(*) from glottos_translations t where t.language_id = glottos_countries_languages.language_id and t.country_id = glottos_countries_languages.country_id) as translated
+					'))
 				->with('language')
 				->with('country')
 				->orderBy('enabled', 'desc')
@@ -105,5 +116,4 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 
 		return $rows;		
 	}
-
 }

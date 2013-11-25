@@ -87,18 +87,16 @@
 					<thead>
 						<tr>
 							<th>Language</th>
-							<th>Messages</th>
-							<th>Translated</th>
-							<th>Unstranslated</th>
+							<th width="20%">Translated</th>
+							<th width="20%">Missing translations</th>
 						</tr>
 					</thead>							
 
 					@foreach($languages as $language)
 						<tr>
-							<td>{{ $language->regional_name }}</td>
-							<td>100</td>
-							<td>80</td>
-							<td>20</td>
+							<td><a href="{{ URL::route('admin.languages.show', [$language->language_id.'-'.$language->country_id]) }}">{{ $language->regional_name }}</a></td>
+							<td>{{ $language->translated }}</td>
+							<td>{{ $stats->unique-$language->translated }}</td>
 						</tr>
 					@endforeach
 				</table>

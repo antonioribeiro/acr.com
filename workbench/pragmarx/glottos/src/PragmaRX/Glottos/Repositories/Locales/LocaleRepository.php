@@ -37,9 +37,14 @@ class LocaleRepository implements LocaleRepositoryInterface {
 		$this->countryLanguage = $countryLanguage;
 	}
 
+	public function find(Locale $locale)
+	{
+		 return $this->countryLanguage->find($locale);
+	}
+
 	public function localeIsAvailable(Locale $locale)
 	{
-		$countryLanguage = $this->countryLanguage->find($locale);
+		$countryLanguage = $this->find($locale);
 
 		return is_null($countryLanguage) 
 			   ? false 

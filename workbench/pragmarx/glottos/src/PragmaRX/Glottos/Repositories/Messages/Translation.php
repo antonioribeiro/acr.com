@@ -72,4 +72,38 @@ class Translation extends MessageBase implements MessageInterface {
 		return $model;
 	}
 
+	public function getAll(Locale $localePrimary = null, Locale $localeSecondary = null) // Locale $primary, Locale $secondary
+	{
+		$db = $this->model->getConnection();
+
+		// $db->listen(function($sql, $bindings, $time) { var_dump($sql); var_dump($bindings);});
+
+		$rows = $this->model->getConnection()
+
+							->table('glottos_messages as gm')
+
+				            ->leftJoin('glottos_translations as gtp', function($join) use ($db, $localePrimary) {
+				            	$join->on('gtp.message_id', '=', 'gm.id')
+				            		->on('gtp.language_id', '=', $db->raw("'".$localePrimary->getLanguage()."'"))
+				            		->on('gtp.country_id', '=', $db->raw("'".$localePrimary->getCountry()."'"));
+				            })
+
+				            ->leftJoin('glottos_translations as gts', function($join) use ($db, $localeSecondary) {
+				            	$join->on('gts.message_id', '=', 'gm.id')
+				            		->on('gts.language_id', '=', $db->raw("'".$localeSecondary->getLanguage()."'"))
+				            		->on('gts.country_id', '=', $db->raw("'".$localeSecondary->getCountry()."'"));
+				            })
+
+				            ->select( 	 'gm.id'
+				            			, 'gm.key'
+										, 'gtp.id as primary_id'
+										, 'gtp.message as primary_message'
+										, 'gts.id as secondary_id'
+										, 'gts.message as secondary_message'
+									);
+
+		return $rows->get();
+	}
+
 }
+

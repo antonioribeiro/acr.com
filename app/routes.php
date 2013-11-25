@@ -13,7 +13,7 @@
 
 Route::get('/test', function()
 {
-	// Glottos::translate('key::photography');
+	Glottos::translate('key::photography');
 
 	// Glottos::addTranslation('Home', 'Principal', 'pt-br');
 	// Glottos::addTranslation('key::photography', 'Photography');
@@ -70,6 +70,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('admin', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
 
 	Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
+
+	Route::get('languages/show/{locale}', array('as' => 'admin.languages.show', 'uses' => 'ACR\Controllers\Admin\LanguagesController@show'));
 
 	Route::get('languages/{filter?}', array('as' => 'admin.languages.index', 'uses' => 'ACR\Controllers\Admin\LanguagesController@index'));
 

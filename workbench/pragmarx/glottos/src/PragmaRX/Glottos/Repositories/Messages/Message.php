@@ -35,7 +35,9 @@ class Message extends MessageBase implements MessageInterface {
 	
 		if ( ! $model)
 		{
-			$model = $this->model->create(['hash' => $sentence->getHash()]);
+			$key = $sentence->getMode() == 'key' ? $sentence->getSentence() : null;
+
+			$model = $this->model->create(['hash' => $sentence->getHash(), 'key' => $key]);
 		}
 
 		if( ! $cached )
