@@ -60,6 +60,8 @@ Route::get('login', array('as' => 'login.form', 'uses' => 'LogonController@form'
 
 Route::post('login', array('as' => 'login.do', 'uses' => 'LogonController@login'));
 
+Route::get('logout', array('as' => 'logout.do', 'uses' => 'LogonController@logout'));
+
 Route::group(array('before' => 'auth'), function()
 {
 

@@ -24,4 +24,11 @@ class LogonController extends BaseController {
 		return Redirect::refresh()->with('danger', 'E-mail and/or password are invalid');
 	}
 
+	public function logout()
+	{
+		Auth::logout();
+
+		return Redirect::route('home');
+	}
+
 }

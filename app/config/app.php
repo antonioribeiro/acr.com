@@ -107,7 +107,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'PragmaRX\Glottos\GlottosServiceProvider',
-		'Onigoetz\Profiler\Support\Laravel\ProfilerServiceProvider',
+		// 'Onigoetz\Profiler\Support\Laravel\ProfilerServiceProvider',
 
 	),
 
