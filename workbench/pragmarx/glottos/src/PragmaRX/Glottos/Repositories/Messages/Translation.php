@@ -57,6 +57,15 @@ class Translation extends MessageBase implements MessageInterface {
 		return $sentence;
 	}
 
+	public function findById($message_id, Locale $locale)
+	{
+		return $this->model
+						->where('message_id', $message_id)
+						->where('language_id', $locale->getLanguage())
+						->where('country_id', $locale->getCountry())
+						->first();
+	}
+
 	public function add(Sentence $translation, Locale $locale)
 	{
 		$model = $this->model->create(array(
@@ -94,7 +103,7 @@ class Translation extends MessageBase implements MessageInterface {
 				            		->on('gts.country_id', '=', $db->raw("'".$localeSecondary->getCountry()."'"));
 				            })
 
-				            ->select( 	 'gm.id'
+				            ->select( 	 'gm.id as message_id'
 				            			, 'gm.key'
 										, 'gtp.id as primary_id'
 										, 'gtp.message as primary_message'
@@ -105,5 +114,28 @@ class Translation extends MessageBase implements MessageInterface {
 		return $rows->get();
 	}
 
+	public function updateOrCreate($message, $translatedMessage, Locale $locale, $module, $mode)
+	{
+		$model = $this->findById($message, $locale);
+
+		if(! $model)
+		{
+			$translation = Sentence::makeTranslation($translatedMessage, $translatedMessage, $module, $mode);
+
+			$translation->setId($message);
+
+			$translation->setTranslation($translatedMessage);
+
+			$model = $this->add($translation, $locale);			
+		}
+		else
+		{
+			$model->message = $translatedMessage;
+
+			$model->save();
+		}
+
+		return $model;		
+	}
 }
 

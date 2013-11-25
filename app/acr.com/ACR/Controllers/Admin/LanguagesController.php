@@ -4,6 +4,9 @@ use ACR\Controllers\BaseController;
 use \Glottos;
 use \View;
 use \Session;
+use \URL;
+use \Input;
+use \Redirect;
 
 class LanguagesController extends BaseController {
 
@@ -63,14 +66,58 @@ class LanguagesController extends BaseController {
 	{
 		$localePrimary = Session::get('glottos.primary.language') ?: Glottos::getDefaultLocale();
 
-		$languagePrimary = Glottos::findLocale($localePrimary);
-		$languageSecondary = Glottos::findLocale($localeSecondary);
-
 		$messages = Glottos::getTranslations($localePrimary, $localeSecondary);
 
+		$localePrimary = Glottos::findLocale($localePrimary);
+		$localeSecondary = Glottos::findLocale($localeSecondary);
+
 		return View::make('admin.pages.translatedMessages')
-					->with('languagePrimary', $languagePrimary)
-					->with('languageSecondary', $languageSecondary)
+					->with('localePrimary', $localePrimary)
+					->with('localeSecondary', $localeSecondary)
 					->with('messages', $messages);
 	}
+
+	public function edit($message, $localePrimary, $localeSecondary)
+	{
+		$primaryMessage = Glottos::findTranslationById($message, $localePrimary);
+		$secondaryMessage = Glottos::findTranslationById($message, $localeSecondary);
+
+		$localePrimary = Glottos::findLocale($localePrimary);
+		$localeSecondary = Glottos::findLocale($localeSecondary);
+
+        $formAction = URL::route('admin.translation.store', [
+                                                            $message, 
+                                                            $localePrimary->language_id.'-'.$localePrimary->country_id, 
+                                                            $localeSecondary->language_id.'-'.$localeSecondary->country_id
+                                                        ]);
+
+		return View::make('admin.pages.translate')
+					->with('formAction', $formAction)
+					->with('localePrimary', $localePrimary)
+					->with('localeSecondary', $localeSecondary)
+					->with('primaryMessage', $primaryMessage)
+					->with('secondaryMessage', $secondaryMessage);		
+	}
+
+	public function store($message, $localePrimary, $localeSecondary)
+	{
+		$primaryMessage = Glottos::findTranslationById($message, $localePrimary);
+		$secondaryMessage = Glottos::findTranslationById($message, $localeSecondary);
+
+		if (Input::get('message'))
+		{
+			Glottos::updateOrCreateTranslation($message, Input::get('message'), $localeSecondary);
+
+			$type = 'success';
+			$message = 'Translation was saved';
+		}
+		else
+		{
+			$type = 'danger';
+			$message = 'Translation cannot be blank';
+		}
+
+		return Redirect::back()->with($type, $message);
+	}
+
 }

@@ -195,4 +195,14 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 	{
 		return $this->dataRepository->findLocale(Locale::make($locale));
 	}	
+
+	private function findTranslationById($message_id, Locale $locale)
+	{
+		return $this->dataRepository->findTranslationById($message_id, $locale);
+	}	
+
+	public function updateOrCreateTranslation($message, $translatedMessage, $locale)
+	{
+		$this->dataRepository->updateOrCreateTranslation($message, $translatedMessage, $locale);
+	}	
 }

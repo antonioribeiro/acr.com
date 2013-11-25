@@ -20,16 +20,35 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th>{{ $languagePrimary->regional_name }}</th>
-							<th>{{ $languageSecondary->regional_name }}</th>
+							<th>{{ $localePrimary->regional_name }}</th>
+                            <th>{{ $localeSecondary->regional_name }}</th>
                             <th>Key</th>
 						</tr>
 					</thead>							
 
 					@foreach($messages as $message)
+                        <?php 
+
+                            $editLink = URL::route('admin.translation.edit', [
+                                                                                $message->message_id, 
+                                                                                $localePrimary->language_id.'-'.$localePrimary->country_id, 
+                                                                                $localeSecondary->language_id.'-'.$localeSecondary->country_id
+                                                                            ]);
+                        ?>
+
 						<tr>
-							<td class="{{ is_null($message->primary_message) ? 'danger' : 'success' }}">{{ $message->primary_message ?: '(missing)' }}</td>
-							<td class="{{ is_null($message->secondary_message) ? 'danger' : 'success' }}">{{ $message->secondary_message ?: '(missing)' }}</td>
+							<td class="{{ is_null($message->primary_message) ? 'danger' : 'success' }}">
+                                <a href="{{ $editLink }}">
+                                    {{ $message->primary_message ?: '(missing)' }}
+                                </a>
+                            </td>
+
+							<td class="{{ is_null($message->secondary_message) ? 'danger' : 'success' }}">
+                                <a href="{{ $editLink }}">
+                                    {{ $message->secondary_message ?: '(missing)' }}
+                                </a>
+                            </td>
+
                             <td>{{ $message->key }}</td>
 						</tr>
 					@endforeach

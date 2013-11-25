@@ -213,9 +213,14 @@ class Glottos
 		return $this->paragraph->getTranslatedParagraph();
 	}
 
-	private function findTranslation(Sentence $translation, Locale $locale)
+	public function findTranslation(Sentence $translation, $locale)
 	{
-		return $this->dataRepository->findTranslation($translation, $locale);
+		return $this->dataRepository->findTranslation($translation, Locale::make($locale));
+	}
+
+	public function findTranslationById($message_id, $locale)
+	{
+		return $this->dataRepository->findTranslationById($message_id, Locale::make($locale));
 	}
 
 	/**
@@ -312,5 +317,10 @@ class Glottos
 	public function findLocale($locale)
 	{
 		return $this->dataRepository->findLocale(Locale::make($locale));
+	}	
+
+	public function updateOrCreateTranslation($message, $translatedMessage, $locale)
+	{
+		$this->dataRepository->updateOrCreateTranslation($message, $translatedMessage, Locale::make($locale), $module = 0, $this->mode);
 	}	
 }

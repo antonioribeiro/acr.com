@@ -67,6 +67,11 @@ class DataRepository implements DataRepositoryInterface {
 		return $translation;
 	}
 
+	public function findTranslationById($message_id, Locale $locale)
+	{
+		return $translation = $this->translation->findById($message_id, $locale);
+	}
+
 	public function getDefaultLocale()
 	{
 		return Locale::make($this->config->get('default_language_id').'-'.$this->config->get('default_country_id'));
@@ -121,7 +126,11 @@ class DataRepository implements DataRepositoryInterface {
 
 	public function findLocale(Locale $locale)
 	{
-		 return $this->localeRepository->find($locale);
+		 return $this->localeRepository->findLocale($locale);
 	}
-	
+
+	public function updateOrCreateTranslation($message, $translatedMessage, Locale $locale, $module = 0, $mode)
+	{
+		$this->translation->updateOrCreate($message, $translatedMessage, $locale, $module, $mode);
+	}
 }
