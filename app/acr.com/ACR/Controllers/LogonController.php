@@ -1,4 +1,9 @@
-<?php
+<?php namespace ACR\Controllers;
+
+use \View;
+use \Auth;
+use \Redirect;
+use \Input;
 
 class LogonController extends BaseController {
 
