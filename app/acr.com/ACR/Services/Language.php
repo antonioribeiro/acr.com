@@ -4,8 +4,6 @@ class Language {
 
 	public static function guess($userRepository = null, $session, $glottos)
 	{
-		$session->forget('glottos.lang');
-		
 		if( ! $lang = $session->get('glottos.lang'))
 		{
 			if( ! is_null($userRepository) && ! is_null($userRepository->locale))
@@ -25,6 +23,8 @@ class Language {
 		}
 
 		$session->put('glottos.lang', $lang);
+
+		$glottos->setLocale($lang);
 
 		return $lang;
 	}

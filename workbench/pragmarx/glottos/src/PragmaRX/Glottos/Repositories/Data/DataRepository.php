@@ -133,4 +133,9 @@ class DataRepository implements DataRepositoryInterface {
 	{
 		$this->translation->updateOrCreate($message, $translatedMessage, $locale, $module, $mode);
 	}
+
+	public function findNextUntranslated(Locale $primaryLocale, Locale $secondaryLocale)
+	{
+		return $this->translation->findNextUntranslated($primaryLocale, $secondaryLocale);
+	}	
 }

@@ -137,5 +137,30 @@ class Translation extends MessageBase implements MessageInterface {
 
 		return $model;		
 	}
-}
 
+	public function findNextUntranslated(Locale $localePrimary = null, Locale $localeSecondary = null)
+	{
+		$db = $this->model->getConnection();
+
+		$query = "select id 
+					from glottos_messages 
+					where id||'".$localeSecondary->getLanguage()."'||'".$localeSecondary->getCountry()."' 
+					not in (select message_id||language_id||country_id from glottos_translations)";
+
+		$rows = $db->select($db->raw($query));
+
+		if($rows)
+		{
+			$model = $this->model->where('message_id', $rows[0]->id)
+						->where('language_id', $localePrimary->getLanguage())
+						->where('country_id', $localePrimary->getCountry())
+						->first();
+		}
+		else
+		{
+			$model = null;
+		}
+
+		return $model;
+	}
+}

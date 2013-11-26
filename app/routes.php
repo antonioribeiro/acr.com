@@ -13,7 +13,9 @@
 
 Route::get('/test', function()
 {
-	Glottos::translate('key::photography');
+	// var_dump( Glottos::translate('TECHNOLOGY', 'pt-br') );
+
+	// Glottos::translate('key::photography');
 
 	// Glottos::addTranslation('Home', 'Principal', 'pt-br');
 	// Glottos::addTranslation('key::photography', 'Photography');
@@ -70,6 +72,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('admin', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
 
 	Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
+
+	Route::get('languages/translation/next/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.next', 'uses' => 'ACR\Controllers\Admin\LanguagesController@next'));
 
 	Route::get('languages/translation/edit/{message}/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.edit', 'uses' => 'ACR\Controllers\Admin\LanguagesController@edit'));
 

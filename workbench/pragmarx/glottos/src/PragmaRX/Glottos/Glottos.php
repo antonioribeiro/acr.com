@@ -323,4 +323,10 @@ class Glottos
 	{
 		$this->dataRepository->updateOrCreateTranslation($message, $translatedMessage, Locale::make($locale), $module = 0, $this->mode);
 	}	
+
+	public function findNextUntranslated($localePrimary, $localeSecondary)
+	{
+		return $this->dataRepository->findNextUntranslated(Locale::make($localePrimary), Locale::make($localeSecondary));
+	}	
+
 }

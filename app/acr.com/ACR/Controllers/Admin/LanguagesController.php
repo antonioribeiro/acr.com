@@ -91,8 +91,13 @@ class LanguagesController extends BaseController {
                                                             $localeSecondary->language_id.'-'.$localeSecondary->country_id
                                                         ]);
 
+        $nextLink = URL::route('admin.translation.next', [
+                                                            $localePrimary->language_id.'-'.$localePrimary->country_id, 
+                                                            $localeSecondary->language_id.'-'.$localeSecondary->country_id
+                                                        ]);
 		return View::make('admin.pages.translate')
 					->with('formAction', $formAction)
+					->with('nextLink', $nextLink)
 					->with('localePrimary', $localePrimary)
 					->with('localeSecondary', $localeSecondary)
 					->with('primaryMessage', $primaryMessage)
@@ -107,17 +112,30 @@ class LanguagesController extends BaseController {
 		if (Input::get('message'))
 		{
 			Glottos::updateOrCreateTranslation($message, Input::get('message'), $localeSecondary);
-
-			$type = 'success';
-			$message = 'Translation was saved';
 		}
 		else
 		{
-			$type = 'danger';
-			$message = 'Translation cannot be blank';
+			return Redirect::back()->with('danger', 'Translation cannot be blank');
 		}
 
-		return Redirect::back()->with($type, $message);
+		return Redirect::route('admin.translation.next',[
+                                                            $localePrimary->language_id.'-'.$localePrimary->country_id, 
+                                                            $localeSecondary->language_id.'-'.$localeSecondary->country_id
+                                                        ])
+								->with('success', 'Translation was saved and you were redirected to the next untranslated message.');
 	}
 
+	public function next($primaryLocale, $secondaryLocale)
+	{
+		$localeSecondary = Glottos::findLocale($secondaryLocale);
+
+		$next = Glottos::findNextUntranslated($primaryLocale, $secondaryLocale);
+
+		if(! $next)
+		{
+			Redirect::route('admin.languages.stats')->with('danger', 'There are untranslated messages for this language.');
+		}
+
+		return $this->edit($next->message_id, $primaryLocale, $secondaryLocale);
+	}
 }
