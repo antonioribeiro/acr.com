@@ -22,6 +22,17 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Which PHP Framework is your application using?
+	|--------------------------------------------------------------------------
+	|
+	| 	Supported: "laravel", "none"
+	|	
+	*/
+
+	'framework' => 'laravel',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Glottos translation mode
 	|--------------------------------------------------------------------------
 	|
@@ -29,18 +40,20 @@ return array(
 	|
 	|   Key: 
 	|  
-	|        All messages stored are keys to a message, for instance:
+	|        All strings are keys to a message, for instance:
 	|       
-	|        For the message 'Main Menu' you key would be 'mainMenu'
+	|        For the message 'Main Menu' your key could be 'mainMenu'
 	|
 	|        To show the main menu, in any language, you'll do
 	|
 	|          {{ g('mainMenu') }}
 	|
-	|        - Pro: you won't risk having the same, but slightly different, message twice in the database
+	|        Pro: 
+	|                - You won't risk having the same, but slightly different, message twice in the database
 	|
-	|        - Cons: you'll need to remember the key every time you write a message 
-	|        -       you'll have to add translations for your keys including for your own language
+	|        Cons: 
+	|                - You'll need to remember the key every time you write a message 
+	|                - You'll have to add translations for your keys including for your own language
 	|
 	|
 	|   Natural: 
@@ -54,10 +67,12 @@ return array(
 	|          No need to add a key for it.
 	|       
 	|       
-	|        - Pro: no need to add translations for your own language
-	|               no need to remember the keys of your messages, just write it in natural language
+	|        Pro: 
+	|              - No need to add translations for your own language
+	|              - No need to remember the keys of your messages, just write it in natural language
     |
-	|        - Cons: you might risk having the same, but slightly different, message twice in the database
+	|        Cons: 
+	|              - You might risk having the same, but slightly different, message twice in the database
     |
     |
     |  Overriding: 

@@ -17,19 +17,21 @@
 	<div class="row">
 		<div class="col-lg-10 col-md-offset-1">
 			<form role="form" action="{{ $formAction }}" method="POST">
-				<div class="form-group">
-					<label>Key</label>
-					<input class="form-control" value="{{ $primaryMessage->key }}" disabled>
-				</div>
+				@if(! empty($key))
+					<div class="form-group">
+						<label>Key</label>
+						<input class="form-control" value="{{ $key }}" disabled>
+					</div>
+				@endif
 
 				<div class="form-group">
 					<label>{{ $localePrimary->regional_name }}</label>
-					<textarea class="form-control" rows="6" disabled>{{ $primaryMessage->message }}</textarea>
+					<textarea class="form-control" rows="6" disabled>{{ $primaryMessage }}</textarea>
 				</div>
 
 				<div class="form-group">
 					<label>{{ $localeSecondary->regional_name }}</label>
-					<textarea class="form-control" name="message" rows="6">{{ $secondaryMessage ? $secondaryMessage->message : '' }}</textarea>
+					<textarea class="form-control" name="message" rows="6">{{ $secondaryMessage }}</textarea>
 					<p class="help-block">This is where your translation goes.</p>
 				</div>
 

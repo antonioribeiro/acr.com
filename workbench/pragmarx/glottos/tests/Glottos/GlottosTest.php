@@ -205,4 +205,16 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 	{
 		$this->dataRepository->updateOrCreateTranslation($message, $translatedMessage, $locale);
 	}	
+
+	clean text before add translation
+
+	public function getSetPrimaryLocale()
+	{
+		return $this->findLocale('en-us');
+	}
+
+	public function getSetSecondaryLocale()
+	{
+		return $this->findLocale('pt-br');
+	}	
 }

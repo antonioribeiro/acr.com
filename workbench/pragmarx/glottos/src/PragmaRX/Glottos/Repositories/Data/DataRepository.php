@@ -69,7 +69,12 @@ class DataRepository implements DataRepositoryInterface {
 
 	public function findTranslationById($message_id, Locale $locale)
 	{
-		return $translation = $this->translation->findById($message_id, $locale);
+		return $this->translation->findById($message_id, $locale);
+	}
+
+	public function findMessageById($message_id)
+	{
+		return $this->message->findById($message_id);
 	}
 
 	public function getDefaultLocale()

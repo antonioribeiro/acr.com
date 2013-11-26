@@ -11,8 +11,40 @@
 |
 */
 
+class Post extends Eloquent {
+
+	protected $table = 'glottos_translations';
+
+    public function category()
+    {
+        return $this->belongsTo('Category');
+    }
+
+}
+
+class Category extends Eloquent {
+
+	protected $table = 'glottos_messages';
+
+    public function posts()
+    {
+        return $this->hasMany('Post', 'message_id');
+    }
+
+    public function postsTop10()
+    {
+        return $this->posts()->take(1);
+    }
+
+}
+
 Route::get('/test', function()
 {
+	// Lang::has('reminders.password');
+
+	Lang::load('*', 'reminders', 'en');
+	Lang::load('*', 'pagination', 'en');
+
 	// var_dump( Glottos::translate('TECHNOLOGY', 'pt-br') );
 
 	// Glottos::translate('key::photography');
@@ -72,6 +104,8 @@ Route::group(array('before' => 'auth'), function()
 	Route::get('admin', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
 
 	Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
+
+	Route::get('languages/translate', array('as' => 'admin.languages.translate', 'uses' => 'ACR\Controllers\Admin\LanguagesController@translate'));
 
 	Route::get('languages/translation/next/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.next', 'uses' => 'ACR\Controllers\Admin\LanguagesController@next'));
 

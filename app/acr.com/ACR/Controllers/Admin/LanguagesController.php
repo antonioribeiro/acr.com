@@ -81,6 +81,21 @@ class LanguagesController extends BaseController {
 	{
 		$primaryMessage = Glottos::findTranslationById($message, $localePrimary);
 		$secondaryMessage = Glottos::findTranslationById($message, $localeSecondary);
+		$key = '';
+
+		if($primaryMessage)
+		{
+			$key = $primaryMessage->key;
+		}
+		else
+		{
+			$originalMessage = Glottos::findMessageById($message);
+
+			if($originalMessage)
+			{
+				$key = $originalMessage->key;
+			}
+		}
 
 		$localePrimary = Glottos::findLocale($localePrimary);
 		$localeSecondary = Glottos::findLocale($localeSecondary);
@@ -100,8 +115,9 @@ class LanguagesController extends BaseController {
 					->with('nextLink', $nextLink)
 					->with('localePrimary', $localePrimary)
 					->with('localeSecondary', $localeSecondary)
-					->with('primaryMessage', $primaryMessage)
-					->with('secondaryMessage', $secondaryMessage);		
+					->with('key', $key )
+					->with('primaryMessage', $primaryMessage ? $primaryMessage->message : '' )
+					->with('secondaryMessage', $secondaryMessage ? $secondaryMessage->message : '');		
 	}
 
 	public function store($message, $localePrimary, $localeSecondary)
@@ -118,6 +134,9 @@ class LanguagesController extends BaseController {
 			return Redirect::back()->with('danger', 'Translation cannot be blank');
 		}
 
+		$localePrimary = Glottos::findLocale($localePrimary);
+		$localeSecondary = Glottos::findLocale($localeSecondary);
+
 		return Redirect::route('admin.translation.next',[
                                                             $localePrimary->language_id.'-'.$localePrimary->country_id, 
                                                             $localeSecondary->language_id.'-'.$localeSecondary->country_id
@@ -133,9 +152,20 @@ class LanguagesController extends BaseController {
 
 		if(! $next)
 		{
-			Redirect::route('admin.languages.stats')->with('danger', 'There are untranslated messages for this language.');
+			return Redirect::route('admin.languages.stats')->with('danger', 'There are no untranslated messages for this language.');
 		}
 
 		return $this->edit($next->message_id, $primaryLocale, $secondaryLocale);
+	}
+
+	public function translate()
+	{
+		$localePrimary = Glottos::findLocale(Glottos::getPrimaryLocale());
+		$localeSecondary = Glottos::findLocale(Glottos::getSecondaryLocale());
+
+		return Redirect::route('admin.translation.next',[
+                                                            $localePrimary->language_id.'-'.$localePrimary->country_id, 
+                                                            $localeSecondary->language_id.'-'.$localeSecondary->country_id
+                                                        ]);
 	}
 }

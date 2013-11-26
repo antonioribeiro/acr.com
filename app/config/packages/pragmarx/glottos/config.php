@@ -22,6 +22,17 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Which Framework is this?
+	|--------------------------------------------------------------------------
+	|
+	| 	Supported: "laravel", "none"
+	|	
+	*/
+
+	'framework' => 'laravel',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Glottos translation mode
 	|--------------------------------------------------------------------------
 	|
@@ -150,28 +161,6 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Cookie
-	|--------------------------------------------------------------------------
-	|
-	| Configuration specific to the cookie component of Glottos.
-	|
-	*/
-
-	/*
-	|--------------------------------------------------------------------------
-	| Default Cookie Key
-	|--------------------------------------------------------------------------
-	|
-	| This option allows you to specify the default cookie key used by Sentry.
-	|
-	| Supported: string
-	|
-	*/
-
-	'cookie_key' => 'pragmarx_glottos',
-
-	/*
-	|--------------------------------------------------------------------------
 	| Models
 	|--------------------------------------------------------------------------
 	|
@@ -186,7 +175,7 @@ return array(
 
 	'language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Language',
 
-	'countrie_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Country',
+	'country_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Country',
 
 	'country_language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\CountryLanguage',
 

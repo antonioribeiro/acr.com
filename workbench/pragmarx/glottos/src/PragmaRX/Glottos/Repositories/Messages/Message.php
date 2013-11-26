@@ -50,4 +50,13 @@ class Message extends MessageBase implements MessageInterface {
 		return $sentence;
 	}
 
+	public function findById($message_id)
+	{
+		return $this->model->find($message_id);
+	}
+
+	public function findByText($message)
+	{
+		return $this->message->findByText($message);
+	}
 }

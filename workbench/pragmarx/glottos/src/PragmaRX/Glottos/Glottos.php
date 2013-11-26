@@ -25,14 +25,14 @@ use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
 use PragmaRX\Glottos\Repositories\Data\DataRepository;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
+use PragmaRX\Glottos\Support\FileSystem;
+use Symfony\Component\Finder\Finder;
 
 class Glottos
 {
 	private $config;
 
 	private $module = 0;
-
-	public $x = 'aaaaaaaa';
 
 	private $locale;
 
@@ -41,6 +41,10 @@ class Glottos
 	private $dataRepository;
 
 	private $variables = array();
+
+	private $primaryLocale;
+
+	private $secondaryLocale;
 
 	/**
 	 * Initialize Glottos object
@@ -53,7 +57,8 @@ class Glottos
 									SentenceBag $paragraph, 
 									DataRepository $dataRepository,
 									Cache $cache,
-									Mode $mode
+									Mode $mode,
+									FileSystem $fileSystem
 								)
 	{
 		$this->locale = $locale;
@@ -67,6 +72,8 @@ class Glottos
 		$this->cache = $cache;
 
 		$this->mode = $mode;
+
+		$this->fileSystem = $fileSystem;
 	}
 
 	/**
@@ -223,6 +230,11 @@ class Glottos
 		return $this->dataRepository->findTranslationById($message_id, Locale::make($locale));
 	}
 
+	public function findMessageById($message_id)
+	{
+		return $this->dataRepository->findMessageById($message_id);
+	}
+
 	/**
 	 * Replace all user variables by its respective values
 	 * 
@@ -328,5 +340,67 @@ class Glottos
 	{
 		return $this->dataRepository->findNextUntranslated(Locale::make($localePrimary), Locale::make($localeSecondary));
 	}	
+
+	public function getPrimaryLocale()
+	{
+		if( ! $this->primaryLocale)
+		{
+			$this->primaryLocale = $this->getDefaultLocale();
+		}
+
+		return $this->primaryLocale;
+	}
+
+	public function getSecondaryLocale()
+	{
+		if( ! $this->secondaryLocale)
+		{
+			$this->secondaryLocale = $this->dataRepository->guessSecondaryLocale($this->getPrimaryLocale());
+		}
+
+		return $this->secondaryLocale;
+	}
+
+	public function setPrimaryLocale($locale)
+	{
+		return $this->primaryLocale = $locale;
+	}
+
+	public function setSecondaryLocale($locale)
+	{
+		return $this->secondaryLocale = $locale;
+	}
+
+	public function import($app, $path = null)
+	{
+		if( ! $path)
+		{
+			$path = $app['path.base'].'/app/lang';
+		}
+
+		$languages = $this->fileSystem->directories($path);
+
+		foreach($languages as $language)
+		{
+			$this->importLanguage(basename($language), dirname($language));
+		}
+	}
+
+	private function importLanguage($language, $path)
+	{
+		foreach(Finder::create()->files()->in($path.'/'.$language) as $file)
+		{
+			$values = $this->fileSystem->getRequire($file);
+			$group = str_replace('.php', '', basename($file));
+
+			if ($group !== 'validation')
+			{
+				foreach($values as $key => $value)
+				{
+					echo "\n$group.$key = $value\n";
+				}
+			}
+		}
+	}
 
 }

@@ -1,7 +1,6 @@
 <?php namespace PragmaRX\Glottos;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Filesystem\Filesystem;
 
 use PragmaRX\Glottos\Glottos;
 
@@ -9,6 +8,7 @@ use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
+use PragmaRX\Glottos\Support\Filesystem;
 
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 use PragmaRX\Glottos\Repositories\Data\DataRepository;
@@ -19,6 +19,8 @@ use PragmaRX\Glottos\Repositories\Locales\LocaleRepository;
 use PragmaRX\Glottos\Repositories\Locales\Language;
 use PragmaRX\Glottos\Repositories\Locales\Country;
 use PragmaRX\Glottos\Repositories\Locales\CountryLanguage;
+
+use PragmaRX\Glottos\Commands\GlottosImportCommand;
 
 class GlottosServiceProvider extends ServiceProvider {
 
@@ -46,6 +48,8 @@ class GlottosServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
+		$this->registerFileSystem();
+
 		$this->registerConfig();
 
 		$this->registerLocale();
@@ -59,6 +63,10 @@ class GlottosServiceProvider extends ServiceProvider {
 		$this->registerMode();
 
 		$this->registerGlottos();
+
+		$this->registerImportCommand();
+
+		$this->commands('glottos.command.import');
 	}
 
 	/**
@@ -71,11 +79,19 @@ class GlottosServiceProvider extends ServiceProvider {
 		return array();
 	}
 
+	private function registerFileSystem()
+	{
+		$this->app['glottos.fileSystem'] = $this->app->share(function($app)
+		{
+			return new Filesystem;
+		});
+	}
+
 	private function registerConfig()
 	{
 		$this->app['glottos.config'] = $this->app->share(function($app)
 		{
-			return new Config(new Filesystem, $app);
+			return new Config($app['glottos.fileSystem'], $app);
 		});
 	}
 
@@ -152,8 +168,17 @@ class GlottosServiceProvider extends ServiceProvider {
 									$app['glottos.sentenceBag'],
 									$app['glottos.dataRepository'],
 									$app['glottos.cache'],
-									$app['glottos.mode']
+									$app['glottos.mode'],
+									new Filesystem
 								);
+		});
+	}
+
+	private function registerImportCommand()
+	{
+		$this->app['glottos.command.import'] = $this->app->share(function($app)
+		{
+			return new GlottosImportCommand;
 		});
 	}
 
