@@ -373,34 +373,7 @@ class Glottos
 
 	public function import($app, $path = null)
 	{
-		if( ! $path)
-		{
-			$path = $app['path.base'].'/app/lang';
-		}
-
-		$languages = $this->fileSystem->directories($path);
-
-		foreach($languages as $language)
-		{
-			$this->importLanguage(basename($language), dirname($language));
-		}
-	}
-
-	private function importLanguage($language, $path)
-	{
-		foreach(Finder::create()->files()->in($path.'/'.$language) as $file)
-		{
-			$values = $this->fileSystem->getRequire($file);
-			$group = str_replace('.php', '', basename($file));
-
-			if ($group !== 'validation')
-			{
-				foreach($values as $key => $value)
-				{
-					echo "\n$group.$key = $value\n";
-				}
-			}
-		}
+		$this->dataRepository->import($app, $path);
 	}
 
 }

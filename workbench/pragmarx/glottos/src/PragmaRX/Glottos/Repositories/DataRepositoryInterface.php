@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Repositories\Data;
+<?php namespace PragmaRX\Glottos\Repositories;
 /**
  * Part of the Glottos package.
  *
