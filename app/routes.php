@@ -40,6 +40,8 @@ class Category extends Eloquent {
 
 Route::get('/test', function()
 {
+	Log::info('test');
+	
 	// Lang::has('reminders.password');
 
 	Lang::load('*', 'reminders', 'en');
