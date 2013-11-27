@@ -143,7 +143,7 @@ class DataRepository implements DataRepositoryInterface {
 
 	public function findLocale(Locale $locale)
 	{
-		 return $this->localeRepository->findLocale($locale);
+		 return $this->localeRepository->find($locale);
 	}
 
 	public function updateOrCreateTranslation($message, $translatedMessage, Locale $locale, $module = 0, $mode)
@@ -156,36 +156,70 @@ class DataRepository implements DataRepositoryInterface {
 		return $this->translation->findNextUntranslated($primaryLocale, $secondaryLocale);
 	}	
 
-	public function import($app, $path = null)
+	public function import($app, $path, $module, $mode)
 	{
 		if( ! $path)
 		{
 			$path = $app['path.base'].'/app/lang';
 		}
 
-		$languages = $this->fileSystem->directories($path);
+		$locales = $this->fileSystem->directories($path);
 
-		foreach($languages as $language)
+		$imported = 0;
+
+		foreach($locales as $locale)
 		{
-			$this->importLanguage(basename($language), dirname($language));
+			$imported += $this->importLocale(basename($locale), dirname($locale), $module, $mode);
 		}
+
+		return $imported;
 	}
 
-	private function importLanguage($language, $path)
+	private function importLocale($locale, $path, $module, $mode)
 	{
-		foreach(Finder::create()->files()->in($path.'/'.$language) as $file)
+		$imported = 0;
+
+		$locale = Locale::make($locale);
+
+		foreach(Finder::create()->files()->in($path.'/'.$locale->getText()) as $file)
 		{
 			$values = $this->fileSystem->getRequire($file);
+
 			$group = str_replace('.php', '', basename($file));
 
 			if ($group !== 'validation')
 			{
 				foreach($values as $key => $value)
 				{
-					echo "\n$group.$key = $value\n";
+					if($this->addKey($group, $key, $value, $locale, $module, $mode))
+					{
+						$imported++;
+					}
 				}
 			}
 		}
+
+		return $imported;
 	}
 
+	public function addKey($group, $key, $value, $locale, $module, $mode)
+	{
+		$translation = Sentence::makeTranslation(
+												"key::$group.$key",
+												$value,
+												$module,
+												$mode
+											);
+
+		$translation = $this->findTranslation($translation, $locale);
+
+		if(! $translation->translationFound)
+		{
+			$this->addTranslation($translation, $locale);
+
+			return true;
+		}
+
+		return false;
+	}
 }

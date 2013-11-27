@@ -85,7 +85,7 @@ class LanguagesController extends BaseController {
 
 		if($primaryMessage)
 		{
-			$key = $primaryMessage->key;
+			$key = $primaryMessage->message->key;
 		}
 		else
 		{
@@ -116,8 +116,8 @@ class LanguagesController extends BaseController {
 					->with('localePrimary', $localePrimary)
 					->with('localeSecondary', $localeSecondary)
 					->with('key', $key )
-					->with('primaryMessage', $primaryMessage ? $primaryMessage->message : '' )
-					->with('secondaryMessage', $secondaryMessage ? $secondaryMessage->message : '');		
+					->with('primaryMessage', $primaryMessage ? $primaryMessage->translation : '' )
+					->with('secondaryMessage', $secondaryMessage ? $secondaryMessage->translation : '');		
 	}
 
 	public function store($message, $localePrimary, $localeSecondary)

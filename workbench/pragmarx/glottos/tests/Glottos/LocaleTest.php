@@ -107,4 +107,10 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 		$this->assertNotEquals($locale5, $locale3);
 	}
 
+test -->>>>	    public function getText()
+    {
+        return $this->getLanguage() . '-' . $this->getCountry();
+    }
+    
+
 }

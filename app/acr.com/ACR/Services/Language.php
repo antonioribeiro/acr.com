@@ -12,13 +12,14 @@ class Language {
 			}
 		}
 
+
 		if(is_null($lang))
 		{
 	        $lang = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtolower(strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',')) : '';
 
 	        if(! $glottos->localeIsAvailable($lang))
 	        {
-	        	$lang = $glottos->getTextLocale();
+	        	$lang = $glottos->getLocaleAsText();
 	        }
 		}
 

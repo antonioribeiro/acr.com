@@ -4,7 +4,7 @@ View::composer('home.layout', function($view)
 {
 	$lang = Session::get('glottos.lang');
 
-	if (is_null($lang) || $lang === 'en-us')
+	if (is_null($lang) || $lang === 'en')
 	{
 		$title = 'português';
 		$url = URL::route('language.select', ['pt-br']);
@@ -12,7 +12,7 @@ View::composer('home.layout', function($view)
 	else
 	{
 		$title = 'english';
-		$url = URL::route('language.select', ['en-us']);
+		$url = URL::route('language.select', ['en']);
 	}
 
     $view->with('switchLanguageTitle', $title);

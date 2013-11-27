@@ -18,7 +18,7 @@ class Translations extends Migration {
             $table->integer('message_id');
             $table->string('language_id',3);                    // pt
             $table->string('country_id',3);                     // br
-            $table->text('message');                            // this is the full text translation
+            $table->text('translation');                        // this is the full text translation
             $table->integer('translator_id')->nullable();       // possible user_id
 
             $table->timestamps();                       

@@ -145,6 +145,11 @@ class Locale
 		       && $this->getCountry() == $country;
 	}
 
+	public function getText()
+	{
+		return $this->getLanguage() . ($this->getCountry() ? '-' . $this->getCountry() : '');
+	}
+
 	public static function make($locale, $fallback = null)
 	{
 		if (empty($locale) && ! is_null($fallback))

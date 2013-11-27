@@ -73,6 +73,7 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 					, language_id
 					, country_id
 					, regional_name
+					, enabled
 					, (select count(*) from glottos_translations t where t.language_id = glottos_countries_languages.language_id and t.country_id = glottos_countries_languages.country_id) as translated
 					'))
 				->with('language')

@@ -121,7 +121,7 @@ return array(
 
 	'default_language_id' => 'en',
 
-	'default_country_id' => 'us',
+	'default_country_id' => '',
 
 	/*
 	|--------------------------------------------------------------------------

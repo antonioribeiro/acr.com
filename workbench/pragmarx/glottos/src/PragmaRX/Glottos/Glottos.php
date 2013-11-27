@@ -23,10 +23,10 @@ use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
+use PragmaRX\Glottos\Support\FileSystem;
+
 use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
-use PragmaRX\Glottos\Support\FileSystem;
-use Symfony\Component\Finder\Finder;
 
 class Glottos
 {
@@ -163,7 +163,7 @@ class Glottos
 	 * 
 	 * @return Locale
 	 */
-	public function getTextLocale()
+	public function getLocaleAsText()
 	{
 		return $this->locale->getLanguage() . '-' . $this->locale->getCountry();
 	}
@@ -373,7 +373,7 @@ class Glottos
 
 	public function import($app, $path = null)
 	{
-		$this->dataRepository->import($app, $path);
+		return $this->dataRepository->import($app, $path, $this->getModule(), $this->getMode());
 	}
 
 }

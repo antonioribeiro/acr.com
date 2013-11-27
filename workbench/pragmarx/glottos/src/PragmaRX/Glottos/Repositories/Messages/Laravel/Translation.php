@@ -26,4 +26,9 @@ class Translation extends Eloquent {
 
 	protected $guarded = array();
 	
+	public function message()
+	{
+		return $this->belongsTo('PragmaRX\Glottos\Repositories\Messages\Laravel\Message');
+	}
+
 }

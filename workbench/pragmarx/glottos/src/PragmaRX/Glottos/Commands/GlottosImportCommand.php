@@ -37,7 +37,11 @@ class GlottosImportCommand extends Command {
 	 */
 	public function fire()
 	{
-		$this->laravel->glottos->import($this->laravel, $this->option('path'));
+		$imported = $this->laravel->glottos->import($this->laravel, $this->option('path'));
+
+		if(is_null($imported)) $imported = 0;
+
+		$this->info("$imported messages imported.");
 	}
 
 	/**

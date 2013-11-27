@@ -145,7 +145,7 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 	public function testLocale()
 	{
-		$this->assertEquals($this->language.'-'.$this->country, $this->glottos->getTextLocale());
+		$this->assertEquals($this->language.'-'.$this->country, $this->glottos->getLocaleAsText());
 
 		$this->assertEquals($this->locale, $this->glottos->getLocale());
 	}

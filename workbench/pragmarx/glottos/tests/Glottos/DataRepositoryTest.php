@@ -62,6 +62,7 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 
 		$this->language = 'en';
 		$this->country = 'us';
+		
 		$this->ptBr = 'pt-br';
 
 		$this->locale = Locale::make($this->language.'-'.$this->country);

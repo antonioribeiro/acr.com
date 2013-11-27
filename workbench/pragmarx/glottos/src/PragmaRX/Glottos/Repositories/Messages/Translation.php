@@ -30,6 +30,7 @@ class Translation extends MessageBase implements MessageInterface {
 		if( ! $cached = $model = $this->cache->get($cacheKey))
 		{
 			$model = $this->model
+						->with('message')
 						->where('message_id', $sentence->getId())
 						->where('language_id', $locale->getLanguage())
 						->where('country_id', $locale->getCountry())
@@ -46,7 +47,7 @@ class Translation extends MessageBase implements MessageInterface {
 		{
 			$sentence->translationFound = true;
 			
-			$sentence->setTranslation($model->message);
+			$sentence->setTranslation($model->translation);
 		}
 
 		if( ! $cached )
@@ -60,6 +61,7 @@ class Translation extends MessageBase implements MessageInterface {
 	public function findById($message_id, Locale $locale)
 	{
 		return $this->model
+						->with('message')		
 						->where('message_id', $message_id)
 						->where('language_id', $locale->getLanguage())
 						->where('country_id', $locale->getCountry())
@@ -72,7 +74,7 @@ class Translation extends MessageBase implements MessageInterface {
 										'message_id' => $translation->getId(),
 										'language_id' => $locale->getLanguage(),
 										'country_id' => $locale->getCountry(),
-										'message' => $translation->getTranslation(),
+										'translation' => $translation->getTranslation(),
 										'translator_id' => isset($translation->translator) 
 														   ? $translation->translator 
 														   : null,
@@ -106,9 +108,9 @@ class Translation extends MessageBase implements MessageInterface {
 				            ->select( 	 'gm.id as message_id'
 				            			, 'gm.key'
 										, 'gtp.id as primary_id'
-										, 'gtp.message as primary_message'
+										, 'gtp.translation as primary_message'
 										, 'gts.id as secondary_id'
-										, 'gts.message as secondary_message'
+										, 'gts.translation as secondary_message'
 									);
 
 		return $rows->get();
@@ -130,7 +132,7 @@ class Translation extends MessageBase implements MessageInterface {
 		}
 		else
 		{
-			$model->message = $translatedMessage;
+			$model->translation = $translatedMessage;
 
 			$model->save();
 		}
@@ -151,7 +153,9 @@ class Translation extends MessageBase implements MessageInterface {
 
 		if($rows)
 		{
-			$model = $this->model->where('message_id', $rows[0]->id)
+			$model = $this->model
+						->with('message')			
+						->where('message_id', $rows[0]->id)
 						->where('language_id', $localePrimary->getLanguage())
 						->where('country_id', $localePrimary->getCountry())
 						->first();
