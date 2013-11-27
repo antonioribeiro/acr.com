@@ -21,7 +21,7 @@
 
 use Mockery as m;
 
-use PragmaRX\Glottos\Repositories\Data\DataRepository;
+use PragmaRX\Glottos\Repositories\DataRepository;
 
 use PragmaRX\Glottos\Repositories\Messages\Message;
 use PragmaRX\Glottos\Repositories\Messages\Translation;

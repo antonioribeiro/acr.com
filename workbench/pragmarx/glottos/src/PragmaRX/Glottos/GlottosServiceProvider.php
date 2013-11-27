@@ -11,7 +11,7 @@ use PragmaRX\Glottos\Support\Mode;
 use PragmaRX\Glottos\Support\Filesystem;
 
 use PragmaRX\Glottos\Repositories\Cache\Cache;
-use PragmaRX\Glottos\Repositories\Data\DataRepository;
+use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Messages\Message;
 use PragmaRX\Glottos\Repositories\Messages\Translation;
 
@@ -143,7 +143,8 @@ class GlottosServiceProvider extends ServiceProvider {
 										new Message(new $messageModel, $this->app['glottos.cache']),
 										new Translation(new $translationModel, $this->app['glottos.cache']),
 										$localeRepository,
-										$this->app['glottos.config']
+										$this->app['glottos.config'],
+										$app['glottos.fileSystem']
 									);
 		});
 	}
@@ -169,7 +170,7 @@ class GlottosServiceProvider extends ServiceProvider {
 									$app['glottos.dataRepository'],
 									$app['glottos.cache'],
 									$app['glottos.mode'],
-									new Filesystem
+									$app['glottos.fileSystem']
 								);
 		});
 	}

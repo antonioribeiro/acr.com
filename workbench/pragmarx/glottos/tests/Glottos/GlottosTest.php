@@ -27,7 +27,7 @@ use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
-use PragmaRX\Glottos\Repositories\Data\DataRepository;
+use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Messages\Laravel\Message;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 use Illuminate\Filesystem\Filesystem;
@@ -59,7 +59,7 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 			$this->config = new Config(new Filesystem),
 			$this->locale = new Locale($this->language, $this->country),
 			$this->sentenceBag = new SentenceBag($this->config, $this->paragraph),
-			$this->dataRepository = m::mock('PragmaRX\Glottos\Repositories\Data\DataRepository'),
+			$this->dataRepository = m::mock('PragmaRX\Glottos\Repositories\DataRepository'),
 			$this->cache = new Cache(),
 			$this->mode = new Mode()
 		);

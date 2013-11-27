@@ -31,7 +31,7 @@ ClassLoader::addDirectories(array(
 |
 */
 
-Log::useFiles(storage_path().'/logs/laravel' . php_sapi_name() !== 'cli' ? '' : '-cli' . '.log');
+Log::useFiles(storage_path().'/logs/laravel' . (php_sapi_name() !== 'cli' ? '' : '-cli') . '.log');
 
 /*
 |--------------------------------------------------------------------------

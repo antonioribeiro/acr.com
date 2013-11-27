@@ -18,9 +18,13 @@
  * @link       http://pragmarx.com
  */
 
+use Symfony\Component\Finder\Finder;
+
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\Config;
+use PragmaRX\Glottos\Support\Filesystem;
+
 use PragmaRX\Glottos\Repositories\Messages\MessageInterface;
 use PragmaRX\Glottos\Repositories\Locales\LocaleRepositoryInterface;
 
@@ -32,7 +36,13 @@ class DataRepository implements DataRepositoryInterface {
 
 	private $localeRepository;
 
-	public function __construct(MessageInterface $message, MessageInterface $translation, LocaleRepositoryInterface $localeRepository, Config $config)
+	public function __construct(
+									MessageInterface $message, 
+									MessageInterface $translation, 
+									LocaleRepositoryInterface $localeRepository, 
+									Config $config,
+									Filesystem $fileSystem
+								)
 	{
 		$this->message = $message;
 
@@ -41,6 +51,8 @@ class DataRepository implements DataRepositoryInterface {
 		$this->localeRepository = $localeRepository;
 
 		$this->config = $config;
+
+		$this->fileSystem = $fileSystem;
 	}
 
 	public function findSentence(Sentence $sentence)

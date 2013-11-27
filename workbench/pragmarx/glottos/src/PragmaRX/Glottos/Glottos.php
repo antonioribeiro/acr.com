@@ -23,7 +23,7 @@ use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
-use PragmaRX\Glottos\Repositories\Data\DataRepository;
+use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 use PragmaRX\Glottos\Support\FileSystem;
 use Symfony\Component\Finder\Finder;
