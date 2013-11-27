@@ -23,7 +23,7 @@ use PragmaRX\Glottos\Support\Locale;
 
 interface DataRepositoryInterface {
 
-	public function findSentence(Sentence $sentence);
+	public function findMessage(Sentence $sentence);
 
 	public function findTranslation(Sentence $sentence, Locale $locale);
 

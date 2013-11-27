@@ -55,7 +55,7 @@
                             </div>
                             <div class="language">
                                 <a href="{{ $switchLanguageUrl }}">
-                                    <i  class="fa fa-eye"></i> {{ g($switchLanguageTitle) }}
+                                    <i  class="fa fa-eye"></i> {{ $switchLanguageTitle }}
                                 </a>
                             </div>
 

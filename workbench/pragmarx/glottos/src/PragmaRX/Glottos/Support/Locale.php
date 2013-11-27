@@ -96,7 +96,7 @@ class Locale
 			}
 			else
 			{
-				if ($country !== null)
+				if ( ! empty($country))
 				{
 					$language = $country;
 					$country = '';

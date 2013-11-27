@@ -39,12 +39,12 @@ class LocaleRepository implements LocaleRepositoryInterface {
 
 	public function find(Locale $locale)
 	{
-		 return $this->countryLanguage->find($locale);
+		 return $this->addLocale( $this->countryLanguage->find($locale) );
 	}
 
 	public function findById($countryLanguage)
 	{
-		 return $this->countryLanguage->findById($countryLanguage);
+		 return $this->addLocale( $this->countryLanguage->findById($countryLanguage) );
 	}
 
 	public function localeIsAvailable(Locale $locale)
@@ -69,5 +69,15 @@ class LocaleRepository implements LocaleRepositoryInterface {
 	public function getLanguageStats()
 	{
 		return $this->countryLanguage->getStats();
+	}
+
+	public function addLocale( $locale )
+	{
+		if ( ! is_null($locale))
+		{
+			$locale->locale = new Locale($locale->language_id, $locale->country_id);
+		}
+
+		return $locale;
 	}
 }

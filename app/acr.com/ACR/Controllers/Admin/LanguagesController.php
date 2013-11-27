@@ -1,5 +1,6 @@
 <?php namespace ACR\Controllers\Admin;
 
+use PragmaRX\Glottos\Support\Locale;
 use ACR\Controllers\BaseController;
 use \Glottos;
 use \View;
@@ -64,16 +65,24 @@ class LanguagesController extends BaseController {
 
 	public function show($localeSecondary, $localePrimary = null)
 	{
-		$localePrimary = Session::get('glottos.primary.language') ?: Glottos::getDefaultLocale();
+		$localePrimary = $localePrimary ?: (Session::get('glottos.primary.language') ?: Glottos::getDefaultLocale());
 
 		$messages = Glottos::getTranslations($localePrimary, $localeSecondary);
 
 		$localePrimary = Glottos::findLocale($localePrimary);
 		$localeSecondary = Glottos::findLocale($localeSecondary);
 
+		$enabledLanguages = [];
+
+		foreach(Glottos::getEnabledLanguages() as $language)
+		{
+			$enabledLanguages[Glottos::getLocaleAsText($language->language_id, $language->country_id)] = $language->regional_name;
+		}
+
 		return View::make('admin.pages.translatedMessages')
 					->with('localePrimary', $localePrimary)
 					->with('localeSecondary', $localeSecondary)
+					->with('enabledLanguages', $enabledLanguages)
 					->with('messages', $messages);
 	}
 

@@ -94,12 +94,13 @@ return array(
 	| Debug mode
 	|--------------------------------------------------------------------------
 	|
-	| Turning debug on will make all translated messages become a bunch of characters. 
+	| Turning debug on will make Glottos replace your successfully translated messages with strings of the same character.
 	|
 	| Example of debug mode:
 	|
-	|                     menu: Home Blog Contact
-	|       menu in debug mode: ---- Blog -------
+	|                     menu: Home      Blog Contact
+	|               translated: Principal Blog Contato
+	|       menu in debug mode: --------- Blog -------
 	|
 	|   In this example, we are still missing a translation for 'Blog'
 	|

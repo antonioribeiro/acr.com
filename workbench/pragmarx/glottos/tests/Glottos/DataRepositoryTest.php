@@ -102,12 +102,12 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->assertNull($this->sentence->getId());
 	}
 
-	public function testFindSentence()
+	public function testfindMessage()
 	{
 		$this->modelMessageMock->shouldReceive('where')->once()->andReturn($this->modelMessageMock);
 		$this->modelMessageMock->shouldReceive('first')->once()->andReturn($this->record);
 
-		$sentence = $this->dataRepository->findSentence($this->sentence);
+		$sentence = $this->dataRepository->findMessage($this->sentence);
 
 		$this->assertEquals($sentence->getId(), $this->foundSentence->getId());
 		$this->assertEquals($sentence->getHash(), $this->foundSentence->getHash());
@@ -120,7 +120,7 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->modelMessageMock->shouldReceive('first')->once()->andReturn(null);
 		$this->modelMessageMock->shouldReceive('create')->once()->andReturn($this->record);
 
-		$sentence = $this->dataRepository->findSentence($this->sentence);
+		$sentence = $this->dataRepository->findMessage($this->sentence);
 
 		$this->assertEquals($sentence->getId(), $this->foundSentence->getId());
 		$this->assertEquals($sentence->getHash(), $this->foundSentence->getHash());

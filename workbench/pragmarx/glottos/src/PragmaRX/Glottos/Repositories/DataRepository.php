@@ -55,7 +55,7 @@ class DataRepository implements DataRepositoryInterface {
 		$this->fileSystem = $fileSystem;
 	}
 
-	public function findSentence(Sentence $sentence)
+	public function findMessage(Sentence $sentence)
 	{
 		if (! $sentence->getId())
 		{
@@ -67,9 +67,14 @@ class DataRepository implements DataRepositoryInterface {
 
 	public function findTranslation(Sentence $sentence, Locale $locale)
 	{
-		$sentence = $this->findSentence($sentence);
+		$sentence = $this->findMessage($sentence);
 
 		$translation = $this->translation->find($sentence, $locale);
+
+		if($translation->translationFound && $this->config->get('debug'))
+		{
+			$translation->setTranslation(str_repeat($this->config->get('debug_character'), strlen($translation->getTranslation())));
+		}
 
 		if(! $translation->translationFound && $sentence->getMode() == 'natural' && $locale->is($this->getDefaultLocale()))
 		{
@@ -91,7 +96,12 @@ class DataRepository implements DataRepositoryInterface {
 
 	public function getDefaultLocale()
 	{
-		return Locale::make($this->config->get('default_language_id').'-'.$this->config->get('default_country_id'));
+		return new Locale($this->config->get('default_language_id'), $this->config->get('default_country_id'));
+	}
+
+	public function guessSecondaryLocale($primaryLocale)
+	{
+		return 'pt-br';
 	}
 
 	public function addTranslation(Sentence $translation, Locale $locale)
@@ -222,4 +232,6 @@ class DataRepository implements DataRepositoryInterface {
 
 		return false;
 	}
+
+	
 }

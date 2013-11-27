@@ -36,7 +36,6 @@
 				</div>
 
 				<button type="submit" class="btn btn-danger">Save translation</button>
-				<a href="{{ $nextLink }}"><button type="button" class="btn btn-success">Next untranslated</button></a>
 			</form>
 		</div>
 	</div>

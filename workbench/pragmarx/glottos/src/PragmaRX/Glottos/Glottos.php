@@ -163,9 +163,14 @@ class Glottos
 	 * 
 	 * @return Locale
 	 */
-	public function getLocaleAsText()
+	public function getLocaleAsText($language = null, $country = null)
 	{
-		return $this->locale->getLanguage() . '-' . $this->locale->getCountry();
+		if ( ! is_null($language))
+		{
+			return with(new Locale($language, $country))->getText();
+		}
+
+		return $this->locale->getText();
 	}
 
 	/**

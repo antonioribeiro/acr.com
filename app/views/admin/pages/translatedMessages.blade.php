@@ -20,15 +20,16 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th>{{ $localePrimary->regional_name }}</th>
-                            <th>{{ $localeSecondary->regional_name }}</th>
-                            <th>Key</th>
+						    <div class="form-group">
+								<th>{{ Form::select('primaryLanguage', $enabledLanguages, $localePrimary->locale->getText(), ['class' => 'form-control']) }}</th>
+	                            <th>{{ Form::select('primaryLanguage', $enabledLanguages, $localeSecondary->locale->getText(), ['class' => 'form-control']) }}</th>
+	                            <th>Key</th>
+                            </div>
 						</tr>
 					</thead>							
 
 					@foreach($messages as $message)
                         <?php 
-
                             $editLink = URL::route('admin.translation.edit', [
                                                                                 $message->message_id, 
                                                                                 $localePrimary->language_id.'-'.$localePrimary->country_id, 
