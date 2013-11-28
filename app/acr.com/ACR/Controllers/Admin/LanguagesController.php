@@ -76,13 +76,56 @@ class LanguagesController extends BaseController {
 
 		foreach(Glottos::getEnabledLanguages() as $language)
 		{
-			$enabledLanguages[Glottos::getLocaleAsText($language->language_id, $language->country_id)] = $language->regional_name;
+			$linkA = URL::route(
+									'admin.languages.show',
+									array(
+											$localeSecondary->locale->getText(),
+											Glottos::getLocaleAsText($language->language_id, $language->country_id)
+										)
+								);
+
+			$linkB = URL::route(
+									'admin.languages.show',
+									array(
+											Glottos::getLocaleAsText($language->language_id, $language->country_id),
+											$localePrimary->locale->getText()
+										)
+								);
+
+			$languagesPrimary[$linkA] = $language->regional_name;
+
+			$languagesSecondary[$linkB] = $language->regional_name;
+
+			// k($linkA);
+			// k($linkB);
 		}
+
+		$selectedPrimary = URL::route(
+									'admin.languages.show',
+									array(
+											$localeSecondary->locale->getText(),
+											$localePrimary->locale->getText()
+										)
+								);
+
+		$selectedSecondary = URL::route(
+									'admin.languages.show',
+									array(
+											$localeSecondary->locale->getText(),
+											$localePrimary->locale->getText()
+										)
+								);
+
+			// k($selectedPrimary);
+			// kk($selectedSecondary);
 
 		return View::make('admin.pages.translatedMessages')
 					->with('localePrimary', $localePrimary)
 					->with('localeSecondary', $localeSecondary)
-					->with('enabledLanguages', $enabledLanguages)
+					->with('languagesPrimary', $languagesPrimary)
+					->with('languagesSecondary', $languagesSecondary)
+					->with('selectedPrimary', $selectedPrimary)
+					->with('selectedSecondary', $selectedSecondary)
 					->with('messages', $messages);
 	}
 

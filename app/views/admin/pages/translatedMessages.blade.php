@@ -14,6 +14,7 @@
 
 @section('content')
 
+
 	<div class="row">
 		<div class="col-lg-10 col-md-offset-1">
 			<div class="table-responsive">
@@ -21,9 +22,13 @@
 					<thead>
 						<tr>
 						    <div class="form-group">
-								<th>{{ Form::select('primaryLanguage', $enabledLanguages, $localePrimary->locale->getText(), ['class' => 'form-control']) }}</th>
-	                            <th>{{ Form::select('primaryLanguage', $enabledLanguages, $localeSecondary->locale->getText(), ['class' => 'form-control']) }}</th>
-	                            <th>Key</th>
+								<th width="45%">{{ Form::select('primaryLanguage', $languagesPrimary, $selectedPrimary, ['class' => 'form-control', 'onchange' => 'location = this.options[this.selectedIndex].value;']) }}</th>
+                            </div>
+						    <div class="form-group">
+	                            <th width="45%">{{ Form::select('secondaryLanguage', $languagesSecondary, $selectedSecondary, ['class' => 'form-control', 'onchange' => 'location = this.options[this.selectedIndex].value;']) }}</th>
+                            </div>
+						    <div class="form-group">
+	                            <th width="10%">Key</th>
                             </div>
 						</tr>
 					</thead>							
