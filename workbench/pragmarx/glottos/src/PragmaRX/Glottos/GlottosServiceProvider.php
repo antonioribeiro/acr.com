@@ -10,6 +10,8 @@ use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
 use PragmaRX\Glottos\Support\Filesystem;
 
+use PragmaRX\Glottos\Support\Laravel\Lang as LaravelLang;
+
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Messages\Message;
@@ -63,6 +65,8 @@ class GlottosServiceProvider extends ServiceProvider {
 		$this->registerMode();
 
 		$this->registerGlottos();
+
+		$this->registerLaravelLang();
 
 		$this->registerImportCommand();
 
@@ -172,6 +176,14 @@ class GlottosServiceProvider extends ServiceProvider {
 									$app['glottos.mode'],
 									$app['glottos.fileSystem']
 								);
+		});
+	}
+
+	private function registerLaravelLang()
+	{
+		$this->app['glottos.laravel.lang'] = $this->app->share(function($app)
+		{
+			return new LaravelLang($app['glottos']);
 		});
 	}
 
