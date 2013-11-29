@@ -40,9 +40,18 @@ class Category extends Eloquent {
 
 Route::get('/test', function()
 {
-	Lang::trans('what?');
+	$validator = \Validator::make(
+	    array(
+	        'user' => ['surname' => [ 0 => ['Laravel' => ['Framework' => ['4' => ['1' => '0']]]]]]
+	    ),
+	    array('user.surname.0' => 'required|min:5')
+	);
 
-	Log::info('test');
+	var_dump($validator->passes());
+
+	// Lang::trans('what?');
+
+	// Log::info('test');
 	
 	// Lang::has('reminders.password');
 

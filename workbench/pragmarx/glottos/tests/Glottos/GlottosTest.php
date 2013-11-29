@@ -208,13 +208,29 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 	clean text before add translation
 
-	public function getSetPrimaryLocale()
+	getSetPrimaryLocale()
 	{
 		return $this->findLocale('en-us');
 	}
 
-	public function getSetSecondaryLocale()
+	getSetSecondaryLocale()
 	{
 		return $this->findLocale('pt-br');
 	}	
+
+	addReplacement($key, $value)
+	{
+		$this->replacements[$key] = $value;
+	}
+
+	clearReplacements($key, $value)
+	{
+		$this->replacements = array();
+	}
+
+	setReplacements(Array $array)
+	{
+		$this->replacements = $array;
+	}
+
 }

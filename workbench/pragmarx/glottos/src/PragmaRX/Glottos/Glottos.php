@@ -40,7 +40,7 @@ class Glottos
 
 	private $dataRepository;
 
-	private $variables = array();
+	private $replacements = array();
 
 	private $primaryLocale;
 
@@ -138,14 +138,19 @@ class Glottos
 		$this->locale->setCountry($country);
 	}
 
-	/**
-	 * Locale country setter
-	 * 
-	 * @param string $country
-	 */
-	public function addVariable($key, $value)
+	public function addReplacement($key, $value)
 	{
-		$this->variables[$key] = $value;
+		$this->replacements[$key] = $value;
+	}
+
+	public function clearReplacements($key, $value)
+	{
+		$this->replacements = array();
+	}
+
+	public function setReplacements(Array $array)
+	{
+		$this->replacements = $array;
 	}
 
 	/**
@@ -179,14 +184,14 @@ class Glottos
 	 * @param  string  $paragraph
 	 * @param  Locale  $locale
 	 * @param  integer $module
-	 * @param  array  $variables
+	 * @param  array  $replacements
 	 * @return string
 	 */
 	public function translate($paragraph, $locale = null, $module = 0)
 	{
-		return $this->replaceVariables(
+		return $this->makeReplacements(
 										$this->translateParagraph($paragraph, $this->makeLocale($locale), $module ?: $this->module), 
-										$this->variables
+										$this->replacements
 									);
 	}
 
@@ -241,30 +246,30 @@ class Glottos
 	}
 
 	/**
-	 * Replace all user variables by its respective values
+	 * Replace all user replacements by its respective values
 	 * 
 	 * @param  string $translation
-	 * @param  array $variables
+	 * @param  array $replacements
 	 * @return string
 	 */
-	private function replaceVariables($string, array $variables = array())
+	private function makeReplacements($string, array $replacements = array())
 	{
-		foreach($variables as $key => $variable) {
-			$string = $this->replaceVariable($key, $variable, $string);
+		foreach($replacements as $key => $variable) {
+			$string = $this->makeReplacement($key, $variable, $string);
 		}
 
 		return $string;
 	}
 
 	/**
-	 * Replace one user variables by its respective value
+	 * Replace one user replacements by its respective value
 	 * 
 	 * @param  string $key
 	 * @param  string $variable
 	 * @param  string $translation
 	 * @return string
 	 */
-	private function replaceVariable($key, $variable, $translation)
+	private function makeReplacement($key, $variable, $translation)
 	{
 		return str_replace(
 							$this->config->get('variable_delimiter_prefix') . "$key" . $this->config->get('variable_delimiter_suffix'), 
