@@ -43,7 +43,7 @@ class Lang implements TranslatorInterface {
      */
     public function trans($id, array $parameters = array(), $domain = 'messages', $locale = null)
     {
-
+    	return $this->glottos->trans($id, $parameters, $domain, $locale);
     }
 
     /**
@@ -61,7 +61,7 @@ class Lang implements TranslatorInterface {
      */
     public function transChoice($id, $number, array $parameters = array(), $domain = null, $locale = null)
     {
-
+    	return $this->choice($id, $number, $parameters, $domain, $locale);
     }
 
     /**
@@ -101,4 +101,43 @@ class Lang implements TranslatorInterface {
 		/// It's already loaded :)
 	}
 
+
+	/**
+	 * Get the translation for the given key.
+	 *
+	 * @param  string  $key
+	 * @param  array   $replace
+	 * @param  string  $locale
+	 * @return string
+	 */
+	public function get($key, array $replace = array(), $locale = null)
+	{
+		return $this->glottos->get($key, $replace, $locale);
+	}
+
+	/**
+	 * Determine if a translation exists.
+	 *
+	 * @param  string  $key
+	 * @param  string  $locale
+	 * @return bool
+	 */
+	public function has($key, $locale = null)
+	{
+		return $this->glottos->has($key, $locale);
+	}
+
+	/**
+	 * Get a translation according to an integer value.
+	 *
+	 * @param  string  $key
+	 * @param  int     $number
+	 * @param  array   $replace
+	 * @param  string  $locale
+	 * @return string
+	 */
+	public function choice($key, $number, array $replace = array(), $locale = null)
+	{
+		return $this->glottos->choice($key, $number, $replace, $locale);
+	}	
 }
