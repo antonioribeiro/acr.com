@@ -63,11 +63,13 @@ class Sentence {
 	private $hash;
 
 	/**
-	 * Sentence module
+	 * Sentence domain
 	 * 
+	 *  This default is the last fallback
+	 *  
 	 * @var string
 	 */
-	private $module = 0;
+	private $domain = 'messages';
 
 	/**
 	 * Sentence Mode (natural or key)
@@ -88,15 +90,15 @@ class Sentence {
 	 * @param  array  $sentences
 	 * @return void
 	 */
-	public function __construct($sentence, $module = 0, Mode $mode, $config = null)
+	public function __construct($sentence, $domain = null, Mode $mode, $config = null)
 	{
-		$this->module = $module;
-
 		$this->mode = $mode;
 
 		$this->config = $config;
 
 		$this->setSentence($sentence);
+
+		$this->generateDomain($domain);
 	}
 
 	public function getId()
@@ -121,19 +123,36 @@ class Sentence {
 
 	public function calculateHash()
 	{
-		return $this->hash = SHA1($this->getSentence().$this->getModule());
+		return $this->hash = SHA1($this->getSentence().$this->getDomain());
 	}
 
-	public function getModule()
+	public function getDomain()
 	{
-		return $this->module;
+		return $this->domain;
 	}
 
-	public function setModule($module)
+	public function generateDomain($domain)
 	{
-		if ($this->module !== $module) 
+		if($domain)
 		{
-			$this->module = $module;
+			$this->setDomain($domain);
+		}
+		else
+		{
+			if($this->config)
+			{
+				$this->setDomain($this->config->get('default_domain'));
+			}
+
+			// Otherwise it will use the defaulted one
+		}
+	}
+
+	public function setDomain($domain)
+	{
+		if ($this->domain !== $domain) 
+		{
+			$this->domain = $domain;
 
 			$this->calculateHash();
 		}
@@ -196,14 +215,14 @@ class Sentence {
 		return ($full ? $this->prefix : '') . $this->$property . ($full ? $this->suffix : '');
 	}
 
-	public static function make($message, $module, $mode)
+	public static function make($message, $domain, $mode)
 	{
-		return new Sentence($message, $module, $mode);
+		return new Sentence($message, $domain, $mode);
 	}
 
-	public static function makeTranslation($message, $translation, $module, $mode)
+	public static function makeTranslation($message, $translation, $domain, $mode)
 	{
-		$sentence = new Sentence($message, $module, $mode);
+		$sentence = new Sentence($message, $domain, $mode);
 
 		$sentence->translation = $translation;
 

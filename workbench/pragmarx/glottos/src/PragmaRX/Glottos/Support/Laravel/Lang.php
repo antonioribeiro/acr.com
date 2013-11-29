@@ -28,22 +28,21 @@ class Lang implements TranslatorInterface {
 		$this->glottos = $glottos;
 	}
 
-
     /**
      * Translates the given message.
      *
      * @param string      $id         The message, the message key or an object that can be cast to string
      * @param array       $parameters An array of parameters for the message
-     * @param string|null $domain     The domain for the message or null to use the default
+     * @param string|null $domain     The domain for the message
      * @param string|null $locale     The locale or null to use the default
      *
      * @return string The translated string
      *
      * @api
      */
-    public function trans($id, array $parameters = array(), $domain = 'messages', $locale = null)
+    public function trans($id, array $parameters = null, $domain = 'messages', $locale = null)
     {
-    	return $this->glottos->trans($id, $parameters, $domain, $locale);
+    	return $this->glottos->translate($id, $domain, $locale, $parameters);
     }
 
     /**

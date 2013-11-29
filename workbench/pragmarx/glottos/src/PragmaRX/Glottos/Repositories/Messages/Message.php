@@ -32,7 +32,7 @@ class Message extends MessageBase implements MessageInterface {
 							->where('hash', $sentence->getHash())
 							->first();
 		}
-	
+
 		if ( ! $model)
 		{
 			$key = $sentence->getMode() == 'key' ? $sentence->getSentence() : null;

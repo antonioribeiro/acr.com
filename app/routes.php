@@ -11,45 +11,16 @@
 |
 */
 
-class Post extends Eloquent {
-
-	protected $table = 'glottos_translations';
-
-    public function category()
-    {
-        return $this->belongsTo('Category');
-    }
-
-}
-
-class Category extends Eloquent {
-
-	protected $table = 'glottos_messages';
-
-    public function posts()
-    {
-        return $this->hasMany('Post', 'message_id');
-    }
-
-    public function postsTop10()
-    {
-        return $this->posts()->take(1);
-    }
-
-}
-
 Route::get('/test', function()
 {
-	$validator = \Validator::make(
-	    array(
-	        'user' => ['surname' => [ 0 => ['Laravel' => ['Framework' => ['4' => ['1' => '0']]]]]]
-	    ),
-	    array('user.surname.0' => 'required|min:5')
-	);
+	k( Lang::trans('PHOTOGRAPHY', array(), null, 'en') );
+	k( Lang::trans('PHOTOGRAPHY', array(), null, 'pt-br') );
 
-	var_dump($validator->passes());
+	k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'en') );
+	k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'pt-br') );
 
-	// Lang::trans('what?');
+	// k( Lang::choice('PHOTOGRAPHY|PHOTOGRAPHIES', array(), 'main', 'pt-br') 
+	kk( 'end' );
 
 	// Log::info('test');
 	

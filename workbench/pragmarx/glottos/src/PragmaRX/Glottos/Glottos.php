@@ -32,7 +32,7 @@ class Glottos
 {
 	private $config;
 
-	private $module = 0;
+	private $domain;
 
 	private $locale;
 
@@ -74,26 +74,28 @@ class Glottos
 		$this->mode = $mode;
 
 		$this->fileSystem = $fileSystem;
+
+		$this->domain = $this->config->get('default_domain');
 	}
 
 	/**
-	 * Module setter
+	 * Domain setter
 	 * 
-	 * @param integer $module
+	 * @param integer $domain
 	 */
-	public function setModule($module)
+	public function setDomain($domain)
 	{
-		$this->module = $module;
+		$this->domain = $domain;
 	}
 
 	/**
-	 * Module getter
+	 * Domain getter
 	 * 
 	 * @return integer
 	 */
-	public function getModule()
+	public function getDomain()
 	{
-		return $this->module;
+		return $this->domain;
 	}
 
 
@@ -183,17 +185,24 @@ class Glottos
 	 * 
 	 * @param  string  $paragraph
 	 * @param  Locale  $locale
-	 * @param  integer $module
+	 * @param  integer $domain
 	 * @param  array  $replacements
 	 * @return string
 	 */
-	public function translate($paragraph, $locale = null, $module = 0)
+	public function translate($paragraph, $domain = null, $locale = null, $replacements = null)
 	{
-		return $this->makeReplacements(
-										$this->translateParagraph($paragraph, $this->makeLocale($locale), $module ?: $this->module), 
-										$this->replacements
+		return $this->processReplacements(
+										$this->translateParagraph($paragraph, $domain ?: $this->domain, $this->makeLocale($locale)), 
+										$replacements ?: $this->replacements
 									);
 	}
+
+    public function choice($id, $number, $parameters, $domain, $locale)
+    {
+    	$translation = $this->translate($id, $domain, $locale, $parameters);
+
+    	return $this->choose($translation, $number);
+    }
 
 	private function makeLocale($locale = null)
 	{
@@ -215,16 +224,16 @@ class Glottos
 	 * 
 	 * @param  string $paragraph
 	 * @param  Locale $locale
-	 * @param  integer $module
+	 * @param  integer $domain
 	 * @return string
 	 */
-	private function translateParagraph($paragraph, Locale $locale, $module)
+	private function translateParagraph($paragraph, $domain, Locale $locale)
 	{
-		$this->paragraph->parseParagraph($paragraph, $module);
+		$this->paragraph->parseParagraph($paragraph, $domain);
 
 		foreach($this->paragraph->all() as $sentence)
 		{
-			$sentence->setTranslation($this->findTranslation($sentence, $locale, $module)->getTranslation());
+			$sentence->setTranslation($this->findTranslation($sentence, $locale)->getTranslation());
 		}
 
 		return $this->paragraph->getTranslatedParagraph();
@@ -252,7 +261,7 @@ class Glottos
 	 * @param  array $replacements
 	 * @return string
 	 */
-	private function makeReplacements($string, array $replacements = array())
+	private function processReplacements($string, array $replacements = array())
 	{
 		foreach($replacements as $key => $variable) {
 			$string = $this->makeReplacement($key, $variable, $string);
@@ -278,19 +287,19 @@ class Glottos
 						);
 	}
 
-	public function addTranslation($message, $translatedMessage, $locale = null, $module = 0)
+	public function addTranslation($message, $translatedMessage, $domain = null, $locale = null)
 	{
-		$module = $module ?: $this->module;
+		$domain = $domain ?: $this->domain;
 
 		$locale = Locale::make($locale, $this->locale);
 
-		$translation = Sentence::makeTranslation($message, $translatedMessage, $module, $this->mode);
+		$translation = Sentence::makeTranslation($message, $translatedMessage, $domain, $this->mode);
 
 		$translation = $this->findTranslation($translation, $locale);
 
 		if(! $translation->translationFound)
 		{
-			return $this->dataRepository->addTranslation($translation, $locale, $module);
+			return $this->dataRepository->addTranslation($translation, $domain, $locale);
 		}
 
 		return $translation;
@@ -341,10 +350,16 @@ class Glottos
 		return $this->dataRepository->findLocale(Locale::make($locale));
 	}	
 
-	public function updateOrCreateTranslation($message, $translatedMessage, $locale)
+	public function updateOrCreateTranslation($message, $translatedMessage, $locale, $domain = null)
 	{
-		$this->dataRepository->updateOrCreateTranslation($message, $translatedMessage, Locale::make($locale), $module = 0, $this->mode);
-	}	
+		$this->dataRepository->updateOrCreateTranslation(
+															$message, 
+															$translatedMessage, 
+															Locale::make($locale), 
+															$domain ?: $this->getDomain(), 
+															$this->mode
+														);
+	}
 
 	public function findNextUntranslated($localePrimary, $localeSecondary)
 	{
@@ -383,7 +398,7 @@ class Glottos
 
 	public function import($app, $path = null)
 	{
-		return $this->dataRepository->import($app, $path, $this->getModule(), $this->getMode());
+		return $this->dataRepository->import($app, $path, $this->getDomain(), $this->getMode());
 	}
 
 }

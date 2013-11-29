@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Facades\Laravel;
+<?php namespace PragmaRX\Glottos\ThirdParties\Laravel\Facades;
 /**
  * Part of the Glottos package.
  *
@@ -20,7 +20,7 @@
 
 use Illuminate\Support\Facades\Facade;
 
-class Lang extends Facade {
+class Glottos extends Facade {
 
 	/**
 	 * Get the registered name of the component.
@@ -29,7 +29,7 @@ class Lang extends Facade {
 	 */
 	protected static function getFacadeAccessor()
 	{
-		return 'glottos.laravel.lang';
+		return 'glottos';
 	}
 
 }

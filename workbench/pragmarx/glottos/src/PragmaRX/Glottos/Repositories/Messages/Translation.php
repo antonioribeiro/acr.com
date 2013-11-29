@@ -116,13 +116,13 @@ class Translation extends MessageBase implements MessageInterface {
 		return $rows->get();
 	}
 
-	public function updateOrCreate($message, $translatedMessage, Locale $locale, $module, $mode)
+	public function updateOrCreate($message, $translatedMessage, $domain, Locale $locale, $mode)
 	{
 		$model = $this->findById($message, $locale);
 
 		if(! $model)
 		{
-			$translation = Sentence::makeTranslation($translatedMessage, $translatedMessage, $module, $mode);
+			$translation = Sentence::makeTranslation($translatedMessage, $translatedMessage, $domain, $mode);
 
 			$translation->setId($message);
 

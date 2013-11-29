@@ -20,6 +20,8 @@
 
 return array(
 
+	'default_domain' => 'messages',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Which PHP Framework is your application using?
@@ -94,13 +96,12 @@ return array(
 	| Debug mode
 	|--------------------------------------------------------------------------
 	|
-	| Turning debug on will make Glottos replace your successfully translated messages with strings of the same character.
+	| Turning debug on will make all translated messages become a bunch of characters. 
 	|
 	| Example of debug mode:
 	|
-	|                     menu: Home      Blog Contact
-	|               translated: Principal Blog Contato
-	|       menu in debug mode: --------- Blog -------
+	|                     menu: Home Blog Contact
+	|       menu in debug mode: ---- Blog -------
 	|
 	|   In this example, we are still missing a translation for 'Blog'
 	|
@@ -174,14 +175,14 @@ return array(
 	|
 	*/
 
-	'message_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Message',
+	'message_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Message',
 
-	'translation_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Translation',
+	'translation_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Translation',
 
-	'language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Language',
+	'language_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Language',
 
-	'country_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Country',
+	'country_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Country',
 
-	'country_language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\CountryLanguage',
+	'country_language_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\CountryLanguage',
 
 );

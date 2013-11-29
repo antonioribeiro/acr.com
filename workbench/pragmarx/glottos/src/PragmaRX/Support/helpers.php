@@ -9,9 +9,9 @@ if ( ! function_exists('g'))
 	 * @param  string  $parameters
 	 * @return string
 	 */
-	function g($string, $locale = null, $module = null)
+	function g($string, $domain = null, $locale = null)
 	{
-		return Glottos::translate($string, $locale, $module);
+		return Glottos::translate($string, $domain, $locale);
 	}
 
 }

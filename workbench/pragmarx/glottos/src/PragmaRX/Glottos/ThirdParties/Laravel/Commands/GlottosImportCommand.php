@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Commands;
+<?php namespace PragmaRX\Glottos\ThirdParties\Laravel\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;

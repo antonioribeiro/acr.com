@@ -106,7 +106,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'PragmaRX\Glottos\GlottosServiceProvider',
+		'PragmaRX\Glottos\GlottosLaravelServiceProvider',
 		// 'Onigoetz\Profiler\Support\Laravel\ProfilerServiceProvider',
 
 	),
@@ -155,7 +155,7 @@ return array(
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
 		'HTML'            => 'Illuminate\Support\Facades\HTML',
 		'Input'           => 'Illuminate\Support\Facades\Input',
-		'Lang'            => 'PragmaRX\Glottos\Facades\Laravel\Lang',
+		'Lang'            => 'PragmaRX\Glottos\ThirdParties\Laravel\Facades\Lang',
 		// 'Lang'            => 'Illuminate\Support\Facades\Lang',
 		'Log'             => 'Illuminate\Support\Facades\Log',
 		'Mail'            => 'Illuminate\Support\Facades\Mail',

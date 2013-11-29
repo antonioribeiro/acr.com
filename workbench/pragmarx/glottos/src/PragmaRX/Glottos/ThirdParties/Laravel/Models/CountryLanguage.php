@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Repositories\Locales\Laravel;
+<?php namespace PragmaRX\Glottos\ThirdParties\Laravel\Models;
 /**
  * Part of the Glottos package.
  *
@@ -20,10 +20,20 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Language extends Eloquent {
+class CountryLanguage extends Eloquent {
 
-	protected $table = 'glottos_languages';
+	protected $table = 'glottos_countries_languages';
 
 	protected $guarded = array();
+
+	public function language()
+	{
+		return $this->belongsTo('PragmaRX\Glottos\ThirdParties\Laravel\Models\Language');
+	}
+
+	public function country()
+	{
+		return $this->belongsTo('PragmaRX\Glottos\ThirdParties\Laravel\Models\Country');
+	}
 
 }

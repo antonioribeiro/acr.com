@@ -20,6 +20,8 @@
 
 return array(
 
+	'default_domain' => 'messages',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Which PHP Framework is your application using?
@@ -173,14 +175,14 @@ return array(
 	|
 	*/
 
-	'message_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Message',
+	'message_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Message',
 
-	'translation_model' => 'PragmaRX\Glottos\Repositories\Messages\Laravel\Translation',
+	'translation_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Translation',
 
-	'language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Language',
+	'language_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Language',
 
-	'country_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\Country',
+	'country_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Country',
 
-	'country_language_model' => 'PragmaRX\Glottos\Repositories\Locales\Laravel\CountryLanguage',
+	'country_language_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\CountryLanguage',
 
 );

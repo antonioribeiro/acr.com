@@ -156,9 +156,9 @@ class DataRepository implements DataRepositoryInterface {
 		 return $this->localeRepository->find($locale);
 	}
 
-	public function updateOrCreateTranslation($message, $translatedMessage, Locale $locale, $module = 0, $mode)
+	public function updateOrCreateTranslation($message, $translatedMessage, Locale $locale, $domain, $mode)
 	{
-		$this->translation->updateOrCreate($message, $translatedMessage, $locale, $module, $mode);
+		$this->translation->updateOrCreate($message, $translatedMessage, $domain, $locale, $mode);
 	}
 
 	public function findNextUntranslated(Locale $primaryLocale, Locale $secondaryLocale)
@@ -166,7 +166,7 @@ class DataRepository implements DataRepositoryInterface {
 		return $this->translation->findNextUntranslated($primaryLocale, $secondaryLocale);
 	}	
 
-	public function import($app, $path, $module, $mode)
+	public function import($app, $path, $domain, $mode)
 	{
 		if( ! $path)
 		{
@@ -179,13 +179,13 @@ class DataRepository implements DataRepositoryInterface {
 
 		foreach($locales as $locale)
 		{
-			$imported += $this->importLocale(basename($locale), dirname($locale), $module, $mode);
+			$imported += $this->importLocale(basename($locale), dirname($locale), $domain, $mode);
 		}
 
 		return $imported;
 	}
 
-	private function importLocale($locale, $path, $module, $mode)
+	private function importLocale($locale, $path, $domain, $mode)
 	{
 		$imported = 0;
 
@@ -201,7 +201,7 @@ class DataRepository implements DataRepositoryInterface {
 			{
 				foreach($values as $key => $value)
 				{
-					if($this->addKey($group, $key, $value, $locale, $module, $mode))
+					if($this->addKey($group, $key, $value, $locale, $domain, $mode))
 					{
 						$imported++;
 					}
@@ -212,12 +212,12 @@ class DataRepository implements DataRepositoryInterface {
 		return $imported;
 	}
 
-	public function addKey($group, $key, $value, $locale, $module, $mode)
+	public function addKey($group, $key, $value, $domain, $locale, $mode)
 	{
 		$translation = Sentence::makeTranslation(
 												"key::$group.$key",
 												$value,
-												$module,
+												$domain,
 												$mode
 											);
 

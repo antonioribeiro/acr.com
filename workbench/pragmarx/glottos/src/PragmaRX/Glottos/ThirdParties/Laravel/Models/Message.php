@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Repositories\Messages\Laravel;
+<?php namespace PragmaRX\Glottos\ThirdParties\Laravel\Models;
 /**
  * Part of the Glottos package.
  *

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class Modules extends Migration {
+class Domains extends Migration {
 
     /**
      * Run the migrations.
@@ -11,7 +11,7 @@ class Modules extends Migration {
      */
     public function up()
     {
-        Schema::create('glottos_modules', function($table)
+        Schema::create('glottos_domains', function($table)
         {
             $table->increments('id');
 
@@ -29,7 +29,7 @@ class Modules extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('glottos_modules');
+        Schema::dropIfExists('glottos_domains');
     }
 
 }

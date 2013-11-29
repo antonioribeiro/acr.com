@@ -24,7 +24,7 @@ use PragmaRX\Glottos\Repositories\Locales\CountryLanguage;
 
 use PragmaRX\Glottos\Commands\GlottosImportCommand;
 
-class GlottosServiceProvider extends ServiceProvider {
+class GlottosLaravelServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.

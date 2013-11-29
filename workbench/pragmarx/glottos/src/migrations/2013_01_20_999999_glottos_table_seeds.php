@@ -11,7 +11,7 @@ class GlottosTableSeeds extends Migration {
      */
     public function up()
     {
-	  DB::table('glottos_modules')->insert(
+	  DB::table('glottos_domains')->insert(
 						array( 
 							  'name'=>'Application', 
 							  'created_at' => new DateTime, 
@@ -532,7 +532,7 @@ class GlottosTableSeeds extends Migration {
      */
     public function down()
     {
-	  DB::table('glottos_modules')->truncate();
+	  DB::table('glottos_domains')->truncate();
 	  DB::table('glottos_countries')->truncate();
 	  DB::table('glottos_countries_languages')->truncate();
 	  DB::table('glottos_languages')->truncate();
