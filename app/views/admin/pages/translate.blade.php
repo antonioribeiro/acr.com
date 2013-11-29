@@ -25,7 +25,7 @@
 				@endif
 
 				<div class="form-group">
-					<label>{{ $localePrimary->regional_name }}</label>
+					<th width="45%">{{ Form::select('primaryLanguage', $languagesPrimary, $selectedPrimary, ['class' => 'form-control', 'onchange' => 'location = this.options[this.selectedIndex].value;']) }}</th>
 					<textarea class="form-control" rows="6" disabled>{{ $primaryMessage }}</textarea>
 				</div>
 

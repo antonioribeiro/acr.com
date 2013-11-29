@@ -95,9 +95,6 @@ class LanguagesController extends BaseController {
 			$languagesPrimary[$linkA] = $language->regional_name;
 
 			$languagesSecondary[$linkB] = $language->regional_name;
-
-			// k($linkA);
-			// k($linkB);
 		}
 
 		$selectedPrimary = URL::route(
@@ -152,6 +149,32 @@ class LanguagesController extends BaseController {
 		$localePrimary = Glottos::findLocale($localePrimary);
 		$localeSecondary = Glottos::findLocale($localeSecondary);
 
+		foreach(Glottos::getEnabledLanguages() as $language)
+		{
+			if( $language->language_id.'-'.$language->country_id !== $localeSecondary->language_id.'-'.$localeSecondary->country_id )
+			{
+				$linkA = URL::route(
+										'admin.translation.edit',
+										array(	
+												$message,
+												$language->language_id.'-'.$language->country_id,
+												$localeSecondary->locale->getText()
+											)
+									);
+
+				$languagesPrimary[$linkA] = $language->regional_name;			
+			}
+		}
+
+		$selectedPrimary = URL::route(
+									'admin.translation.edit',
+									array(
+											$message,
+											$localePrimary->locale->getText(),
+											$localeSecondary->locale->getText()
+										)
+								);		
+
         $formAction = URL::route('admin.translation.store', [
                                                             $message, 
                                                             $localePrimary->language_id.'-'.$localePrimary->country_id, 
@@ -168,6 +191,8 @@ class LanguagesController extends BaseController {
 					->with('localePrimary', $localePrimary)
 					->with('localeSecondary', $localeSecondary)
 					->with('key', $key )
+					->with('languagesPrimary', $languagesPrimary)
+					->with('selectedPrimary', $selectedPrimary)
 					->with('primaryMessage', $primaryMessage ? $primaryMessage->translation : '' )
 					->with('secondaryMessage', $secondaryMessage ? $secondaryMessage->translation : '');		
 	}
