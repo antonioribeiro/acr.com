@@ -22,6 +22,11 @@ return array(
 
 	'default_domain' => 'messages',
 
+	'create_glottos_alias' => true,
+
+	'glottos_alias' => 'Glottos',
+
+
 	/*
 	|--------------------------------------------------------------------------
 	| Which PHP Framework is your application using?

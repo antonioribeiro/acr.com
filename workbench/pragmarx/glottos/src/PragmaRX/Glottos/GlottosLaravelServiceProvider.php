@@ -1,6 +1,7 @@
 <?php namespace PragmaRX\Glottos;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
 
 use PragmaRX\Glottos\Glottos;
 
@@ -22,7 +23,7 @@ use PragmaRX\Glottos\Repositories\Locales\Language;
 use PragmaRX\Glottos\Repositories\Locales\Country;
 use PragmaRX\Glottos\Repositories\Locales\CountryLanguage;
 
-use PragmaRX\Glottos\Commands\GlottosImportCommand;
+use PragmaRX\Glottos\ThirdParties\Laravel\Commands\GlottosImportCommand;
 
 class GlottosLaravelServiceProvider extends ServiceProvider {
 
@@ -41,6 +42,11 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('pragmarx/glottos', 'pragmarx/glottos');
+
+		if( $this->getConfig('create_glottos_alias') )
+		{
+			AliasLoader::getInstance()->alias($this->getConfig('glottos_alias'), 'PragmaRX\Glottos\ThirdParties\Laravel\Facades\Glottos');
+		}
 	}
 
 	/**
@@ -103,7 +109,7 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 	{
 		$this->app['glottos.locale'] = $this->app->share(function($app)
 		{
-			return new Locale($app['config']['pragmarx/glottos::default_language_id'], $app['config']['pragmarx/glottos::default_country_id']);
+			return new Locale($this->getConfig('default_language_id'), $this->getConfig('default_country_id'));
 		});
 	}
 
@@ -127,15 +133,15 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 	{
 		$this->app['glottos.dataRepository'] = $this->app->share(function($app)
 		{
-			$messageModel = $this->app['config']['pragmarx/glottos::message_model'];
+			$messageModel = $this->getConfig('message_model');
 
-			$translationModel = $this->app['config']['pragmarx/glottos::translation_model'];
+			$translationModel = $this->getConfig('translation_model');
 
-			$languageModel = $this->app['config']['pragmarx/glottos::language_model'];
+			$languageModel = $this->getConfig('language_model');
 
-			$countryModel = $this->app['config']['pragmarx/glottos::country_model'];
+			$countryModel = $this->getConfig('country_model');
 
-			$countryLanguageModel = $this->app['config']['pragmarx/glottos::country_language_model'];
+			$countryLanguageModel = $this->getConfig('country_language_model');
 
 			$localeRepository = new LocaleRepository(
 														new Language(new $languageModel, $this->app['glottos.cache']), 
@@ -157,7 +163,7 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 	{
 		$this->app['glottos.mode'] = $this->app->share(function($app)
 		{
-			return new Mode($this->app['config']['pragmarx/glottos::mode']);
+			return new Mode($this->getConfig('mode'));
 		});
 	}
 
@@ -195,4 +201,8 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 		});
 	}
 
+	public function getConfig($key)
+	{
+		return $this->app['config']["pragmarx/glottos::$key"];
+	}
 }

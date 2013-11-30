@@ -13,6 +13,8 @@
 
 Route::get('/test', function()
 {
+	Glottos::translate('PHOTOGRAPHY');
+	
 	k( Lang::trans('PHOTOGRAPHY', array(), null, 'en') );
 	k( Lang::trans('PHOTOGRAPHY', array(), null, 'pt-br') );
 
