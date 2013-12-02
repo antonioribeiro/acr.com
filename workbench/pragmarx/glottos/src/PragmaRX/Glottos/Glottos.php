@@ -48,6 +48,8 @@ class Glottos
 
 	private $secondaryLocale;
 
+	private $selector;
+
 	/**
 	 * Initialize Glottos object
 	 * 
@@ -80,7 +82,7 @@ class Glottos
 
 		$this->domain = $this->config->get('default_domain');
 
-		$this->messageSelector = $messageSelector;
+		$this->selector = $selector;
 	}
 
 	/**
@@ -103,6 +105,15 @@ class Glottos
 		return $this->domain;
 	}
 
+	public function setSelector(MessageSelector $selector)
+	{
+		$this->selector = $selector;
+	}
+
+	public function getSelector()
+	{
+		return $this->selector;
+	}
 
 	public function setMode($mode)
 	{

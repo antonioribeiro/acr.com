@@ -19,6 +19,7 @@
  */
 
 use PragmaRX\Glottos\Glottos;
+use Symfony\Component\Translation\MessageSelector;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class Lang implements TranslatorInterface {
@@ -27,6 +28,45 @@ class Lang implements TranslatorInterface {
 	{
 		$this->glottos = $glottos;
 	}
+
+    /**
+     * Determine if a translation exists.
+     *
+     * @param  string  $key
+     * @param  string  $locale
+     * @return bool
+     */
+    public function has($key, $locale = null)
+    {
+        return $this->glottos->has($key, $locale);
+    }
+
+    /**
+     * Get the translation for the given key.
+     *
+     * @param  string  $key
+     * @param  array   $replace
+     * @param  string  $locale
+     * @return string
+     */
+    public function get($key, array $replace = array(), $locale = null)
+    {
+        return $this->glottos->get($key, $replace, $locale);
+    }
+
+    /**
+     * Get a translation according to an integer value.
+     *
+     * @param  string  $key
+     * @param  int     $number
+     * @param  array   $replace
+     * @param  string  $locale
+     * @return string
+     */
+    public function choice($key, $number, array $replace = array(), $locale = null)
+    {
+        return $this->glottos->choice($key, $number, $replace, null, $locale);
+    }
 
     /**
      * Translates the given message.
@@ -64,15 +104,102 @@ class Lang implements TranslatorInterface {
     }
 
     /**
+     * Load the specified language group.
+     *
+     * @param  string  $namespace
+     * @param  string  $group
+     * @param  string  $locale
+     * @return void
+     */
+    public function load($namespace, $group, $locale)
+    {
+        /// It's already loaded :)
+    }
+
+    /**
+     * Determine if the given group has been loaded.
+     *
+     * @param  string  $namespace
+     * @param  string  $group
+     * @param  string  $locale
+     * @return bool
+     */
+    protected function isLoaded($namespace, $group, $locale)
+    {
+        return true;
+    }
+
+    /**
      * Sets the current locale.
      *
      * @param string $locale The locale
      *
      * @api
      */
-    public function setLocale($locale)
+    
+    /**
+     * Add a new namespace to the loader.
+     *
+     * @param  string  $namespace
+     * @param  string  $hint
+     * @return void
+     */
+    public function addNamespace($namespace, $hint)
     {
-    	$this->glottos->setLocale($locale);
+        throw new Exception("The Glottos implementation of Lang doesn't support Namespaces.");
+    }
+
+    /**
+     * Parse a key into namespace, group, and item.
+     *
+     * @param  string  $key
+     * @return array
+     */
+    public function parseKey($key)
+    {
+        throw new Exception("The Glottos implementation of Lang doesn't support Namespaces.");
+    }
+
+    /**
+     * Get the message selector instance.
+     *
+     * @return \Symfony\Component\Translation\MessageSelector
+     */
+    public function getSelector()
+    {
+        return $this->glottos->getSelector();
+    }
+
+    /**
+     * Set the message selector instance.
+     *
+     * @param  \Symfony\Component\Translation\MessageSelector  $selector
+     * @return void
+     */
+    public function setSelector(MessageSelector $selector)
+    {
+        $this->glottos->setSelector($selector);
+    }
+
+    /**
+     * Get the language line loader implementation.
+     *
+     * @return \Illuminate\Translation\LoaderInterface
+     */
+    public function getLoader()
+    {
+        throw new Exception("The Glottos implementation of Lang has no real loader.");
+    }
+
+
+    /**
+     * Get the default locale being used.
+     *
+     * @return string
+     */
+    public function locale()
+    {
+        return $this->getLocale();
     }
 
     /**
@@ -84,59 +211,18 @@ class Lang implements TranslatorInterface {
      */
     public function getLocale()
     {
-    	return $this->glottos->getLocale();
+        return $this->glottos->getLocale();
     }
 
-	/**
-	 * Load the specified language group.
-	 *
-	 * @param  string  $namespace
-	 * @param  string  $group
-	 * @param  string  $locale
-	 * @return void
-	 */
-	public function load($namespace, $group, $locale)
-	{
-		/// It's already loaded :)
-	}
+    /**
+     * Set the default locale.
+     *
+     * @param  string  $locale
+     * @return void
+     */
+    public function setLocale($locale)
+    {
+        $this->glottos->setLocale($locale);
+    }
 
-
-	/**
-	 * Get the translation for the given key.
-	 *
-	 * @param  string  $key
-	 * @param  array   $replace
-	 * @param  string  $locale
-	 * @return string
-	 */
-	public function get($key, array $replace = array(), $locale = null)
-	{
-		return $this->glottos->get($key, $replace, $locale);
-	}
-
-	/**
-	 * Determine if a translation exists.
-	 *
-	 * @param  string  $key
-	 * @param  string  $locale
-	 * @return bool
-	 */
-	public function has($key, $locale = null)
-	{
-		return $this->glottos->has($key, $locale);
-	}
-
-	/**
-	 * Get a translation according to an integer value.
-	 *
-	 * @param  string  $key
-	 * @param  int     $number
-	 * @param  array   $replace
-	 * @param  string  $locale
-	 * @return string
-	 */
-	public function choice($key, $number, array $replace = array(), $locale = null)
-	{
-		return $this->glottos->choice($key, $number, $replace, null, $locale);
-	}	
 }
