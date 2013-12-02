@@ -11,44 +11,8 @@
 |
 */
 
-// Route::get('/test/{username}', function($username)
-// {
-// 	return "yeah! --> $username";
-// })->where('username', "antonio");
-
-// #^test/(?P<username>(antonio))$#u
-// #
-// #^(?:(?!antonio).)*$#
-
-Route::get('/test/{username}', function()
-{
-	// kk( preg_match('#^test/(?P<username>(?!antonio))$#u', 'test/antoniox') );
-	// kk( preg_match('#(?:(?!antoniox)$)#', 'test/antoniox') );
-
-	echo preg_match_all('#^test/(?P<username>^(?:(?!antonio))$)$#u', 'test/antoniox', $match);
-	kk($match);
-
-
-
-	return "wrong!";
-});
-
-
 Route::get('/test', function()
 {
-
-$validator = Validator::make(
-    array('name' => 'Dayle'),
-    array('name' => 'required|min:15')
-);
-
-if ($validator->fails())
-{
-    // The given data did not pass validation
-}
-
-print_r($validator->messages()->all());
-
 
 	Glottos::translate('PHOTOGRAPHY');
 
@@ -58,7 +22,8 @@ print_r($validator->messages()->all());
 	k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'en') );
 	k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'pt-br') );
 
-	// k( Lang::choice('PHOTOGRAPHY|PHOTOGRAPHIES', array(), 'main', 'pt-br') 
+	k('choice');
+	k( Lang::choice('PHOTOGRAPHY|PHOTOGRAPHIES', 100, array(), 'pt_BR') );
 	kk( 'end' );
 
 	// Log::info('test');

@@ -134,7 +134,7 @@ class Locale
 			$country = $this->country; // if everything else fails, US is the last resort
 		}
 
-		$this->country = strtolower($country);
+		$this->country = strtoupper($country);
 	}
 
 	public function is($language, $country = null)
@@ -147,7 +147,7 @@ class Locale
 
 	public function getText()
 	{
-		return $this->getLanguage() . ($this->getCountry() ? '-' . $this->getCountry() : '');
+		return $this->getLanguage() . ($this->getCountry() ? '_' . $this->getCountry() : '');
 	}
 
 	public static function make($locale, $fallback = null)

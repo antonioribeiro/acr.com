@@ -18,6 +18,8 @@
  * @link       http://pragmarx.com
  */
 
+use Symfony\Component\Translation\MessageSelector;
+
 use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Sentence;
@@ -58,7 +60,8 @@ class Glottos
 									DataRepository $dataRepository,
 									Cache $cache,
 									Mode $mode,
-									FileSystem $fileSystem
+									FileSystem $fileSystem,
+									MessageSelector $messageSelector
 								)
 	{
 		$this->locale = $locale;
@@ -76,6 +79,8 @@ class Glottos
 		$this->fileSystem = $fileSystem;
 
 		$this->domain = $this->config->get('default_domain');
+
+		$this->messageSelector = $messageSelector;
 	}
 
 	/**
@@ -197,11 +202,16 @@ class Glottos
 									);
 	}
 
-    public function choice($id, $number, $parameters, $domain, $locale)
+    public function choice($id, $number, $parameters = array(), $domain = null, $locale = null)
     {
     	$translation = $this->translate($id, $domain, $locale, $parameters);
 
-    	return $this->choose($translation, $number);
+    	return $this->choose($translation, $number, $locale);
+    }
+
+    public function choose($translation, $number, $locale)
+    {
+    	return $this->messageSelector->choose($translation, (int) $number, $locale);
     }
 
 	private function makeLocale($locale = null)

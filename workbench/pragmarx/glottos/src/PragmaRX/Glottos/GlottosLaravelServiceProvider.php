@@ -3,6 +3,8 @@
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 
+use Symfony\Component\Translation\MessageSelector;
+
 use PragmaRX\Glottos\Glottos;
 
 use PragmaRX\Glottos\Support\Locale;
@@ -69,6 +71,8 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 		$this->registerDataRepository();
 
 		$this->registerMode();
+
+		$this->registerMessageSelector();
 
 		$this->registerGlottos();
 
@@ -167,6 +171,14 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 		});
 	}
 
+	private function registerMessageSelector()
+	{
+		$this->app['glottos.selector'] = $this->app->share(function($app)
+		{
+			return new MessageSelector;
+		});
+	}
+
 	private function registerGlottos()
 	{
 		$this->app['glottos'] = $this->app->share(function($app)
@@ -180,7 +192,8 @@ class GlottosLaravelServiceProvider extends ServiceProvider {
 									$app['glottos.dataRepository'],
 									$app['glottos.cache'],
 									$app['glottos.mode'],
-									$app['glottos.fileSystem']
+									$app['glottos.fileSystem'],
+									$app['glottos.selector']
 								);
 		});
 	}

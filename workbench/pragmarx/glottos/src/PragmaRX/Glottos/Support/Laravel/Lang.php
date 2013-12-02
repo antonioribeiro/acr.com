@@ -137,6 +137,6 @@ class Lang implements TranslatorInterface {
 	 */
 	public function choice($key, $number, array $replace = array(), $locale = null)
 	{
-		return $this->glottos->choice($key, $number, $replace, $locale);
+		return $this->glottos->choice($key, $number, $replace, null, $locale);
 	}	
 }
