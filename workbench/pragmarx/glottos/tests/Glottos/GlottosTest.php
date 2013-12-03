@@ -52,27 +52,43 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 		$this->translationIntermediaryParagraph = 'Olá, seja bem-vindo aos casos de testes do |-application name-|';
 
-		$this->replacements = array('application name' => 'Glottos', 'variable' => 'name');
-
 		$this->module = 0;
 
 		$this->language = 'en';
 
 		$this->country = 'us';
 
+		$this->locale = new Locale($this->language, $this->country);
+
 		$this->domain = 'messages';
 
 		$this->localeAsText = strtolower($this->language).'_'.strtoupper($this->country);
 
+		$this->replacements = array('application name' => 'Glottos', 'variable' => 'name');
+
+		$this->config = new Config(new IlluminateFilesystem);
+
+		$this->mode = new Mode;
+
+		$this->choiceSingular = "choice";
+		$this->choicePlural = "choices";
+		$this->choice = "$this->choiceSingular|$this->choicePlural";
+		$this->choiceSentence = Sentence::make($this->choice, $this->domain, $this->mode, $this->config);
+
+		$this->translatedChoiceSingular = "escolha";
+		$this->translatedChoicePlural = "escolhas";
+		$this->translatedChoice = "$this->translatedChoiceSingular|$this->translatedChoicePlural";
+		$this->choiceSentence = Sentence::makeTranslation($this->choice, $this->translatedChoice, $this->domain, $this->mode, $this->config);
+
 		$this->app = m::mock('Illuminate\Console\Application');
 
 		$this->glottos = new Glottos(
-			$this->config = new Config(new IlluminateFilesystem),
-			$this->locale = new Locale($this->language, $this->country),
+			$this->config,
+			$this->locale,
 			$this->sentenceBag = new SentenceBag($this->config, $this->paragraph),
 			$this->dataRepository = m::mock('PragmaRX\Glottos\Repositories\DataRepository'),
 			$this->cache = new Cache,
-			$this->mode = new Mode,
+			$this->mode,
 			$this->fileSystem = new Filesystem,
 			$this->selector = new MessageSelector
 		);
@@ -169,8 +185,11 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($this->locale, $this->glottos->getLocale());
 
-		//////makeLocale;
-		$this->assertFalse(false);
+		$this->assertEquals($this->locale, $this->glottos->makeLocale($this->localeAsText));
+
+		$this->dataRepository->shouldReceive('getDefaultLocale')->once()->andReturn($this->locale);
+
+		$this->assertEquals($this->locale, $this->glottos->getDefaultLocale());
 	}
 
 	public function testLocaleIsAvailable()
@@ -187,19 +206,19 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 	public function testZgetAllLanguages()
 	{
 		// return $this->dataRepository->getAllLanguages();
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testZgetEnabledLanguages()
 	{
 		// return $this->dataRepository->getEnabledLanguages();
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testZgetDisabledLanguages()
 	{
 		// return $this->dataRepository->getDisabledLanguages();
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testEnableDisableLanguage()
@@ -212,13 +231,13 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 	public function testZgetLanguageStats()
 	{
 		// return $this->dataRepository->getLanguageStats();
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testZgetTranslations($locale = null)
 	{
 		// return $this->dataRepository->getTranslations(Locale::make($locale));
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testFindLocale()
@@ -244,10 +263,10 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 		$this->glottos->updateOrCreateTranslation($this->paragraph, $this->translatedParagraph, $this->locale);
 	}	
 
-	public function testFindNextUntranslated($localePrimary, $localeSecondary)
+	public function testFindNextUntranslated()
 	{
 		// return $this->dataRepository->findNextUntranslated(Locale::make($localePrimary), Locale::make($localeSecondary));
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}	
 	public function testReplacement()
 	{
@@ -255,40 +274,39 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 		// clearReplacements($key, $value)
 		// setReplacements(Array $array)
 
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testCleanTextBeforeAddTranslation()
 	{
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testGetSetPrimaryLocale()
 	{
 		// return $this->findLocale('en-us');
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}
 
 	public function testGetSetSecondaryLocale()
 	{
 		// return $this->findLocale('pt-br');
 		// 
-		$this->assertFalse(false);
+		$this->assertFalse(true);
 	}	
 
 	public function testChoice()
 	{
+		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translatedChoice);
+
+		$translation = $this->glottos->choice($this->choice, 10);
+
 		// choose
 		// choice
 		// transChoice
-		$this->assertFalse(false);
 	}
 
-	public function testGetDefaultLocale()
-	{
-		$this->assertFalse(false);
-	}
-	
+
 	public function testImport()
 	{
 		$this->dataRepository->shouldReceive('import')->once()->andReturn(true);

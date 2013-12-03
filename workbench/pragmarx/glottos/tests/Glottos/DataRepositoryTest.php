@@ -58,7 +58,7 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->record->id = 1;
 		$this->record->message = $this->message;
 
-		$this->translationRecord = new stdClass();          
+		$this->translationRecord = m::mock('PragmaRX\Glottos\Repositories\Messages\Message');
 		$this->translationRecord->id = 1;
 		$this->translationRecord->message = $this->translation;
 		$this->translationRecord->translation = $this->translation;
@@ -268,9 +268,9 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->modelTranslationMock->shouldReceive('with')->once()->andReturn($this->modelTranslationMock);
 		$this->modelTranslationMock->shouldReceive('where')->times(3)->andReturn($this->modelTranslationMock);
 		$this->modelTranslationMock->shouldReceive('first')->once()->andReturn($this->translationRecord);
-
-		$this->modelTranslationMock->shouldReceive('save')->once()->andReturn($this->translationRecord);
 		
+		$this->translationRecord->shouldReceive('save')->once()->andReturn($this->modelTranslationMock);
+
 		$this->dataRepository->updateOrCreateTranslation($this->message, $this->translation, $this->locale, $this->domain, $this->mode);
 	}	
 

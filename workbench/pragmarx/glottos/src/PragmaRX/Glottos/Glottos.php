@@ -225,7 +225,7 @@ class Glottos
     	return $this->messageSelector->choose($translation, (int) $number, $locale);
     }
 
-	private function makeLocale($locale = null)
+	public function makeLocale($locale = null)
 	{
 		if ($locale == null)
 		{
@@ -262,12 +262,12 @@ class Glottos
 
 	public function findTranslation(Sentence $translation, $locale)
 	{
-		return $this->dataRepository->findTranslation($translation, Locale::make($locale));
+		return $this->dataRepository->findTranslation($translation, $this->makeLocale($locale));
 	}
 
 	public function findTranslationById($message_id, $locale)
 	{
-		return $this->dataRepository->findTranslationById($message_id, Locale::make($locale));
+		return $this->dataRepository->findTranslationById($message_id, $this->makeLocale($locale));
 	}
 
 	public function findMessageById($message_id)
@@ -312,7 +312,7 @@ class Glottos
 	{
 		$domain = $domain ?: $this->domain;
 
-		$locale = Locale::make($locale, $this->locale);
+		$locale = $this->makeLocale($locale, $this->locale);
 
 		$translation = Sentence::makeTranslation($message, $translatedMessage, $domain, $this->mode);
 
@@ -333,7 +333,7 @@ class Glottos
 
 	public function localeIsAvailable($locale)
 	{
-		return $this->dataRepository->localeIsAvailable(Locale::make($locale));
+		return $this->dataRepository->localeIsAvailable($this->makeLocale($locale));
 	}
 
 	public function getAllLanguages()
@@ -363,12 +363,12 @@ class Glottos
 
 	public function getTranslations($localePrimary = null, $localeSecondary = null)
 	{
-		return $this->dataRepository->getTranslations(Locale::make($localePrimary), Locale::make($localeSecondary));
+		return $this->dataRepository->getTranslations($this->makeLocale($localePrimary), $this->makeLocale($localeSecondary));
 	}
 
 	public function findLocale($locale)
 	{
-		return $this->dataRepository->findLocale(Locale::make($locale));
+		return $this->dataRepository->findLocale($this->makeLocale($locale));
 	}	
 
 	public function updateOrCreateTranslation($message, $translatedMessage, $locale, $domain = null)
@@ -376,7 +376,7 @@ class Glottos
 		$this->dataRepository->updateOrCreateTranslation(
 															$message, 
 															$translatedMessage, 
-															Locale::make($locale), 
+															$this->makeLocale($locale), 
 															$domain ?: $this->getDomain(), 
 															$this->mode
 														);
@@ -384,7 +384,7 @@ class Glottos
 
 	public function findNextUntranslated($localePrimary, $localeSecondary)
 	{
-		return $this->dataRepository->findNextUntranslated(Locale::make($localePrimary), Locale::make($localeSecondary));
+		return $this->dataRepository->findNextUntranslated($this->makeLocale($localePrimary), $this->makeLocale($localeSecondary));
 	}	
 
 	public function getPrimaryLocale()
