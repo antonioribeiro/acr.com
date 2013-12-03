@@ -18,12 +18,11 @@
  * @link       http://pragmarx.com
  */
 
-use Symfony\Component\Finder\Finder;
-
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Filesystem;
+use PragmaRX\Glottos\Support\Finder;
 
 use PragmaRX\Glottos\Repositories\Messages\MessageInterface;
 use PragmaRX\Glottos\Repositories\Locales\LocaleRepositoryInterface;
@@ -41,7 +40,8 @@ class DataRepository implements DataRepositoryInterface {
 									MessageInterface $translation, 
 									LocaleRepositoryInterface $localeRepository, 
 									Config $config,
-									Filesystem $fileSystem
+									Filesystem $fileSystem,
+									Finder $finder
 								)
 	{
 		$this->message = $message;
@@ -53,6 +53,8 @@ class DataRepository implements DataRepositoryInterface {
 		$this->config = $config;
 
 		$this->fileSystem = $fileSystem;
+
+		$this->finder = $finder;
 	}
 
 	public function findMessage(Sentence $sentence)
@@ -175,6 +177,8 @@ class DataRepository implements DataRepositoryInterface {
 
 		$locales = $this->fileSystem->directories($path);
 
+
+
 		$imported = 0;
 
 		foreach($locales as $locale)
@@ -191,7 +195,7 @@ class DataRepository implements DataRepositoryInterface {
 
 		$locale = Locale::make($locale);
 
-		foreach(Finder::create()->files()->in($path.'/'.$locale->getText()) as $file)
+		foreach($this->finder->files()->in($path.'/'.$locale->getText()) as $file)
 		{
 			$values = $this->fileSystem->getRequire($file);
 
@@ -201,7 +205,7 @@ class DataRepository implements DataRepositoryInterface {
 			{
 				foreach($values as $key => $value)
 				{
-					if($this->addKey($group, $key, $value, $locale, $domain, $mode))
+					if($this->addKey($group, $key, $value, $domain, $locale, $mode))
 					{
 						$imported++;
 					}
@@ -214,6 +218,7 @@ class DataRepository implements DataRepositoryInterface {
 
 	public function addKey($group, $key, $value, $domain, $locale, $mode)
 	{
+
 		$translation = Sentence::makeTranslation(
 												"key::$group.$key",
 												$value,

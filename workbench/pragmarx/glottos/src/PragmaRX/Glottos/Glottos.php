@@ -63,7 +63,7 @@ class Glottos
 									Cache $cache,
 									Mode $mode,
 									FileSystem $fileSystem,
-									MessageSelector $messageSelector
+									MessageSelector $selector
 								)
 	{
 		$this->locale = $locale;
@@ -320,7 +320,7 @@ class Glottos
 
 		if(! $translation->translationFound)
 		{
-			return $this->dataRepository->addTranslation($translation, $domain, $locale);
+			return $this->dataRepository->addTranslation($translation, $locale);
 		}
 
 		return $translation;

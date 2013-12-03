@@ -37,7 +37,7 @@ class ConfigTest extends PHPUnit_Framework_TestCase {
 	public function testLoadedAndGet()
 	{
 		$this->assertEquals($this->config->get('default_language_id'), 'en');
-		$this->assertEquals($this->config->get('default_country_id'), 'us');
+		$this->assertEquals($this->config->get('default_country_id'), '');
 	}
 
 	public function testDefault()

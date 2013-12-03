@@ -123,7 +123,7 @@ class Sentence {
 
 	public function calculateHash()
 	{
-		return $this->hash = SHA1($this->getSentence().$this->getDomain());
+		return $this->hash = SHA1($this->getSentence() . $this->getDomain());
 	}
 
 	public function getDomain()

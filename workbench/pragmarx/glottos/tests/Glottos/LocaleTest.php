@@ -32,7 +32,7 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 	{
 		$this->assertEquals($this->locale->getLanguage(), 'en');
 
-		$this->assertEquals($this->locale->getCountry(), 'us');
+		$this->assertEquals($this->locale->getCountry(), 'US');
 	}
 
 	public function testLocaleGettersAndSetters()
@@ -43,7 +43,7 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($this->locale->getLanguage(), 'pt');
 		
-		$this->assertEquals($this->locale->getCountry(), 'br');
+		$this->assertEquals($this->locale->getCountry(), 'BR');
 	}
 
 	public function testLocaleConstructorSeparate()
@@ -52,7 +52,7 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($locale->getLanguage(), 'pt');
 		
-		$this->assertEquals($locale->getCountry(), 'br');
+		$this->assertEquals($locale->getCountry(), 'BR');
 	}
 
 	public function testLocaleConstructorTogheter()
@@ -61,7 +61,7 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($locale->getLanguage(), 'pt');
 		
-		$this->assertEquals($locale->getCountry(), 'br');
+		$this->assertEquals($locale->getCountry(), 'BR');
 	}
 
 	public function testLocaleConstructorOnlyLanguage()
@@ -75,7 +75,7 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 
 	public function testIs()
 	{
-		$locale = new Locale('pt-br');
+		$locale = new Locale('pt_BR');
 
 		$this->assertTrue($locale->is('pt+br'));
 
@@ -107,10 +107,13 @@ class LocaleTest extends PHPUnit_Framework_TestCase {
 		$this->assertNotEquals($locale5, $locale3);
 	}
 
-test -->>>>	    public function getText()
+    public function testGetText()
     {
-        return $this->getLanguage() . '-' . $this->getCountry();
+		$locale = Locale::make('', 'pt-br'); // fallback
+
+		$this->assertEquals($this->locale->getText(), 'en_US');
+
+		$this->assertEquals($locale->getText(), 'pt_BR');
     }
-    
 
 }

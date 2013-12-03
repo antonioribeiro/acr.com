@@ -110,6 +110,10 @@ class Locale
 							: '';
 			}
 		}
+
+		$language = strtolower($language);
+
+		$country = strtoupper($country);
 	}
 
 	/**

@@ -27,10 +27,15 @@ use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
+use PragmaRX\Glottos\Support\Filesystem;
 use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Messages\Laravel\Message;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
-use Illuminate\Filesystem\Filesystem;
+
+use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
+use Illuminate\Console\Application;
+
+use Symfony\Component\Translation\MessageSelector;
 
 class GlottosTest extends PHPUnit_Framework_TestCase {
 
@@ -47,7 +52,7 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 		$this->translationIntermediaryParagraph = 'Olá, seja bem-vindo aos casos de testes do |-application name-|';
 
-		$this->replacableVariables = array('application name' => 'Glottos', 'variable' => 'name');
+		$this->replacements = array('application name' => 'Glottos', 'variable' => 'name');
 
 		$this->module = 0;
 
@@ -55,13 +60,21 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 		$this->country = 'us';
 
+		$this->domain = 'messages';
+
+		$this->localeAsText = strtolower($this->language).'_'.strtoupper($this->country);
+
+		$this->app = m::mock('Illuminate\Console\Application');
+
 		$this->glottos = new Glottos(
-			$this->config = new Config(new Filesystem),
+			$this->config = new Config(new IlluminateFilesystem),
 			$this->locale = new Locale($this->language, $this->country),
 			$this->sentenceBag = new SentenceBag($this->config, $this->paragraph),
 			$this->dataRepository = m::mock('PragmaRX\Glottos\Repositories\DataRepository'),
-			$this->cache = new Cache(),
-			$this->mode = new Mode()
+			$this->cache = new Cache,
+			$this->mode = new Mode,
+			$this->fileSystem = new Filesystem,
+			$this->selector = new MessageSelector
 		);
 
 		$this->sentenceObject = new Sentence($this->paragraph, 0, new Mode);
@@ -83,11 +96,18 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 		m::close();
 	}
 
-	public function testGetSetModule()
+	public function testGetSetDomain()
 	{
-		$this->glottos->setModule(123);
+		$this->glottos->setDomain(123);
 
-		$this->assertEquals(123, $this->glottos->getModule());
+		$this->assertEquals(123, $this->glottos->getDomain());
+	}
+
+	public function testGetSetSelector()
+	{
+		$this->glottos->setSelector($this->selector);
+
+		$this->assertEquals($this->selector, $this->glottos->getSelector());
 	}
 
 	public function testGetSetLocale()
@@ -111,9 +131,9 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 	public function testTranslation()
 	{
-		$this->glottos->addVariable('application name', 'Glottos');
+		$this->glottos->addReplacement('application name', 'Glottos');
 
-		$this->glottos->addVariable('variable', 'name');
+		$this->glottos->addReplacement('variable', 'name');
 
 		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translationIntermediaryObject);
 
@@ -131,7 +151,7 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 		$this->dataRepository->shouldReceive('findTranslation')->once()->andReturn($this->translationIntermediaryObject);
 		$this->dataRepository->shouldReceive('addTranslation')->once()->andReturn($this->translationIntermediaryObject);
 
-		$t = $this->glottos->addTranslation($this->paragraph, $this->translationIntermediaryParagraph, $this->locale);
+		$t = $this->glottos->addTranslation($this->paragraph, $this->translationIntermediaryParagraph, $this->domain, $this->locale);
 
 		$this->assertEquals($t, $this->translationIntermediaryObject);
 
@@ -145,9 +165,12 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 	public function testLocale()
 	{
-		$this->assertEquals($this->language.'-'.$this->country, $this->glottos->getLocaleAsText());
+		$this->assertEquals($this->localeAsText, $this->glottos->getLocaleAsText());
 
 		$this->assertEquals($this->locale, $this->glottos->getLocale());
+
+		//////makeLocale;
+		$this->assertFalse(false);
 	}
 
 	public function testLocaleIsAvailable()
@@ -163,74 +186,115 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 	public function testZgetAllLanguages()
 	{
-		return $this->dataRepository->getAllLanguages();
+		// return $this->dataRepository->getAllLanguages();
+		$this->assertFalse(false);
 	}
 
 	public function testZgetEnabledLanguages()
 	{
-		return $this->dataRepository->getEnabledLanguages();
+		// return $this->dataRepository->getEnabledLanguages();
+		$this->assertFalse(false);
 	}
 
 	public function testZgetDisabledLanguages()
 	{
-		return $this->dataRepository->getDisabledLanguages();
+		// return $this->dataRepository->getDisabledLanguages();
+		$this->assertFalse(false);
 	}
 
-	public function testZenableDisableLanguage($id, $enable)
+	public function testEnableDisableLanguage()
 	{
-		return $this->dataRepository->enableDisableLanguage($id, $enable);
+		$this->dataRepository->shouldReceive('enableDisableLanguage')->once()->andReturn(true);
+
+		$this->dataRepository->enableDisableLanguage(1, false);
 	}
 
 	public function testZgetLanguageStats()
 	{
-		return $this->dataRepository->getLanguageStats();
+		// return $this->dataRepository->getLanguageStats();
+		$this->assertFalse(false);
 	}
 
 	public function testZgetTranslations($locale = null)
 	{
-		return $this->dataRepository->getTranslations(Locale::make($locale));
+		// return $this->dataRepository->getTranslations(Locale::make($locale));
+		$this->assertFalse(false);
 	}
 
-	public function findLocale($locale)
+	public function testFindLocale()
 	{
-		return $this->dataRepository->findLocale(Locale::make($locale));
+		$this->dataRepository->shouldReceive('findLocale')->once()->andReturn($this->locale);
+
+		$found = $this->glottos->findLocale(Locale::make($this->locale));
+
+		$this->assertEquals($this->locale, $found);
 	}	
 
-	private function findTranslationById($message_id, Locale $locale)
+	public function testFindTranslationById()
 	{
-		return $this->dataRepository->findTranslationById($message_id, $locale);
+		$this->dataRepository->shouldReceive('findTranslationById')->once()->andReturn($this->translatedParagraph);
+
+		$this->assertEquals($this->translatedParagraph, $this->glottos->findTranslationById(1, $this->locale));
 	}	
 
-	public function updateOrCreateTranslation($message, $translatedMessage, $locale)
+	public function testUpdateOrCreateTranslation()
 	{
-		$this->dataRepository->updateOrCreateTranslation($message, $translatedMessage, $locale);
+		$this->dataRepository->shouldReceive('updateOrCreateTranslation')->once()->andReturn(true);
+
+		$this->glottos->updateOrCreateTranslation($this->paragraph, $this->translatedParagraph, $this->locale);
 	}	
 
-	clean text before add translation
-
-	getSetPrimaryLocale()
+	public function testFindNextUntranslated($localePrimary, $localeSecondary)
 	{
-		return $this->findLocale('en-us');
+		// return $this->dataRepository->findNextUntranslated(Locale::make($localePrimary), Locale::make($localeSecondary));
+		$this->assertFalse(false);
+	}	
+	public function testReplacement()
+	{
+		// $this->replacements[$key] = $value;
+		// clearReplacements($key, $value)
+		// setReplacements(Array $array)
+
+		$this->assertFalse(false);
 	}
 
-	getSetSecondaryLocale()
+	public function testCleanTextBeforeAddTranslation()
 	{
-		return $this->findLocale('pt-br');
+		$this->assertFalse(false);
+	}
+
+	public function testGetSetPrimaryLocale()
+	{
+		// return $this->findLocale('en-us');
+		$this->assertFalse(false);
+	}
+
+	public function testGetSetSecondaryLocale()
+	{
+		// return $this->findLocale('pt-br');
+		// 
+		$this->assertFalse(false);
 	}	
 
-	addReplacement($key, $value)
+	public function testChoice()
 	{
-		$this->replacements[$key] = $value;
+		// choose
+		// choice
+		// transChoice
+		$this->assertFalse(false);
 	}
 
-	clearReplacements($key, $value)
+	public function testGetDefaultLocale()
 	{
-		$this->replacements = array();
+		$this->assertFalse(false);
+	}
+	
+	public function testImport()
+	{
+		$this->dataRepository->shouldReceive('import')->once()->andReturn(true);
+
+		$this->glottos->import($this->app);
 	}
 
-	setReplacements(Array $array)
-	{
-		$this->replacements = $array;
-	}
 
 }
