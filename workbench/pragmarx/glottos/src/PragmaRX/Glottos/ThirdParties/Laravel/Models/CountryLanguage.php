@@ -26,11 +26,21 @@ class CountryLanguage extends Eloquent {
 
 	protected $guarded = array();
 
+	/**
+	 * Language relationship
+	 * 
+	 * @return BelongsTo
+	 */
 	public function language()
 	{
 		return $this->belongsTo('PragmaRX\Glottos\ThirdParties\Laravel\Models\Language');
 	}
 
+	/**
+	 * Country relationship
+	 * 
+	 * @return BelongsTo
+	 */
 	public function country()
 	{
 		return $this->belongsTo('PragmaRX\Glottos\ThirdParties\Laravel\Models\Country');

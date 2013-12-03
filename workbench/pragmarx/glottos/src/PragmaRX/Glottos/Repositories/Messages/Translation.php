@@ -21,8 +21,15 @@
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Locale;
 
-class Translation extends MessageBase implements MessageInterface {
+class Translation extends MessageBase implements TranslationInterface {
 
+	/**
+	 * Find a translation in the database
+	 * 
+	 * @param  Sentence $sentence 
+	 * @param  Locale   $locale   
+	 * @return Sentence
+	 */
 	public function find(Sentence $sentence, Locale $locale)
 	{
 		$cacheKey = __CLASS__.__FUNCTION__.$sentence->getId().$locale->getLanguage().$locale->getCountry();
@@ -58,6 +65,13 @@ class Translation extends MessageBase implements MessageInterface {
 		return $sentence;
 	}
 
+	/**
+	 * Find, by id, a translation in the data source
+	 * 
+	 * @param  integer $message_id 
+	 * @param  Locale $locale     
+	 * @return object|null
+	 */
 	public function findById($message_id, Locale $locale)
 	{
 		return $this->model
@@ -68,6 +82,13 @@ class Translation extends MessageBase implements MessageInterface {
 						->first();
 	}
 
+	/**
+	 * Add a translation to data source
+	 * 
+	 * @param Sentence $translation 
+	 * @param Locale   $locale      
+	 * @return object
+	 */
 	public function add(Sentence $translation, Locale $locale)
 	{
 		$model = $this->model->create(array(
@@ -83,6 +104,13 @@ class Translation extends MessageBase implements MessageInterface {
 		return $model;
 	}
 
+	/**
+	 * Get all translation instances, for particular locales, from data source
+	 * 
+	 * @param  Locale $localePrimary   
+	 * @param  Locale $localeSecondary 
+	 * @return object|null
+	 */
 	public function getAll(Locale $localePrimary = null, Locale $localeSecondary = null) // Locale $primary, Locale $secondary
 	{
 		$db = $this->model->getConnection();
@@ -116,6 +144,16 @@ class Translation extends MessageBase implements MessageInterface {
 		return $rows->get();
 	}
 
+	/**
+	 * Update or create a translation in the data source
+	 * 
+	 * @param  string $message           
+	 * @param  string $translatedMessage 
+	 * @param  string $domain            
+	 * @param  Locale $locale            
+	 * @param  string $mode              
+	 * @return object
+	 */
 	public function updateOrCreate($message, $translatedMessage, $domain, Locale $locale, $mode)
 	{
 		$model = $this->findById($message, $locale);
@@ -140,6 +178,13 @@ class Translation extends MessageBase implements MessageInterface {
 		return $model;		
 	}
 
+	/**
+	 * Find the next untranslated message based on locales
+	 * 
+	 * @param  Locale $localePrimary   
+	 * @param  Locale $localeSecondary 
+	 * @return object|null
+	 */
 	public function findNextUntranslated(Locale $localePrimary = null, Locale $localeSecondary = null)
 	{
 		$db = $this->model->getConnection();

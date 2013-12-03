@@ -20,6 +20,15 @@
 
 class SentenceParser {
 
+	/**
+	 * Parse a sentence 
+	 * 
+	 * @param  string $sentence 
+	 * @param  string $prefix   
+	 * @param  string $suffix   
+	 * @param  string $config   
+	 * @return string           
+	 */
 	public static function parse(&$sentence, &$prefix, &$suffix, $config = null)
 	{
 		$prefix = '';

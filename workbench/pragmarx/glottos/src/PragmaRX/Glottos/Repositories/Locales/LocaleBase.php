@@ -22,6 +22,12 @@ use PragmaRX\Glottos\Repositories\Cache\Cache;
 
 abstract class LocaleBase {
 
+	/**
+	 * Create Locale instance
+	 * 
+	 * @param object $model 
+	 * @param Cache  $cache driver
+	 */
 	public function __construct($model, Cache $cache)
 	{
 		$this->model = $model;

@@ -20,6 +20,12 @@
 
 interface LanguageInterface {
 	
+	/**
+	 * Find a language in dataset
+	 * 
+	 * @param  string $language 
+	 * @return object|null
+	 */
 	public function find($language);
 
 }

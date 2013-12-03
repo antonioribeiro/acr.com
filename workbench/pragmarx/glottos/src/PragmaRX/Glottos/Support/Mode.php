@@ -22,19 +22,33 @@ class Mode {
 
 	protected $mode;
 
+    /**
+     * Create an instance of Mode
+     * 
+     * @param string
+     */
 	public function __construct($mode = null)
 	{
 		$this->mode = $mode;
 	}
 
+    /**
+     * Mode getter
+     * 
+     * @return string
+     */
     public function get()
     {
         return $this->mode;
     }
 
+    /**
+     * Mode setter
+     * @param string
+     */
     public function set($value)
     {
-        return $this->mode = $value;
+        $this->mode = $value;
     }
 
 }

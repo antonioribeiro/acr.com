@@ -22,6 +22,12 @@ use PragmaRX\Glottos\Repositories\Cache\Cache;
 
 abstract class MessageBase {
 
+	/**
+	 * Create an instance of Message
+	 * 
+	 * @param object $model 
+	 * @param Cache  $cache 
+	 */
 	public function __construct($model, Cache $cache)
 	{
 		$this->model = $model;

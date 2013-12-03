@@ -22,20 +22,20 @@
 use Mockery as m;
 
 use PragmaRX\Glottos\Glottos;
+
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
 use PragmaRX\Glottos\Support\Filesystem;
+use PragmaRX\Glottos\Support\MessageSelector;
+
 use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Messages\Laravel\Message;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 
-use Illuminate\Filesystem\Filesystem as IlluminateFilesystem;
 use Illuminate\Console\Application;
-
-use Symfony\Component\Translation\MessageSelector;
 
 class GlottosTest extends PHPUnit_Framework_TestCase {
 
@@ -66,7 +66,7 @@ class GlottosTest extends PHPUnit_Framework_TestCase {
 
 		$this->replacements = array('application name' => 'Glottos', 'variable' => 'name');
 
-		$this->config = new Config(new IlluminateFilesystem);
+		$this->config = new Config(new Filesystem);
 
 		$this->mode = new Mode;
 

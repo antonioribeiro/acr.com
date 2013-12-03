@@ -78,6 +78,12 @@ class SentenceBag implements Countable {
 		}
 	}
 
+	/**
+	 * Remove prefix, suffix and explode a paragraph in to sentences
+	 * 
+	 * @param  string $paragraph 
+	 * @return array
+	 */
 	private function explodeParagraph($paragraph)
 	{
 		$paragraph = $this->parseRemovePrefixAndSuffix($paragraph);
@@ -85,6 +91,12 @@ class SentenceBag implements Countable {
 		return explode($this->delimiter, $paragraph);
 	}
 
+	/**
+	 * Parse paragraph to remove and keep prefix and suffix
+	 * 
+	 * @param  string $paragraph 
+	 * @return string
+	 */
 	private function parseRemovePrefixAndSuffix($paragraph)
 	{
 		SentenceParser::parse($paragraph, $this->prefix, $this->suffix, $this->config);

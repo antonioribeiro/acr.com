@@ -20,6 +20,11 @@
 
 interface CountryInterface {
 	
+	/**
+	 * Find a country in the datasource
+	 * 
+	 * @param  string $country 
+	 */
 	public function find($country);
 
 }

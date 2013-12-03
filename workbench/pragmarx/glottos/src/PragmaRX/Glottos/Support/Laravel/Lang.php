@@ -24,6 +24,11 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class Lang implements TranslatorInterface {
 
+    /**
+     * Create a lang instance
+     *     
+     * @param Glottos $glottos
+     */
 	public function __construct(Glottos $glottos)
 	{
 		$this->glottos = $glottos;
@@ -129,14 +134,6 @@ class Lang implements TranslatorInterface {
         return true;
     }
 
-    /**
-     * Sets the current locale.
-     *
-     * @param string $locale The locale
-     *
-     * @api
-     */
-    
     /**
      * Add a new namespace to the loader.
      *

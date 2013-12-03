@@ -18,14 +18,13 @@
  * @link       http://pragmarx.com
  */
 
-use Symfony\Component\Translation\MessageSelector;
-
 use PragmaRX\Glottos\Support\Locale;
 use PragmaRX\Glottos\Support\SentenceBag;
 use PragmaRX\Glottos\Support\Sentence;
 use PragmaRX\Glottos\Support\Config;
 use PragmaRX\Glottos\Support\Mode;
 use PragmaRX\Glottos\Support\FileSystem;
+use PragmaRX\Glottos\Support\MessageSelector;
 
 use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
@@ -105,21 +104,41 @@ class Glottos
 		return $this->domain;
 	}
 
+	/**
+	 * Selector setter
+	 * 
+	 * @param MessageSelector $selector 
+	 */
 	public function setSelector(MessageSelector $selector)
 	{
 		$this->selector = $selector;
 	}
 
+	/**
+	 * Seletor getter
+	 * 
+	 * @return MessageSelector
+	 */
 	public function getSelector()
 	{
 		return $this->selector;
 	}
 
+	/**
+	 * Mode setter
+	 * 
+	 * @param string $mode
+	 */
 	public function setMode($mode)
 	{
 		$this->mode = $mode;
 	}
 
+	/**
+	 * Mode getter
+	 * 
+	 * @return string
+	 */
 	public function getMode()
 	{
 		return $this->mode;
@@ -156,25 +175,47 @@ class Glottos
 		$this->locale->setCountry($country);
 	}
 
+	/**
+	 * Add a replacement to the list
+	 * 
+	 * @param string $key   
+	 * @param string $value
+	 */
 	public function addReplacement($key, $value)
 	{
 		$this->replacements[$key] = $value;
 	}
 
+	/**
+	 * Clear the list of replacements
+	 * 
+	 * @return void
+	 */
 	public function clearReplacements()
 	{
 		$this->replacements = array();
 	}
 
+	/**
+	 * Replacements setter
+	 * 
+	 * @param array $array 
+	 */
 	public function setReplacements(array $array)
 	{
 		$this->replacements = $array;
 	}
 
+	/**
+	 * Replacements getter
+	 * 
+	 * @return array
+	 */
 	public function getReplacements()
 	{
 		return $this->replacements;
 	}
+
 	/**
 	 * Locale getter
 	 * 
@@ -217,6 +258,15 @@ class Glottos
 									);
 	}
 
+	/** 
+	 * Translate a sentence and choose between singular or plural
+	 * @param  string $id        
+	 * @param  string $number    
+	 * @param  array  $parameters
+	 * @param  string $domain    
+	 * @param  string $locale    
+	 * @return string            
+	 */
     public function choice($id, $number, $parameters = array(), $domain = null, $locale = null)
     {
     	$locale = $this->makeLocale($locale);
@@ -226,11 +276,25 @@ class Glottos
     	return $this->choose($translation, $number, $locale);
     }
 
+    /**
+     * Choose between singlular or plural
+     * 
+     * @param  string $translation
+     * @param  string $number    
+     * @param  string $locale    
+     * @return string            
+     */
     public function choose($translation, $number, $locale)
     {
-    	return $this->selector->choose($translation, (int) $number, $locale->getText());
+    	return $this->selector->choose($translation, (int) $number, $locale);
     }
 
+    /**
+     * Create a Locale instance
+     * 
+     * @param  mixed $locale 
+     * @return Locale
+     */
 	public function makeLocale($locale = null)
 	{
 		if ($locale == null)
@@ -266,16 +330,36 @@ class Glottos
 		return $this->paragraph->getTranslatedParagraph();
 	}
 
+	/**
+	 * Find a translation
+	 * 
+	 * @param  Sentence $translation
+	 * @param  string   $locale     
+	 * @return object|null
+	 */
 	public function findTranslation(Sentence $translation, $locale)
 	{
 		return $this->dataRepository->findTranslation($translation, $this->makeLocale($locale));
 	}
 
+	/**
+	 * Find a translation by id
+	 * 
+	 * @param  integer $message_id
+	 * @param  string   $locale     
+	 * @return object|null
+	 */
 	public function findTranslationById($message_id, $locale)
 	{
 		return $this->dataRepository->findTranslationById($message_id, $this->makeLocale($locale));
 	}
 
+	/**
+	 * Find a message by id
+	 * 
+	 * @param  integer $message_id
+	 * @return object|null
+	 */	
 	public function findMessageById($message_id)
 	{
 		return $this->dataRepository->findMessageById($message_id);
@@ -314,6 +398,14 @@ class Glottos
 						);
 	}
 
+	/**
+	 * Add a translation
+	 * 
+	 * @param string $message          
+	 * @param string $translatedMessage
+	 * @param string $domain           
+	 * @param string $locale           
+	 */
 	public function addTranslation($message, $translatedMessage, $domain = null, $locale = null)
 	{
 		$domain = $domain ?: $this->domain;
@@ -332,51 +424,110 @@ class Glottos
 		return $translation;
 	}
 
+	/**
+	 * Get the default locale
+	 * 
+	 * @return string
+	 */
 	public function getDefaultLocale()
 	{
 		return $this->dataRepository->getDefaultLocale();
 	}
 
+	/**
+	 * Check if a locale is enabled
+	 * 
+	 * @param  mixed $locale 
+	 * @return bool
+	 */
 	public function localeIsAvailable($locale)
 	{
 		return $this->dataRepository->localeIsAvailable($this->makeLocale($locale));
 	}
 
+	/**
+	 * Get all languages
+	 * 
+	 * @return object|null
+	 */
 	public function getAllLanguages()
 	{
 		return $this->dataRepository->getAllLanguages();
 	}
 
+	/**
+	 * Get all enabled languages
+	 * 
+	 * @return object|null
+	 */
 	public function getEnabledLanguages()
 	{
 		return $this->dataRepository->getEnabledLanguages();
 	}
 
+	/**
+	 * Get all disabled languages
+	 * 
+	 * @return object|null
+	 */
 	public function getDisabledLanguages()
 	{
 		return $this->dataRepository->getDisabledLanguages();
 	}
 
+	/**
+	 * Enable or disable a language
+	 * 
+	 * @param  integer $id     
+	 * @param  bool $enable 
+	 * @return bool
+	 */
 	public function enableDisableLanguage($id, $enable)
 	{
 		return $this->dataRepository->enableDisableLanguage($id, $enable);
 	}
 
+	/**
+	 * Get language stats
+	 * 
+	 * @return object|null
+	 */
 	public function getLanguageStats()
 	{
 		return $this->dataRepository->getLanguageStats();
 	}
 
+	/**
+	 * Given locales, get translations for them
+	 * 
+	 * @param  mixed $localePrimary  
+	 * @param  mixed $localeSecondary
+	 * @return object|null                 
+	 */
 	public function getTranslations($localePrimary = null, $localeSecondary = null)
 	{
 		return $this->dataRepository->getTranslations($this->makeLocale($localePrimary), $this->makeLocale($localeSecondary));
 	}
 
+	/**
+	 * Find a CountryLanguage locale
+	 * 
+	 * @param  mixed $locale
+	 * @return object|null
+	 */
 	public function findLocale($locale)
 	{
 		return $this->dataRepository->findLocale($this->makeLocale($locale));
 	}	
 
+	/**
+	 * Update or create a translation
+	 * @param  string $message          
+	 * @param  string $translatedMessage
+	 * @param  string $locale           
+	 * @param  string $domain           
+	 * @return void                   
+	 */
 	public function updateOrCreateTranslation($message, $translatedMessage, $locale, $domain = null)
 	{
 		$this->dataRepository->updateOrCreateTranslation(
@@ -388,11 +539,23 @@ class Glottos
 														);
 	}
 
+	/**
+	 * Find next untranslated message
+	 * 
+	 * @param  mixed $localePrimary   
+	 * @param  mixed $localeSecondary 
+	 * @return object|null
+	 */
 	public function findNextUntranslated($localePrimary, $localeSecondary)
 	{
 		return $this->dataRepository->findNextUntranslated($this->makeLocale($localePrimary), $this->makeLocale($localeSecondary));
 	}	
 
+	/**
+	 * Get primary configured locale
+	 * 
+	 * @return Locale
+	 */
 	public function getPrimaryLocale()
 	{
 		if( ! $this->primaryLocale)
@@ -403,6 +566,11 @@ class Glottos
 		return $this->primaryLocale;
 	}
 
+	/**
+	 * Get secondary configured locale
+	 * 
+	 * @return Locale
+	 */
 	public function getSecondaryLocale()
 	{
 		if( ! $this->secondaryLocale)
@@ -413,16 +581,32 @@ class Glottos
 		return $this->secondaryLocale;
 	}
 
+	/**
+	 * Primary locale setter
+	 * 	
+	 * @param mixed
+	 */
 	public function setPrimaryLocale($locale)
 	{
-		return $this->primaryLocale = $locale;
+		$this->primaryLocale = $locale;
 	}
 
+	/**
+	 * Secondary locale setter
+	 * 
+	 * @param mixed $locale
+	 */
 	public function setSecondaryLocale($locale)
 	{
 		return $this->secondaryLocale = $locale;
 	}
 
+	/** 
+	 * Import Laravel lang messages
+	 * @param  object $app  
+	 * @param  string $path 
+	 * @return int
+	 */
 	public function import($app, $path = null)
 	{
 		return $this->dataRepository->import($app, $path, $this->getDomain(), $this->getMode());

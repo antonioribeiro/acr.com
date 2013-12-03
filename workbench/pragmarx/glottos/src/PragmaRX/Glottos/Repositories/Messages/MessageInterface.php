@@ -18,6 +18,32 @@
  * @link       http://pragmarx.com
  */
 
+use PragmaRX\Glottos\Support\Sentence;
+
 interface MessageInterface {
+
+	/**
+	 * Find a Sentence in the data source
+	 * 
+	 * @param  Sentence $sentence 
+	 * @return object|null
+	 */
+	public function find(Sentence $sentence);
+
+	/**
+	 * Find, by id, a Sentence in the data source
+	 * 
+	 * @param  integer $message_id 
+	 * @return object|null
+	 */
+	public function findById($id);
+
+	/**
+	 * Find, by text, a Sentence in the data source
+	 * 
+	 * @param  string $message 
+	 * @return object|null
+	 */
+	public function findByText($message);
 	
 }

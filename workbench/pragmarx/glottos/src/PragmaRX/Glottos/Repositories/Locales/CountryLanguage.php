@@ -22,6 +22,12 @@ use PragmaRX\Glottos\Support\Locale;
 
 class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 
+	/**
+	 * Find a CountryLanguage in the datasource
+	 * 
+	 * @param  Locale $locale 
+	 * @return object|null
+	 */
 	public function find(Locale $locale)
 	{
 		$cacheKey = __CLASS__.__FUNCTION__.$locale->getLanguage().$locale->getCountry();
@@ -45,6 +51,12 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 		return $model;
 	}
 
+	/**
+	 * Find, by id, a CountryLanguage in the datasource
+	 * 
+	 * @param  integer $id 
+	 * @return object|null
+	 */
 	public function findById($id)
 	{
 		$cacheKey = __CLASS__.__FUNCTION__.'id'.$id;
@@ -63,6 +75,15 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 		return $model;
 	}
 	
+	/**
+	 * Get all instances of CountryLanguages
+	 * 	allows developer to use a single filter
+	 * 
+	 * @param  string $column  
+	 * @param  string $operand 
+	 * @param  string $value   
+	 * @return object|null
+	 */
 	public function all($column = null, $operand = null, $value = null)
 	{
 		// $this->model->getConnection()->listen(function($sql, $bindings, $time) { var_dump($sql); var_dump($bindings); die; });
@@ -89,15 +110,32 @@ class CountryLanguage extends LocaleBase implements CountryLanguageInterface {
 		return $rows->get();
 	}
 
+	/**
+	 * Enable or disable a particular CountryLanguage
+	 * 
+	 * @param  integer $id     
+	 * @param  boolean $enable 
+	 * @return bool
+	 */
 	public function enableDisableLanguage($id, $enable)
 	{
-		$language = $this->findById($id);
+		if($language = $this->findById($id))
+		{
+			$language->enabled = $enable;
 
-		$language->enabled = $enable;
+			$language->save();
 
-		$language->save();
+			return true;
+		}
+
+		return false;
 	}
 
+	/**
+	 * Get a result set of CountryLanguages statistics
+	 * 
+	 * @return object
+	 */
 	public function getStats()
 	{
 		// this thing belongs to the data repository, but we would have to 

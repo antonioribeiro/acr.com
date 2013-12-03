@@ -20,6 +20,12 @@
 
 class Country extends LocaleBase implements CountryInterface {
 
+	/**
+	 * Find a country in the datasource
+	 * 
+	 * @param  string $country 
+	 * @return mixed
+	 */
 	public function find($country)
 	{
 		$cacheKey = __CLASS__.__FUNCTION__.$country;

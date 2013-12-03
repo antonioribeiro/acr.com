@@ -101,16 +101,31 @@ class Sentence {
 		$this->generateDomain($domain);
 	}
 
+	/**
+	 * Id getter
+	 * 
+	 * @return int
+	 */
 	public function getId()
 	{
 		return $this->id;
 	}
 
+	/**
+	 * Id setter
+	 * 
+	 * @param int $id 
+	 */
 	public function setId($id)
 	{
 		$this->id = $id;
 	}
 
+	/**
+	 * Get the current sentence hash
+	 * 
+	 * @return string
+	 */
 	public function getHash()
 	{
 		if ( ! $this->hash)
@@ -121,16 +136,32 @@ class Sentence {
 		return $this->hash;
 	}
 
+	/**
+	 * Calculate the current sentence hash
+	 * 
+	 * @return string
+	 */
 	public function calculateHash()
 	{
 		return $this->hash = SHA1($this->getSentence() . $this->getDomain());
 	}
 
+	/**
+	 * Sentence domain getter
+	 * 
+	 * @return string
+	 */
 	public function getDomain()
 	{
 		return $this->domain;
 	}
 
+	/**
+	 * Sentence domain generator
+	 * 
+	 * @param  string $domain 
+	 * @return string         
+	 */
 	public function generateDomain($domain)
 	{
 		if($domain)
@@ -148,6 +179,11 @@ class Sentence {
 		}
 	}
 
+	/**
+	 * Sentence domain setter
+	 * 
+	 * @param string $domain
+	 */
 	public function setDomain($domain)
 	{
 		if ($this->domain !== $domain) 
@@ -158,16 +194,32 @@ class Sentence {
 		}
 	}
 
+	/**
+	 * Get the sentence with prefix and suffix
+	 * 
+	 * @return string
+	 */
 	public function getFullSentence()
 	{
 		return $this->getProperty('sentence', true);
 	}
 
+	/**
+	 * Get the sentence
+	 * 
+	 * @param  boolean $full 
+	 * @return string
+	 */
 	public function getSentence($full = false)
 	{
 		return $this->getProperty('sentence', $full);
 	}
 
+	/**
+	 * Sentence setter
+	 * 
+	 * @param string $sentence
+	 */
 	public function setSentence($sentence)
 	{
 		preg_match("/^(natural|key)::(.*)/", $sentence, $matches);
@@ -185,41 +237,91 @@ class Sentence {
 		$this->calculateHash();
 	}
 
+	/**
+	 * Get the translation text with prefix and suffix
+	 * 
+	 * @return string
+	 */
 	public function getFullTranslation()
 	{
 		return $this->getProperty('translation', true);
 	}
 
+	/**
+	 * Get the translation text
+	 * 
+	 * @param  boolean $full 
+	 * @return string
+	 */
 	public function getTranslation($full = false)
 	{
 		return $this->getProperty('translation', $full);
 	}
 
+	/**
+	 * Translation setter
+	 * 
+	 * @param string $translation
+	 */
 	public function setTranslation($translation)
 	{
 		$this->translation = $translation;
 	}
 
+	/**
+	 * Mode getter
+	 * 
+	 * @return string
+	 */
 	public function getMode()
 	{
 		return $this->mode->get();
 	}
 
+	/**
+	 * Mode setter
+	 * 
+	 * @param string $mode
+	 */
 	public function setMode($mode)
 	{
 		$this->mode->set($mode);
 	}
 
+	/**
+	 * Get object property
+	 * 
+	 * @param  string $property 
+	 * @param  bool $full     
+	 * @return string
+	 */
 	public function getProperty($property, $full)
 	{
 		return ($full ? $this->prefix : '') . $this->$property . ($full ? $this->suffix : '');
 	}
 
+	/**
+	 * Make a Sentence object
+	 * 
+	 * @param  string $message 
+	 * @param  string $domain  
+	 * @param  string $mode    
+	 * @return Sentence
+	 */
 	public static function make($message, $domain, $mode)
 	{
 		return new Sentence($message, $domain, $mode);
 	}
 
+	/**
+	 * Make a translation Sentence object
+	 * 
+	 * @param  string $message    
+	 * @param  string $translation
+	 * @param  string $domain     
+	 * @param  string $mode       
+	 * @return string             
+	 */
 	public static function makeTranslation($message, $translation, $domain, $mode)
 	{
 		$sentence = new Sentence($message, $domain, $mode);

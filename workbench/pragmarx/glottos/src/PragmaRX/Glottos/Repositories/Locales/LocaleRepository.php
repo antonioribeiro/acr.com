@@ -28,6 +28,13 @@ class LocaleRepository implements LocaleRepositoryInterface {
 
 	private $countryLanguage;
 
+	/**
+	 * Create a Locale repository instance
+	 * 
+	 * @param Language        $language        
+	 * @param Country         $country         
+	 * @param CountryLanguage $countryLanguage 
+	 */
 	public function __construct(Language $language, Country $country, CountryLanguage $countryLanguage)
 	{
 		$this->language = $language;
@@ -37,16 +44,34 @@ class LocaleRepository implements LocaleRepositoryInterface {
 		$this->countryLanguage = $countryLanguage;
 	}
 
+	/**
+	 * Find a CountryLanguage in the dataset
+	 * 	
+	 * @param  Locale $locale
+	 * @return object|null
+	 */
 	public function find(Locale $locale)
 	{
-		 return $this->addLocale( $this->countryLanguage->find($locale) );
+		 return $this->addLocaleObject( $this->countryLanguage->find($locale) );
 	}
 
-	public function findById($countryLanguage)
+	/**
+	 * Find, by id, a CountryLanguage in the dataset 
+	 * 
+	 * @param  integer $countryLanguage 
+	 * @return object|null
+	 */
+	public function findById($id)
 	{
-		 return $this->addLocale( $this->countryLanguage->findById($countryLanguage) );
+		 return $this->addLocaleObject( $this->countryLanguage->findById($id) );
 	}
 
+	/**
+	 * Check if a particular CountryLanguage is enabled
+	 * 
+	 * @param  Locale $locale 
+	 * @return bool
+	 */
 	public function localeIsAvailable(Locale $locale)
 	{
 		$countryLanguage = $this->find($locale);
@@ -56,22 +81,48 @@ class LocaleRepository implements LocaleRepositoryInterface {
 			   : $countryLanguage->enabled;
 	}
 
+	/**
+	 * Get all CountryLanguages instances
+	 * 	accepts a single column filter
+	 * 	
+	 * @param  string $column  
+	 * @param  string $operand 
+	 * @param  string $value   
+	 * @return object|null
+	 */
 	public function getLanguages($column = null, $operand = null, $value = null)
 	{
 		return $this->countryLanguage->all($column, $operand, $value);
 	}
 
+	/**
+	 * Enable or disable a CountryLanguage
+	 * 
+	 * @param  integer $id     
+	 * @param  boolean $enable 
+	 * @return bool
+	 */
 	public function enableDisableLanguage($id, $enable)
 	{
 		return $this->countryLanguage->enableDisableLanguage($id, $enable);
 	}
 
+	/**
+	 * Get a result set of country and language statistics
+	 * 
+	 * @return object|null
+	 */
 	public function getLanguageStats()
 	{
 		return $this->countryLanguage->getStats();
 	}
 
-	public function addLocale( $locale )
+	/**
+	 * Create an add a Locale instance into a CountryLanguage object
+	 * 
+	 * @param object $locale 
+	 */
+	private function addLocaleObject( $locale )
 	{
 		if ( ! is_null($locale))
 		{

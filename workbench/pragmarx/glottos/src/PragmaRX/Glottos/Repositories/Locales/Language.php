@@ -20,6 +20,12 @@
 
 class Language extends LocaleBase implements LanguageInterface {
 
+	/**
+	 * Find a language in dataset
+	 * 
+	 * @param  string $language 
+	 * @return object|null
+	 */
 	public function find($language)
 	{
 		$cacheKey = __CLASS__.__FUNCTION__.$language;

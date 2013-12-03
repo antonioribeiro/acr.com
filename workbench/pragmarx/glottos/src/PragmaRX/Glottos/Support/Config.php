@@ -18,7 +18,7 @@
  * @link       http://pragmarx.com
  */
 
-use Illuminate\Filesystem\Filesystem;
+use PragmaRX\Glottos\Support\Filesystem;
 
 class Config {
 
@@ -26,6 +26,12 @@ class Config {
 
 	protected $isAppConfig = false;
 
+	/**
+	 * Create a new configuration repository
+	 * 
+	 * @param Filesystem $files 
+	 * @param void
+	 */
 	public function __construct(Filesystem $files, $app = null)
 	{
 		$this->app = $app;
@@ -35,6 +41,12 @@ class Config {
 		$this->loadConfig();
 	}
 
+	/**
+	 * Get the specified configuration value
+	 * @param  string $key     
+	 * @param  string $default value
+	 * @return string
+	 */
 	public function get($key, $default = null)
 	{
 		if($this->isAppConfig)
@@ -50,6 +62,11 @@ class Config {
 		return $this->config[$key];
 	}
 
+	/**
+	 * Load the configuration group
+	 * 
+	 * @return void
+	 */
 	public function loadConfig()
 	{
 		if (isset($this->app) && $this->app['config'])

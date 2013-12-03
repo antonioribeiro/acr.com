@@ -60,7 +60,7 @@ class Locale
 	}
 
 	/**
-	 * Language setter
+	 * Locale setter
 	 * 
 	 * @param string $language
 	 */
@@ -71,6 +71,13 @@ class Locale
 		$this->absorb($language, $country);
 	}
 
+	/**
+	 * Set the given language and country to current ones
+	 * 
+	 * @param  string $language 
+	 * @param  string $country  
+	 * @return void
+	 */
 	public function absorb($language, $country)
 	{
 		$this->setLanguage($language);
@@ -78,6 +85,13 @@ class Locale
 		$this->setCountry($country);
 	}
 
+	/**
+	 * Parse a locale string to language and country separately
+	 * 
+	 * @param  string &$language 
+	 * @param  string &$country  
+	 * @return void
+	 */
 	private function parseLocale(&$language, &$country)
 	{
 		if ($language instanceof Locale)
@@ -141,6 +155,13 @@ class Locale
 		$this->country = strtoupper($country);
 	}
 
+	/**
+	 * Check if give language is the same as the current locale
+	 * 
+	 * @param  mixed  $language 
+	 * @param  mixed  $country  
+	 * @return bool
+	 */
 	public function is($language, $country = null)
 	{
 		$this->parseLocale($language, $country);
@@ -149,11 +170,23 @@ class Locale
 		       && $this->getCountry() == $country;
 	}
 
+	/**
+	 * Get locale as text
+	 * 
+	 * @return string
+	 */
 	public function getText()
 	{
 		return $this->getLanguage() . ($this->getCountry() ? '_' . $this->getCountry() : '');
 	}
 
+	/**
+	 * Make a locale from string or object
+	 * 
+	 * @param  mixed $locale   
+	 * @param  mixed $fallback 
+	 * @return Locale
+	 */
 	public static function make($locale, $fallback = null)
 	{
 		if (empty($locale) && ! is_null($fallback))

@@ -22,6 +22,12 @@ use PragmaRX\Glottos\Support\Sentence;
 
 class Message extends MessageBase implements MessageInterface {
 
+	/**
+	 * Find a Sentence in the data source
+	 * 
+	 * @param  Sentence $sentence 
+	 * @return object|null
+	 */
 	public function find(Sentence $sentence)
 	{
 		$cacheKey = __CLASS__.__FUNCTION__.$sentence->getHash();
@@ -50,11 +56,23 @@ class Message extends MessageBase implements MessageInterface {
 		return $sentence;
 	}
 
-	public function findById($message_id)
+	/**
+	 * Find, by id, a Sentence in the data source
+	 * 
+	 * @param  integer $message_id 
+	 * @return object|null
+	 */
+	public function findById($id)
 	{
-		return $this->model->find($message_id);
+		return $this->model->find($id);
 	}
 
+	/**
+	 * Find, by text, a Sentence in the data source
+	 * 
+	 * @param  string $message 
+	 * @return object|null
+	 */
 	public function findByText($message)
 	{
 		return $this->message->findByText($message);

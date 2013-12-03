@@ -22,6 +22,11 @@ class Cache implements CacheInterface {
 	
 	private $memory = array();
 
+	/**
+	 * Get the cache value
+	 * @param  string $key 
+	 * @return mixed
+	 */
 	public function get($key)
 	{
 		return isset($this->memory[$key]) 
@@ -29,36 +34,74 @@ class Cache implements CacheInterface {
 		             : null;
 	}
 
+	/**
+	 * Insert or replace a value for a given key
+	 * 
+	 * @param  string  $key     
+	 * @param  mixed  $value   
+	 * @param  integer $minutes 
+	 * @return mixed
+	 */
 	public function put($key, $value, $minutes = 0)
 	{
 		return $this->memory[$key] = serialize($value);
 	}
 
+	/**
+	 * Increment is not supported
+	 */
 	public function increment($key, $value = 1)
 	{
 		throw new \Exception("Increment operations not supported by this driver.");	
 	}
 
+	/**
+	 * Decrement is not supported
+	 */
 	public function decrement($key, $value = 1)
 	{
 		throw new \Exception("Decrement operations not supported by this driver.");	
 	}
 
+	/**
+	 * Insert or replace a value for a key and remember is forever
+	 * 
+	 * @param  string $key   
+	 * @param  mixed $value 
+	 * @return void
+	 */
 	public function forever($key, $value)
 	{
 		$this->put($key, $value);
 	}
 
+	/**
+	 * Forget a key
+	 * 
+	 * @param  string $key 
+	 * @return void
+	 */
 	public function forget($key)
 	{
 		unset($this->memory[$key]);
 	}
 
+	/**
+	 * Erase the whole cache
+	 * 
+	 * @return void
+	 */
 	public function flush()
 	{
 		$this->memory = array();
 	}
 
+	/**
+	 * Get the cache Prefix, 
+	 *   returns an empty string for backward compatility with Interface
+	 * 
+	 * @return string
+	 */
 	public function getPrefix()
 	{
 		return '';

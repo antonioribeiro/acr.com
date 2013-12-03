@@ -20,7 +20,7 @@
  */
 
 use PragmaRX\Glottos\Support\Config;
-use Illuminate\Filesystem\Filesystem;
+use PragmaRX\Glottos\Support\Filesystem;
 
 class ConfigTest extends PHPUnit_Framework_TestCase {
 
