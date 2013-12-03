@@ -274,4 +274,9 @@ class DataRepositoryTest extends PHPUnit_Framework_TestCase {
 		$this->dataRepository->updateOrCreateTranslation($this->message, $this->translation, $this->locale, $this->domain, $this->mode);
 	}	
 
+	public function testFindNextUntranslated()
+	{
+		// TODO
+	}
+
 }

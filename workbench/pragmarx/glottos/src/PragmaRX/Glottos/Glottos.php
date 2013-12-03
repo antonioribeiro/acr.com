@@ -161,16 +161,20 @@ class Glottos
 		$this->replacements[$key] = $value;
 	}
 
-	public function clearReplacements($key, $value)
+	public function clearReplacements()
 	{
 		$this->replacements = array();
 	}
 
-	public function setReplacements(Array $array)
+	public function setReplacements(array $array)
 	{
 		$this->replacements = $array;
 	}
 
+	public function getReplacements()
+	{
+		return $this->replacements;
+	}
 	/**
 	 * Locale getter
 	 * 
@@ -215,6 +219,8 @@ class Glottos
 
     public function choice($id, $number, $parameters = array(), $domain = null, $locale = null)
     {
+    	$locale = $this->makeLocale($locale);
+
     	$translation = $this->translate($id, $domain, $locale, $parameters);
 
     	return $this->choose($translation, $number, $locale);
@@ -222,7 +228,7 @@ class Glottos
 
     public function choose($translation, $number, $locale)
     {
-    	return $this->messageSelector->choose($translation, (int) $number, $locale);
+    	return $this->selector->choose($translation, (int) $number, $locale->getText());
     }
 
 	public function makeLocale($locale = null)
