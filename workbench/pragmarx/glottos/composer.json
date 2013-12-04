@@ -33,7 +33,7 @@
         ],
         "psr-0": {
             "PragmaRX\\Glottos": "src/"
-        }
+        },
         "files": [
             "src/PragmaRX/Support/helpers.php"
         ]
