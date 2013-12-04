@@ -14,66 +14,66 @@
 Route::get('/test', function()
 {
 
-	Glottos::translate('PHOTOGRAPHY');
+    Glottos::translate('PHOTOGRAPHY');
 
-	k( Lang::trans('PHOTOGRAPHY', array(), null, 'en') );
-	k( Lang::trans('PHOTOGRAPHY', array(), null, 'pt-br') );
+    k( Lang::trans('PHOTOGRAPHY', array(), null, 'en') );
+    k( Lang::trans('PHOTOGRAPHY', array(), null, 'pt-br') );
 
-	k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'en') );
-	k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'pt-br') );
+    k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'en') );
+    k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'pt-br') );
 
-	k('choice');
-	k( Lang::choice('PHOTOGRAPHY|PHOTOGRAPHIES', 100, array(), 'pt_BR') );
-	kk( 'end' );
+    k('choice');
+    k( Lang::choice('PHOTOGRAPHY|PHOTOGRAPHIES', 100, array(), 'pt_BR') );
+    kk( 'end' );
 
-	// Log::info('test');
-	
-	// Lang::has('reminders.password');
+    // Log::info('test');
+    
+    // Lang::has('reminders.password');
 
-	Lang::load('*', 'reminders', 'en');
-	Lang::load('*', 'pagination', 'en');
+    Lang::load('*', 'reminders', 'en');
+    Lang::load('*', 'pagination', 'en');
 
-	// var_dump( Glottos::translate('TECHNOLOGY', 'pt-br') );
+    // var_dump( Glottos::translate('TECHNOLOGY', 'pt-br') );
 
-	// Glottos::translate('key::photography');
+    // Glottos::translate('key::photography');
 
-	// Glottos::addTranslation('Home', 'Principal', 'pt-br');
-	// Glottos::addTranslation('key::photography', 'Photography');
-	// Glottos::addTranslation('key::technology', 'Technology');
+    // Glottos::addTranslation('Home', 'Principal', 'pt-br');
+    // Glottos::addTranslation('key::photography', 'Photography');
+    // Glottos::addTranslation('key::technology', 'Technology');
 
-	// var_dump( Glottos::translate('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.') );
-	// var_dump( Glottos::translate('Home', 'pt-br') );
-	// var_dump( Glottos::translate('key::photography') );
+    // var_dump( Glottos::translate('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.') );
+    // var_dump( Glottos::translate('Home', 'pt-br') );
+    // var_dump( Glottos::translate('key::photography') );
 
-	// // Stopwatch::start('Glottos::translate(my:message)');
+    // // Stopwatch::start('Glottos::translate(my:message)');
 
-	// // for ($i=0; $i < 1000; $i++) { 
-	// // 	Glottos::translate('my:message');
-	// // }
+    // // for ($i=0; $i < 1000; $i++) { 
+    // //   Glottos::translate('my:message');
+    // // }
 
-	// // Stopwatch::stop('Glottos::translate(my:message)');
+    // // Stopwatch::stop('Glottos::translate(my:message)');
 
-	// var_dump( Glottos::translate('my:message') );
-	// var_dump( Glottos::translate('my:message', 'pt') );
-	// var_dump( Glottos::translate('my:message', 'pt-br') );
-	// var_dump( Glottos::translate('my:message', 'pt-pt') );
-	// var_dump( Glottos::translate('my:message', 'pt-br', 2) );
+    // var_dump( Glottos::translate('my:message') );
+    // var_dump( Glottos::translate('my:message', 'pt') );
+    // var_dump( Glottos::translate('my:message', 'pt-br') );
+    // var_dump( Glottos::translate('my:message', 'pt-pt') );
+    // var_dump( Glottos::translate('my:message', 'pt-br', 2) );
 
-	// Glottos::setModule(2);
-	// var_dump( Glottos::translate('my:message', 'pt-br') );
+    // Glottos::setModule(2);
+    // var_dump( Glottos::translate('my:message', 'pt-br') );
 
-	// Glottos::setLocale('pt-br');
-	// var_dump( Glottos::translate('my:message') );
+    // Glottos::setLocale('pt-br');
+    // var_dump( Glottos::translate('my:message') );
 
-	// Glottos::setLocale('en-us');
-	// var_dump( Glottos::translate('my:message') );
+    // Glottos::setLocale('en-us');
+    // var_dump( Glottos::translate('my:message') );
 
-	// var_dump( g('my:message') );
+    // var_dump( g('my:message') );
 
-	// Glottos::addTranslation('my:message', 'This is My Message');
-	// Glottos::addTranslation('my:message', 'Esta é a minha mensagem', 'pt-br');
-	// Glottos::addTranslation('my:message', 'Esta é a minha mensagem', 'pt');
-	// Glottos::addTranslation('my:message', 'Esta é a minha mensagem do Módulo 2', 'pt-br', 2);
+    // Glottos::addTranslation('my:message', 'This is My Message');
+    // Glottos::addTranslation('my:message', 'Esta é a minha mensagem', 'pt-br');
+    // Glottos::addTranslation('my:message', 'Esta é a minha mensagem', 'pt');
+    // Glottos::addTranslation('my:message', 'Esta é a minha mensagem do Módulo 2', 'pt-br', 2);
 });
 
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
@@ -89,24 +89,24 @@ Route::get('logout', array('as' => 'logout.do', 'uses' => 'ACR\Controllers\Logon
 Route::group(array('before' => 'auth'), function()
 {
 
-	Route::get('admin', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
+    Route::get('admin', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
 
-	Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
+    Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
 
-	Route::get('languages/translate', array('as' => 'admin.languages.translate', 'uses' => 'ACR\Controllers\Admin\LanguagesController@translate'));
+    Route::get('languages/translate', array('as' => 'admin.languages.translate', 'uses' => 'ACR\Controllers\Admin\LanguagesController@translate'));
 
-	Route::get('languages/translation/next/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.next', 'uses' => 'ACR\Controllers\Admin\LanguagesController@next'));
+    Route::get('languages/translation/next/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.next', 'uses' => 'ACR\Controllers\Admin\LanguagesController@next'));
 
-	Route::get('languages/translation/edit/{message}/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.edit', 'uses' => 'ACR\Controllers\Admin\LanguagesController@edit'));
+    Route::get('languages/translation/edit/{message}/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.edit', 'uses' => 'ACR\Controllers\Admin\LanguagesController@edit'));
 
-	Route::post('languages/translation/store/{message}/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.store', 'uses' => 'ACR\Controllers\Admin\LanguagesController@store'));
+    Route::post('languages/translation/store/{message}/{primaryLanguage}/{secondaryLanguage}', array('as' => 'admin.translation.store', 'uses' => 'ACR\Controllers\Admin\LanguagesController@store'));
 
-	Route::get('languages/show/{primary}/{secondary?}', array('as' => 'admin.languages.show', 'uses' => 'ACR\Controllers\Admin\LanguagesController@show'));
+    Route::get('languages/show/{primary}/{secondary?}', array('as' => 'admin.languages.show', 'uses' => 'ACR\Controllers\Admin\LanguagesController@show'));
 
-	Route::get('languages/{filter?}', array('as' => 'admin.languages.index', 'uses' => 'ACR\Controllers\Admin\LanguagesController@index'));
+    Route::get('languages/{filter?}', array('as' => 'admin.languages.index', 'uses' => 'ACR\Controllers\Admin\LanguagesController@index'));
 
-	Route::get('languages/{id}/enable', array('as' => 'admin.languages.enable', 'uses' => 'ACR\Controllers\Admin\LanguagesController@enableLanguage'));
+    Route::get('languages/{id}/enable', array('as' => 'admin.languages.enable', 'uses' => 'ACR\Controllers\Admin\LanguagesController@enableLanguage'));
 
-	Route::get('languages/{id}/disable', array('as' => 'admin.languages.disable', 'uses' => 'ACR\Controllers\Admin\LanguagesController@disableLanguage'));
+    Route::get('languages/{id}/disable', array('as' => 'admin.languages.disable', 'uses' => 'ACR\Controllers\Admin\LanguagesController@disableLanguage'));
 
 });
