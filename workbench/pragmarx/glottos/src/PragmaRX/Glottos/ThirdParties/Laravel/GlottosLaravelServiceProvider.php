@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos;
+<?php namespace PragmaRX\Glottos\ThirdParties\Laravel;
 
 use PragmaRX\Glottos\Glottos;
 

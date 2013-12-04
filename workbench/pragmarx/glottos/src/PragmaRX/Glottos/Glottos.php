@@ -510,7 +510,7 @@ class Glottos
 	}
 
 	/**
-	 * Find a CountryLanguage locale
+	 * Find a Locale locale
 	 * 
 	 * @param  mixed $locale
 	 * @return object|null
