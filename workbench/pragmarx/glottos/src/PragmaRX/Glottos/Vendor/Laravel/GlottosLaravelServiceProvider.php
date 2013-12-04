@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\ThirdParties\Laravel;
+<?php namespace PragmaRX\Glottos\Vendor\Laravel;
 
 use PragmaRX\Glottos\Glottos;
 
@@ -9,7 +9,7 @@ use PragmaRX\Glottos\Support\Mode;
 use PragmaRX\Glottos\Support\Filesystem;
 use PragmaRX\Glottos\Support\Finder;
 use PragmaRX\Glottos\Support\MessageSelector;
-use PragmaRX\Glottos\Support\Laravel\Lang;
+use PragmaRX\Glottos\Support\Lang;
 
 use PragmaRX\Glottos\Repositories\DataRepository;
 use PragmaRX\Glottos\Repositories\Messages\Message;
@@ -20,7 +20,7 @@ use PragmaRX\Glottos\Repositories\Locales\Country;
 use PragmaRX\Glottos\Repositories\Locales\CountryLanguage;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 
-use PragmaRX\Glottos\ThirdParties\Laravel\Commands\GlottosImportCommand;
+use PragmaRX\Glottos\Vendor\Laravel\Commands\GlottosImportCommand;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Illuminate\Foundation\AliasLoader as IlluminateAliasLoader;
@@ -41,11 +41,11 @@ class GlottosLaravelServiceProvider extends IlluminateServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('pragmarx/glottos', 'pragmarx/glottos');
+		$this->package('pragmarx/glottos', 'pragmarx/glottos', __DIR__.'/../../../..');
 
 		if( $this->getConfig('create_glottos_alias') )
 		{
-			IlluminateAliasLoader::getInstance()->alias($this->getConfig('glottos_alias'), 'PragmaRX\Glottos\ThirdParties\Laravel\Facades\Glottos');
+			IlluminateAliasLoader::getInstance()->alias($this->getConfig('glottos_alias'), 'PragmaRX\Glottos\Vendor\Laravel\Facades\Glottos');
 		}
 	}
 

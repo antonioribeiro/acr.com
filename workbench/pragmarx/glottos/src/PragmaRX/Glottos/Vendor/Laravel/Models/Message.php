@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\ThirdParties\Laravel\Models;
+<?php namespace PragmaRX\Glottos\Vendor\Laravel\Models;
 /**
  * Part of the Glottos package.
  *
@@ -20,20 +20,10 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Translation extends Eloquent {
+class Message extends Eloquent {
 
-	protected $table = 'glottos_translations';
+	protected $table = 'glottos_messages';
 
 	protected $guarded = array();
-	
-	/**
-	 * Message relationship
-	 * 
-	 * @return BelongsTo
-	 */
-	public function message()
-	{
-		return $this->belongsTo('PragmaRX\Glottos\ThirdParties\Laravel\Models\Message');
-	}
 
 }

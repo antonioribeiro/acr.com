@@ -26,7 +26,6 @@ return array(
 
 	'glottos_alias' => 'Glottos',
 
-
 	/*
 	|--------------------------------------------------------------------------
 	| Which PHP Framework is your application using?
@@ -180,14 +179,14 @@ return array(
 	|
 	*/
 
-	'message_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Message',
+	'message_model' => 'PragmaRX\Glottos\Vendor\Laravel\Models\Message',
 
-	'translation_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Translation',
+	'translation_model' => 'PragmaRX\Glottos\Vendor\Laravel\Models\Translation',
 
-	'language_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Language',
+	'language_model' => 'PragmaRX\Glottos\Vendor\Laravel\Models\Language',
 
-	'country_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\Country',
+	'country_model' => 'PragmaRX\Glottos\Vendor\Laravel\Models\Country',
 
-	'country_language_model' => 'PragmaRX\Glottos\ThirdParties\Laravel\Models\CountryLanguage',
+	'country_language_model' => 'PragmaRX\Glottos\Vendor\Laravel\Models\CountryLanguage',
 
 );

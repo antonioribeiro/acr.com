@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\Support\Laravel;
+<?php namespace PragmaRX\Glottos\Support;
 /**
  * Part of the Glottos package.
  *
@@ -19,7 +19,7 @@
  */
 
 use PragmaRX\Glottos\Glottos;
-use Symfony\Component\Translation\MessageSelector;
+use Symfony\Component\Translation\MessageSelector as SymfonyMessageSelector;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class Lang implements TranslatorInterface {
@@ -173,7 +173,7 @@ class Lang implements TranslatorInterface {
      * @param  \Symfony\Component\Translation\MessageSelector  $selector
      * @return void
      */
-    public function setSelector(MessageSelector $selector)
+    public function setSelector(SymfonyMessageSelector $selector)
     {
         $this->glottos->setSelector($selector);
     }

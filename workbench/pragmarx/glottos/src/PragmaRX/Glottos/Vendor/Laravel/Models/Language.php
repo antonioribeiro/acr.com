@@ -1,4 +1,4 @@
-<?php namespace PragmaRX\Glottos\ThirdParties\Laravel\Facades;
+<?php namespace PragmaRX\Glottos\Vendor\Laravel\Models;
 /**
  * Part of the Glottos package.
  *
@@ -18,18 +18,12 @@
  * @link       http://pragmarx.com
  */
 
-use Illuminate\Support\Facades\Facade;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Lang extends Facade {
+class Language extends Eloquent {
 
-	/**
-	 * Get the registered name of the component.
-	 *
-	 * @return string
-	 */
-	protected static function getFacadeAccessor()
-	{
-		return 'glottos.laravel.lang';
-	}
+	protected $table = 'glottos_languages';
+
+	protected $guarded = array();
 
 }
