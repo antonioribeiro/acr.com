@@ -20,12 +20,12 @@ use PragmaRX\Glottos\Repositories\Locales\Country;
 use PragmaRX\Glottos\Repositories\Locales\CountryLanguage;
 use PragmaRX\Glottos\Repositories\Cache\Cache;
 
-use PragmaRX\Glottos\Vendor\Laravel\Commands\GlottosImportCommand;
+use PragmaRX\Glottos\Vendor\Laravel\Artisan\ImportCommand;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 use Illuminate\Foundation\AliasLoader as IlluminateAliasLoader;
 
-class GlottosLaravelServiceProvider extends IlluminateServiceProvider {
+class ServiceProvider extends IlluminateServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -283,7 +283,7 @@ class GlottosLaravelServiceProvider extends IlluminateServiceProvider {
 	{
 		$this->app['glottos.command.import'] = $this->app->share(function($app)
 		{
-			return new GlottosImportCommand;
+			return new ImportCommand;
 		});
 	}
 

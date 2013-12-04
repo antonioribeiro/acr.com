@@ -52,7 +52,7 @@ class LocaleRepository implements LocaleRepositoryInterface {
 	 */
 	public function find(Locale $locale)
 	{
-		 return $this->addLocaleObject( $this->countryLanguage->find($locale) );
+		return $this->addLocaleObject( $this->countryLanguage->find($locale) );
 	}
 
 	/**

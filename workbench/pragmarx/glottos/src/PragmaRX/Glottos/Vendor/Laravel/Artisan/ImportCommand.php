@@ -1,10 +1,10 @@
-<?php namespace PragmaRX\Glottos\Vendor\Laravel\Commands;
+<?php namespace PragmaRX\Glottos\Vendor\Laravel\Artisan;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class GlottosImportCommand extends Command {
+class ImportCommand extends Command {
 
 	/**
 	 * The console command name.
