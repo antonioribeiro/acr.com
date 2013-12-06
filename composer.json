@@ -12,7 +12,8 @@
 		"cartalyst/sentry": "dev-master",
 		"way/generators": "dev-master",
 		"onigoetz/profiler": "dev-master",
-		"pragmarx/glottos": "dev-master"
+		"pragmarx/glottos": "dev-master",
+		"tecnick.com/tcpdf": "dev-master"
 	},
 
     "repositories": [

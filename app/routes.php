@@ -14,6 +14,16 @@
 Route::get('/test', function()
 {
 
+	$pdf = new TCPDF();
+	$pdf->SetPrintHeader(false);
+	$pdf->SetPrintFooter(false);
+	$pdf->AddPage();
+	$pdf->Text(90, 140, 'This is a test');
+	$filename = storage_path() . '/test.pdf';
+	$pdf->output($filename, 'F');
+
+	return Response::download($filename);
+
     Glottos::translate('PHOTOGRAPHY');
 
     k( Lang::trans('PHOTOGRAPHY', array(), null, 'en') );
