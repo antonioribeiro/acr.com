@@ -13,7 +13,9 @@
 		"way/generators": "dev-master",
 		"onigoetz/profiler": "dev-master",
 		"pragmarx/glottos": "dev-master",
-		"tecnick.com/tcpdf": "dev-master"
+		"tecnick.com/tcpdf": "dev-master",
+		"vtalbot/markdown": "1.*",
+		"way/form": "dev-master"
 	},
 
     "repositories": [

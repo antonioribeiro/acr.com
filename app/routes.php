@@ -88,6 +88,11 @@ Route::get('/test', function()
 
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
 
+Route::group(array('prefix' => 'blog'), function()
+{
+    Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
+});
+
 Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'ACR\Controllers\LanguageController@select'));
 
 Route::get('login', array('as' => 'login.form', 'uses' => 'ACR\Controllers\LogonController@form'));
@@ -99,7 +104,20 @@ Route::get('logout', array('as' => 'logout.do', 'uses' => 'ACR\Controllers\Logon
 Route::group(array('before' => 'auth'), function()
 {
 
-    Route::get('admin', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
+    Route::group(array('before' => 'auth'), function()
+    {
+        Route::get('/', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
+
+        Route::get('articles', array('as' => 'admin.articles.index', 'uses' => 'ACR\Controllers\Admin\ArticlesController@index'));
+
+        Route::get('articles/{id}/edit', array('as' => 'admin.articles.edit', 'uses' => 'ACR\Controllers\Admin\ArticlesController@edit'));
+
+        Route::patch('articles/{id}', array('as' => 'admin.articles.update', 'uses' => 'ACR\Controllers\Admin\ArticlesController@update'));
+
+        Route::get('articles/create', array('as' => 'admin.articles.create', 'uses' => 'ACR\Controllers\Admin\ArticlesController@create'));
+
+        Route::post('articles/store', array('as' => 'admin.articles.store', 'uses' => 'ACR\Controllers\Admin\ArticlesController@store'));
+    });
 
     Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
 

@@ -1,6 +1,6 @@
 <?php
 
-View::composer('home.layout', function($view)
+View::composer('*', function($view)
 {
 	$lang = Session::get('glottos.lang');
 
