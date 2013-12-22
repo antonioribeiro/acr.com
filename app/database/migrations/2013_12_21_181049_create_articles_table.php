@@ -15,10 +15,10 @@ class CreateArticlesTable extends Migration {
 		{
 			$table->increments('id');
 		    $table->text('title');
-		    $table->text('description');
 		    $table->text('article');
 		    $table->text('slug')->index();
 		    $table->integer('author_id');
+		    $table->timestamp('published_at')->nullable();
 			$table->timestamps();
 		});
 	}

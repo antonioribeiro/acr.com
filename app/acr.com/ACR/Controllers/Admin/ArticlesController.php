@@ -6,6 +6,7 @@ use Redirect;
 use View;
 use Input;
 use URL;
+use Str;
 
 class ArticlesController extends BaseController {
 
@@ -45,9 +46,30 @@ class ArticlesController extends BaseController {
 	{
 		$article->title = Input::get('title');
 		$article->article = Input::get('article');
+		$article->slug = Str::slug(Input::get('title'));
+		$article->author_id = 1;
 
 		$article->save();
 
 		return Redirect::route('admin.articles.index');
+	}
+
+	public function publish($article_id)
+	{
+		return $this->setPublish($article_id, new \Carbon\Carbon);
+	}
+
+	public function unpublish($article_id)
+	{
+		return $this->setPublish($article_id, null);
+	}	
+
+	public function setPublish($article_id, $value)
+	{
+		$article = Article::find($article_id);
+		$article->published_at = $value;
+		$article->save();
+
+		return Redirect::back();
 	}
 }

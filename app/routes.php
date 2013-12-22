@@ -91,6 +91,8 @@ Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@
 Route::group(array('prefix' => 'blog'), function()
 {
     Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
+
+    Route::get('articles/{slug}', array('as' => 'blog.articles.show', 'uses' => 'ACR\Controllers\BlogController@show'));
 });
 
 Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'ACR\Controllers\LanguageController@select'));
@@ -117,6 +119,10 @@ Route::group(array('before' => 'auth'), function()
         Route::get('articles/create', array('as' => 'admin.articles.create', 'uses' => 'ACR\Controllers\Admin\ArticlesController@create'));
 
         Route::post('articles/store', array('as' => 'admin.articles.store', 'uses' => 'ACR\Controllers\Admin\ArticlesController@store'));
+
+        Route::get('articles/{id}/publish', array('as' => 'admin.articles.publish', 'uses' => 'ACR\Controllers\Admin\ArticlesController@publish'));
+
+        Route::get('articles/{id}/unpublish', array('as' => 'admin.articles.unpublish', 'uses' => 'ACR\Controllers\Admin\ArticlesController@unpublish'));
     });
 
     Route::get('languages/stats', array('as' => 'admin.languages.stats', 'uses' => 'ACR\Controllers\Admin\LanguagesController@stats'));
