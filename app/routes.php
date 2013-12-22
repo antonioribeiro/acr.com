@@ -13,17 +13,6 @@
 
 Route::get('/test', function()
 {
-
-	$pdf = new TCPDF();
-	$pdf->SetPrintHeader(false);
-	$pdf->SetPrintFooter(false);
-	$pdf->AddPage();
-	$pdf->Text(90, 140, 'This is a test');
-	$filename = storage_path() . '/test.pdf';
-	$pdf->output($filename, 'F');
-
-	return Response::download($filename);
-
     Glottos::translate('PHOTOGRAPHY');
 
     k( Lang::trans('PHOTOGRAPHY', array(), null, 'en') );
@@ -88,6 +77,9 @@ Route::get('/test', function()
 
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
 
+Route::get('api/{version}/markdown', array('as' => 'api.markdown', 'uses' => 'ACR\Controllers\ApiController@markdown'));
+Route::post('api/{version}/markdown', array('as' => 'api.markdown', 'uses' => 'ACR\Controllers\ApiController@markdown'));
+
 Route::group(array('prefix' => 'blog'), function()
 {
     Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
@@ -106,7 +98,7 @@ Route::get('logout', array('as' => 'logout.do', 'uses' => 'ACR\Controllers\Logon
 Route::group(array('before' => 'auth'), function()
 {
 
-    Route::group(array('before' => 'auth'), function()
+    Route::group(array('prefix' => 'admin'), function()
     {
         Route::get('/', array('as' => 'admin', 'uses' => 'ACR\Controllers\Admin\AdminController@index'));
 

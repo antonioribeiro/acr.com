@@ -11,6 +11,12 @@
         <link rel="canonical" href="http://antoniocarlosribeiro.com"/>
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto Condensed">
+        <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.css' }}">
+
+        <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/acr.css"/>
+        <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/prettify-desert.css"/>
+
+        <script src="http://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
         </script>
         <script>
@@ -19,7 +25,6 @@
             catch(e){
             };
         </script>
-        <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/acr.css"/>
         <script>
             (function(){
                 if(!window.addEventListener||!document.querySelector||!Array.prototype.forEach){
@@ -32,7 +37,7 @@
             )();
         </script>
     </head>
-    <body>
+    <body onload="prettyPrint()">
         <div class="container">
             <div id="site-header">
                 <header role="banner">
@@ -51,6 +56,12 @@
                 </header>
                 <nav role="navigation">
                     <ul class="site-navigation">
+                        <li>
+                            <a href="{{ URL::to('/') }}">
+                                {{'Home'}}
+                            </a>
+                        </li>
+
                         <li>
                             <a href="/articles.html">
                                 {{'Articles'}}
@@ -94,5 +105,7 @@
                 var s=d.getElementsByTagName(t)[0];
                 g.src="//www.google-analytics.com/ga.js";s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
+
+        <script src="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.js' }}"></script>
     </body>
 </html>

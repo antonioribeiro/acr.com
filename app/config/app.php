@@ -108,8 +108,6 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
 		'Way\Form\FormServiceProvider',
-
-		'VTalbot\Markdown\MarkdownServiceProvider',
 	),
 
 	/*
@@ -177,8 +175,6 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Stopwatch' 	  => 'Onigoetz\Profiler\Stopwatch',
-		'Markdown'        => 'VTalbot\Markdown\Facades\Markdown',
-
 	),
 
 );

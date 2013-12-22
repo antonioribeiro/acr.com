@@ -72,4 +72,5 @@ class ArticlesController extends BaseController {
 
 		return Redirect::back();
 	}
+	
 }

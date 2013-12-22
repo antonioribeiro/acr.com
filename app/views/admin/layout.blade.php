@@ -11,7 +11,6 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets//templates/sb-admin/css/bootstrap.css') }}" rel="stylesheet">
 
-    <link href="assets/templates/sb-admin/css/" rel="stylesheet">
     <link href="{{ asset('assets//templates/sb-admin/css/sb-admin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets//templates/sb-admin/font-awesome/css/font-awesome.min.css') }}">
   </head>
@@ -45,9 +44,12 @@
     </div><!-- /#wrapper -->
 
     <!-- JavaScript -->
-    <script src="assets/templates/sb-admin/js/jquery-1.10.2.js"></script>
-    <script src="assets/templates/sb-admin/js/bootstrap.js"></script>
+    <script src="{{ asset('assets/templates/sb-admin/js/jquery-1.10.2.js') }}"></script>
+    <script src="{{ asset('assets/templates/sb-admin/js/bootstrap.js') }}"></script>
 
+    <script type="text/javascript">
+    	@yield('inline-javascript')
+    </script>
   </body>
 </html>
 

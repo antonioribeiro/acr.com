@@ -1,11 +1,8 @@
 <?php namespace ACR\Models;
 
+use ACR\Services\Markdown;
 use Eloquent;
-use Markdown;
 use URL;
-
-use dflydev\markdown\MarkdownParser;
-use \Michelf\MarkdownExtra;
 
 class Article extends Eloquent {
 
@@ -13,12 +10,12 @@ class Article extends Eloquent {
 
 	public function getSummaryAttribute()
 	{
-		return $this->article;
+		return $this->getFirstParagraph($this->article);
 	}
 
 	public function getMarkdownSummaryAttribute()
 	{
-		return MarkdownExtra::defaultTransform($this->summary);
+		return Markdown::transform($this->summary);
 	}
 
 	public function getLinkAttribute()
@@ -39,6 +36,13 @@ class Article extends Eloquent {
 	public function scopeOrdered($query)
 	{
 		return $query->orderBy('created_at', 'desc');
+	}
+
+	public function	getFirstParagraph($string)
+	{
+		$pos = strpos($string, "\r\n") ?: strlen($string);
+
+		return substr($string, 0, $pos);
 	}
 
 }

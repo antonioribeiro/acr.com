@@ -22,10 +22,9 @@
 	            <p itemprop="description">
 	                I'm a 43 year old developer and photographer based in 
 	                Rio de Janeiro. For the past 25 years I developed applications for DOS 
-	                and Windows, and administered Linux systems, in the meantime I also 
+	                and Windows, have administered Linux systems, and, in the meantime, also 
 	                did some landscape, portrait and concert photography, while being a tireless 
-	                traveler and language enthusiast, loving both natural and programming 
-	                languages. Presently I'm doing web development using PHP and 
+	                traveler and language enthusiast. Presently I'm doing web development using PHP and 
 	                <a href="http://laravel.com">The Laravel Framework</a>.
 	            </p>
 	        </div>

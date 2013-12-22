@@ -16,12 +16,43 @@
 
 				{{ Form::model($article, ['method' => $method, 'url' => $url]) }}
 					{{ FormField::title() }}
-					{{ FormField::article(['type' => 'textarea']) }}
+					{{ FormField::article(['type' => 'textarea', 'id'=>'article']) }}
 	
 					<button type="submit" class="btn btn-danger btn-xs">save</button>
 				{{ Form::close() }}
+
+				<br><br><br>
+				<h3>Preview</h3>
+				<article id="preview">
+
+				</article>
 			</div>
 		</div>
 	</div>
+
+@stop
+
+@section('inline-javascript')
+
+	var timer = null;
+
+	$('#article').keydown(function(){
+       clearTimeout(timer); 
+       timer = setTimeout(formatText, 1000)
+	});
+
+	function formatText() {
+	    var str = $( "#article" ).val();
+
+		var jqxhr = $.post( "", function() {
+		  console.log()
+		});
+
+		$.post( "{{ URL::route('api.markdown', ['version' => '1.0']) }}", { text: str })
+			  .done(function( data ) {
+			    $( "#preview" ).html( data.markdown );
+			  });		
+
+	}
 
 @stop
