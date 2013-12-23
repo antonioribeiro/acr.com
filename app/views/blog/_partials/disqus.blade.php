@@ -5,9 +5,9 @@
 	<script type="text/javascript">
 		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
 		var disqus_shortname = 'antoniocarlosribeiro'; // required: replace example with your forum shortname
-		var disqus_identifier = '{{$article->slug}}';
+		var disqus_identifier = '{{$article->slug}}-{{Glottos::getLocaleAsText()}}';
 		var disqus_title = '{{$article->title}}';
-		var disqus_url = '{{$article->link}}';
+		var disqus_url = '{{$article->link}}/{{Glottos::getLocaleAsText()}}';
 
 		/* * * DON'T EDIT BELOW THIS LINE * * */
 		(function() {

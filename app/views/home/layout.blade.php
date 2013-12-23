@@ -61,17 +61,23 @@
 
                             <div class="nav-collapse collapse">
                                 <ul class="nav pull-right" id="navigation">
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/blog">{{'BLOG'}}</a></li>
-                                    <li><a data-nav="scroll" href="http://github.com/antonioribeiro">{{'GITHUB'}}</a></li>
-                                    @if(Glottos::getLocaleAsText() == 'pt_BR')
-                                        <li><a data-nav="scroll" href="http://twitter.com/iantoniocarlos">{{'TWITTER'}}</a></li>
-                                    @else
-                                        <li><a data-nav="scroll" href="http://twitter.com/iantonioribeiro">{{'TWITTER'}}</a></li>
-                                    @endif
-                                    <li><a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro">SO</a></li>
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech">{{'TECHNOLOGY'}}</a></li>
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/photo">{{'PHOTOGRAPHY'}}</a></li>
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact">{{'CONTACT'}}</a></li>
+                                    <li title="Blog"><a data-nav="scroll" href="{{ URL::to('/') }}/blog"><i class="fa fa-file-text-o"></i></a></li>
+                                    <li title="Github"><a data-nav="scroll" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a></li>
+                                    
+                                    <li title="Twitter">
+                                        @if(Glottos::getLocaleAsText() == 'pt_BR')
+                                            <a data-nav="scroll" href="http://twitter.com/iantoniocarlos">
+                                        @else
+                                            <a data-nav="scroll" href="http://twitter.com/iantonioribeiro">
+                                        @endif
+                                        <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+
+                                    <li title="Stack Overflow"><a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a></li>
+                                    <li title="Tecnology"><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech"><i class="fa fa-laptop"></i></a></li>
+                                    <li title="Photography"><a data-nav="scroll" href="{{ URL::to('/') }}/#/photo"><i class="fa fa-camera"></i></a></li>
+                                    <li title="Contact"><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact"><i class="fa fa-envelope"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -180,7 +186,7 @@
                                     <fieldset>
                                         <div class="control-group">
                                             <div class="controls">
-                                                <input class="span12" name="name" type="text" placeholder="{{Glottos::translate('Your Name'}}">
+                                                <input class="span12" name="name" type="text" placeholder="{{'Your Name'}}">
                                             </div>
                                             <div class="controls">
                                                 <input class="span12" name="email" type="text" placeholder="{{'Your E-mail'}}">
@@ -199,6 +205,29 @@
                                     </fieldset>
                                 </form>
                             </div>
+                        </div>
+                        <br><br>
+                        <div class="row-fluid black">
+                            <h1 class="big-h2-heading text-center">
+                                <a data-nav="scroll" title="Blog" href="{{ URL::to('/') }}/blog"><i class="fa fa-file-text-o"></i></a>
+                                &nbsp;&nbsp;&nbsp;
+
+                                <a data-nav="scroll" title="Github" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>
+
+                                &nbsp;&nbsp;&nbsp;
+                                
+                                @if(Glottos::getLocaleAsText() == 'pt_BR')
+                                    <a data-nav="scroll" title="Twitter" href="http://twitter.com/iantoniocarlos">
+                                @else
+                                    <a data-nav="scroll" title="Twitter" href="http://twitter.com/iantonioribeiro">
+                                @endif
+                                <i class="fa fa-twitter"></i>
+                                </a>
+
+                                &nbsp;&nbsp;&nbsp;
+
+                                <a data-nav="scroll" title="Stack Overflow" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i>
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -221,6 +250,7 @@
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/googlemaps.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/theme.js') }}"></script>
 
+    @include('global._partials.google-analytics')
 </body>
 
 </html>

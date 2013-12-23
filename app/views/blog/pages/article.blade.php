@@ -3,12 +3,12 @@
 @section('content')
 	<article>
 		<h1>
-			{{$article->title}}
+			@include('blog._partials.articleTitle')
 		</h1>
 
-		<time class="archived__date" datetime="2013-12-16" itemprop="datePublished">
-			{{$article->created_at->format('d F Y')}}
-		</time>
+		<div class="archived__date">
+			@include('blog._partials.articleDate')
+		</div>
 
 		<p class="archived__excerpt">
 			{{ACR\Services\Markdown::transform(Glottos::translate('key::blog-article-'.$article->slug))}}

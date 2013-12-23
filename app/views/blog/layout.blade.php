@@ -10,8 +10,9 @@
         <link rel="alternate" href="/atom.xml" title="Antonio Carlos Ribeiro, Front-End Developer" type="application/atom+xml"/>
         <link rel="canonical" href="http://antoniocarlosribeiro.com"/>
 
-        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto Condensed">
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source Sans Pro">
         <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.css' }}">
+        <link href="{{ asset('assets/layouts/home/css/font-awesome.min.css') }}" rel="stylesheet" media="screen" />
 
         <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/acr.css"/>
         <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/prettify-desert.css"/>
@@ -58,7 +59,13 @@
                     <ul class="site-navigation">
                         <li>
                             <a href="{{ URL::to('/') }}">
-                                {{'Home'}}
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ URL::to('blog') }}">
+                                {{'Blog'}}
                             </a>
                         </li>
 
@@ -87,10 +94,10 @@
                 <p class="text-center milli">
                     &copy; 2013 Antonio Carlos Ribeiro. 
 
-                    Sewed up with 
+                    {{'Cewr up with'}}
                     <a href="http://laravel.com/">
                         Laravel
-                    </a> and 
+                    </a> {{'and'}} 
 
                     <a href="https://github.com/antonioribeiro/glottos">
                         Glottos.
@@ -107,5 +114,7 @@
         </script>
 
         <script src="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.js' }}"></script>
+
+        @include('global._partials.google-analytics')
     </body>
 </html>

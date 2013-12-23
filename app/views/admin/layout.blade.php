@@ -50,6 +50,8 @@
     <script type="text/javascript">
     	@yield('inline-javascript')
     </script>
+
+    @include('global._partials.google-analytics')
   </body>
 </html>
 
