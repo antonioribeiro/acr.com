@@ -11,68 +11,10 @@
 |
 */
 
-Route::get('/test', function()
+Route::get('test', function() 
 {
-    Glottos::translate('PHOTOGRAPHY');
-
-    k( Lang::trans('PHOTOGRAPHY', array(), null, 'en') );
-    k( Lang::trans('PHOTOGRAPHY', array(), null, 'pt-br') );
-
-    k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'en') );
-    k( Lang::trans('PHOTOGRAPHY', array(), 'main', 'pt-br') );
-
-    k('choice');
-    k( Lang::choice('PHOTOGRAPHY|PHOTOGRAPHIES', 100, array(), 'pt_BR') );
-    kk( 'end' );
-
-    // Log::info('test');
-    
-    // Lang::has('reminders.password');
-
-    Lang::load('*', 'reminders', 'en');
-    Lang::load('*', 'pagination', 'en');
-
-    // var_dump( Glottos::translate('TECHNOLOGY', 'pt-br') );
-
-    // Glottos::translate('key::photography');
-
-    // Glottos::addTranslation('Home', 'Principal', 'pt-br');
-    // Glottos::addTranslation('key::photography', 'Photography');
-    // Glottos::addTranslation('key::technology', 'Technology');
-
-    // var_dump( Glottos::translate('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.') );
-    // var_dump( Glottos::translate('Home', 'pt-br') );
-    // var_dump( Glottos::translate('key::photography') );
-
-    // // Stopwatch::start('Glottos::translate(my:message)');
-
-    // // for ($i=0; $i < 1000; $i++) { 
-    // //   Glottos::translate('my:message');
-    // // }
-
-    // // Stopwatch::stop('Glottos::translate(my:message)');
-
-    // var_dump( Glottos::translate('my:message') );
-    // var_dump( Glottos::translate('my:message', 'pt') );
-    // var_dump( Glottos::translate('my:message', 'pt-br') );
-    // var_dump( Glottos::translate('my:message', 'pt-pt') );
-    // var_dump( Glottos::translate('my:message', 'pt-br', 2) );
-
-    // Glottos::setModule(2);
-    // var_dump( Glottos::translate('my:message', 'pt-br') );
-
-    // Glottos::setLocale('pt-br');
-    // var_dump( Glottos::translate('my:message') );
-
-    // Glottos::setLocale('en-us');
-    // var_dump( Glottos::translate('my:message') );
-
-    // var_dump( g('my:message') );
-
-    // Glottos::addTranslation('my:message', 'This is My Message');
-    // Glottos::addTranslation('my:message', 'Esta é a minha mensagem', 'pt-br');
-    // Glottos::addTranslation('my:message', 'Esta é a minha mensagem', 'pt');
-    // Glottos::addTranslation('my:message', 'Esta é a minha mensagem do Módulo 2', 'pt-br', 2);
+    var_dump(Glottos::translate('Your Name'));
+    var_dump(Glottos::getLocaleAsText());
 });
 
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));

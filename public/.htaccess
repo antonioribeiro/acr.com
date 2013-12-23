@@ -5,10 +5,4 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ /acr.com/index.php?/$1 [L]
-
-    SetEnv LARAVEL_ENV "development"
-    SetEnv LARAVEL_DATABASE_HOST "localhost"
-    SetEnv LARAVEL_DATABASE_NAME "antoniocarlosribeiro"
-    SetEnv LARAVEL_DATABASE_USERNAME "antoniocarlos"
-    SetEnv LARAVEL_DATABASE_PASSWORD "antoniocarlospassword"
 </IfModule>

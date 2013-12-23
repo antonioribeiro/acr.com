@@ -61,9 +61,17 @@
 
                             <div class="nav-collapse collapse">
                                 <ul class="nav pull-right" id="navigation">
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech">{{g('TECHNOLOGY')}}</a></li>
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/photo">{{g('PHOTOGRAPHY')}}</a></li>
-                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact">{{g('CONTACT')}}</a></li>
+                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/blog">{{'BLOG'}}</a></li>
+                                    <li><a data-nav="scroll" href="http://github.com/antonioribeiro">{{'GITHUB'}}</a></li>
+                                    @if(Glottos::getLocaleAsText() == 'pt_BR')
+                                        <li><a data-nav="scroll" href="http://twitter.com/iantoniocarlos">{{'TWITTER'}}</a></li>
+                                    @else
+                                        <li><a data-nav="scroll" href="http://twitter.com/iantonioribeiro">{{'TWITTER'}}</a></li>
+                                    @endif
+                                    <li><a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro">SO</a></li>
+                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech">{{'TECHNOLOGY'}}</a></li>
+                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/photo">{{'PHOTOGRAPHY'}}</a></li>
+                                    <li><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact">{{'CONTACT'}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -83,7 +91,7 @@
                     <div class="span12">
                         <hgroup id="intro" style="display: none">
                             <h2>Antonio Carlos Ribeiro</h2>
-                            <h3>{{g('Tecnology')}} &amp; {{g('Photography')}}</h3>
+                            <h3>{{'Tecnology'}} &amp; {{'Photography'}}</h3>
                         </hgroup>
                     </div>
                 </div>
@@ -98,7 +106,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>{{g('Tecnology')}}</h2>
+                            <h2>{{'Tecnology'}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -106,10 +114,10 @@
                 <div class="row-fluid">
                     <div class="span12 content">
                         <div class="row-fluid">
-                            <p class="quote"><a href="{{ URL::to('/') }}/#/contact">{{g('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.')}}</a></p>
+                            <p class="quote"><a href="{{ URL::to('/') }}/#/contact">{{'IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.'}}</a></p>
                             <br>
                             <br>
-                            <p class="quote"><a href="{{ URL::to('/') }}/blog">{{g('I also write some articles about IT, development, solutions, PHP and Laravel. Click to access the Blog.')}}</a></p>
+                            <p class="quote"><a href="{{ URL::to('/') }}/blog">{{'I also write some articles about IT, development, solutions, PHP and Laravel. Click to access the Blog.'}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -124,7 +132,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>{{g('Photography')}}</h2>
+                            <h2>{{'Photography'}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -132,7 +140,7 @@
                 <div class="row-fluid">
                     <div class="span12 content">
                         <div class="row-fluid">
-                            <p class="quote"><a href="http://antoniocarlosribeiro.smugmug.com">{{g('My photos are hosted by Smugmug, click to see them.')}}</a></p>
+                            <p class="quote"><a href="http://antoniocarlosribeiro.smugmug.com">{{'My photos are hosted by Smugmug, click to see them.'}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -146,7 +154,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>{{g('Contact')}}</h2>
+                            <h2>{{'Contact'}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -156,7 +164,7 @@
 
                         <div class="row-fluid">
                             <div class="span6">
-                                <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{g('Find Me')}}</h2>
+                                <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{'Find Me'}}</h2>
                                 <ul>
                                     <li><i  class="fa fa-building"></i> Rua Professor Quintino do Vale, 26 / 205</li>
                                     <li><i  class="fa-road"></i> Rio de Janeiro - Brasil - 20.250-030</li>
@@ -167,26 +175,26 @@
                                 <div id="map_canvas"></div>
                             </div>
                             <div class="span6">
-                                <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> {{g('Send Me a Message')}}</h2>
+                                <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> {{'Send Me a Message'}}</h2>
                                 <form>
                                     <fieldset>
                                         <div class="control-group">
                                             <div class="controls">
-                                                <input class="span12" name="name" type="text" placeholder="Seu Nome Completo">
+                                                <input class="span12" name="name" type="text" placeholder="{{Glottos::translate('Your Name'}}">
                                             </div>
                                             <div class="controls">
-                                                <input class="span12" name="email" type="text" placeholder="Seu Email">
+                                                <input class="span12" name="email" type="text" placeholder="{{'Your E-mail'}}">
                                             </div>          
                                             <div class="controls">
-                                                <input class="span12" name="telephone" type="text" placeholder="Seu Telefone">
+                                                <input class="span12" name="telephone" type="text" placeholder="{{'Your Telephone'}}">
                                             </div>          
                                             <div class="controls">
-                                                <input class="span12" name="subject" type="text" placeholder="Assunto">
+                                                <input class="span12" name="subject" type="text" placeholder="{{'The Subject'}}">
                                             </div>
                                             <div class="controls">
-                                                <textarea class="span12" name="message" id="textarea" rows="9" placeholder="Mensagem"></textarea>
+                                                <textarea class="span12" name="message" id="textarea" rows="9" placeholder="{{'Your Message'}}"></textarea>
                                             </div>
-                                            <button class="btn btn-default">{{g('Send Message')}}</button>
+                                            <button class="btn btn-default">{{'Send Message'}}</button>
                                         </div>
                                     </fieldset>
                                 </form>

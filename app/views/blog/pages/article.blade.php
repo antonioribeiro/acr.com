@@ -11,7 +11,7 @@
 		</time>
 
 		<p class="archived__excerpt">
-			{{$article->markdownSummary}}
+			{{ACR\Services\Markdown::transform(Glottos::translate('key::blog-article-'.$article->slug))}}
 		</p>
 	</article>
 	@include('blog._partials.disqus', ['slug' => $article->slug])

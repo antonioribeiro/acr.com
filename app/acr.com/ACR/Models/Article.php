@@ -18,6 +18,11 @@ class Article extends Eloquent {
 		return Markdown::transform($this->summary);
 	}
 
+	public function getMarkdownArticleAttribute()
+	{
+		return Markdown::transform($this->article);
+	}
+
 	public function getLinkAttribute()
 	{
 		return URL::route('blog.articles.show', $this->slug);

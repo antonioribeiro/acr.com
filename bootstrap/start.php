@@ -24,13 +24,14 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
+foreach(require __DIR__.'/../.environment' as $key => $value) {
+	putenv(sprintf('%s=%s', $key, $value));
+}
+
 $env = $app->detectEnvironment(function()
 {
 
-  /// Add to .htaccess:
-  ///    SetEnv LARAVEL_ENV "development"
-
-  return getenv('LARAVEL_ENV') ?: 'development';
+	return getenv('LARAVEL_ENV') ?: 'development';
 
 });
 

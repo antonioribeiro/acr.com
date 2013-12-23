@@ -1,0 +1,11 @@
+<?php
+
+return [
+
+	'LARAVEL_ENV' => 'development',
+
+	'POSTGRESQL.DATABASE_NAME' => 'antoniocarlosribeiro',
+	'POSTGRESQL.DATABASE_USER' => 'antoniocarlos',
+	'POSTGRESQL.DATABASE_PASSWORD' => 'foda-se',
+
+];

@@ -18,9 +18,9 @@ return [
 		'postgresql' => [
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
-			'database' => 'antoniocarlosribeiro',
-			'username' => 'antoniocarlos',
-			'password' => 'foda-se',
+			'database' => getenv('POSTGRESQL.DATABASE_NAME'),
+			'username' => getenv('POSTGRESQL.DATABASE_USER'),
+			'password' => getenv('POSTGRESQL.DATABASE_PASSWORD'),
 			'charset'  => 'utf8',
 			'prefix'   => '',
 			'schema'   => 'public',
