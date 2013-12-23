@@ -1,7 +1,8 @@
 <?php namespace ACR\Controllers;
 
-use \View;
+use View;
 use ACR\Models\Article;
+use Glottos;
 
 class BlogController extends BaseController {
 
@@ -11,8 +12,13 @@ class BlogController extends BaseController {
 				->with('articles', Article::published()->get());
 	}
 
-	public function show($slug)
+	public function show($slug, $language = null)
 	{
+		if ($language)
+		{
+			Glottos::setLocale($language);
+		}
+
 		if ($article = Article::findBySlug($slug))
 		{
 			return View::make('blog.pages.article')

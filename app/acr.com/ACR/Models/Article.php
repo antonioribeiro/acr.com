@@ -10,7 +10,7 @@ class Article extends Eloquent {
 
 	public function getSummaryAttribute()
 	{
-		return $this->getFirstParagraph($this->article);
+		return $this->makeSummary($this->article);
 	}
 
 	public function getMarkdownSummaryAttribute()
@@ -43,7 +43,7 @@ class Article extends Eloquent {
 		return $query->orderBy('created_at', 'desc');
 	}
 
-	public function	getFirstParagraph($string)
+	public function	makeSummary($string)
 	{
 		$pos = strpos($string, "\r\n") ?: strlen($string);
 

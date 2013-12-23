@@ -26,7 +26,7 @@ Route::group(array('prefix' => 'blog'), function()
 {
     Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
 
-    Route::get('articles/{slug}', array('as' => 'blog.articles.show', 'uses' => 'ACR\Controllers\BlogController@show'));
+    Route::get('articles/{slug}/{lang?}', array('as' => 'blog.articles.show', 'uses' => 'ACR\Controllers\BlogController@show'));
 });
 
 Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'ACR\Controllers\LanguageController@select'));

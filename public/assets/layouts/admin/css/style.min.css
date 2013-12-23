@@ -55,12 +55,12 @@ h1, h2, h3
 
 a
 {
-    color: #ffd675;
+    color: #000000;
 }
 
 a:hover
 {
-    color: #ffd675;
+    color: #000000;
     text-decoration: none;
 }
 
@@ -82,7 +82,7 @@ ul
 
 #logo
 {
-    color: #ffd675;
+    color: #000000;
     line-height: 60px;
     font-weight: 300;
     font-family: 'Voltaire', sans-serif;
@@ -175,8 +175,8 @@ ul
         -webkit-transition: all 600ms;
         -o-transition: all 600ms;
     transition: all 600ms;
-    color: #ffd675;
-    border-bottom: solid #ffd675 2px;
+    color: #000000;
+    border-bottom: solid #000000 2px;
     background: none;
     filter: none;
 }
@@ -200,7 +200,7 @@ ul
 
 #intro h3
 {
-    color: #ffd675;
+    color: #000000;
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;
@@ -241,7 +241,7 @@ ul
 
 .header h3
 {
-    color: #ffd675;
+    color: #000000;
     font-weight: 300;
     text-align: center;
     text-transform: uppercase;
@@ -307,7 +307,7 @@ ul
 
 .feature i
 {
-    color: #ffd675;
+    color: #000000;
     margin-right: 7px;
 }
 
@@ -405,7 +405,7 @@ ul
 #back-top:hover
 {
     text-decoration: none;
-    background: #ffd675;
+    background: #000000;
     background: rgba(255, 214, 117, 0.75);
         -moz-transition: all 600ms;
         -webkit-transition: all 600ms;
@@ -462,7 +462,7 @@ ul
 
     #header .navbar .btn-navbar .icon-bar
     {
-        background: #ffd675;
+        background: #000000;
             -webkit-border-radius: none;
             -moz-border-radius: none;
         border-radius: none;
@@ -493,7 +493,7 @@ ul
     
     #header .navbar .nav > li > a:hover, #header .navbar .nav > li > a.active
     {
-        color: #ffd675;
+        color: #000000;
         border: none;
         background: none;
         filter: none;
@@ -536,7 +536,7 @@ ul
 
     #header .navbar .btn-navbar .icon-bar
     {
-        background: #ffd675;
+        background: #000000;
             -webkit-border-radius: none;
             -moz-border-radius: none;
         border-radius: none;
@@ -567,7 +567,7 @@ ul
     
     #header .navbar .nav > li > a:hover, #header .navbar .nav > li > a.active
     {
-        color: #ffd675;
+        color: #000000;
         border: none;
         background: none;
         filter: none;
@@ -621,7 +621,7 @@ ul
 
     #header .navbar .btn-navbar .icon-bar
     {
-        background: #ffd675;
+        background: #000000;
             -webkit-border-radius: none;
             -moz-border-radius: none;
         border-radius: none;
@@ -652,7 +652,7 @@ ul
     
     #header .navbar .nav > li > a:hover, #header .navbar .nav > li > a.active
     {
-        color: #ffd675;
+        color: #000000;
         border: none;
         background: none;
         filter: none;

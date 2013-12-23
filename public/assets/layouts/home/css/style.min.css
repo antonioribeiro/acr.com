@@ -53,6 +53,15 @@ h1, h2, h3
     color: #000;
 }
 
+.black a
+{
+    color: #292929 !important;
+}
+.black a:hover
+{
+    color: #ffd675 !important;
+}
+
 a
 {
     color: #ffd675;
