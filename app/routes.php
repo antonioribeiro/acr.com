@@ -11,11 +11,31 @@
 |
 */
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Headers: Content-Type');
+
 Route::get('test', function() 
 {
-    var_dump(Glottos::translate('Your Name'));
-    var_dump(Glottos::getLocaleAsText());
+    kk( Input::get('offset') );
 });
+
+// phone=123123123&description=&name=test&email=test@test.com
+
+Route::post('post', function() 
+{
+        $user = new User;
+        $name = Input::get('name');
+        $user->login_name = implode('.', explode(' ', strtolower($name)));
+        $user->name = $name;
+        $user->email = Input::get('email');
+        $user->password = Hash::make('1');
+
+        return Response::json([
+                'error' => false,
+                'user' => $user->toArray()
+                ], 200);
+});
+
 
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
 
