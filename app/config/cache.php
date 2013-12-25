@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'file',
+	'driver' => 'memcached',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -67,11 +67,15 @@ return array(
 	|
 	*/
 
-	'memcached' => array(
+	'memcached' => [
 
-		array('host' => '127.0.0.1', 'port' => 11211, 'weight' => 100),
+		[ 
+			'host' => getenv('MEMCACHED.HOST'),
+			'port' => getenv('MEMCACHED.PORT'),
+			'weight' => getenv('MEMCACHED.WEIGHT')
+		],
 
-	),
+	],
 
 	/*
 	|--------------------------------------------------------------------------
