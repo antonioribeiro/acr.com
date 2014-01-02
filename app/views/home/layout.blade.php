@@ -7,7 +7,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Page description" />
-        <meta name="author" content="Superthe.me" />
+        <meta name="author" content="Antonio Carlos Ribeiro" />
         <meta charset="utf-8" />
 
         <link href="{{ asset('assets/layouts/home/css/bootstrap.min.css') }}" rel="stylesheet" media="screen" />
