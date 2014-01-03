@@ -76,7 +76,6 @@
             </section>
             <footer id="site-footer" role="contentinfo">
                 <div style="text-align: center">
-                    <a data-nav="scroll" href="{{ URL::to('/') }}/blog"><i class="fa fa-file-text-o"></i></a>&nbsp;&nbsp;&nbsp;
                     <a data-nav="scroll" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>&nbsp;&nbsp;&nbsp;
                     
                     @if(Glottos::getLocaleAsText() == 'pt_BR')
@@ -88,9 +87,7 @@
                     </a>&nbsp;&nbsp;&nbsp;
 
                     <a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a data-nav="scroll" href="{{ URL::to('/') }}/#/tech"><i class="fa fa-laptop"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a data-nav="scroll" href="{{ URL::to('/') }}/#/photo"><i class="fa fa-camera"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a data-nav="scroll" href="{{ URL::to('/') }}/#/contact"><i class="fa fa-envelope"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a href="{{ URL::to('/') }}"><i class="fa fa-home"></i></a>
                 </div>
 
                 <br>
