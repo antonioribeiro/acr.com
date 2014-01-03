@@ -58,30 +58,14 @@
                 <nav role="navigation">
                     <ul class="site-navigation">
                         <li>
-                            <a href="{{ URL::to('/') }}">
-                                <i class="fa fa-home"></i>
-                            </a>
-                        </li>
-
-                        <li>
                             <a href="{{ URL::to('blog') }}">
                                 {{'Blog'}}
                             </a>
                         </li>
 
                         <li>
-                            <a href="/articles.html">
-                                {{'Articles'}}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/iantonioribeiro">
-                                {{'Twitter'}}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/antonioribeiro">
-                                {{'GitHub'}}
+                            <a href="{{ URL::to('/') }}">
+                                <i class="fa fa-home"></i>
                             </a>
                         </li>
                     </ul>
@@ -91,6 +75,25 @@
             	@yield('content')
             </section>
             <footer id="site-footer" role="contentinfo">
+                <div style="text-align: center">
+                    <a data-nav="scroll" href="{{ URL::to('/') }}/blog"><i class="fa fa-file-text-o"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a data-nav="scroll" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>&nbsp;&nbsp;&nbsp;
+                    
+                    @if(Glottos::getLocaleAsText() == 'pt_BR')
+                        <a data-nav="scroll" href="http://twitter.com/iantoniocarlos">
+                    @else
+                        <a data-nav="scroll" href="http://twitter.com/iantonioribeiro">
+                    @endif
+                    <i class="fa fa-twitter"></i>
+                    </a>&nbsp;&nbsp;&nbsp;
+
+                    <a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a data-nav="scroll" href="{{ URL::to('/') }}/#/tech"><i class="fa fa-laptop"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a data-nav="scroll" href="{{ URL::to('/') }}/#/photo"><i class="fa fa-camera"></i></a>&nbsp;&nbsp;&nbsp;
+                    <a data-nav="scroll" href="{{ URL::to('/') }}/#/contact"><i class="fa fa-envelope"></i></a>&nbsp;&nbsp;&nbsp;
+                </div>
+
+                <br>
                 <p class="text-center milli">
                     &copy; 2013 Antonio Carlos Ribeiro. 
 
