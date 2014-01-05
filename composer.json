@@ -12,16 +12,22 @@
 		"cartalyst/sentry": "dev-master",
 		"way/generators": "dev-master",
 		"onigoetz/profiler": "dev-master",
-		"pragmarx/glottos": "dev-master",
 		"tecnick.com/tcpdf": "dev-master",
 		"way/form": "dev-master",
-		"michelf/php-markdown": "1.4.*@dev"
+		"michelf/php-markdown": "1.4.*@dev",
+		"pragmarx/glottos": "dev-master",
+		"pragmarx/firewall": "dev-master",
+		"pragmarx/deeployer": "dev-master"
 	},
 
     "repositories": [
         {
             "type": "vcs",
-            "url":  "https://github.com/antonioribeiro/glottos.git"
+            "url":  "https://github.com/antonioribeiro/firewall.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/antonioribeiro/deeployer.git"
         }
     ],
 

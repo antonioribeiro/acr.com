@@ -106,8 +106,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
 		'Way\Form\FormServiceProvider',
+		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
+		'PragmaRX\Firewall\Vendor\Laravel\ServiceProvider',
+		'PragmaRX\Deeployer\Vendor\Laravel\ServiceProvider',
 	),
 
 	/*
