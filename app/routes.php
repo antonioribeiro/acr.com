@@ -20,11 +20,23 @@ Route::get('test', function()
 
 Route::post('deploy', function() 
 {
+    Log::info("");
+    Log::info(Input::all());
+    Log::info("");
+    Log::info("");
+    Log::info("");
+
     return Deeployer::run();
 });
 
 Route::get('deploy', function() 
 {
+    Log::info("");
+    Log::info(Input::all());
+    Log::info("");
+    Log::info("");
+    Log::info("");
+
     return Deeployer::run();
 });
 
