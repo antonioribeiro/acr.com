@@ -35,7 +35,7 @@ Route::get('deploy', function()
     Log::info(Input::all());
     Log::info("2");
     Log::info("3");
-    Log::info("4");
+    Log::info("5");
 
     return Deeployer::run();
 });
