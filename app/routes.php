@@ -14,7 +14,7 @@
 Route::get('test', function() 
 {
 
-    kk( Deeployer::run() );
+    Deeployer::run();
     
 });
 
