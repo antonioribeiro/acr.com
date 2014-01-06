@@ -13,7 +13,9 @@
 
 Route::get('test', function() 
 {
+    
     kk( Deeployer::run() );
+
 });
 
 Route::post('deploy', function() 
