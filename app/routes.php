@@ -11,12 +11,27 @@
 |
 */
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: Content-Type');
-
 Route::get('test', function() 
 {
-    kk( Input::get('offset') );
+    kk( Deeployer::run() );
+});
+
+Route::post('deploy', function() 
+{
+    Log::info(Input::all());
+
+    return "POST succeeded";
+
+    // Deeployer::run();
+});
+
+Route::get('deploy', function() 
+{
+    Log::info(Input::all());
+
+    return "GET succeeded";
+
+    // Deeployer::run();
 });
 
 // phone=123123123&description=&name=test&email=test@test.com
