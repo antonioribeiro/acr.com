@@ -13,27 +13,19 @@
 
 Route::get('test', function() 
 {
-    
-    kk( Deeployer::run() );
 
+    kk( Deeployer::run() );
+    
 });
 
 Route::post('deploy', function() 
 {
-    Log::info(Input::all());
-
-    return "POST succeeded";
-
-    // Deeployer::run();
+    return Deeployer::run();
 });
 
 Route::get('deploy', function() 
 {
-    Log::info(Input::all());
-
-    return "GET succeeded";
-
-    // Deeployer::run();
+    return Deeployer::run();
 });
 
 // phone=123123123&description=&name=test&email=test@test.com
