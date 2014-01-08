@@ -14,6 +14,9 @@
 Route::get('test', function() 
 {
 
+    var_dump(serialize(DB::select('select * from articles')));
+    die;
+
     Deeployer::run();
     
 });

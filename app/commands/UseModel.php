@@ -4,6 +4,8 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
+use ACR\Models\Article;
+
 class UseModel extends Command {
 
 	protected $name = 'model';
@@ -17,7 +19,7 @@ class UseModel extends Command {
 
 	public function fire()
 	{
-		var_dump(ACR\Models\Article::all());
+		var_dump(Article::all());
 	}
 
 	protected function getArguments()
