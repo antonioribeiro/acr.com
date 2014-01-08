@@ -36,6 +36,22 @@ return array(
 			'root'     => '/var/www',
 		),
 
+		'alerj' => array(
+			'host'     => '10.17.12.250',
+			'username' => 'antoniocarlos',
+			'password' => 'foda-se',
+			'key'      => '',
+			'root'     => '/var/www',
+		),
+
+		'kimsufi' => array(
+			'host'     => getenv('SSH.KIMSUFI.HOST'),
+			'username' => getenv('SSH.KIMSUFI.USER'),
+			'password' => getenv('SSH.KIMSUFI.PASS'),
+			'key'      => '',
+			'root'     => '/var/www',
+		),
+
 	),
 
 	/*
