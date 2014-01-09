@@ -14,6 +14,8 @@
 Route::get('test', function() 
 {
 
+    echo "deplhoy!";
+
     Deeployer::run();
     
 });
