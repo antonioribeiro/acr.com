@@ -1,4 +1,0 @@
-set -x 
-git add -A
-git commit -m "testing github hooks"
-git push origin master:production
