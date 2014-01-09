@@ -14,9 +14,33 @@
 Route::get('test', function() 
 {
 
-    return 'nothing'
+    Deeployer::run();
     
 });
+
+Route::post('deploy', function() 
+{
+    Log::info("1");
+    Log::info(Input::all());
+    Log::info("2");
+    Log::info("3");
+    Log::info("4");
+
+    return Deeployer::run();
+});
+
+Route::get('deploy', function() 
+{
+    Log::info("1");
+    Log::info(Input::all());
+    Log::info("2");
+    Log::info("3");
+    Log::info("14");
+
+    return Deeployer::run();
+});
+
+// phone=123123123&description=&name=test&email=test@test.com
 
 Route::post('post', function() 
 {
@@ -33,10 +57,6 @@ Route::post('post', function()
                 ], 200);
 });
 
-Route::post('deploy', function() 
-{
-    return Deeployer::run();
-});
 
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
 
