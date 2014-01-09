@@ -28,6 +28,21 @@ return array(
 
 	'default' => 'postgresql',
 
+	'connections' => [
+
+		'postgresql' => [
+			'driver'   => 'pgsql',
+			'host'     => 'localhost',
+			'database' => getenv('POSTGRESQL.DATABASE_NAME'),
+			'username' => getenv('POSTGRESQL.DATABASE_USER'),
+			'password' => getenv('POSTGRESQL.DATABASE_PASSWORD'),
+			'charset'  => 'utf8',
+			'prefix'   => '',
+			'schema'   => 'public',
+		],
+
+	],
+
 	/*
 	|--------------------------------------------------------------------------
 	| Migration Repository Table
