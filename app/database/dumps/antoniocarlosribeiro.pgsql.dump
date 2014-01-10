@@ -14,28 +14,30 @@ DROP FUNCTION public.construe_cascade_translations();
 DROP EXTENSION plpgsql;
 DROP SCHEMA public;
 --
--- Name: public; Type: SCHEMA; Schema: -; Owner: -
+-- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
 CREATE SCHEMA public;
 
 
+ALTER SCHEMA public OWNER TO postgres;
+
 --
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: -
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
 --
 
 COMMENT ON SCHEMA public IS 'standard public schema';
 
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
 CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
@@ -44,7 +46,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- Name: construe_cascade_translations(); Type: FUNCTION; Schema: public; Owner: -
+-- Name: construe_cascade_translations(); Type: FUNCTION; Schema: public; Owner: antoniocarlos
 --
 
 CREATE FUNCTION construe_cascade_translations() RETURNS trigger
@@ -65,6 +67,18 @@ CREATE FUNCTION construe_cascade_translations() RETURNS trigger
                             RETURN NEW;
                         END;
                         $$;
+
+
+ALTER FUNCTION public.construe_cascade_translations() OWNER TO antoniocarlos;
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
 --
