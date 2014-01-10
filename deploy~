@@ -1,0 +1,4 @@
+gaa 
+gc "developing"
+git push origin master
+git push origin master:staging
