@@ -1,4 +1,0 @@
-git add -A
-git commit -m "developing"
-git push origin master
-git push origin master:staging
