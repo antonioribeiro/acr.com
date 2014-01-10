@@ -9,3 +9,4 @@ Thumbs.db
 .environmentOLD
 public/.htaccess
 database.restore.sh
+*~
