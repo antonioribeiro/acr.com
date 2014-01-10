@@ -10,82 +10,40 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
-DROP FUNCTION public.construe_cascade_translations();
-DROP EXTENSION plpgsql;
-DROP SCHEMA public;
---
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
---
-
-CREATE SCHEMA public;
-
-
-ALTER SCHEMA public OWNER TO postgres;
-
---
--- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
---
-
-COMMENT ON SCHEMA public IS 'standard public schema';
-
-
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
-SET search_path = public, pg_catalog;
-
---
--- Name: construe_cascade_translations(); Type: FUNCTION; Schema: public; Owner: antoniocarlos
---
-
-CREATE FUNCTION construe_cascade_translations() RETURNS trigger
-    LANGUAGE plpgsql
-    AS $$
-                        BEGIN
-                            if not NEW.auto_inserted then
-                                INSERT INTO construe_messages (language_id, country_id, module_id, message_hash, translator_id, message, auto_inserted, created_at, updated_at)
-                                    SELECT l.language_id, l.country_id, m.module_id, m.message_hash, 0, m.message, true, 'NOW', 'NOW'
-                                    FROM construe_messages m
-                                    JOIN construe_country_languages l on l.enabled = true and (not (l.language_id = 'en' and l.country_id = 'US'))
-                                    WHERE m.language_id = 'en'
-                                        AND m.country_id = 'US'
-                                        AND (module_id,message_hash) NOT IN
-                                            (SELECT module_id,message_hash FROM construe_messages where language_id = l.language_id and country_id = l.country_id);
-                            end if;
-
-                            RETURN NEW;
-                        END;
-                        $$;
-
-
-ALTER FUNCTION public.construe_cascade_translations() OWNER TO antoniocarlos;
-
---
--- Name: public; Type: ACL; Schema: -; Owner: postgres
---
-
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
---
--- PostgreSQL database dump complete
---
-
-ottos_countries_languages ALTER COLUMN id DROP DEFAULT;
+DROP INDEX public.users_reset_password_code_index;
+DROP INDEX public.users_activation_code_index;
+DROP INDEX public.throttle_user_id_index;
+DROP INDEX public.articles_slug_index;
+ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
+ALTER TABLE ONLY public.users_groups DROP CONSTRAINT users_groups_pkey;
+ALTER TABLE ONLY public.users DROP CONSTRAINT users_email_unique;
+ALTER TABLE ONLY public.throttle DROP CONSTRAINT throttle_pkey;
+ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_post_id_tag_unique;
+ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_pkey;
+ALTER TABLE ONLY public.sessions DROP CONSTRAINT sessions_id_unique;
+ALTER TABLE ONLY public.posts DROP CONSTRAINT posts_pkey;
+ALTER TABLE ONLY public.groups DROP CONSTRAINT groups_pkey;
+ALTER TABLE ONLY public.groups DROP CONSTRAINT groups_name_unique;
+ALTER TABLE ONLY public.glottos_translations DROP CONSTRAINT glottos_translations_pkey;
+ALTER TABLE ONLY public.glottos_translations DROP CONSTRAINT glottos_translations_language_id_country_id_message_id_unique;
+ALTER TABLE ONLY public.glottos_messages DROP CONSTRAINT glottos_messages_pkey;
+ALTER TABLE ONLY public.glottos_languages DROP CONSTRAINT glottos_languages_pkey;
+ALTER TABLE ONLY public.glottos_domains DROP CONSTRAINT glottos_domains_pkey;
+ALTER TABLE ONLY public.glottos_domains DROP CONSTRAINT glottos_domains_name_unique;
+ALTER TABLE ONLY public.glottos_countries DROP CONSTRAINT glottos_countries_pkey;
+ALTER TABLE ONLY public.glottos_countries DROP CONSTRAINT glottos_countries_name_unique;
+ALTER TABLE ONLY public.glottos_countries_languages DROP CONSTRAINT glottos_countries_languages_regional_name_unique;
+ALTER TABLE ONLY public.glottos_countries_languages DROP CONSTRAINT glottos_countries_languages_pkey;
+ALTER TABLE ONLY public.articles DROP CONSTRAINT articles_pkey;
+ALTER TABLE public.users ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.throttle ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tags ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.posts ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.groups ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.glottos_translations ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.glottos_messages ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.glottos_domains ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.glottos_countries_languages ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.articles ALTER COLUMN id DROP DEFAULT;
 DROP SEQUENCE public.users_id_seq;
 DROP TABLE public.users_groups;
