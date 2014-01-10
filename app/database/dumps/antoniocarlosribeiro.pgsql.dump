@@ -10,13 +10,20 @@ SET client_min_messages = warning;
 
 SET search_path = public, pg_catalog;
 
+DROP INDEX public.users_reset_password_code_index;
+DROP INDEX public.users_activation_code_index;
+DROP INDEX public.throttle_user_id_index;
 DROP INDEX public.articles_slug_index;
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
+ALTER TABLE ONLY public.users_groups DROP CONSTRAINT users_groups_pkey;
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_email_unique;
+ALTER TABLE ONLY public.throttle DROP CONSTRAINT throttle_pkey;
 ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_post_id_tag_unique;
 ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_pkey;
 ALTER TABLE ONLY public.sessions DROP CONSTRAINT sessions_id_unique;
 ALTER TABLE ONLY public.posts DROP CONSTRAINT posts_pkey;
+ALTER TABLE ONLY public.groups DROP CONSTRAINT groups_pkey;
+ALTER TABLE ONLY public.groups DROP CONSTRAINT groups_name_unique;
 ALTER TABLE ONLY public.glottos_translations DROP CONSTRAINT glottos_translations_pkey;
 ALTER TABLE ONLY public.glottos_translations DROP CONSTRAINT glottos_translations_language_id_country_id_message_id_unique;
 ALTER TABLE ONLY public.glottos_messages DROP CONSTRAINT glottos_messages_pkey;
@@ -29,15 +36,20 @@ ALTER TABLE ONLY public.glottos_countries_languages DROP CONSTRAINT glottos_coun
 ALTER TABLE ONLY public.glottos_countries_languages DROP CONSTRAINT glottos_countries_languages_pkey;
 ALTER TABLE ONLY public.articles DROP CONSTRAINT articles_pkey;
 ALTER TABLE public.users ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.throttle ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tags ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.posts ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.groups ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.glottos_translations ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.glottos_messages ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.glottos_domains ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.glottos_countries_languages ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.articles ALTER COLUMN id DROP DEFAULT;
 DROP SEQUENCE public.users_id_seq;
+DROP TABLE public.users_groups;
 DROP TABLE public.users;
+DROP SEQUENCE public.throttle_id_seq;
+DROP TABLE public.throttle;
 DROP SEQUENCE public.tags_id_seq;
 DROP TABLE public.tags;
 DROP TABLE public.sessions;
@@ -45,6 +57,8 @@ DROP SEQUENCE public.posts_id_seq;
 DROP TABLE public.posts;
 DROP TABLE public.password_reminders;
 DROP TABLE public.migrations;
+DROP SEQUENCE public.groups_id_seq;
+DROP TABLE public.groups;
 DROP SEQUENCE public.glottos_translations_id_seq;
 DROP TABLE public.glottos_translations;
 DROP SEQUENCE public.glottos_messages_id_seq;
@@ -339,6 +353,42 @@ ALTER SEQUENCE glottos_translations_id_seq OWNED BY glottos_translations.id;
 
 
 --
+-- Name: groups; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE groups (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    permissions text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.groups OWNER TO antoniocarlos;
+
+--
+-- Name: groups_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.groups_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
+
+
+--
 -- Name: migrations; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
@@ -375,7 +425,7 @@ CREATE TABLE posts (
     image character varying(255) DEFAULT ''::character varying NOT NULL,
     type character varying(255) DEFAULT 'post'::character varying NOT NULL,
     publish_date timestamp without time zone NOT NULL,
-    active smallint DEFAULT 0::smallint NOT NULL,
+    active smallint DEFAULT (0)::smallint NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     user_id integer DEFAULT 1
@@ -453,20 +503,80 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 
 
 --
+-- Name: throttle; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE throttle (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    ip_address character varying(255),
+    attempts integer DEFAULT 0 NOT NULL,
+    suspended boolean DEFAULT false NOT NULL,
+    banned boolean DEFAULT false NOT NULL,
+    last_attempt_at timestamp without time zone,
+    suspended_at timestamp without time zone,
+    banned_at timestamp without time zone
+);
+
+
+ALTER TABLE public.throttle OWNER TO antoniocarlos;
+
+--
+-- Name: throttle_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE throttle_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.throttle_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: throttle_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE throttle_id_seq OWNED BY throttle.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE users (
     id integer NOT NULL,
-    email text NOT NULL,
-    password text NOT NULL,
-    name text NOT NULL,
+    email character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    permissions text,
+    activated boolean DEFAULT false NOT NULL,
+    activation_code character varying(255),
+    activated_at timestamp without time zone,
+    last_login timestamp without time zone,
+    persist_code character varying(255),
+    reset_password_code character varying(255),
+    first_name character varying(255),
+    last_name character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
 ALTER TABLE public.users OWNER TO antoniocarlos;
+
+--
+-- Name: users_groups; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE users_groups (
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE public.users_groups OWNER TO antoniocarlos;
 
 --
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
@@ -528,6 +638,13 @@ ALTER TABLE ONLY glottos_translations ALTER COLUMN id SET DEFAULT nextval('glott
 -- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
+ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
 ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
 
 
@@ -536,6 +653,13 @@ ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regcl
 --
 
 ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY throttle ALTER COLUMN id SET DEFAULT nextval('throttle_id_seq'::regclass);
 
 
 --
@@ -1498,6 +1622,21 @@ SELECT pg_catalog.setval('glottos_translations_id_seq', 367, true);
 
 
 --
+-- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY groups (id, name, permissions, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('groups_id_seq', 1, false);
+
+
+--
 -- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
@@ -1509,9 +1648,13 @@ COPY migrations (migration, batch) FROM stdin;
 2013_01_20_221528_translations	1
 2013_01_20_221535_domains	1
 2013_01_20_999999_glottos_table_seeds	1
-2013_11_04_004458_users	2
 2013_11_26_001059_create_sessions_table	2
 2013_12_21_181049_create_articles_table	3
+2012_12_06_225921_migration_cartalyst_sentry_install_users	4
+2012_12_06_225929_migration_cartalyst_sentry_install_groups	4
+2012_12_06_225945_migration_cartalyst_sentry_install_users_groups_pivot	4
+2012_12_06_225988_migration_cartalyst_sentry_install_throttle	4
+2013_11_04_004458_users	5
 \.
 
 
@@ -1562,12 +1705,34 @@ SELECT pg_catalog.setval('tags_id_seq', 1, false);
 
 
 --
+-- Data for Name: throttle; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY throttle (id, user_id, ip_address, attempts, suspended, banned, last_attempt_at, suspended_at, banned_at) FROM stdin;
+\.
+
+
+--
+-- Name: throttle_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('throttle_id_seq', 1, false);
+
+
+--
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
-COPY users (id, email, password, name, created_at, updated_at) FROM stdin;
-1	acr@antoniocarlosribeiro.com	$2y$08$d92Fxk55YWRnTGpQ5GNdGuBDgBnyO.l6T1wM1L6Cfe.DoA9EZxAe.	Antonio Carlos Ribeiro	2013-12-05 00:05:46	2013-12-05 00:05:46
-2	admin	$2y$08$XLoSZExYWJogaQ9RmbtJX.cUQdFPXscJj/luLOwzX/tKRWaa76kTu	Admin	2013-12-05 00:05:46	2013-12-05 00:05:46
+COPY users (id, email, password, permissions, activated, activation_code, activated_at, last_login, persist_code, reset_password_code, first_name, last_name, created_at, updated_at) FROM stdin;
+1	acr@antoniocarlosribeiro.com	$2y$08$1UemL1yG5MPfR3B4lvRwgeXDoIctBbfWYyiU5mefdhq1jpQTMWQOO	\N	f	\N	\N	\N	\N	\N	Antonio Carlos	Ribeiro	2014-01-09 23:55:30	2014-01-09 23:55:30
+\.
+
+
+--
+-- Data for Name: users_groups; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY users_groups (user_id, group_id) FROM stdin;
 \.
 
 
@@ -1575,7 +1740,7 @@ COPY users (id, email, password, name, created_at, updated_at) FROM stdin;
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('users_id_seq', 2, true);
+SELECT pg_catalog.setval('users_id_seq', 1, true);
 
 
 --
@@ -1667,6 +1832,22 @@ ALTER TABLE ONLY glottos_translations
 
 
 --
+-- Name: groups_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY groups
+    ADD CONSTRAINT groups_name_unique UNIQUE (name);
+
+
+--
+-- Name: groups_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY groups
+    ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
@@ -1699,11 +1880,27 @@ ALTER TABLE ONLY tags
 
 
 --
+-- Name: throttle_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY throttle
+    ADD CONSTRAINT throttle_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users_email_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_email_unique UNIQUE (email);
+
+
+--
+-- Name: users_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY users_groups
+    ADD CONSTRAINT users_groups_pkey PRIMARY KEY (user_id, group_id);
 
 
 --
@@ -1719,6 +1916,27 @@ ALTER TABLE ONLY users
 --
 
 CREATE INDEX articles_slug_index ON articles USING btree (slug);
+
+
+--
+-- Name: throttle_user_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX throttle_user_id_index ON throttle USING btree (user_id);
+
+
+--
+-- Name: users_activation_code_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX users_activation_code_index ON users USING btree (activation_code);
+
+
+--
+-- Name: users_reset_password_code_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX users_reset_password_code_index ON users USING btree (reset_password_code);
 
 
 --
