@@ -15,6 +15,7 @@ Route::get('test', function()
 {
 
     echo "deplhoy!";
+    die;
 
     Deeployer::run();
     
@@ -22,17 +23,14 @@ Route::get('test', function()
 
 Route::post('deploy', function() 
 {
-    Log::info("1");
-    Log::info(Input::all());
-    Log::info("2");
-    Log::info("3");
-    Log::info("4");
 
     return Deeployer::run();
 });
 
 Route::get('deploy', function() 
 {
+    die;
+
     Log::info("1");
     Log::info(Input::all());
     Log::info("2");
