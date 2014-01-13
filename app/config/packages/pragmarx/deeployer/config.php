@@ -28,7 +28,7 @@ return array(
                             array(
                                     'ssh_connection' => 'production',
 
-                                    'git_repository' => 'https://bitbucket.org/antonioribeiro/deployer/',
+                                    'git_repository' => 'https://bitbucket.org/antonioribeiro/deployer',
 
                                     'git_remote' => 'origin',
 
@@ -36,11 +36,13 @@ return array(
 
                                     'remote_directory' => '/var/www/blog/',
 
-                                    'composer_update' => false,
+                                    'composer_update' => true,
 
                                     'composer_optimize_autoload' => false,
 
                                     'composer_extra_options' => '',
+
+                                    'composer_timeout' => 60 * 5, // 5 minutes
 
                                     'artisan_migrate' => false,
 
@@ -56,7 +58,7 @@ return array(
 
                                     'git_remote' => 'origin',
 
-                                    'git_branch' => 'staging',
+                                    'git_branch' => 'master',
 
                                     'remote_directory' => '/var/www/antoniocarlosribeiro.com',
 
@@ -65,6 +67,8 @@ return array(
                                     'composer_optimize_autoload' => false,
 
                                     'composer_extra_options' => '',
+
+                                    'composer_timeout' => 60 * 5, // 5 minutes
 
                                     'artisan_migrate' => false,
 

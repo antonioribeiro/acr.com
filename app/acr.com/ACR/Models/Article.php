@@ -50,4 +50,22 @@ class Article extends Eloquent {
 		return substr($string, 0, $pos);
 	}
 
+	public function getMonthsList()
+	{
+		$rows = Article::ordered()->published()->get(['created_at']);
+
+		$result = [];
+
+		foreach($rows as $row)
+		{
+			$key = $row->created_at->month.'|'.$row->created_at->year;
+
+			$result[$key] = [
+								'month' => $row->created_at->month, 
+								'year' => $row->created_at->year
+							];
+		}
+
+		return $result;
+	}
 }

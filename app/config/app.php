@@ -107,6 +107,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Form\FormServiceProvider',
+		'Clockwork\Support\Laravel\ClockworkServiceProvider',
 		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Firewall\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Deeployer\Vendor\Laravel\ServiceProvider',
@@ -177,6 +178,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Stopwatch' 	  => 'Onigoetz\Profiler\Stopwatch',
+		'Clockwork'       => 'Clockwork\Support\Laravel\Facade',
 	),
 
 );

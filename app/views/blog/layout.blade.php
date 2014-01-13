@@ -2,109 +2,144 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Antonio Carlos Ribeiro">
+
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>
-            Antonio Carlos Ribeiro, Front-End Developer
+            Antonio Carlos Ribeiro - WebLog
         </title>
-        <link rel="alternate" href="/atom.xml" title="Antonio Carlos Ribeiro, Front-End Developer" type="application/atom+xml"/>
-        <link rel="canonical" href="http://antoniocarlosribeiro.com"/>
 
-        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source Sans Pro">
+        <!-- Bootstrap core CSS -->
+        <link href="{{ URL::to('/') }}/assets/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="{{ URL::to('/') }}/assets/custom/css/sticky-footer-navbar.css" rel="stylesheet">
+
+        <link href="{{ URL::to('/') }}/assets/custom/css/blog.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ URL::to('/') }}/assets/vendor/font-awesome/css/font-awesome.min.css" />
+
+        <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.css' }}">
-        <link href="{{ asset('assets/layouts/home/css/font-awesome.min.css') }}" rel="stylesheet" media="screen" />
 
-        <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/acr.css"/>
-        <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/prettify-desert.css"/>
+        <link rel="stylesheet" type="text/css" href="{{URL::to('/')}}/assets/blog/css/prettify-desert.css"/>
 
         <script src="http://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
-        </script>
-        <script>
-            try{
-                Typekit.load()}
-            catch(e){
-            };
-        </script>
-        <script>
-            (function(){
-                if(!window.addEventListener||!document.querySelector||!Array.prototype.forEach){
-                    return}
-                window.addEventListener("DOMContentLoaded",function(){
-                    Array.prototype.forEach.call(document.querySelectorAll(".js-svg"),function(img){
-                        img.src=img.src.replace(".png",".svg")}
-                                                                            )}
-                                                                ,false)}
-            )();
-        </script>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+        <!-- Just for debugging purposes. Don't actually copy this line! -->
+        <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
     </head>
-    <body onload="prettyPrint()">
-        <div class="container">
-            <div id="site-header">
-                <header role="banner">
-                    	
-	                            <a href="{{URL::to('blog')}}">
-                                    <img src="{{URL::to('/')}}/assets/blog/img/camera.svg" width="60" height="60" />
+
+    <body>
+
+        <!-- Wrap all page content here -->
+        <div id="wrap">
+            <!-- Fixed navbar -->
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="brand" href="{{ URL::route('blog') }}">Antonio Carlos Ribeiro - Blog</a>
+                    </div>
+                    <div class="navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <h1>
+                                    <a target="_blank" href="{{ URL::to('/') }}">
+                                        <i class="fa fa-home"></i>
                                     </a>
-	                    
-                        <p class="languages">
-                            <div class="languages">
-                                <a href="{{ $switchLanguageUrl }}">
-                                    {{ ($switchLanguageTitle == 'english' ? 'in ' : 'em ') . $switchLanguageTitle }} &#8594;
-                                </a>
-                            </div>
-                        </p>
-                </header>
-                <nav role="navigation">
-                    <ul class="site-navigation">
-                        <li>
-                            <a href="{{ URL::to('blog') }}">
-                                {{'Blog'}}
-                            </a>
-                        </li>
 
-                        <li>
-                            <a href="{{ URL::to('/') }}">
-                                <i class="fa fa-home"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                                    &nbsp;
+
+                                    <a target="_blank" href="http://github.com/antonioribeiro">
+                                        <i class="fa fa-github"></i>
+                                    </a>
+
+                                    &nbsp;
+                                    
+                                    @if(Glottos::getLocaleAsText() == 'pt_BR')
+                                        <a target="_blank" href="http://twitter.com/iantoniocarlos">
+                                    @else
+                                        <a target="_blank" href="http://twitter.com/iantonioribeiro">
+                                    @endif
+
+                                    <i class="fa fa-twitter"></i>
+                                    </a>
+
+                                    &nbsp;
+
+                                    <a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>
+                                </h1>
+                            </li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
             </div>
-            <section id="site-main">
-            	@yield('content')
-            </section>
-            <footer id="site-footer" role="contentinfo">
-                <div style="text-align: center">
-                    <a data-nav="scroll" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>&nbsp;&nbsp;&nbsp;
-                    
-                    @if(Glottos::getLocaleAsText() == 'pt_BR')
-                        <a data-nav="scroll" href="http://twitter.com/iantoniocarlos">
-                    @else
-                        <a data-nav="scroll" href="http://twitter.com/iantonioribeiro">
-                    @endif
-                    <i class="fa fa-twitter"></i>
-                    </a>&nbsp;&nbsp;&nbsp;
 
-                    <a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>&nbsp;&nbsp;&nbsp;
-                    <a href="{{ URL::to('/') }}"><i class="fa fa-home"></i></a>
+            <!-- Begin page content -->
+            <div class="container">
+                <div class="row">
+                    <p>                    
+                        <div class="languages text-right">
+                            <a href="{{ $switchLanguageUrl }}">
+                                ({{ ($switchLanguageTitle == 'english' ? 'read in ' : 'ler em ') . $switchLanguageTitle }})
+                            </a>
+                        </div>                    
+                    </p>
                 </div>
 
-                <br>
-                <p class="text-center milli">
-                    &copy; 2013 Antonio Carlos Ribeiro. 
+                <div class="row">
+                    <div class="col-md-10">
+                        @yield('content')
+                    </div>
 
-                    {{'Cewr up with'}}
-                    <a href="http://laravel.com/">
-                        Laravel
-                    </a> {{'and'}} 
+                    <div class="col-md-2 text-right right-panel">
+                        <p>&nbsp;</p>
 
-                    <a href="https://github.com/antonioribeiro/glottos">
-                        Glottos.
-                    </a>
-                </p>
-            </footer>
+                        <p><a href="{{ URL::route('blog') }}">All Posts</a></p>
+
+                        @include('blog._partials.postsMonths')
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div id="footer">
+            <div class="footer-text text-muted text-center">
+                &copy; 2013 Antonio Carlos Ribeiro. 
+
+                {{'Cewr up with'}}
+                <a href="http://laravel.com/">
+                    Laravel
+                </a> {{'and'}} 
+
+                <a href="https://github.com/antonioribeiro/glottos">
+                    Glottos.
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="{{ URL::to('/') }}/assets/vendor/jquery/jquery.js"></script>
+        <script src="{{ URL::to('/') }}/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <script src="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.js' }}"></script>
+
+        @include('global._partials.google-analytics')
+
         <script>
             var _gaq=[["_setAccount","UA-2508361-5"],["_trackPageview"]];
             (function(d,t){
@@ -112,9 +147,5 @@
                 var s=d.getElementsByTagName(t)[0];
                 g.src="//www.google-analytics.com/ga.js";s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
-
-        <script src="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.js' }}"></script>
-
-        @include('global._partials.google-analytics')
     </body>
 </html>

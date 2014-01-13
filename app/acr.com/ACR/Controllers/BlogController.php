@@ -6,10 +6,18 @@ use Glottos;
 
 class BlogController extends BaseController {
 
+	protected $article;
+
+	public function __construct(Article $article)
+	{
+		$this->article = $article;
+	}
+
 	public function index()
 	{
 		return View::make('blog.pages.index')
-				->with('articles', Article::published()->get());
+				->with('articles', Article::published()->get())
+				->with('postsMonths', $this->article->getMonthsList());
 	}
 
 	public function show($slug, $language = null)

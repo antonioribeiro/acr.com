@@ -58,5 +58,8 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "dev"
+	"minimum-stability": "dev",
+	"require-dev": {
+		"itsgoingd/clockwork": "1.*"
+	}
 }

@@ -2,6 +2,7 @@
 
 use \Controller;
 use \View;
+use \Event;
 
 class BaseController extends Controller {
 
@@ -18,4 +19,16 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function __construct()
+	{
+		$this->beforeFilter(function()
+		{
+		    Event::fire('clockwork.controller.start');
+		});
+
+		$this->afterFilter(function()
+		{
+		    Event::fire('clockwork.controller.end');
+		});
+	}
 }

@@ -14,11 +14,10 @@
 Route::get('test', function() 
 {
 
-    echo "deplhoy!";
-    die;
+    l(User::all());
 
-    Deeployer::run();
-    
+    return View::make('newblog');
+
 });
 
 Route::post('deploy', function() 
@@ -26,21 +25,6 @@ Route::post('deploy', function()
 
     return Deeployer::run();
 });
-
-Route::get('deploy', function() 
-{
-    die;
-
-    Log::info("1");
-    Log::info(Input::all());
-    Log::info("2");
-    Log::info("3");
-    Log::info("14");
-
-    return Deeployer::run();
-});
-
-// phone=123123123&description=&name=test&email=test@test.com
 
 Route::post('post', function() 
 {
@@ -66,6 +50,8 @@ Route::post('api/{version}/markdown', array('as' => 'api.markdown', 'uses' => 'A
 Route::group(array('prefix' => 'blog'), function()
 {
     Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
+
+    Route::get('months/{month}/{year}', array('as' => 'blog.months', 'uses' => 'ACR\Controllers\BlogController@index'));
 
     Route::get('articles/{slug}/{lang?}', array('as' => 'blog.articles.show', 'uses' => 'ACR\Controllers\BlogController@show'));
 });
