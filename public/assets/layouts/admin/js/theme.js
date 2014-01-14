@@ -164,22 +164,31 @@ readyState(function()
     $.vegas('slideshow',
     {
         delay: 10000,
+
+
+        
         backgrounds: [
             { src: 'http://antoniocarlosribeiro.smugmug.com/Paisagem/Rio-de-Janeiro/i-s52P2DB/0/X3/ACR-20101114-1000-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/Paisagem/Rio-de-Janeiro/i-Lgjxgzn/0/X3/ACR-20101114-1014-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/0408-SlavasSnowshow/i-zvVc7XR/0/X3/ACR-20100804-1309-X3.jpg', fade: 2000 },
+            { src: 'http://antoniocarlosribeiro.smugmug.com/photos/i-nrqfsgn/0/O/i-nrqfsgn.jpg', fade: 2000 }
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/0406-Rio-das-Ostras-Jazz-Blues/i-VpSQV7F/0/X3/ACR-20100604-00005-98-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/Paisagem/Rio-das-Ostras/i-QnDNv8k/0/X3/ACR-20100606-00006-230-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/1011TioSambaLancamento/i-Rmkzk8z/0/X3/ACR-20101110-0392-X3.jpg', fade: 2000 },
+            { src: 'http://antoniocarlosribeiro.smugmug.com/photos/i-csxC54c/0/O/i-csxC54c.jpg', fade: 2000 }
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/2304-EduKriegerVC2010/i-nV3qvGL/0/X3/ACR-20100424-01030-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/Danca/0110-Aniversario5Anos/i-VkjpMdJ/0/X3/ACR-20101001-8519-X3.jpg', fade: 2000 },
+            { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/1212-Simone-Lial-no-Solar-1/i-DhzWG4f/0/O/ACR-20131212-1893.jpg', fade: 2000 }
             { src: 'http://antoniocarlosribeiro.smugmug.com/TamborCarioca/2901-Ensaio-do-Bloco-Tambor/i-4NNTgPx/2/X3/ACR-20100126-01050-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/Viagens/NYC-20092010/i-mKmnsXG/1/X3/ACR-NY--20091225-00120-X3.jpg', fade: 2000 },
+            { src: 'http://antoniocarlosribeiro.smugmug.com/photos/i-BPFHxJQ/0/O/i-BPFHxJQ.jpg', fade: 2000 }
             { src: 'http://antoniocarlosribeiro.smugmug.com/TamborCarioca/2002-Apresentação-do-Grupo-e/i-Gqxsrkf/1/X3/ACR-20100220-01166-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/2001-Jane-Duboc-e-Victor/i-G6GMszS/0/X3/ACR-20100120-01058-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/Viagens/2802Maceio/i-nZH2LG7/1/X3/ACR-20100301-01430-X3.jpg', fade: 2000 },
+            { src: 'http://antoniocarlosribeiro.smugmug.com/photos/i-ZTdCpzN/0/O/i-ZTdCpzN.jpg', fade: 2000 }
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/0110-Nicolas-Krassik-no/i-xGnzq4m/0/X3/ACR-20101002-8665-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/Esporte/2703-Class-One-Brasil/i-pSm8jZG/0/X3/ACR-20100327-01209-X3.jpg', fade: 2000 }
+            { src: 'http://antoniocarlosribeiro.smugmug.com/photos/i-wz2Q7xc/0/O/i-wz2Q7xc.jpg', fade: 2000 }
         ]
     })('overlay');
 
