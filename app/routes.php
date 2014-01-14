@@ -26,6 +26,7 @@ Route::post('deploy', function()
 {
 
     return Deeployer::run();
+    
 });
 
 Route::post('post', function() 
