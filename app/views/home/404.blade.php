@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <!-- home -->
+    <!-- 404 -->
     <section id="home" class="box">
         <div class="container">
             <div class="panel">
