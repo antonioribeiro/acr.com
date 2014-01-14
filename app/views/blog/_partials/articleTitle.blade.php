@@ -1,1 +1,1 @@
-{{Glottos::translate('key::blog-title-'.$article->slug)}}
+{{ $article->currentTitle }}

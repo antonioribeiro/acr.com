@@ -54,8 +54,8 @@
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <h1>
-                                    <a target="_blank" href="{{ URL::to('/') }}">
+                                <h2>
+                                    <a href="{{ URL::to('/') }}">
                                         <i class="fa fa-home"></i>
                                     </a>
 
@@ -79,7 +79,7 @@
                                     &nbsp;
 
                                     <a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>
-                                </h1>
+                                </h2>
                             </li>
                         </ul>
                     </div><!--/.nav-collapse -->

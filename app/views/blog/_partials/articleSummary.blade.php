@@ -11,7 +11,7 @@
 
 	<p class="article_body">
 		<a href="{{$article->link}}" rel="bookmark" itemprop="url" class="article_body">
-			{{ACR\Services\Markdown::transform($article->makeSummary(Glottos::translate('key::blog-article-'.$article->slug)))}}
+			@include('blog._partials.articleBody')
 		</a>
 	</p>
 </article>

@@ -24,7 +24,7 @@
 				<table class="table table-bordered table-striped">
 					@foreach($articles as $article)
 						<tr>
-							<td>{{ $article->title }}
+							<td>{{ $article->title_en }}
 								<div  class="pull-right">
 									<a href="{{ URL::route('admin.articles.edit', $article->id) }}">
 										<button type="button" class="btn btn-primary btn-xs">

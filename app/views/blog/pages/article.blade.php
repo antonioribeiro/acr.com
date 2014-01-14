@@ -11,7 +11,7 @@
 		</div>
 
 		<p class="article_body">
-			{{ACR\Services\Markdown::transform(Glottos::translate('key::blog-article-'.$article->slug))}}
+			@include('blog._partials.articleBody')
 		</p>
 	</article>
 

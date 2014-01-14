@@ -53,7 +53,7 @@ Route::group(array('prefix' => 'blog'), function()
 {
     Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
 
-    Route::get('months/{month}/{year}', array('as' => 'blog.months', 'uses' => 'ACR\Controllers\BlogController@index'));
+    Route::get('months/{month}/{year}', array('as' => 'blog.months', 'uses' => 'ACR\Controllers\BlogController@months'));
 
     Route::get('articles/{slug}/{lang?}', array('as' => 'blog.articles.show', 'uses' => 'ACR\Controllers\BlogController@show'));
 });

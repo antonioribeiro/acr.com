@@ -77,6 +77,10 @@ function html_tag($matches)
 						$classes[] = "btn-$attrValue";
 						break;
 
+					case 'icon':
+						$classes[] = "$attrValue";
+						break;
+
 					case 'md':
 						$classes[] = "col-md-$attrValue";
 						break;
@@ -186,6 +190,10 @@ function html_tag($matches)
 			$attributes = "<$command $attributes>$value</$command>";
 			break;
 
+		case 'icon':
+			$attributes = "<i $attributes></i>";
+			break;
+
 		case 'span':
 			$attributes = "<span $attributes>";
 			break;
@@ -259,9 +267,10 @@ Blade::extend(function ($view) {
 					'endspan',
 					'pre',
 					'endpre',
+					'icon',
 				];
 
-	arsort ($commands);
+	arsort($commands);
 
     $view = preg_replace(
                          '/{{\'((.|\s)*?)\'}}/', 

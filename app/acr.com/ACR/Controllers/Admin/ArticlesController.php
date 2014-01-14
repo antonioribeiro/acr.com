@@ -44,9 +44,11 @@ class ArticlesController extends BaseController {
 
 	public function saveInput($article)
 	{
-		$article->title = Input::get('title');
-		$article->article = Input::get('article');
-		$article->slug = Str::slug(Input::get('title'));
+		$article->title_en = Input::get('title_en');
+		$article->title_pt_br = Input::get('title_pt_br');
+		$article->article_en = Input::get('article_en');
+		$article->article_pt_br = Input::get('article_pt_br');
+		$article->slug = Str::slug(Input::get('title_en'));
 		$article->author_id = 1;
 
 		$article->save();

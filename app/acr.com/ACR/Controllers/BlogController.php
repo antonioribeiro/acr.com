@@ -3,6 +3,7 @@
 use View;
 use ACR\Models\Article;
 use Glottos;
+use Redirect;
 
 class BlogController extends BaseController {
 
@@ -16,7 +17,8 @@ class BlogController extends BaseController {
 	public function index()
 	{
 		return View::make('blog.pages.index')
-				->with('articles', Article::published()->get());
+				->with('articles', Article::published()->get())
+				->with('summary', true);
 	}
 
 	public function show($slug, $language = null)
@@ -24,6 +26,8 @@ class BlogController extends BaseController {
 		if ($language)
 		{
 			Glottos::setLocale($language);
+
+			return Redirect::route('blog.articles.show', $slug);
 		}
 
 		if ($article = Article::findBySlug($slug))
@@ -34,4 +38,11 @@ class BlogController extends BaseController {
 
 		return Redirect::route('blog');
 	}
+
+	public function months($month, $year)
+	{
+		return View::make('blog.pages.index')
+				->with('articles', Article::fromMonth($month, $year)->published()->get())
+				->with('summary', true);
+			}
 }

@@ -2,11 +2,27 @@
 
 use ACR\Services\Markdown;
 use Eloquent;
+use Glottos;
 use URL;
+use DB;
 
 class Article extends Eloquent {
 
 	protected $table = 'articles';
+
+	public function getCurrentTitleAttribute()
+	{	
+		$var = 'title_'.strtolower(Glottos::getLocaleAsText());
+
+		return $this->$var; 
+	}
+
+	public function getCurrentArticleAttribute()
+	{	
+		$var = 'article_'.strtolower(Glottos::getLocaleAsText());
+
+		return $this->$var; 
+	}
 
 	public function getSummaryAttribute()
 	{
@@ -25,7 +41,7 @@ class Article extends Eloquent {
 
 	public function getLinkAttribute()
 	{
-		return URL::route('blog.articles.show', $this->slug);
+		return URL::route('blog.articles.show', [$this->slug, Glottos::getLocaleAsText()]);
 	}
 
 	public static function findBySlug($slug)
@@ -36,6 +52,12 @@ class Article extends Eloquent {
 	public function scopePublished($query)
 	{
 		return $query->whereNotNull('published_at');
+	}
+
+	public function scopeFromMonth($query, $month, $year)
+	{
+		return $query->where(DB::raw('EXTRACT(MONTH FROM created_at)'), '=', $month)
+						->where(DB::raw('EXTRACT(YEAR FROM created_at)'), '=', $year);
 	}
 
 	public function scopeOrdered($query)
