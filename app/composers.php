@@ -19,6 +19,13 @@ View::composer('*', function($view)
  	$view->with('switchLanguageUrl', $url);
 });
 
+View::composer('*', function($view)
+{
+	$article = new ACR\Models\Article;
+
+    $view->with('postsMonths', $article->getMonthsList());
+});
+
 View::composer('admin.layout', function($view)
 {
 	if(Session::has('success'))

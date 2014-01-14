@@ -16,8 +16,7 @@ class BlogController extends BaseController {
 	public function index()
 	{
 		return View::make('blog.pages.index')
-				->with('articles', Article::published()->get())
-				->with('postsMonths', $this->article->getMonthsList());
+				->with('articles', Article::published()->get());
 	}
 
 	public function show($slug, $language = null)
