@@ -41,8 +41,7 @@
         <![endif]-->
     </head>
 
-    <body>
-
+    <body onload="prettyPrint()">
         <!-- Wrap all page content here -->
         <div id="wrap">
             <!-- Fixed navbar -->
