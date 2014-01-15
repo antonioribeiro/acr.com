@@ -10,3 +10,4 @@ Thumbs.db
 public/.htaccess
 database.restore.sh
 *~
+public/assets/vendor
