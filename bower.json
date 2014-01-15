@@ -4,6 +4,7 @@
     "jquery": "~2.0.3",
     "bootstrap": "~3.0.3",
     "font-awesome": "~4.0.3",
-    "google-code-prettify": "~1.0.1"
+    "google-code-prettify": "~1.0.1",
+    "validationEngine": "~2.6.4"
   }
 }

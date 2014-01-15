@@ -96,28 +96,29 @@
                             </div>
                             <div class="span6">
                                 <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> {{'Send Me a Message'}}</h2>
-                                <form>
-                                    <fieldset>
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <input class="span12" name="name" type="text" placeholder="{{'Your Name'}}">
-                                            </div>
-                                            <div class="controls">
-                                                <input class="span12" name="email" type="text" placeholder="{{'Your E-mail'}}">
-                                            </div>          
-                                            <div class="controls">
-                                                <input class="span12" name="telephone" type="text" placeholder="{{'Your Telephone'}}">
-                                            </div>          
-                                            <div class="controls">
-                                                <input class="span12" name="subject" type="text" placeholder="{{'The Subject'}}">
-                                            </div>
-                                            <div class="controls">
-                                                <textarea class="span12" name="message" id="textarea" rows="9" placeholder="{{'Your Message'}}"></textarea>
-                                            </div>
-                                            <button class="btn btn-default">{{'Send Message'}}</button>
+                                {{ Form::open(['url' => URL::route('contact.send')]) }}
+                                    <span>Field is required : </span>
+                                    <input value="" class="validate[required] text-input" type="text" name="req" id="req" />
+
+                                    <div class="form-group has-success">
+                                        <div class="controls">
+                                            <input class="validate[required] span12" id="name" name="name" type="text" placeholder="{{'Your Name'}}">
                                         </div>
-                                    </fieldset>
-                                </form>
+                                        <div class="controls">
+                                            <input class="validate[required,custom[email]] span12" id="email" name="email" type="text" placeholder="{{'Your E-mail'}}">
+                                        </div>          
+                                        <div class="controls">
+                                            <input class="validate[required]" id="telephone" name="telephone" type="text" placeholder="{{'Your Telephone'}}">
+                                        </div>          
+                                        <div class="controls">
+                                            <input class="validate[required] span12" id="subject" name="subject" type="text" placeholder="{{'The Subject'}}">
+                                        </div>
+                                        <div class="controls">
+                                            <textarea class="validate[required] span12" id="message" name="message" id="textarea" rows="9" placeholder="{{'Your Message'}}"></textarea>
+                                        </div>
+                                        <button class="btn btn-default">{{'Send Message'}}</button>
+                                    </div>
+                                {{ Form::close() }}
                             </div>
                         </div>
                         <br><br>
@@ -148,5 +149,9 @@
             </div>
         </div>
     </section>
+
+@stop
+
+@section('inline-javascript')
 
 @stop

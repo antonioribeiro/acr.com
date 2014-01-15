@@ -14,16 +14,16 @@
         </title>
 
         <!-- Bootstrap core CSS -->
-        <link href="{{ URL::to('/') }}/assets/vendor/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="{{ URL::to('/') }}/assets/vendor/bower/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
         <link href="{{ URL::to('/') }}/assets/custom/css/sticky-footer-navbar.css" rel="stylesheet">
 
         <link href="{{ URL::to('/') }}/assets/custom/css/blog.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="{{ URL::to('/') }}/assets/vendor/font-awesome/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="{{ URL::to('/') }}/assets/vendor/bower/font-awesome/css/font-awesome.min.css" />
 
         <link href='http://fonts.googleapis.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.css' }}">
+        <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/bower/google-code-prettify/src/prettify.css' }}">
 
         <link rel="stylesheet" type="text/css" href="{{URL::to('/')}}/assets/blog/css/prettify-desert.css"/>
 
@@ -132,10 +132,10 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="{{ URL::to('/') }}/assets/vendor/jquery/jquery.js"></script>
-        <script src="{{ URL::to('/') }}/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="{{ URL::to('/') }}/assets/vendor/bower/jquery/jquery.js"></script>
+        <script src="{{ URL::to('/') }}/assets/vendor/bower/bootstrap/dist/js/bootstrap.min.js"></script>
 
-        <script src="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.js' }}"></script>
+        <script src="{{ URL::to('/').'/assets/vendor/bower/google-code-prettify/src/prettify.js' }}"></script>
 
         @include('global._partials.google-analytics')
 

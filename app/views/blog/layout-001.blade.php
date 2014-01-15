@@ -10,7 +10,7 @@
         <link rel="canonical" href="http://antoniocarlosribeiro.com"/>
 
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source Sans Pro">
-        <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.css' }}">
+        <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/bower/google-code-prettify/src/prettify.css' }}">
         <link href="{{ asset('assets/layouts/home/css/font-awesome.min.css') }}" rel="stylesheet" media="screen" />
 
         <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/acr.css"/>
@@ -112,7 +112,7 @@
                 g.src="//www.google-analytics.com/ga.js";s.parentNode.insertBefore(g,s)}(document,"script"));
         </script>
 
-        <script src="{{ URL::to('/').'/assets/vendor/google-code-prettify/src/prettify.js' }}"></script>
+        <script src="{{ URL::to('/').'/assets/vendor/bower/google-code-prettify/src/prettify.js' }}"></script>
 
         @include('global._partials.google-analytics')
     </body>

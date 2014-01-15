@@ -16,6 +16,10 @@
         <link href="{{ asset('assets/layouts/home/css/jquery.vegas.css') }}" rel="stylesheet" media="screen" />
         <link href="{{ asset('assets/layouts/home/css/style.min.css') }}" rel="stylesheet" media="screen" />
 
+        <style type="text/css">
+            @yield('inline-css')
+        </style>
+
         <!--[if IE 7]>
         <link href="css/font-awesome-ie7.css" rel="stylesheet">
         <![endif]-->
@@ -95,7 +99,8 @@
     <div style="display: none;" id="lightbox"><img id="bigimg" src="" /></div>
 
     <!-- scripts -->
-    <script type="text/javascript" src="{{ asset('assets/layouts/home/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/vendor/bower/jquery/jquery.min.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/signals.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/crossroads.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/hasher.min.js') }}"></script>
@@ -105,6 +110,10 @@
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/googlemaps.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/theme.js') }}"></script>
+
+    <script type="text/javascript">
+        @yield('inline-javascript')
+    </script>
 
     @include('global._partials.google-analytics')
 </body>
