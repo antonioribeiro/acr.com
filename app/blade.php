@@ -117,6 +117,8 @@ function html_tag($matches)
 		$attributes[] = 'class="'.implode(' ', $classes).'"';
 	}
 
+	$attributesArray = convertToArray($attributes);
+	
 	$attributes = implode(' ', $attributes);
 
 	switch ($command) {
@@ -152,7 +154,7 @@ function html_tag($matches)
 		case 'password':
 		case 'text':
 			$attributes .= $value ? " value=\"$value\"" : ''; 
-			$attributes = "<input type=\"$command\" $attributes>";
+			$attributes = Form::input($command, $name, null, $attributes);
 			$group = true;
 			break;
 

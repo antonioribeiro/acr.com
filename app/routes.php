@@ -50,6 +50,8 @@ Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@
 Route::get('api/{version}/markdown', array('as' => 'api.markdown', 'uses' => 'ACR\Controllers\ApiController@markdown'));
 Route::post('api/{version}/markdown', array('as' => 'api.markdown', 'uses' => 'ACR\Controllers\ApiController@markdown'));
 
+Route::get('contact', array('as' => 'contact', 'uses' => 'ACR\Controllers\ContactController@show'));
+
 Route::post('contact/send', array('as' => 'contact.send', 'uses' => 'ACR\Controllers\ContactController@send'));
 
 Route::group(array('prefix' => 'blog'), function()
