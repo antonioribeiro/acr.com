@@ -1647,6 +1647,15 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 382	283	en		The message field is required	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
 383	284	en		The name must be at least 5 characters	\N	2014-01-16 19:57:47	2014-01-16 19:57:47
 384	285	en		The email format is invalid	\N	2014-01-16 19:57:47	2014-01-16 19:57:47
+385	277	pt	BR	Sua Mensagem Vai Aqui	\N	2014-01-16 22:52:57	2014-01-16 22:52:57
+386	278	pt	BR	mensagem	\N	2014-01-16 22:53:10	2014-01-16 22:53:10
+387	279	pt	BR	Você não digitou o nome	\N	2014-01-16 22:53:56	2014-01-16 22:53:56
+388	280	pt	BR	Você não digitou o e-mail	\N	2014-01-16 22:54:27	2014-01-16 22:54:27
+389	281	pt	BR	Você não digitou o telefone	\N	2014-01-16 22:54:44	2014-01-16 22:54:44
+390	282	pt	BR	Você não digitou o assunto	\N	2014-01-16 22:54:57	2014-01-16 22:54:57
+391	283	pt	BR	Você não digitou a mensagem	\N	2014-01-16 22:55:14	2014-01-16 22:55:14
+392	284	pt	BR	O campo nome precisa ter pelo menos 5 caracteres	\N	2014-01-16 22:55:46	2014-01-16 22:55:46
+393	285	pt	BR	O formato do e-mail é inválido	\N	2014-01-16 22:56:10	2014-01-16 22:56:10
 \.
 
 
@@ -1654,7 +1663,7 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 -- Name: glottos_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('glottos_translations_id_seq', 384, true);
+SELECT pg_catalog.setval('glottos_translations_id_seq', 393, true);
 
 
 --
