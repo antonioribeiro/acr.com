@@ -13,14 +13,6 @@
                 <div class="row-fluid">
                     <div class="span12 content">
                         <div class="row-fluid">
-                            @if($messages)
-                                @foreach($messages as $message)
-                                    <div class="alert alert-danger">{{$message}}</div>
-                                @endforeach
-                            @endif
-                        </div>
-
-                        <div class="row-fluid">
                             <div class="span6">
                                 <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{'Find Me'}}</h2>
                                 <ul>
@@ -34,15 +26,26 @@
                             </div>
                             <div class="span6">
                                 <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> {{'Send Me a Message'}}</h2>
+                                <div class="row-fluid">
+                                    @if(isset($messages))
+                                        @foreach($messages as $message)
+                                            <div class="alert alert-danger">{{ g($message) }}</div>
+                                        @endforeach
+                                    @endif
+                                </div>
                                 {{ Form::open(['url' => URL::route('contact.send')]) }}
                                     <div class="form-group has-success">
-                                            @text(name=name, class=span12, placeholder=Your Name)
-                                            @text(name=email, class=span12, placeholder=Your E-mail)
-                                            @text(name=telephone, class=span12, placeholder=Your Telephone)
-                                            @text(name=subject, class=span12, placeholder=The Subject)
-    
-                                            <textarea class="span12" id="message" name="message" id="textarea" rows="9" placeholder="{{'Your Message'}}"></textarea>
-                                            <button class="btn btn-default">{{'Send Message'}}</button>
+                                        {{ Form::text('name', null, ['placeholder' => g('Your Name'), 'class' => 'span12' ]) }}
+
+                                        {{ Form::text('email', null, ['placeholder' => g('Your E-mail'), 'class' => 'span12' ]) }}
+
+                                        {{ Form::text('telephone', null, ['placeholder' => g('Your Telephone'), 'class' => 'span12' ]) }}
+
+                                        {{ Form::text('subject', null, ['placeholder' => g('The Subject'), 'class' => 'span12' ]) }}
+
+                                        {{ Form::textarea('message', null, ['placeholder' => g('Your Message Comes Here'), 'class' => 'span12', 'rows' => '9' ]) }}
+
+                                        {{ Form::submit(g('Send Message'), ['class' => 'btn btn-default submit']) }}
                                     </div>
                                 {{ Form::close() }}
                             </div>

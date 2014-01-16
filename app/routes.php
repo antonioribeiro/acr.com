@@ -11,11 +11,11 @@
 |
 */
 
-Route::post('tasks/complete/{id}', array('as' => 'tasks.completed', 'uses' =>'TasksController@completed')); //I've tried this route a few different ways 
-
 Route::get('test', function() 
 {
 
+    return Steroids::run();
+    
     l(Form::open(array('route' => array('tasks.completed', 1))));
 
     //return View::make('newblog');

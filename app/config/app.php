@@ -106,11 +106,14 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+
 		'Way\Form\FormServiceProvider',
 		'Clockwork\Support\Laravel\ClockworkServiceProvider',
+
 		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Firewall\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Deeployer\Vendor\Laravel\ServiceProvider',
+		'PragmaRX\Steroids\Vendor\Laravel\ServiceProvider',
 	),
 
 	/*

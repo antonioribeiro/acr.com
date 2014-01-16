@@ -19,6 +19,7 @@
 		"pragmarx/glottos": "dev-master",
 		"pragmarx/firewall": "dev-master",
 		"pragmarx/deeployer": "dev-master",
+		"pragmarx/steroids": "dev-master",
 		"itsgoingd/clockwork": "1.*"
 	},
 
@@ -30,6 +31,10 @@
         {
             "type": "vcs",
             "url":  "https://github.com/antonioribeiro/deeployer.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/antonioribeiro/steroids.git"
         }
     ],
 

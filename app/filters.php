@@ -30,7 +30,7 @@ App::before(function($request)
 
 App::after(function($request, $response)
 {
-	//
+	$response->header('x-foo', 'bar');
 });
 
 /*

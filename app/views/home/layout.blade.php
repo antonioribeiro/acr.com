@@ -101,6 +101,7 @@
     <!-- scripts -->
     <script type="text/javascript" src="{{ asset('assets/vendor/bower/jquery/jquery.min.js') }}"></script>
 
+
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/signals.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/crossroads.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/hasher.min.js') }}"></script>
