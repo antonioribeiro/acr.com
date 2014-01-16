@@ -16,7 +16,7 @@
                             <div class="span6">
                                 <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{'Find Me'}}</h2>
                                 <ul>
-                                    <li><i  class="fa fa-building"></i> Rua Professor Quintino do Vale, 26 / 205</li>
+                                    <li><i  class="fa fa-building"></i> Rua Professor Quintino do Vale - Estácio</li>
                                     <li><i  class="fa-road"></i> Rio de Janeiro - Brasil - 20.250-030</li>
                                 </ul>                               
                                 <p><i  class="fa fa-phone"></i> +55-21-9-8088-2233</p>                                

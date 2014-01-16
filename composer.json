@@ -20,7 +20,8 @@
 		"pragmarx/firewall": "dev-master",
 		"pragmarx/deeployer": "dev-master",
 		"pragmarx/steroids": "dev-master",
-		"itsgoingd/clockwork": "1.*"
+		"itsgoingd/clockwork": "1.*",
+		"mailchimp/mailchimp": "dev-master"
 	},
 
     "repositories": [

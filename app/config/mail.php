@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => getenv('SMTP.HOST'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'port' => 587,
+	'port' => getenv('SMTP.PORT'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,10 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array(
+						'address' => getenv('SMTP.FROM.EMAIL'), 
+						'name' => getenv('SMTP.FROM.NAME')
+					),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +83,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => getenv('SMTP.USERNAME'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +96,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => getenv('SMTP.PASSWORD'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,6 +122,6 @@ return array(
 	|
 	*/
 
-	'pretend' => false,
+	'pretend' => getenv('SMTP.PRETEND'),
 
 );

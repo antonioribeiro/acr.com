@@ -562,7 +562,8 @@ CREATE TABLE users (
     first_name character varying(255),
     last_name character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    telephone text
 );
 
 
@@ -1415,6 +1416,19 @@ COPY glottos_messages (id, hash, key, created_at, updated_at) FROM stdin;
 272	e1a0b93164c169f8c7980640ec27fb3c4eb4e61d	\N	2014-01-13 18:21:52	2014-01-13 18:21:52
 273	b74290ca5850a99d21dbbb49916b52eaf0d674fd	\N	2014-01-14 17:11:44	2014-01-14 17:11:44
 274	715efb5b7fa569d8236db22e62c623d5aee478a7	blog-article-environments-in-laravel-4	2014-01-14 17:11:44	2014-01-14 17:11:44
+275	14d61cfb30de20d1a3d4654a7fa29c5340e0d494	\N	2014-01-15 00:31:00	2014-01-15 00:31:00
+276	e6b5cee5aad371ab2cdb6563f70ddb12821a2188	\N	2014-01-15 00:31:00	2014-01-15 00:31:00
+277	daa578851f745fc666ffbe7caaeaed6cfe3d0476	\N	2014-01-16 19:56:26	2014-01-16 19:56:26
+278	cd417e20e7fdb964625ab7d7241b449bb37f7e8d	\N	2014-01-16 19:57:16	2014-01-16 19:57:16
+279	f633855b36d603667a09e2238353751ca476cc66	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+280	283294ead561a8f7a8d4f539062a5e7c68b5984c	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+281	6cbe7665994e45cb9325330f7c9b5683cf1385de	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+282	2b9c853139c34fcbd1896a3c2e445a59317fde9b	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+283	7f59c6b2aef10aa679d4b5239fa2f44e15b4ca73	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+284	e53f3075882582216846b711b8433d8330781e1d	\N	2014-01-16 19:57:47	2014-01-16 19:57:47
+285	ec24771cfc1a89a9a098933a59886a1feb9620aa	\N	2014-01-16 19:57:47	2014-01-16 19:57:47
+286	37ea878b5c211a7771797c67f90bd0d3a6da1508	\N	2014-01-16 21:32:08	2014-01-16 21:32:08
+287	888204ecd4f0c76205380425698da92d6c695fab	\N	2014-01-16 21:32:08	2014-01-16 21:32:08
 \.
 
 
@@ -1422,7 +1436,7 @@ COPY glottos_messages (id, hash, key, created_at, updated_at) FROM stdin;
 -- Name: glottos_messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('glottos_messages_id_seq', 274, true);
+SELECT pg_catalog.setval('glottos_messages_id_seq', 287, true);
 
 
 --
@@ -1618,6 +1632,21 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 241	238	pt	BR	Desevolvedores definem variáveis de ambientes, e o próprio ambiente, em suas aplicações Laravel de diversas maneiras, algumas até bem espertas e seguras, mas nenhuma, até agora, atendeu todas as minhas expectativas. Então eu gostaria de mostrar algo que eu venho pensando há algum tempo. É uma abordagem que usa 100% PHP e, tão logo você a configure, não terá mais que lidar com configuração ambiental em sua aplicação, a menos que você precise mudar algum dos valores, claro.\r\n\r\n###O Problema\r\n\r\nExistem muitas maneiras de determinar o ambiente, o Laravel vem com esta aqui de fábrica:\r\n\r\n    <?php\r\n\r\n    $env = $app->detectEnvironment(array(\r\n\r\n        'development' => array('dev.local'),\r\n        'production' => array('servername'),\r\n\r\n    ));\r\n\r\nMas algumas pessoas disseram que isso não é seguro e encontraram uma maneira melhorque é definir o ambiente em variáveis armazenadas no arquivo `.htaccess`, ou algum outro arquivo de configuração relacionado ao servidor web:\r\n\r\n     <IfModule mod_rewrite.c>\r\n         #Options -MultiViews\r\n         ...\r\n         RewriteRule ^(.*)$ /index.php?/$1 [L]\r\n\r\n         SetEnv LARAVEL_ENV "production"\r\n     </IfModule>\r\n\r\nE esta é maneira como este método é utilizado na aplicação:\r\n\r\n    $env = $app->detectEnvironment(function()\r\n    {\r\n        return getenv('LARAVEL_ENV') ?: 'local';\r\n    });\r\n\r\nSó que existem problemas com este método também: você tem que ter acesso a habilitar o mod_env no apache2 do seu provedor; você tem que saber como dar acesso a essas variáveis ao PHP, se você algum dia mudar de provedor ou alguém na sua empresa resolver mudar para Nginx, você vai ter que se envolver com isso tudo novamente e talvez ainda ter que lidar com `fastcgi_param` ao invés do `SetEnv`. Na minha opinião você sempre vai ter algum tipo de problema com isso.\r\n\r\nIsso não poderia ser um pouco mais simples? Bem... isso pode.\r\n\r\n###Meu Jeito\r\n\r\nIsso é o que eu acho que você pode fazer para evitar tudo isso:\r\n\r\nCrie um arquivo `.environment` na raiz do seu projeto e defina nele o seu ambiente:\r\n\r\n     <?php\r\n\r\n     return array(\r\n\r\n          'LARAVEL_ENV' => 'development',\r\n\r\n          'POSTGRESQL.DATABASE_NAME' => 'laraveldatabase',\r\n          'POSTGRESQL.DATABASE_USER' => 'laraveluser',\r\n          'POSTGRESQL.DATABASE_PASSWORD' => '!Bassw0rT',\r\n\r\n     );\r\n\r\nÉ, isso é um script PHP, mas neste caso eu prefiro não usar a extensão .php, pra mim isso é apenas um arquivo [dotfile](http://en.wikipedia.org/wiki/Hidden_file_and_hidden_directory) realmente muito importante.\r\n\r\nAcrescente uma entrada para este arquivo no seu `.gitignore`, de forma que você nunca envie dados importante, como senhas, para o Github:\r\n\r\n     /bootstrap/compiled.php\r\n     /vendor\r\n     composer.phar\r\n     composer.lock\r\n     .DS_Store\r\n     Thumbs.db\r\n     .environment\r\n\r\nNo seu `bootstrap/start.php`, carregue o arquivo no ambiente do PHP (`$_ENV`), acrescentando este código de carregamento antes da chamada `$app->detectEnvironment()`:\r\n\r\n     foreach(require __DIR__.'/../.environment' as $key => $value) \r\n     {\r\n          putenv(sprintf('%s=%s', $key, $value));\r\n     }\r\n\r\nE pronto. Todo o restante deve funcionar, desde que as chaves sejam as mesmas:\r\n\r\n     $env = $app->detectEnvironment(function()\r\n     {\r\n           return getenv('LARAVEL_ENV');\r\n     });\r\n\r\nAqui você nem precisa de um 'plano B' recaindo para **development** porque, se o seu arquivo `.environment` não estiver definido o Laravel vai te devolver um bem visível:\r\n\r\n    Failed opening required '/var/www/application/../.environment'\r\n\r\nE você nunca mais correr o risco de esquecer de definir o seu ambiente. Isso é um bonus, acredite.\r\n\r\nSeu arquivo de conexão de banco de dados não precisam mais estar separados em **development** e **production**, porque você armazenar logins e senhas no arquivo de ambiente também:\r\n\r\n     <?php\r\n\r\n     return array(\r\n\r\n          'connections' => array(\r\n\r\n               'postgresql' => array(\r\n                    'driver'   => 'pgsql',\r\n                    'host'     => 'localhost',\r\n                    'database' => getenv('POSTGRESQL.DATABASE_NAME'),\r\n                    'username' => getenv('POSTGRESQL.DATABASE_USER'),\r\n                    'password' => getenv('POSTGRESQL.DATABASE_PASSWORD'),\r\n                    'charset'  => 'utf8',\r\n                    'prefix'   => '',\r\n                    'schema'   => 'public',\r\n               ),\r\n\r\n          ),\r\n\r\n     );\r\n\r\n###Conclusion\r\n\r\nThis method might not be perfect, but here are some advantages of it:\r\n\r\n* Uma vez configurado você não vai ter que pensar nisso novamente se, por acaso, seu provedor, servidor, máquina virtual ou domínio mudar.\r\n* Você não vai ter colisões entre ambientes de desenvolvedores.\r\n* Você não vai se arriscar a, estando em ambiente local, conectar no servidor de produção.\r\n* Você não vai ter nunca que lidar com a configuração do servidor web.\r\n* Você não vai se arriscar a gravar dados importantes, como senhas, no Github, Bitbucket ou qualquer outro sistema de controle de versões.\r\n* É seguro o suficiente (Se isto não é seguro, por favor me diga como isso é menos seguro que um arquivo .htaccess).\r\n* É simples, tão simples que os desenvolvedores do Laravel poderiam simplesmente colocar isso no cerne do framework. :)\r\n\r\n#####Divirta-se!\r\n	\N	2013-12-22 21:13:58	2014-01-10 02:57:31
 368	272	en		Posts	\N	2014-01-13 18:21:53	2014-01-13 18:21:53
 369	273	en		environments-in-laravel-4	\N	2014-01-14 17:11:44	2014-01-14 17:11:44
+370	275	en		Error 404	\N	2014-01-15 00:31:00	2014-01-15 00:31:00
+371	276	en		Sorry, but this page doesn't exist	\N	2014-01-15 00:31:00	2014-01-15 00:31:00
+372	272	pt	BR	Artigos	\N	2014-01-15 01:36:48	2014-01-15 01:36:48
+373	273	pt	BR	ambientes-em-laravel-4	\N	2014-01-15 01:37:03	2014-01-15 01:37:03
+374	275	pt	BR	Erro 404	\N	2014-01-15 01:37:15	2014-01-15 01:37:15
+375	276	pt	BR	Desculpe, mas esta página não existe.	\N	2014-01-15 01:37:34	2014-01-15 01:37:34
+376	277	en		Your Message Comes Here	\N	2014-01-16 19:56:26	2014-01-16 19:56:26
+377	278	en		message	\N	2014-01-16 19:57:16	2014-01-16 19:57:16
+378	279	en		The name field is required	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+379	280	en		The email field is required	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+380	281	en		The telephone field is required	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+381	282	en		The subject field is required	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+382	283	en		The message field is required	\N	2014-01-16 19:57:26	2014-01-16 19:57:26
+383	284	en		The name must be at least 5 characters	\N	2014-01-16 19:57:47	2014-01-16 19:57:47
+384	285	en		The email format is invalid	\N	2014-01-16 19:57:47	2014-01-16 19:57:47
 \.
 
 
@@ -1625,7 +1654,7 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 -- Name: glottos_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('glottos_translations_id_seq', 369, true);
+SELECT pg_catalog.setval('glottos_translations_id_seq', 384, true);
 
 
 --
@@ -1663,6 +1692,7 @@ COPY migrations (migration, batch) FROM stdin;
 2012_12_06_225988_migration_cartalyst_sentry_install_throttle	4
 2013_11_04_004458_users	5
 2014_01_13_210503_create_article_languages	6
+2014_01_16_223832_create_user_telephone	7
 \.
 
 
@@ -1731,8 +1761,9 @@ SELECT pg_catalog.setval('throttle_id_seq', 1, false);
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
-COPY users (id, email, password, permissions, activated, activation_code, activated_at, last_login, persist_code, reset_password_code, first_name, last_name, created_at, updated_at) FROM stdin;
-1	acr@antoniocarlosribeiro.com	$2y$08$1UemL1yG5MPfR3B4lvRwgeXDoIctBbfWYyiU5mefdhq1jpQTMWQOO	\N	f	\N	\N	\N	\N	\N	Antonio Carlos	Ribeiro	2014-01-09 23:55:30	2014-01-09 23:55:30
+COPY users (id, email, password, permissions, activated, activation_code, activated_at, last_login, persist_code, reset_password_code, first_name, last_name, created_at, updated_at, telephone) FROM stdin;
+1	acr@antoniocarlosribeiro.com	$2y$08$1UemL1yG5MPfR3B4lvRwgeXDoIctBbfWYyiU5mefdhq1jpQTMWQOO	\N	f	\N	\N	\N	\N	\N	Antonio Carlos	Ribeiro	2014-01-09 23:55:30	2014-01-09 23:55:30	\N
+3	acribeiro@gmail.com	$2y$10$zLe//jUrpVjRd4O2SpnQQu.4ySR9961ACgsgGAriCc5dOBCfaa7HC	\N	f	\N	\N	\N	\N	\N	Antonio Carlos Ribeiro	\N	2014-01-16 22:47:03	2014-01-16 22:47:03	+55-21-9-8088-2233
 \.
 
 
@@ -1748,7 +1779,7 @@ COPY users_groups (user_id, group_id) FROM stdin;
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('users_id_seq', 1, true);
+SELECT pg_catalog.setval('users_id_seq', 3, true);
 
 
 --
