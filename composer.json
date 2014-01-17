@@ -20,6 +20,7 @@
 		"pragmarx/firewall": "dev-master",
 		"pragmarx/deeployer": "dev-master",
 		"pragmarx/steroids": "dev-master",
+		"pragmarx/tracker": "dev-master",
 		"itsgoingd/clockwork": "1.*",
 		"mailchimp/mailchimp": "dev-master"
 	},
@@ -36,6 +37,10 @@
         {
             "type": "vcs",
             "url":  "https://github.com/antonioribeiro/steroids.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/antonioribeiro/tracker.git"
         }
     ],
 
