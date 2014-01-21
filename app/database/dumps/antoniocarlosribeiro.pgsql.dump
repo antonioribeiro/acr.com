@@ -17,6 +17,15 @@ DROP INDEX public.articles_slug_index;
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_pkey;
 ALTER TABLE ONLY public.users_groups DROP CONSTRAINT users_groups_pkey;
 ALTER TABLE ONLY public.users DROP CONSTRAINT users_email_unique;
+ALTER TABLE ONLY public.tracker_sessions DROP CONSTRAINT tracker_sessions_uuid_unique;
+ALTER TABLE ONLY public.tracker_sessions DROP CONSTRAINT tracker_sessions_pkey;
+ALTER TABLE ONLY public.tracker_devices DROP CONSTRAINT tracker_devices_pkey;
+ALTER TABLE ONLY public.tracker_devices DROP CONSTRAINT tracker_devices_kind_model_platform_platform_version_unique;
+ALTER TABLE ONLY public.tracker_cookies DROP CONSTRAINT tracker_cookies_uuid_unique;
+ALTER TABLE ONLY public.tracker_cookies DROP CONSTRAINT tracker_cookies_pkey;
+ALTER TABLE ONLY public.tracker_agents DROP CONSTRAINT tracker_agents_pkey;
+ALTER TABLE ONLY public.tracker_agents DROP CONSTRAINT tracker_agents_name_unique;
+ALTER TABLE ONLY public.tracker_accesses DROP CONSTRAINT tracker_accesses_pkey;
 ALTER TABLE ONLY public.throttle DROP CONSTRAINT throttle_pkey;
 ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_post_id_tag_unique;
 ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_pkey;
@@ -36,6 +45,11 @@ ALTER TABLE ONLY public.glottos_countries_languages DROP CONSTRAINT glottos_coun
 ALTER TABLE ONLY public.glottos_countries_languages DROP CONSTRAINT glottos_countries_languages_pkey;
 ALTER TABLE ONLY public.articles DROP CONSTRAINT articles_pkey;
 ALTER TABLE public.users ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tracker_sessions ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tracker_devices ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tracker_cookies ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tracker_agents ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tracker_accesses ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.throttle ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tags ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.posts ALTER COLUMN id DROP DEFAULT;
@@ -48,6 +62,16 @@ ALTER TABLE public.articles ALTER COLUMN id DROP DEFAULT;
 DROP SEQUENCE public.users_id_seq;
 DROP TABLE public.users_groups;
 DROP TABLE public.users;
+DROP SEQUENCE public.tracker_sessions_id_seq;
+DROP TABLE public.tracker_sessions;
+DROP SEQUENCE public.tracker_devices_id_seq;
+DROP TABLE public.tracker_devices;
+DROP SEQUENCE public.tracker_cookies_id_seq;
+DROP TABLE public.tracker_cookies;
+DROP SEQUENCE public.tracker_agents_id_seq;
+DROP TABLE public.tracker_agents;
+DROP SEQUENCE public.tracker_accesses_id_seq;
+DROP TABLE public.tracker_accesses;
 DROP SEQUENCE public.throttle_id_seq;
 DROP TABLE public.throttle;
 DROP SEQUENCE public.tags_id_seq;
@@ -545,6 +569,193 @@ ALTER SEQUENCE throttle_id_seq OWNED BY throttle.id;
 
 
 --
+-- Name: tracker_accesses; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_accesses (
+    id integer NOT NULL,
+    session_id character varying(255) NOT NULL,
+    path_info character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_accesses OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_accesses_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_accesses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_accesses_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_accesses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_accesses_id_seq OWNED BY tracker_accesses.id;
+
+
+--
+-- Name: tracker_agents; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_agents (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    browser character varying(255) NOT NULL,
+    browser_version character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_agents OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_agents_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_agents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_agents_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_agents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_agents_id_seq OWNED BY tracker_agents.id;
+
+
+--
+-- Name: tracker_cookies; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_cookies (
+    id integer NOT NULL,
+    uuid character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_cookies OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_cookies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_cookies_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_cookies_id_seq OWNED BY tracker_cookies.id;
+
+
+--
+-- Name: tracker_devices; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_devices (
+    id integer NOT NULL,
+    kind character varying(255) NOT NULL,
+    model character varying(255) NOT NULL,
+    platform character varying(255) NOT NULL,
+    platform_version character varying(255) NOT NULL,
+    is_mobile boolean NOT NULL,
+    agent_id character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_devices OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_devices_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_devices_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_devices_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_devices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_devices_id_seq OWNED BY tracker_devices.id;
+
+
+--
+-- Name: tracker_sessions; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_sessions (
+    id integer NOT NULL,
+    uuid character varying(255) NOT NULL,
+    user_id character varying(255),
+    device_id character varying(255) NOT NULL,
+    client_ip character varying(255) NOT NULL,
+    cookie_id character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_sessions OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_sessions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_sessions_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_sessions_id_seq OWNED BY tracker_sessions.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
@@ -663,6 +874,41 @@ ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclas
 --
 
 ALTER TABLE ONLY throttle ALTER COLUMN id SET DEFAULT nextval('throttle_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_accesses ALTER COLUMN id SET DEFAULT nextval('tracker_accesses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_agents ALTER COLUMN id SET DEFAULT nextval('tracker_agents_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_cookies ALTER COLUMN id SET DEFAULT nextval('tracker_cookies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_devices ALTER COLUMN id SET DEFAULT nextval('tracker_devices_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_sessions ALTER COLUMN id SET DEFAULT nextval('tracker_sessions_id_seq'::regclass);
 
 
 --
@@ -1702,6 +1948,11 @@ COPY migrations (migration, batch) FROM stdin;
 2013_11_04_004458_users	5
 2014_01_13_210503_create_article_languages	6
 2014_01_16_223832_create_user_telephone	7
+2014_01_00_040942_create_accesses_table	8
+2014_01_00_040942_create_sessions_table	8
+2014_01_00_043650_create_agents_table	8
+2014_01_00_235501_create_cookies_table	8
+2014_01_00_235501_create_devices_table	8
 \.
 
 
@@ -1764,6 +2015,128 @@ COPY throttle (id, user_id, ip_address, attempts, suspended, banned, last_attemp
 --
 
 SELECT pg_catalog.setval('throttle_id_seq', 1, false);
+
+
+--
+-- Data for Name: tracker_accesses; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY tracker_accesses (id, session_id, path_info, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: tracker_accesses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('tracker_accesses_id_seq', 1, false);
+
+
+--
+-- Data for Name: tracker_agents; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY tracker_agents (id, name, browser, browser_version, created_at, updated_at) FROM stdin;
+19	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36	Chrome	32.0.1700	2014-01-21 22:27:44	2014-01-21 22:27:44
+20	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2	Safari	5.1.7	2014-01-21 22:30:44	2014-01-21 22:30:44
+21	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0	Firefox	24.0	2014-01-21 22:31:00	2014-01-21 22:31:00
+22	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)	IE	10.0	2014-01-21 22:31:44	2014-01-21 22:31:44
+23	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/31.0.1650.63 Chrome/31.0.1650.63 Safari/537.36	Chromium	31.0.1650	2014-01-21 22:32:01	2014-01-21 22:32:01
+24	Mozilla/5.0 (X11; Linux) AppleWebKit/535.22 (KHTML, like Gecko) Chrome/18.0.1025.133 Safari/535.22 Midori/0.5	Chrome	18.0.1025	2014-01-21 22:32:04	2014-01-21 22:32:04
+25	Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_3 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11B511 Safari/9537.53	Mobile Safari	7.0	2014-01-21 22:32:13	2014-01-21 22:32:13
+26	Mozilla/5.0 (iPad; CPU OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3	Mobile Safari	5.1	2014-01-21 22:32:45	2014-01-21 22:32:45
+27	Mozilla/5.0 (iPad; CPU OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10B141 Safari/8536.25	Mobile Safari	6.0	2014-01-21 22:32:51	2014-01-21 22:32:51
+28	Mozilla/5.0 (iPad; CPU OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Coast/1.1.3.65998 Mobile/10B141 Safari/7534.48.3	Mobile Safari	6.1	2014-01-21 22:32:57	2014-01-21 22:32:57
+29	Mozilla/5.0 (iPad; CPU OS 6_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) CriOS/31.0.1650.18 Mobile/10B141 Safari/8536.25	Chrome Mobile iOS	31.0.1650	2014-01-21 22:33:19	2014-01-21 22:33:19
+30	GitHub Hookshot ae98414	Other		2014-01-21 22:55:01	2014-01-21 22:55:01
+\.
+
+
+--
+-- Name: tracker_agents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('tracker_agents_id_seq', 30, true);
+
+
+--
+-- Data for Name: tracker_cookies; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY tracker_cookies (id, uuid, created_at, updated_at) FROM stdin;
+20	8160c04c-38f6-4a2e-89af-dbfa961ed4d9	2014-01-21 22:27:44	2014-01-21 22:27:44
+21	c0baeb84-fc3b-487b-8f4a-13afbfad128f	2014-01-21 22:30:44	2014-01-21 22:30:44
+22	bbfa88c8-0bb8-4ae9-8fe4-0bf8d595008e	2014-01-21 22:31:00	2014-01-21 22:31:00
+23	c36a86a2-e96f-4e31-a7bd-901b5e05e645	2014-01-21 22:31:44	2014-01-21 22:31:44
+24	85424729-ae2b-4f93-9863-194d06beeb0f	2014-01-21 22:32:02	2014-01-21 22:32:02
+25	707bf45c-4bb3-41e5-ba43-192f04667eb3	2014-01-21 22:32:04	2014-01-21 22:32:04
+26	08d1d089-c318-4b3d-992f-d8fc3951c2c3	2014-01-21 22:32:13	2014-01-21 22:32:13
+27	283e4912-a056-4da9-916f-570ba6487c2a	2014-01-21 22:32:45	2014-01-21 22:32:45
+28	1ab23256-04f5-4807-b876-f4b4f346810e	2014-01-21 22:32:51	2014-01-21 22:32:51
+29	ef802f4a-d529-4555-a868-e9be3be5b6ea	2014-01-21 22:32:57	2014-01-21 22:32:57
+30	6190cf26-8018-48ff-b651-dc4480d2e865	2014-01-21 22:33:19	2014-01-21 22:33:19
+31	6ecd7fce-6a6a-4a37-a6db-c291887ed5e4	2014-01-21 22:33:32	2014-01-21 22:33:32
+32	d4382f09-88e9-4d84-b407-36cdba7f4a48	2014-01-21 22:55:02	2014-01-21 22:55:02
+33	28b4ef29-1b51-401c-9f85-718b26ddcb95	2014-01-21 22:55:06	2014-01-21 22:55:06
+\.
+
+
+--
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('tracker_cookies_id_seq', 33, true);
+
+
+--
+-- Data for Name: tracker_devices; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY tracker_devices (id, kind, model, platform, platform_version, is_mobile, agent_id, created_at, updated_at) FROM stdin;
+11	Computer	unavailable	Windows 8		f	19	2014-01-21 22:27:44	2014-01-21 22:27:44
+12	Computer	unavailable	Ubuntu		f	23	2014-01-21 22:32:02	2014-01-21 22:32:02
+13	Computer	unavailable	Linux		f	24	2014-01-21 22:32:04	2014-01-21 22:32:04
+14	Phone	iPhone	iOS	7.0.3	t	25	2014-01-21 22:32:13	2014-01-21 22:32:13
+15	Tablet	iPad	iOS	5.0	t	26	2014-01-21 22:32:45	2014-01-21 22:32:45
+16	Tablet	iPad	iOS	6.1	t	27	2014-01-21 22:32:51	2014-01-21 22:32:51
+17	Computer	unavailable	Other		f	30	2014-01-21 22:55:01	2014-01-21 22:55:01
+\.
+
+
+--
+-- Name: tracker_devices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('tracker_devices_id_seq', 17, true);
+
+
+--
+-- Data for Name: tracker_sessions; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY tracker_sessions (id, uuid, user_id, device_id, client_ip, cookie_id, created_at, updated_at) FROM stdin;
+31	eb47fc99-6ea6-4a31-890c-9ac791534627	1	11	172.17.0.100	20	2014-01-21 22:30:18	2014-01-21 22:30:20
+32	b3aed656-3a08-4612-8fc1-3b29610c174b	\N	11	172.17.0.100	21	2014-01-21 22:30:44	2014-01-21 22:30:44
+33	a75edaec-ebea-445d-a034-67a430fdeef0	\N	11	172.17.0.100	22	2014-01-21 22:31:00	2014-01-21 22:31:00
+34	60b75827-ff76-4d3b-8187-ed83568a334c	\N	11	172.17.0.100	23	2014-01-21 22:31:44	2014-01-21 22:31:44
+35	5544d505-b805-4dc4-b79b-c3fd2cb21d83	\N	12	172.17.0.2	24	2014-01-21 22:32:02	2014-01-21 22:32:02
+36	2c8dec22-f955-4b60-bd81-36e49be4f31b	\N	13	172.17.0.2	25	2014-01-21 22:32:04	2014-01-21 22:32:04
+37	2da1fc4a-9c5c-480b-95b5-10261fa9759a	\N	14	172.17.0.120	26	2014-01-21 22:32:13	2014-01-21 22:32:13
+38	a965178d-167e-4825-9e4b-b868119cbdf3	\N	15	172.17.0.121	27	2014-01-21 22:32:45	2014-01-21 22:32:45
+39	9aa609e2-6e9c-4584-9eed-6b64ee99ab19	\N	16	172.17.0.121	28	2014-01-21 22:32:51	2014-01-21 22:32:51
+40	8183ed6a-0832-44a2-a4a8-8594f4feb01c	\N	16	172.17.0.121	29	2014-01-21 22:32:57	2014-01-21 22:32:57
+42	51fe43e2-4110-4c3c-b6a1-30106ce719b3	\N	16	172.17.0.121	31	2014-01-21 22:33:32	2014-01-21 22:33:32
+41	38b40637-d909-440a-a83d-e528881b5eea	1	16	172.17.0.121	30	2014-01-21 22:33:20	2014-01-21 22:33:59
+43	4ceaa28c-6075-4623-aee6-e0439ff29f10	\N	17	192.30.252.55	32	2014-01-21 22:55:02	2014-01-21 22:55:02
+44	fbc70407-d8f0-4417-8917-f15ee59b08e3	\N	17	192.30.252.52	33	2014-01-21 22:55:06	2014-01-21 22:55:06
+\.
+
+
+--
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('tracker_sessions_id_seq', 44, true);
 
 
 --
@@ -1933,6 +2306,78 @@ ALTER TABLE ONLY tags
 
 ALTER TABLE ONLY throttle
     ADD CONSTRAINT throttle_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_accesses_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_accesses
+    ADD CONSTRAINT tracker_accesses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_agents_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_agents
+    ADD CONSTRAINT tracker_agents_name_unique UNIQUE (name);
+
+
+--
+-- Name: tracker_agents_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_agents
+    ADD CONSTRAINT tracker_agents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_cookies_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_cookies
+    ADD CONSTRAINT tracker_cookies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_cookies_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_cookies
+    ADD CONSTRAINT tracker_cookies_uuid_unique UNIQUE (uuid);
+
+
+--
+-- Name: tracker_devices_kind_model_platform_platform_version_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_devices
+    ADD CONSTRAINT tracker_devices_kind_model_platform_platform_version_unique UNIQUE (kind, model, platform, platform_version);
+
+
+--
+-- Name: tracker_devices_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_devices
+    ADD CONSTRAINT tracker_devices_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_sessions
+    ADD CONSTRAINT tracker_sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_sessions_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_sessions
+    ADD CONSTRAINT tracker_sessions_uuid_unique UNIQUE (uuid);
 
 
 --
