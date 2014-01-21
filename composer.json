@@ -51,7 +51,7 @@
 			"app/tests/TestCase.php"
 		],
 		"psr-0": {
-			"ACR": "/var/www/antoniocarlosribeiro.com/app/acr.com"
+			"ACR": "app/acr.com"
 		}
 	},
 	"scripts": {
