@@ -108,7 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'Way\Form\FormServiceProvider',
-		'Clockwork\Support\Laravel\ClockworkServiceProvider',
+		// 'Clockwork\Support\Laravel\ClockworkServiceProvider',
 
 		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Firewall\Vendor\Laravel\ServiceProvider',
