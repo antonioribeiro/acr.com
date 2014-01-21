@@ -1,5 +1,5 @@
 <a href="{{$article->link}}" rel="bookmark" itemprop="url" class="article_body">
-	@icon(fa fa-link)
+	<i class="fa fa-link"></i>
 </a>
 
 {{ $article->created_at->format('d') }}&nbsp;
