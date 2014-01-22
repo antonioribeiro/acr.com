@@ -19,7 +19,11 @@
                                     <li><i  class="fa fa-building"></i> Rua Professor Quintino do Vale - Estácio</li>
                                     <li><i  class="fa-road"></i> Rio de Janeiro - Brasil - 20.250-030</li>
                                 </ul>                               
-                                <p><i  class="fa fa-phone"></i> +55-21-9-8088-2233</p>                                
+                                <p><i class="fa fa-phone"></i> 
+                                @if(Glottos::getLocaleAsText() == 'en')
+                                    +
+                                @endif
+                                {{'55-21-9-8088-2233'}}</p>                                
                                 <p class="email"><i  class="fa fa-envelope"></i> <a href="mailto:&#097;&#099;&#114;&#064;&#097;&#110;&#116;&#111;&#110;&#105;&#111;&#099;&#097;&#114;&#108;&#111;&#115;&#114;&#105;&#098;&#101;&#105;&#114;&#111;&#046;&#099;&#111;&#109;">&#097;&#099;&#114;&#064;&#097;&#110;&#116;&#111;&#110;&#105;&#111;&#099;&#097;&#114;&#108;&#111;&#115;&#114;&#105;&#098;&#101;&#105;&#114;&#111;&#046;&#099;&#111;&#109;</a></p>
                                 <!-- googlemaps -->
                                 <div id="map_canvas"></div>
