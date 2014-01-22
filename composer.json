@@ -1,27 +1,27 @@
 {
-	"name": "laravel/laravel",
-	
-	"description": "The Laravel Framework.",
+    "name": "laravel/laravel",
+    
+    "description": "The Laravel Framework.",
 
-	"keywords": ["framework", "laravel"],
+    "keywords": ["framework", "laravel"],
 
-	"license": "MIT",
+    "license": "MIT",
 
-	"require": {
-		"laravel/framework": "4.1.*",
+    "require": {
+        "laravel/framework": "4.1.*",
         "doctrine/dbal": "dev-master",
-		"cartalyst/sentry": "dev-master",
-		"way/generators": "dev-master",
-		"onigoetz/profiler": "dev-master",
-		"way/form": "dev-master",
-		"michelf/php-markdown": "1.4.*@dev",
-		"pragmarx/glottos": "dev-master",
-		"pragmarx/firewall": "dev-master",
-		"pragmarx/deeployer": "dev-master",
-		"pragmarx/steroids": "dev-master",
-		"pragmarx/tracker": "dev-master",
-		"itsgoingd/clockwork": "1.*"
-	},
+        "cartalyst/sentry": "dev-master",
+        "way/generators": "dev-master",
+        "onigoetz/profiler": "dev-master",
+        "way/form": "dev-master",
+        "michelf/php-markdown": "1.4.*@dev",
+        "pragmarx/glottos": "dev-master",
+        "pragmarx/firewall": "dev-master",
+        "pragmarx/deeployer": "dev-master",
+        "pragmarx/steroids": "dev-master",
+        "pragmarx/tracker": "dev-master",
+        "itsgoingd/clockwork": "1.*"
+    },
 
     "repositories": [
         {
@@ -42,34 +42,34 @@
         }
     ],
 
-	"autoload": {
-		"classmap": [
-			"app/commands",
+    "autoload": {
+        "classmap": [
+            "app/commands",
             "app/models",
-			"app/database/migrations",
-			"app/database/seeds",
-			"app/tests/TestCase.php"
-		],
-		"psr-0": {
-			"ACR": "app/acr.com"
-		}
-	},
-	"scripts": {
-		"post-install-cmd": [
-			"php artisan optimize"
-		],
-		"post-update-cmd": [
-			"php artisan clear-compiled",
-			"php artisan optimize"
-		],
-		"post-create-project-cmd": [
-			"php artisan key:generate"
-		]
-	},
-	"config": {
-		"preferred-install": "dist"
-	},
-	"minimum-stability": "dev",
-	"require-dev": {
-	}
+            "app/database/migrations",
+            "app/database/seeds",
+            "app/tests/TestCase.php"
+        ],
+        "psr-0": {
+            "ACR": "app/acr.com"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize"
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+    }
 }
