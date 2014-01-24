@@ -14,6 +14,10 @@
 Route::get('test', function() 
 {
 
+    //include(app_path().'/models/User.php');
+    print_r(User::$rules);
+    die;
+    
     return Steroids::run();
     
     l(Form::open(array('route' => array('tasks.completed', 1))));
