@@ -20,6 +20,7 @@
         "pragmarx/deeployer": "dev-master",
         "pragmarx/steroids": "dev-master",
         "pragmarx/tracker": "dev-master",
+        "pragmarx/helpers": "dev-master",
         "itsgoingd/clockwork": "1.*"
     },
 
@@ -39,6 +40,10 @@
         {
             "type": "vcs",
             "url":  "https://github.com/antonioribeiro/tracker.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/antonioribeiro/helpers.git"
         }
     ],
 

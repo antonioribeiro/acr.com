@@ -48,7 +48,7 @@
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="brand" href="{{ URL::route('blog') }}">Antonio Carlos Ribeiro - Blog</a>
+                        <a class="brand" href="{{ URL::route('blog') }}">Antonio Carlos Ribeiro - Technology & Information</a>
                     </div>
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -104,10 +104,8 @@
 
                     <div class="col-md-2 text-right right-panel">
                         <p>&nbsp;</p>
-
-                        <p><a href="{{ URL::route('blog') }}">All Posts</a></p>
-
-                        @include('blog._partials.postsMonths')
+                        
+                        @include('blog._partials.sidebar')
                     </div>
                 </div>
             </div>

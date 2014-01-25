@@ -13,11 +13,10 @@
 
 Route::get('test', function() 
 {
-
     //include(app_path().'/models/User.php');
     print_r(User::$rules);
     die;
-    
+
     return Steroids::run();
     
     l(Form::open(array('route' => array('tasks.completed', 1))));
@@ -48,7 +47,6 @@ Route::post('post', function()
                 ], 200);
 });
 
-
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
 
 Route::get('api/{version}/markdown', array('as' => 'api.markdown', 'uses' => 'ACR\Controllers\ApiController@markdown'));
@@ -58,13 +56,15 @@ Route::get('contact', array('as' => 'contact', 'uses' => 'ACR\Controllers\Contac
 
 Route::post('contact/send', array('as' => 'contact.send', 'uses' => 'ACR\Controllers\ContactController@send'));
 
-Route::group(array('prefix' => 'blog'), function()
+Route::group(array('prefix' => 'ti'), function()
 {
     Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
 
     Route::get('months/{month}/{year}', array('as' => 'blog.months', 'uses' => 'ACR\Controllers\BlogController@months'));
 
     Route::get('articles/{slug}/{lang?}', array('as' => 'blog.articles.show', 'uses' => 'ACR\Controllers\BlogController@show'));
+
+    Route::get('{page}', array('as' => 'bio', 'uses' => 'ACR\Controllers\StaticPagesController@show'));
 });
 
 Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'ACR\Controllers\LanguageController@select'));

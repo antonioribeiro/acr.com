@@ -65,7 +65,7 @@
 
                             <div class="nav-collapse collapse">
                                 <ul class="nav pull-right" id="navigation">
-                                    <li title="Blog"><a data-nav="scroll" href="{{ URL::to('/') }}/blog"><i class="fa fa-file-text-o"></i></a></li>
+                                    <li title="Blog"><a data-nav="scroll" href="{{ URL::route('blog') }}"><i class="fa fa-file-text-o"></i></a></li>
                                     <li title="Github"><a data-nav="scroll" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a></li>
                                     
                                     <li title="Twitter">
