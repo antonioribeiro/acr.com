@@ -14,6 +14,7 @@
 Route::get('test', function() 
 {
     //include(app_path().'/models/User.php');
+    //
     print_r(User::$rules);
     die;
 
