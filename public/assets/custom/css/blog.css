@@ -4,6 +4,10 @@ body {
   font-size: 2em;
 }
 
+small {
+  font-size: .7em;  
+}
+
 body,
 h1,
 h2,

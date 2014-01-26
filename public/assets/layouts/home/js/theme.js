@@ -169,6 +169,7 @@ readyState(function()
             { src: 'http://antoniocarlosribeiro.smugmug.com/Paisagem/Rio-de-Janeiro/i-Lgjxgzn/0/X3/ACR-20101114-1014-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/0408-SlavasSnowshow/i-zvVc7XR/0/X3/ACR-20100804-1309-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/photos/i-nrqfsgn/0/O/i-nrqfsgn.jpg', fade: 2000 },
+            { src: 'http://antoniocarlosribeiro.smugmug.com/photos/i-7H4GBVp/0/O/i-7H4GBVp.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/0406-Rio-das-Ostras-Jazz-Blues/i-VpSQV7F/0/X3/ACR-20100604-00005-98-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/Paisagem/Rio-das-Ostras/i-QnDNv8k/0/X3/ACR-20100606-00006-230-X3.jpg', fade: 2000 },
             { src: 'http://antoniocarlosribeiro.smugmug.com/MusicaShows/1011TioSambaLancamento/i-Rmkzk8z/0/X3/ACR-20101110-0392-X3.jpg', fade: 2000 },

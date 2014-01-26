@@ -31,7 +31,7 @@
 
 				<div class="form-group">
 					<label>{{ $localeSecondary->regional_name }}</label>
-					<textarea class="form-control" id="message" name="message" rows="6">{{ $secondaryMessage }}</textarea>
+					<textarea class="form-control" id="message" name="message" rows="16">{{ $secondaryMessage }}</textarea>
 					<p class="help-block">This is where your translation goes.</p>
 				</div>
 
