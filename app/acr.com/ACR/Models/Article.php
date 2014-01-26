@@ -69,9 +69,21 @@ class Article extends Eloquent {
 
 	public function	makeSummary($string)
 	{
-		$pos = strpos($string, "\r\n") ?: strlen($string);
+		$lines = explode("\n", $string);
 
-		return substr($string, 0, $pos);
+		$i = 0;
+
+		while (true)
+		{
+			if (strlen($line = $lines[$i]) > 70)
+			{
+				break;
+			}
+
+			$i++;
+		}
+
+		return $line;
 	}
 
 	public function getMonthsList()
