@@ -11,19 +11,24 @@
 |
 */
 
-Route::get('test', function() 
+Route::group(array('before' => 'fw-allow'), function()
 {
-    dd(Artisan::call('migrate'));
-    //include(app_path().'/models/User.php');
-    //
-    print_r(User::$rules);
-    die;
 
-    return Steroids::run();
-    
-    l(Form::open(array('route' => array('tasks.completed', 1))));
+    Route::get('test', function() 
+    {
+        dd(Artisan::call('migrate'));
+        //include(app_path().'/models/User.php');
+        //
+        print_r(User::$rules);
+        die;
 
-    //return View::make('newblog');
+        return Steroids::run();
+        
+        l(Form::open(array('route' => array('tasks.completed', 1))));
+
+        //return View::make('newblog');
+
+    });
 
 });
 
