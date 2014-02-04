@@ -2,6 +2,8 @@
 
 <p><a href="{{ URL::route('blog') }}/php">{{'PHP & Laravel'}}</a></p>
 
+<p><a href="{{ URL::route('blog') }}/projects">{{'Projects'}}</a></p>
+
 <hr>
 
 <p><a href="{{ URL::route('blog') }}">{{'Recent Articles'}}</a></p>
