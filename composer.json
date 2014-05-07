@@ -21,7 +21,8 @@
         "pragmarx/steroids": "dev-master",
         "pragmarx/tracker": "dev-master",
         "pragmarx/helpers": "dev-master",
-        "itsgoingd/clockwork": "1.*"
+        "itsgoingd/clockwork": "1.*",
+        "intervention/image": "1.*"
     },
 
     "repositories": [

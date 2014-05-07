@@ -11,47 +11,31 @@
 |
 */
 
-Route::group(array('before' => 'fw-allow'), function()
+Route::filter('admin', function($route, $request)
 {
+    dd(Request::segment(2));
 
-    Route::get('test', function() 
-    {
-        dd(Artisan::call('migrate'));
-        //include(app_path().'/models/User.php');
-        //
-        print_r(User::$rules);
-        die;
+    if ( ! Auth::user()->isAdmin()) {
 
-        return Steroids::run();
-        
-        l(Form::open(array('route' => array('tasks.completed', 1))));
-
-        //return View::make('newblog');
-
-    });
-
+        Notification::error('No permission to view this page!');
+        return Redirect::back();
+    }
 });
 
-Route::post('deploy', function() 
-{
+Route::get('profile/{username}', ['before' => 'admin', function() {
+    return 'yes!';
+}]);
 
+
+
+Route::any('test', function()
+{
+	return HTML::linkRoute('profile', 'My Profile', ['acr']);
+});
+
+Route::post('deploy', function()
+{
     return Deeployer::run();
-    
-});
-
-Route::post('post', function() 
-{
-        $user = new User;
-        $name = Input::get('name');
-        $user->login_name = implode('.', explode(' ', strtolower($name)));
-        $user->name = $name;
-        $user->email = Input::get('email');
-        $user->password = Hash::make('1');
-
-        return Response::json([
-                'error' => false,
-                'user' => $user->toArray()
-                ], 200);
 });
 
 Route::get('/', array('as' => 'home', 'uses' => 'ACR\Controllers\HomeController@index'));
@@ -72,6 +56,11 @@ Route::group(array('prefix' => 'ti'), function()
     Route::get('articles/{slug}/{lang?}', array('as' => 'blog.articles.show', 'uses' => 'ACR\Controllers\BlogController@show'));
 
     Route::get('{page}', array('as' => 'bio', 'uses' => 'ACR\Controllers\StaticPagesController@show'));
+});
+
+Route::group(array('prefix' => 'photography'), function()
+{
+	Route::get('/', array('as' => 'photography', 'uses' => 'ACR\Controllers\Photography@index'));
 });
 
 Route::get('language/{lang}', array('as' => 'language.select', 'uses' => 'ACR\Controllers\LanguageController@select'));

@@ -10,7 +10,7 @@
                     <div class="span12">
                         <hgroup id="intro" style="display: none">
                             <h2>Antonio Carlos Ribeiro</h2>
-                            <h3>{{'Tecnology'}} &amp; {{'Photography'}}</h3>
+                            <h3>{{'Technology'}} &amp; {{'Photography'}}</h3>
                         </hgroup>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>{{'Tecnology'}}</h2>
+                            <h2>{{'Technology'}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="row-fluid">
                     <div class="span12 content">
                         <div class="row-fluid">
-                            <p class="quote"><a href="http://antoniocarlosribeiro.smugmug.com">{{'My photos are hosted by Smugmug, click to see them.'}}</a></p>
+                            <p class="quote"><a href="{{ URL::to('/') }}/photography">{{"I'm also a concert, landscape and portrait photographer, click to see some of my shots and contact me."}}</a></p>
                         </div>
                     </div>
                 </div>
