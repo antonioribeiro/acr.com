@@ -77,6 +77,7 @@ class Photoreader {
 						'photography' => $link,
 						'width' => $width,
 						'height' => $height,
+						'size' => substr(basename(strtolower($photo)), 0, 2) == 'l-' ? 'L' : 'N'
 					];
 				}
 			}
@@ -106,13 +107,13 @@ class Photoreader {
 
 			if ($image->height > $image->width)
 			{
-				$height = 400;
+				$height = substr($name, 0, 2) == 'l-' ? 800 : 400;
 				$width = null;
 			}
 			else
 			{
 				$height = null;
-				$width = 300;
+				$width = substr($name, 0, 2) == 'l-' ? 600 : 300;
 			}
 
 			// Crop to portrait

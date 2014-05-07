@@ -11,27 +11,15 @@
 |
 */
 
-Route::filter('admin', function($route, $request)
+Route::any('redirect', function()
 {
-    dd(Request::segment(2));
-
-    if ( ! Auth::user()->isAdmin()) {
-
-        Notification::error('No permission to view this page!');
-        return Redirect::back();
-    }
+    return Redirect::route('test',['subject' => 'true']);
 });
 
-Route::get('profile/{username}', ['before' => 'admin', function() {
-    return 'yes!';
+Route::any('test', ['as' => 'test', function()
+{
+	return "yay!";
 }]);
-
-
-
-Route::any('test', function()
-{
-	return HTML::linkRoute('profile', 'My Profile', ['acr']);
-});
 
 Route::post('deploy', function()
 {
