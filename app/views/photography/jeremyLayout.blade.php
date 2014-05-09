@@ -8,6 +8,7 @@
 
 		<title>Antonio Carlos Ribeiro - Photography</title>
 		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/style.css') }}" />
+		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/fancybox.css') }}" />
 		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/jquery.min.js') }}'></script>
 		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/jquery.flexslider-min.js') }}'></script>
 		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/libs.min.js') }}'></script>
