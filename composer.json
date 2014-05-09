@@ -58,6 +58,9 @@
         ],
         "psr-0": {
             "ACR": "app/acr.com"
+        },
+        "psr-4": {
+            "App\\": "app/App"
         }
     },
     "scripts": {

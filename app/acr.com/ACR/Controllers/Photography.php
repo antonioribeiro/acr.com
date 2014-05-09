@@ -13,7 +13,7 @@ class Photography extends BaseController {
 
 	public function index()
 	{
-		return View::make('photography.jeremyLayout')
+		return View::make('photography.index')
 					->with('photos', $this->reader->getPhotos())
 					->with('types', $this->reader->getTypes());
 	}

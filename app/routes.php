@@ -13,9 +13,9 @@
 
 Route::any('test', ['as' => 'test', function()
 {
- //    $a = ACR\Models\Article::first();
 
-	// var_dump(expression)( gettype($a->created_at) );
+    return;
+
 }]);
 
 Route::post('deploy', function()
