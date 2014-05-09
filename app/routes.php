@@ -11,14 +11,11 @@
 |
 */
 
-Route::any('redirect', function()
-{
-    return Redirect::route('test',['subject' => 'true']);
-});
-
 Route::any('test', ['as' => 'test', function()
 {
-	return "yay!";
+ //    $a = ACR\Models\Article::first();
+
+	// var_dump(expression)( gettype($a->created_at) );
 }]);
 
 Route::post('deploy', function()

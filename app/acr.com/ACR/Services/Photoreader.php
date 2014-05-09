@@ -65,7 +65,7 @@ class Photoreader {
 			{
 				if ($this->isImage($photo) && ! $this->isThumbnail($photo))
 				{
-					$this->checkThumbnail($type, $photo, $thumbnailName, $width, $height);
+					$this->checkThumbnail($type, $photo, $thumbnailName);
 
 					$link = $this->htmlPath.'/'.$type.'/'.basename($photo);
 
@@ -75,8 +75,6 @@ class Photoreader {
 						'type' => $type,
 						'thumbnail' => $thumbLink,
 						'photography' => $link,
-						'width' => $width,
-						'height' => $height,
 						'size' => substr(basename(strtolower($photo)), 0, 2) == 'l-' ? 'L' : 'N'
 					];
 				}
@@ -86,7 +84,7 @@ class Photoreader {
 		shuffle($this->photos);
 	}
 
-	private function checkThumbnail($type, $photo, &$thumbnailName, &$width, &$height)
+	private function checkThumbnail($type, $photo, &$thumbnailName)
 	{
 		$thumbnailName = pathinfo($photo, PATHINFO_FILENAME) . '.thumb.' . pathinfo($photo, PATHINFO_EXTENSION);
 
@@ -94,12 +92,12 @@ class Photoreader {
 
 		$file = $this->systemPath . '/' . $type . '/' . basename($photo);
 
-		$this->generateThumbnail($file, $thumbFile, $width, $height);
+		$this->generateThumbnail($file, $thumbFile);
 	}
 
-	private function generateThumbnail($file, $thumbFile, &$width, &$height)
+	private function generateThumbnail($file, $thumbFile)
 	{
-		if (! File::exists($thumbFile))
+		if ( ! File::exists($thumbFile))
 		{
 			$image = Image::make($file);
 
@@ -107,13 +105,13 @@ class Photoreader {
 
 			if ($image->height > $image->width)
 			{
-				$height = substr($name, 0, 2) == 'l-' ? 800 : 400;
-				$width = null;
+				$height = 1200;
+				$width = 800;
 			}
 			else
 			{
-				$height = null;
-				$width = substr($name, 0, 2) == 'l-' ? 600 : 300;
+				$height = 800;
+				$width = 1200;
 			}
 
 			// Crop to portrait
@@ -121,14 +119,6 @@ class Photoreader {
 
 			$image->resize($width, $height, true)->save($thumbFile);
 		}
-		else
-		{
-			$image = Image::make($thumbFile);
-		}
-
-		$width = $image->width;
-
-		$height = $image->height;
 	}
 
 	private function isThumbnail($photo)

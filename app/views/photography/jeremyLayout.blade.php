@@ -7,17 +7,17 @@
 		<meta name="author" content="The Official Website of Antonio Carlos Ribeiro" />
 
 		<title>Antonio Carlos Ribeiro - Photography</title>
-		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/jeremy/css/style.css') }}" />
-		<script type='text/javascript' src='{{ asset('assets/layouts/photography/jeremy/js/jquery.min.js') }}'></script>
-		<script type='text/javascript' src='{{ asset('assets/layouts/photography/jeremy/js/jquery.flexslider-min.js') }}'></script>
-		<script type='text/javascript' src='{{ asset('assets/layouts/photography/jeremy/js/libs.min.js') }}'></script>
-		<script type='text/javascript' src='{{ asset('assets/layouts/photography/jeremy/js/main.js') }}'></script>
+		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/style.css') }}" />
+		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/jquery.min.js') }}'></script>
+		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/jquery.flexslider-min.js') }}'></script>
+		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/libs.min.js') }}'></script>
+		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/main.js') }}'></script>
 		<script type='text/javascript'>
 			/* <![CDATA[ */
 				var flotheme = {"template_dir":"","ajax_load_url":"","ajax_comments":"1","ajax_posts":"1","ajax_open_single":"1","is_mobile":"0"};
 			/* ]]> */
 		</script>
-		<script type='text/javascript' src='{{ asset('assets/layouts/photography/jeremy/js/screen.min.js') }}'></script>
+		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/screen.min.js') }}'></script>
 	</head>
 
 	<body>
@@ -90,10 +90,10 @@
 						<div class="padding-wrap">
 							<a href="javascript:void(0);" class="switch-categories-block">Show navigation bar &darr;</a>
 							<ul>
-								<li><a href="#" data-id="all" onclick="return false;">All</a></li>
+								<li data-id="all" class="selected">All</li>
 
 								@foreach($types as $type)
-									<li><a data-id="{{$type}}" href="#" onclick="return false;">{{ucwords($type)}}</a></li>
+									<li data-id="{{$type}}">{{ucwords($type)}}</li>
 								@endforeach
 							</ul>		
 						</div>
