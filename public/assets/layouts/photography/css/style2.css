@@ -1,146 +1,355 @@
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section {
-	display: block;
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
 }
 
 /*
- * Add display for embedded HTML5 elements
- * Addresses display not defined in IE6/7/8/9 & FF3
- */
-audio[controls],
-canvas,
-video {
-	display: inline-block;
-	*display: inline;
-	*zoom: 1;
-}
-html {
-	overflow-y: scroll;
-	/* 1 */
-
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	/* 2 */
-
-	-webkit-text-size-adjust: 100%;
-	/* 3 */
-
-	-ms-text-size-adjust: 100%;
-}
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-ul,
-li,
-ol,
-a,
-em,
-img,
-strong,
-fieldset,
-form,
-label,
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-nav,
-section {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-weight: inherit;
-	font-style: inherit;
-	font-size: 100%;
-	font-family: inherit;
-	vertical-align: baseline;
-	list-style: none;
-}
-:focus {
-	outline: 0;
-}
-img {
-	vertical-align: middle;
-	outline: 0;
-}
-button::-moz-focus-inner,
-input[type="reset"]::-moz-focus-inner,
-input[type="button"]::-moz-focus-inner,
-input[type="submit"]::-moz-focus-inner,
-input[type="file"] > input[type="button"]::-moz-focus-inner {
-	border: none;
+@import url(http://fonts.googleapis.com/css?family=Happy+Monkey);
+*/
+html, body, div, span, applet, object, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1em;
+    vertical-align: baseline;
 }
 
-/* Body & forms
-*******************************/
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
 body {
-	background: #000000;
-	color: #313131;
-	text-align: left;
-	font: normal 13px/1.2 sans-serif;
+    background: #000000;
+    line-height: 1.125em;
+    color: white;
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+    font-family: 'Lato', Helvetica, Arial, Tahoma;
 }
 
-/* Free Wall
-*******************************/
+ol, ul {
+    padding: 0 10px;
+    margin: 0 10px;
+    line-height: 1.5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    font-family: 'Lato', Georgia, Helvetica, Tahoma;
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 1.875em;
+    font-family: 'Oxygen', sans-serif;
+}
+
+h2 {
+    font-size: 1.6em;
+    line-height: 1em;
+}
+
+h3 {
+    font-size: 1.25em;
+}
+
+h4 {
+    font-size: 1.125em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: 0.875em;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: white;
+    opacity: 0.9;
+}
+
+a:visited {
+    color: white;
+}
+
+h2 {
+    cursor: pointer;
+}
+
+code, pre {
+    font-family: Monaco, Menlo, Consolas;
+    font-size: 1em;
+    color: #FFFFDE;
+    padding: 0 3px 2px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
 .free-wall {
-	height: 102%;
-	margin: 15px;
+    margin: auto;
 }
 
-@keyframes start {
-	from {
-		transform: scale(0);
-	}
-	to {
-		transform: scale(1);
-	}
+.free-wall-logo {
+    margin: auto;
+    height: 420px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+.rest-left {
+    margin-left: 244px;
 }
 
 
-@-webkit-keyframes start {
-	from {
-		-webkit-transform: scale(0);
-	}
-	to {
-		-webkit-transform: scale(1);
-	}
+
+html, body {
+    margin: 0;
+    padding: 0;
 }
 
-.free-wall .cell[data-state="init"] {
-	display: none;
+.layout {
+    padding: 15px;
 }
 
-.free-wall .cell[data-state="start"]  {
-	display: block;
-	animation: start 0.5s;
-	-webkit-animation: start 0.5s;
+.free-wall {
 }
 
-.free-wall .cell[data-state="move"]  {
-	transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
-	-webkit-transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
+
+
+.filter-label.active,
+.filter-label.active:hover {
+    background: #9d0000;
+    color: #FFFFFF;
 }
+
+.filter-label:hover {
+    background: rgb(180, 180, 180);
+}
+
+.size2-2 {
+    width: 80px;
+    height: 80px;
+}
+
+.size11 {
+    height: 160px;
+    width: 160px;
+}
+
+.size12 {
+    width: 160px;
+    height: 320px;
+}
+
+.size21 {
+    width: 320px;
+    height: 160px;
+}
+
+.size22 {
+    height: 320px;
+    width: 320px;
+}
+
+.size13 {
+    width: 160px;
+    height: 480px;
+}
+
+.size31 {
+    width: 480px;
+    height: 160px;
+}
+
+.size23 {
+    width: 320px;
+    height: 480px;
+}
+
+.size24 {
+    width: 320px;
+    height: 640px;
+}
+
+.size32 {
+    width: 480px;
+    height: 320px;
+}
+
+.size33 {
+    width: 480px;
+    height: 480px;
+}
+
+.size34 {
+    width: 480px;
+    height: 640px;
+}
+
+.size43 {
+    width: 640px;
+    height: 480px;
+}
+
+.size35 {
+    width: 480px;
+    height: 800px;
+}
+
+.size53 {
+    width: 800px;
+    height: 480px;
+}
+
+.size36 {
+    width: 480px;
+    height: 960px;
+}
+
+.sizeLH {
+    width: 320px;
+    height: 480px;
+}
+
+.sizeLW {
+    width: 480px;
+    height: 320px;
+}
+
+.sizeNH {
+    width: 160px;
+    height: 240px;
+}
+
+.sizeNW {
+    width: 240px;
+    height: 160px;
+}
+
+img.photo {
+    max-width: 100%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.brick {
+    background-color: black;
+    float: left;
+    cursor: default;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+img.photo:hover {
+    background-color: #FFFFFF;
+    opacity: 0.4;
+    -webkit-filter: grayscale(100%);
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    display:none;
+}
+
+.brick:hover .imageOverlay {
+    display:block;
+}
+
+.camera {
+    font-size: 2em;
+}
+
+.header {
+    top: 0px;
+    width: 100%;
+    height: 75px;
+    padding: 10px;
+    background: #000;
+    margin: auto;
+}
+
+.header.menu {
+    position: fixed;
+    z-index: 2;
+    opacity: 0.8;
+}
+
+ul li {
+    display: inline;
+    color: white;
+    font-size: 0.7em;
+    font-weight: 300;
+    padding: 2px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+ul.filter-items {
+    padding: 6px 0px;
+}
+
+li.filter-label:hover {
+    color: black;
+    cursor: hand;
+    cursor: pointer;
+}
+

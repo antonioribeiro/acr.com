@@ -51,6 +51,10 @@ class Photoreader {
 		{
 			$this->types[] = basename($dir);
 		}
+
+		unset($this->types[array_search('other', $this->types)]);
+
+		$this->types[] = 'other';
 	}
 
 	private function generatePhotos($types)
@@ -71,11 +75,21 @@ class Photoreader {
 
 					$thumbLink = $this->htmlPath.'/'.$type.'/'.$thumbnailName;
 
+					$info = getimagesize($photo);
+
+					$size = substr(basename($photo), 0, 1) == 'L' ? 'L' : 'N';
+
+					$width = $info[0];
+
+					$height = $info[1];
+
 					$this->photos[] = [
 						'type' => $type,
 						'thumbnail' => $thumbLink,
 						'photography' => $link,
-						'size' => substr(basename(strtolower($photo)), 0, 2) == 'l-' ? 'L' : 'N'
+						'width' => $width,
+						'height' => $height,
+						'size' => ($width > $height ? '32' : '23'),
 					];
 				}
 			}
@@ -105,13 +119,13 @@ class Photoreader {
 
 			if ($image->height > $image->width)
 			{
-				$height = 1200;
-				$width = 800;
+				$height = 750;
+				$width = 500;
 			}
 			else
 			{
-				$height = 800;
-				$width = 1200;
+				$height = 500;
+				$width = 750;
 			}
 
 			// Crop to portrait

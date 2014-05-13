@@ -14,7 +14,9 @@
 Route::any('test', ['as' => 'test', function()
 {
 
-    return;
+	$c = new Illuminate\Support\Collection;
+	dd($c);
+    dd(DB::getPdo());
 
 }]);
 
