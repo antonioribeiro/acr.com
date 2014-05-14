@@ -18,7 +18,7 @@ Route::any('test', ['as' => 'test', function()
 
 }]);
 
-Route::post('deploy', function()
+Route::any('deploy', function()
 {
     return Deeployer::run();
 });

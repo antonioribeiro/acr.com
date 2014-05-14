@@ -72,8 +72,7 @@ return array(
 
                                     'artisan_migrate' => false,
 
-                                    'post_deploy_commands' => array(
-                                                                    ),
+                                    'post_deploy_commands' => array(),
                                 ),
                         ),
 );
