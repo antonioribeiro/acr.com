@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Freewall demo filter</title>
+		<title>Antonio Carlos Ribeiro - {{'Photography'}}</title>
 		<meta content="text/html; charset=utf-8" http-equiv="content-type">
-		<meta name="description" content="Freewall demo filter" />
+		<meta name="description" content="Antonio Carlos Ribeiro - Photography" />
 		<meta name="keywords" content="javascript, dynamic, grid, layout, jquery plugin, fit zone"/>
 		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/style2.css') }}" />
 		<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>

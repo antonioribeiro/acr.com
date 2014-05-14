@@ -152,8 +152,6 @@ table {
     margin-left: 244px;
 }
 
-
-
 html, body {
     margin: 0;
     padding: 0;
@@ -162,11 +160,6 @@ html, body {
 .layout {
     padding: 15px;
 }
-
-.free-wall {
-}
-
-
 
 .filter-label.active,
 .filter-label.active:hover {
@@ -285,6 +278,7 @@ img.photo {
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    -webkit-overflow-scrolling: touch;
 }
 
 .brick {

@@ -78,4 +78,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 
 	}
+
+    public function reload()
+    {
+		$instance = new static;
+
+		$instance = $instance->newQuery()->find($this->{$this->primaryKey});
+
+		$this->attributes = $instance->attributes;
+
+		$this->original = $instance->original;
+    }
 }

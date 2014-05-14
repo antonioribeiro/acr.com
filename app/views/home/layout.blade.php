@@ -80,7 +80,7 @@
 
                                     <li title="Stack Overflow"><a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a></li>
                                     <li title="Tecnology"><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech"><i class="fa fa-laptop"></i></a></li>
-                                    <li title="Photography"><a data-nav="scroll" href="{{ URL::to('/') }}/#/photo"><i class="fa fa-camera"></i></a></li>
+                                    <li title="Photography"><a data-nav="scroll" href="{{ URL::to('/') }}/photography"><i class="fa fa-camera"></i></a></li>
                                     <li title="Contact"><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact"><i class="fa fa-envelope"></i></a></li>
                                 </ul>
                             </div>

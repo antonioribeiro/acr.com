@@ -28,18 +28,6 @@
     "repositories": [
         {
             "type": "vcs",
-            "url":  "https://github.com/antonioribeiro/firewall.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "https://github.com/antonioribeiro/deeployer.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "https://github.com/antonioribeiro/steroids.git"
-        },
-        {
-            "type": "vcs",
             "url":  "https://github.com/antonioribeiro/tracker.git"
         },
         {
