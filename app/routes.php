@@ -14,7 +14,9 @@
 Route::any('test', ['as' => 'test', function()
 {
 
-	dd(Request::server('SERVER_NAME'));
+    return dd($GLOBALS);
+
+	return php_info();
 
 }]);
 
