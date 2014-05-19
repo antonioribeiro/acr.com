@@ -3,7 +3,7 @@
 @section('content')
 	<div class="archive">
 	    <h1>
-	        {{'Posts'}}
+	        {{$pageTitle}}
 	    </h1>
 
 	    @include('blog._partials.articles', ['articles' => $articles])

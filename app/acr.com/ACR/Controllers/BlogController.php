@@ -18,6 +18,7 @@ class BlogController extends BaseController {
 	{
 		return View::make('blog.pages.index')
 				->with('articles', Article::published()->get())
+				->with('pageTitle', g('Recent Articles'))
 				->with('summary', true);
 	}
 
@@ -43,6 +44,8 @@ class BlogController extends BaseController {
 	{
 		return View::make('blog.pages.index')
 				->with('articles', Article::fromMonth($month, $year)->published()->get())
+				->with('pageTitle', g('Articles from ') . g(date("F", mktime(0, 0, 0, $month, 10))) . ' ' . $year )
 				->with('summary', true);
-			}
+	}
+
 }

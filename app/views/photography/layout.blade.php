@@ -21,7 +21,7 @@
 				<h1><a href="{{ URL::to('/') }}">Antonio Carlos Ribeiro</a></h1>
 
 				<ul class="filter-items alignLeft">
-					<li class="filter-label active" >{{'All Photos'}}</li>
+					<li class="filter-label active">{{'All Photos'}}</li>
 
 					@foreach($types as $type)
 						<li>•</li><li class="filter-label" data-filter=".category-{{$type}}">{{g(ucwords($type))}}</li>

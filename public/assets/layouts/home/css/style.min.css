@@ -720,3 +720,11 @@ ul
     }
 
 }
+
+.center {
+    text-align: center;
+}
+
+.footer {
+    color: white;
+}

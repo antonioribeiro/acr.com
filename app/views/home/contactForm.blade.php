@@ -74,7 +74,7 @@
 
                                 &nbsp;&nbsp;&nbsp;
 
-                                <a data-nav="scroll" title="Stack Overflow" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i>
+                                <a data-nav="scroll" title="Stack Overflow" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>
                             </h1>
                         </div>
                     </div>

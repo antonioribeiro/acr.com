@@ -79,13 +79,13 @@
                                     </li>
 
                                     <li title="Stack Overflow"><a data-nav="scroll" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a></li>
-                                    <li title="Tecnology"><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech"><i class="fa fa-laptop"></i></a></li>
+                                    <li title="Technology"><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech"><i class="fa fa-laptop"></i></a></li>
                                     <li title="Photography"><a data-nav="scroll" href="{{ URL::to('/') }}/photography"><i class="fa fa-camera"></i></a></li>
                                     <li title="Contact"><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact"><i class="fa fa-envelope"></i></a></li>
                                 </ul>
                             </div>
                         </div>
-                    
+
                     </div>
 
                 </div>
@@ -95,12 +95,25 @@
 
     @yield('content')
 
+    <footer>
+	    <div class="container">
+		    <div class="panel">
+			    <div class="row-fluid">
+				    <div class="span12 header center footer">
+					    <p>{{'Sewed by'}} <a href="http://antoniocarlosribeiro.com">Antonio Carlos Ribeiro</a></p>
+					    <p>{{'Using'}} <a href="http://laravel.com">Laravel</a> &amp; <a href="https://github.com/antonioribeiro/glottos">Glottos</a></p>
+					    <p>{{'Powered by'}} <a href="https://forge.laravel.com">Forge</a> & <a href="https://digitalocean.com">Digital Ocean</a></p>
+				    </div>
+			    </div>
+			</div>
+	    </div>
+    </footer>
+
     <!-- ligthbox -->
     <div style="display: none;" id="lightbox"><img id="bigimg" src="" /></div>
 
     <!-- scripts -->
     <script type="text/javascript" src="{{ asset('assets/vendor/bower/jquery/jquery.min.js') }}"></script>
-
 
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/signals.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/layouts/home/js/crossroads.min.js') }}"></script>
