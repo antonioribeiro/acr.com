@@ -100,9 +100,9 @@
 		    <div class="panel">
 			    <div class="row-fluid">
 				    <div class="span12 header center footer">
-					    <p>{{'Sewed by'}} <a href="http://antoniocarlosribeiro.com">Antonio Carlos Ribeiro</a></p>
-					    <p>{{'Using'}} <a href="http://laravel.com">Laravel</a> &amp; <a href="https://github.com/antonioribeiro/glottos">Glottos</a></p>
-					    <p>{{'Powered by'}} <a href="https://forge.laravel.com">Forge</a> & <a href="https://digitalocean.com">Digital Ocean</a></p>
+					    <p>{{g('Sewed by')}} <a href="http://antoniocarlosribeiro.com">Antonio Carlos Ribeiro</a></p>
+					    <p>{{g('Using')}} <a href="http://laravel.com">Laravel</a> &amp; <a href="https://github.com/antonioribeiro/glottos">Glottos</a></p>
+					    <p>{{g('Powered by')}} <a href="https://forge.laravel.com">Forge</a> & <a href="https://digitalocean.com">Digital Ocean</a></p>
 				    </div>
 			    </div>
 			</div>

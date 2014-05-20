@@ -115,10 +115,10 @@
             <div class="footer-text text-muted text-center">
                 &copy; 2013 Antonio Carlos Ribeiro. 
 
-                {{'Cewr up with'}}
+                {{g('Sewed up with')}}
                 <a href="http://laravel.com/">
                     Laravel
-                </a> {{'and'}} 
+                </a> {{g('and')}}
 
                 <a href="https://github.com/antonioribeiro/glottos">
                     Glottos.

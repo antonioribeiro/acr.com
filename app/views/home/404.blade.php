@@ -9,7 +9,7 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <hgroup id="intro" style="display: none">
-                            <h2>>> {{'Error 404'}} <<</h2>
+                            <h2>>> {{g('Error 404')}} <<</h2>
                             <h3><a href="/">{{g("Sorry, but this page doesn't exist")}}</a></h3>
                             <h3><a href="/"><i class="fa fa-home"></i></a></h3>
                         </hgroup>
