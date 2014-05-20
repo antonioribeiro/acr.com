@@ -14,9 +14,7 @@
 Route::any('test', ['as' => 'test', function()
 {
 
-    return dd($GLOBALS);
-
-	return php_info();
+    dd( Glottos::getBrowserLocale() );
 
 }]);
 
