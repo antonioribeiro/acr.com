@@ -1718,6 +1718,7 @@ COPY glottos_messages (id, hash, key, created_at, updated_at) FROM stdin;
 331	7613d9fbe76377cea6949d6056165867f68d88b0	\N	2014-05-19 20:07:32	2014-05-19 20:07:32
 332	4b21608f9631f24eff7141c541de1898c506be88	\N	2014-05-19 20:07:32	2014-05-19 20:07:32
 333	eb12812e404c216883a002963a6a32707ebb1b3b	\N	2014-05-19 20:07:32	2014-05-19 20:07:32
+334	703c982f28fcca6908cadd8b629f557c7d45d7b9	\N	2014-05-20 19:59:52	2014-05-20 19:59:52
 \.
 
 
@@ -1725,7 +1726,7 @@ COPY glottos_messages (id, hash, key, created_at, updated_at) FROM stdin;
 -- Name: glottos_messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('glottos_messages_id_seq', 333, true);
+SELECT pg_catalog.setval('glottos_messages_id_seq', 334, true);
 
 
 --
@@ -1868,7 +1869,6 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 413	303	en		PHP & Laravel	\N	2014-01-25 16:49:55	2014-01-25 16:49:55
 414	304	en		Recent Articles	\N	2014-01-25 16:49:55	2014-01-25 16:49:55
 459	333	en		Powered by	\N	2014-05-19 20:13:07	2014-05-19 20:13:07
-410	301	en		#About Me\r\n\r\n![pascal](/assets/custom/img/eiffel.png)\r\n<small>Paris, France, 09/2010</small>\r\n\r\n##Antonio Carlos Ribeiro <small>(Faria)</small>\r\n\r\nAge: **43** \r\n\r\nProfessions: **Developer** & **Photographer**.\r\n\r\nBased in: **Rio de Janeiro, Brasil**.\r\n\r\nTechnology Experience: **25 years developing applications for DOS and Windows and administering Linux systems**.\r\n\r\nPhotography: **landscape, portrait and concert photography**.\r\n\r\nPassions: **my love, familiy, friends, traveling, diving and languages**.\r\n\r\nLanguages: **fluent in brazilian portugese, french and english**.\r\n\r\nNow doing: **web development using PHP and <a href="http://laravel.com">The Laravel Framework</a>**.\r\n	\N	2014-01-25 16:49:05	2014-05-19 20:16:11
 407	300	pt	BR	Sobre Mim	\N	2014-01-25 16:47:11	2014-01-25 18:05:06
 411	300	en		About Me	\N	2014-01-25 16:49:43	2014-01-25 18:05:19
 412	302	en		About Me	\N	2014-01-25 16:49:55	2014-01-25 18:05:30
@@ -1907,6 +1907,9 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 449	322	pt	BR	Tecnologia	\N	2014-05-19 16:16:20	2014-05-19 16:16:20
 450	325	en		Articles from	\N	2014-05-19 18:11:39	2014-05-19 18:11:39
 453	325	pt	BR	Artigos de	\N	2014-05-19 18:52:18	2014-05-19 18:52:18
+410	301	en		#About Me\r\n\r\n![pascal](/assets/custom/img/eiffel.png)\r\n<small>Paris, France, 09/2010</small>\r\n\r\n##Antonio Carlos Ribeiro <small>(Faria)</small>\r\n\r\nAge: **43** \r\n\r\nProfessions: **Developer** & **Photographer**.\r\n\r\nBased in: **Rio de Janeiro, Brasil**.\r\n\r\nTechnology Experience: **25 years developing complex systems for DOS and Windows, technology consulting, building and managing Linux systems and networks, and Internet providers**.\r\n\r\nPhotography: **landscape, portrait and concert photography**.\r\n\r\nPassions: **my love, familiy, friends, traveling, diving and languages**.\r\n\r\nLanguages: **fluent in brazilian portugese, french and english**.\r\n\r\nNow doing: **web development using PHP and <a href="http://laravel.com">The Laravel Framework</a>**.\r\n	\N	2014-01-25 16:49:05	2014-05-19 21:16:57
+460	334	pt	BR	Eu também faço fotografia de shows, paisagens e retratos, clique para ver algumas das minhas fotos\r\n	\N	2014-05-20 19:59:52	2014-05-20 20:16:48
+461	334	en		I'm also a concert, landscape and portrait photographer, click to see some of my shots	\N	2014-05-20 20:16:09	2014-05-20 20:18:09
 \.
 
 
@@ -1914,7 +1917,7 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 -- Name: glottos_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('glottos_translations_id_seq', 459, true);
+SELECT pg_catalog.setval('glottos_translations_id_seq', 461, true);
 
 
 --

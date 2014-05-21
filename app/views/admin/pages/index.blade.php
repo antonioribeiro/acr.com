@@ -18,9 +18,9 @@
 			<div class="table-responsive">
 	            <p>
 	              <div class="btn-group btn-group-justified">
-	                <a href="{{ URL::route('admin.languages.index', ['all']) }}" class="btn btn-default {{$filtered == 'all' ?  'active' : '')}}">All</a>
-	                <a href="{{ URL::route('admin.languages.index', ['enabled']) }}" class="btn btn-default {{$filtered == 'enabled' ?  'active' : '')}}">Enabled</a>
-	                <a href="{{ URL::route('admin.languages.index', ['disabled']) }}" class="btn btn-default {{$filtered == 'disabled' ?  'active' : '')}}">Disabled</a>
+	                <a href="{{ URL::route('admin.languages.index', ['all']) }}" class="btn btn-default {{$filtered == 'all' ?  'active' : ''}}">All</a>
+	                <a href="{{ URL::route('admin.languages.index', ['enabled']) }}" class="btn btn-default {{$filtered == 'enabled' ?  'active' : ''}}">Enabled</a>
+	                <a href="{{ URL::route('admin.languages.index', ['disabled']) }}" class="btn btn-default {{$filtered == 'disabled' ?  'active' : ''}}">Disabled</a>
 	              </div>
 	            </p>
 
