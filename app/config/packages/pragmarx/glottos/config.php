@@ -125,9 +125,9 @@ return array(
 	|
 	*/
 
-	'default_language_id' => 'en',
+	'default_language_id' => 'pt',
 
-	'default_country_id' => '',
+	'default_country_id' => 'br',
 
 	/*
 	|--------------------------------------------------------------------------

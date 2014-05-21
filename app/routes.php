@@ -11,12 +11,12 @@
 |
 */
 
+Log::info(Session::get('glottos.lang'));
+
 Route::any('test', ['as' => 'test', function()
 {
 
-    return dd($GLOBALS);
-
-	return php_info();
+    dd( Glottos::getBrowserLocale() );
 
 }]);
 
@@ -98,4 +98,5 @@ Route::group(array('before' => 'auth'), function()
 
     Route::get('languages/{id}/disable', array('as' => 'admin.languages.disable', 'uses' => 'ACR\Controllers\Admin\LanguagesController@disableLanguage'));
 
+	Route::get('languages/messages/{messageId}/delete', array('as' => 'admin.languages.messages.delete', 'uses' => 'ACR\Controllers\Admin\LanguagesController@deleteMessage'));
 });

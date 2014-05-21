@@ -2,12 +2,14 @@
 
 use PragmaRX\Glottos\Support\Locale;
 use ACR\Controllers\BaseController;
-use \Glottos;
-use \View;
-use \Session;
-use \URL;
-use \Input;
-use \Redirect;
+use Glottos;
+use View;
+use Session;
+use URL;
+use Input;
+use Redirect;
+use DB;
+
 
 class LanguagesController extends BaseController {
 
@@ -238,6 +240,7 @@ class LanguagesController extends BaseController {
 	public function translate()
 	{
 		$localePrimary = Glottos::findLocale(Glottos::getPrimaryLocale());
+
 		$localeSecondary = Glottos::findLocale(Glottos::getSecondaryLocale());
 
 		return Redirect::route('admin.translation.next',[
@@ -245,4 +248,14 @@ class LanguagesController extends BaseController {
                                                             $localeSecondary->language_id.'-'.$localeSecondary->country_id
                                                         ]);
 	}
+
+	public function deleteMessage($id)
+	{
+		DB::table('glottos_translations')->where('message_id', $id)->delete();
+
+		DB::table('glottos_messages')->where('id', $id)->delete();
+
+		return Redirect::back();
+	}
+
 }

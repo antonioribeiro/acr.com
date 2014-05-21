@@ -73,9 +73,13 @@ class Article extends Eloquent {
 
 		$i = 0;
 
+		$result = '';
+
 		while (true)
 		{
-			if (strlen($line = $lines[$i]) > 70)
+			$result .= $lines[$i];
+
+			if (strlen($line = $lines[$i]) > 70 && !$this->isImage($lines[$i]))
 			{
 				break;
 			}
@@ -83,7 +87,7 @@ class Article extends Eloquent {
 			$i++;
 		}
 
-		return $line;
+		return $result;
 	}
 
 	public function getMonthsList()
@@ -103,5 +107,10 @@ class Article extends Eloquent {
 		}
 
 		return $result;
+	}
+
+	private function isImage($string)
+	{
+		return strpos($string, '<img') !== false;
 	}
 }

@@ -58,7 +58,7 @@
                     <ul class="site-navigation">
                         <li>
                             <a href="{{ URL::to('blog') }}">
-                                {{'Blog'}}
+                                {{g('Blog')}}
                             </a>
                         </li>
 
@@ -93,10 +93,10 @@
                 <p class="text-center milli">
                     &copy; 2013 Antonio Carlos Ribeiro. 
 
-                    {{'Cewr up with'}}
+                    {{g('Cewr up with')}}
                     <a href="http://laravel.com/">
                         Laravel
-                    </a> {{'and'}} 
+                    </a> {{g('and')}}
 
                     <a href="https://github.com/antonioribeiro/glottos">
                         Glottos.

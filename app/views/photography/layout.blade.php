@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Antonio Carlos Ribeiro - {{'Photography'}}</title>
+		<title>Antonio Carlos Ribeiro - {{g('Photography')}}</title>
 		<meta content="text/html; charset=utf-8" http-equiv="content-type">
 		<meta name="description" content="Antonio Carlos Ribeiro - Photography" />
 		<meta name="keywords" content="javascript, dynamic, grid, layout, jquery plugin, fit zone"/>
@@ -21,7 +21,7 @@
 				<h1><a href="{{ URL::to('/') }}">Antonio Carlos Ribeiro</a></h1>
 
 				<ul class="filter-items alignLeft">
-					<li class="filter-label active" >{{'All Photos'}}</li>
+					<li class="filter-label active">{{g('All Photos')}}</li>
 
 					@foreach($types as $type)
 						<li>•</li><li class="filter-label" data-filter=".category-{{$type}}">{{g(ucwords($type))}}</li>

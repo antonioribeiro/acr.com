@@ -15,7 +15,7 @@
 
 					<section class="masonry nolookbook" id="visible_items">
 						@foreach($photos as $key => $photo)
-							<article class="{{$photo['size'] == 'N' ? 'narrow-1col' : 'wide-2col'}} category-all category-{{$photo['type']}}" id="image-5084">
+							<article class="{{$photo['size'] == 'N' ? 'narrow-1col' : 'wide-2col')}} category-all category-{{$photo['type']}}" id="image-5084">
 								<a class="toggle fancybox" rel="album" title="Sara Watkins" href="{{$photo['photography']}}">
 									<img src="{{$photo['thumbnail']}}"/>
 								</a>

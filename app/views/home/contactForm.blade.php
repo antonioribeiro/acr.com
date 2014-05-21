@@ -5,7 +5,7 @@
                 <div class="row-fluid">
                     <div class="span12 header">
                         <hgroup>
-                            <h2>{{'Contact'}}</h2>
+                            <h2>{{g('Contact')}}</h2>
                             <h3></h3>
                         </hgroup>
                     </div>
@@ -14,7 +14,7 @@
                     <div class="span12 content">
                         <div class="row-fluid">
                             <div class="span6">
-                                <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{'Find Me'}}</h2>
+                                <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{g('Find Me')}}</h2>
                                 <ul>
                                     <li><i  class="fa fa-building"></i> Rua Professor Quintino do Vale - Estácio</li>
                                     <li><i  class="fa-road"></i> Rio de Janeiro - Brasil - 20.250-030</li>
@@ -23,13 +23,13 @@
                                 @if(Glottos::getLocaleAsText() == 'en')
                                     +
                                 @endif
-                                {{'55-21-9-8088-2233'}}</p>                                
+                                {{g('55-21-9-8088-2233')}}</p>
                                 <p class="email"><i  class="fa fa-envelope"></i> <a href="mailto:&#097;&#099;&#114;&#064;&#097;&#110;&#116;&#111;&#110;&#105;&#111;&#099;&#097;&#114;&#108;&#111;&#115;&#114;&#105;&#098;&#101;&#105;&#114;&#111;&#046;&#099;&#111;&#109;">&#097;&#099;&#114;&#064;&#097;&#110;&#116;&#111;&#110;&#105;&#111;&#099;&#097;&#114;&#108;&#111;&#115;&#114;&#105;&#098;&#101;&#105;&#114;&#111;&#046;&#099;&#111;&#109;</a></p>
                                 <!-- googlemaps -->
                                 <div id="map_canvas"></div>
                             </div>
                             <div class="span6">
-                                <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> {{'Send Me a Message'}}</h2>
+                                <h2 class="big-h2-heading"><i  class="fa fa-comment"></i> {{g('Send Me a Message')}}</h2>
                                 <div class="row-fluid">
                                     @if(isset($messages))
                                         @foreach($messages as $message)
@@ -74,7 +74,7 @@
 
                                 &nbsp;&nbsp;&nbsp;
 
-                                <a data-nav="scroll" title="Stack Overflow" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i>
+                                <a data-nav="scroll" title="Stack Overflow" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>
                             </h1>
                         </div>
                     </div>
