@@ -125,7 +125,37 @@
 		</script>
 
 		<script type="text/javascript">
-		</script>
+		    /**
+		     * Vegas background image slider
+		     */
+		    $.vegas('slideshow',
+		    {
+		        delay: 10000,
+		        backgrounds: [
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20101114-1000-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20101114-1014-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100804-1309-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/i-nrqfsgn.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/i-7H4GBVp.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100604-00005-98-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100606-00006-230-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20101110-0392-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/i-csxC54c.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100424-01030-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20101001-8519-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20131212-1893.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100126-01050-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-NY--20091225-00120-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/i-BPFHxJQ.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100220-01166-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100120-01058-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100301-01430-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/i-ZTdCpzN.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20101002-8665-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/ACR-20100327-01209-X3.jpg', fade: 2000 },
+		            { src: '{{ asset('assets/layouts/home/img/photos') }}/i-wz2Q7xc.jpg', fade: 2000 }
+		        ]
+		    })('overlay');		</script>
 
 		@include('global._partials.google-analytics')
 	</body>
