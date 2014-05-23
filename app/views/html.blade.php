@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		@yield('head')
+		@yield('html-head')
 	</head>
 
 	<body>
-		@yield('body')
+		@yield('html-body')
 
 		@include('global._partials.google-analytics')
 	</body>
-
 </html>

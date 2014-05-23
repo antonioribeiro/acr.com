@@ -1,6 +1,6 @@
 @extends('html')
 
-@section('head')
+@section('html-head')
 	<title>Antonio Carlos Ribeiro.com</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@
 	<![endif]-->
 @stop
 
-@section('body')
+@section('html-body')
 	<a id="back-top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a>
 
 	<!-- header -->
