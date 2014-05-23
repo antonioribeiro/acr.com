@@ -34,7 +34,7 @@ Route::get('contact', array('as' => 'contact', 'uses' => 'ACR\Controllers\Contac
 
 Route::post('contact/send', array('as' => 'contact.send', 'uses' => 'ACR\Controllers\ContactController@send'));
 
-Route::group(array('prefix' => 'ti'), function()
+Route::group(array('prefix' => 'technology'), function()
 {
     Route::get('/', array('as' => 'blog', 'uses' => 'ACR\Controllers\BlogController@index'));
 
