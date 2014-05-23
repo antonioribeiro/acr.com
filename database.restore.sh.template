@@ -1,1 +1,11 @@
-sudo -u postgres psql -f app/database/dumps/antoniocarlosribeiro.pgsql.dump antoniocarlosribeiro
+cp database.create-database.sql.template /tmp/database.create-database.sql
+cp database.create-database.sql /tmp
+
+cp database.permissions.sql.template /tmp/database.permissions.sql
+cp database.permissions.sql /tmp
+
+cp app/database/dumps/antoniocarlosribeiro.pgsql.dump /tmp
+
+sudo -u postgres psql -f /tmp/database.create-database.sql antoniocarlosribeiro_staging
+sudo -u postgres psql -f /tmp/antoniocarlosribeiro.pgsql.dump antoniocarlosribeiro_staging
+sudo -u postgres psql -f /tmp/database.permissions.sql antoniocarlosribeiro_staging
