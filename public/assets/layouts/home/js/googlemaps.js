@@ -18,13 +18,13 @@ $(function() {
 		content: contentString
 	});
 	
-	var companyImage = new google.maps.MarkerImage('http://maps.google.com/mapfiles/marker.png',
+	var companyImage = new google.maps.MarkerImage('https://maps.google.com/mapfiles/marker.png',
 		new google.maps.Size(20,34),
 		new google.maps.Point(0,0),
 		new google.maps.Point(50,50)
 	);
 
-	var companyShadow = new google.maps.MarkerImage('http://maps.google.com/mapfiles/shadow50.png',
+	var companyShadow = new google.maps.MarkerImage('https://maps.google.com/mapfiles/shadow50.png',
 		new google.maps.Size(40,34),
 		new google.maps.Point(0,0),
 		new google.maps.Point(50, 50));
