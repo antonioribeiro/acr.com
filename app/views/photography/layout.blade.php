@@ -6,13 +6,13 @@
 		<meta name="description" content="Antonio Carlos Ribeiro - Photography" />
 		<meta name="keywords" content="javascript, dynamic, grid, layout, jquery plugin, fit zone"/>
 		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/style2.css') }}" />
-		<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/jquery.min.js') }}'></script>
-		<script type="text/javascript" src="http://vnjs.net/www/project/freewall/freewall.js"></script>
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<script type="text/javascript" src="{{ asset('assets/vendor/bower/freewall/freewall.js') }}"></script>
+		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-		<script type="text/javascript" src="http://www.aerowebstudio.net/codecanyon/jquery.lightbox/js/lightbox/jquery.lightbox.min.js"></script>
-		<link rel="stylesheet" type="text/css" media="all" href="http://www.aerowebstudio.net/codecanyon/jquery.lightbox/js/lightbox/themes/default/jquery.lightbox.css" />
+		<script type="text/javascript" src="{{ asset('assets/layouts/photography/js/jquery.lightbox.min.js') }}"></script>
+		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/jquery.lightbox.css') }}" />
 	</head>
 
 	<body>
