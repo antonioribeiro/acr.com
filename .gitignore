@@ -13,3 +13,4 @@ database.restore.sh
 public/assets/vendor
 app/storage
 .idea
+.env*
