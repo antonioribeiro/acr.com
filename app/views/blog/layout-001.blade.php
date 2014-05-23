@@ -9,14 +9,14 @@
         <link rel="alternate" href="/atom.xml" title="Antonio Carlos Ribeiro, Front-End Developer" type="application/atom+xml"/>
         <link rel="canonical" href="http://antoniocarlosribeiro.com"/>
 
-        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source Sans Pro">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source Sans Pro">
         <link rel="stylesheet" type="text/css" href="{{ URL::to('/').'/assets/vendor/bower/google-code-prettify/src/prettify.css' }}">
         <link href="{{ asset('assets/layouts/home/css/font-awesome.min.css') }}" rel="stylesheet" media="screen" />
 
         <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/acr.css"/>
         <link rel="stylesheet" href="{{URL::to('/')}}/assets/blog/css/prettify-desert.css"/>
 
-        <script src="http://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
         </script>
         <script>
