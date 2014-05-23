@@ -57,7 +57,7 @@
                         <br><br>
                         <div class="row-fluid black">
                             <h1 class="big-h2-heading text-center">
-                                <a data-nav="scroll" title="Blog" href="{{ URL::to('/') }}/blog"><i class="fa fa-file-text-o"></i></a>
+                                <a data-nav="scroll" title="Blog" href="{{ URL::route('blog') }}"><i class="fa fa-file-text-o"></i></a>
                                 &nbsp;&nbsp;&nbsp;
 
                                 <a data-nav="scroll" title="Github" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>
