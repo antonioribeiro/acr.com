@@ -1,6 +1,6 @@
 @extends('html')
 
-@section('<head>')
+@section('head')
 	<title>Antonio Carlos Ribeiro.com</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
