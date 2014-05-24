@@ -5,7 +5,6 @@
     "bootstrap": "~3.0.3",
     "font-awesome": "~4.0.3",
     "google-code-prettify": "~1.0.1",
-    "shadowbox": "~3.0.3",
     "pirobox": "*",
     "lightbox": "~2.7.1",
     "freewall": "*"
