@@ -24,7 +24,7 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-foreach(require __DIR__.'/../.env.php' as $key => $value) 
+foreach(require __DIR__.'/../.env.php' as $key => $value)
 {
 	putenv(sprintf('%s=%s', $key, $value));
 }

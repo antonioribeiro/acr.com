@@ -11,12 +11,10 @@
 |
 */
 
-Log::info(Session::get('glottos.lang'));
-
 Route::any('test', ['as' => 'test', function()
 {
 
-    dd( Glottos::getBrowserLocale() );
+    dd( Route::current() );
 
 }]);
 
