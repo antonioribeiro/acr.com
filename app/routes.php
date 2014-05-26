@@ -11,12 +11,12 @@
 |
 */
 
-Route::any('test', ['as' => 'test', function()
+Route::any('test', function()
 {
 
     dd( Route::current() );
 
-}]);
+});
 
 Route::any('deploy', function()
 {

@@ -54,6 +54,18 @@ return array(
 
 	'cookie_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Cookie',
 
+	'domain_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Domain',
+
+	'referer_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Referer',
+
+	'route_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Route',
+
+	'route_path_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\RoutePath',
+
+	'route_path_parameter_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\RoutePathParameter',
+
+	'error_model' => 'PragmaRX\Tracker\Vendor\Laravel\Models\Error',
+
 	'authentication_ioc_binding' => 'auth',
 
 	'authenticated_check_method' => 'check',
