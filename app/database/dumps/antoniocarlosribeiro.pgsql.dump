@@ -2471,8 +2471,6 @@ SELECT pg_catalog.setval('throttle_id_seq', 1, false);
 --
 
 COPY tracker_agents (id, name, browser, browser_version, created_at, updated_at) FROM stdin;
-1	Other	Other		2014-05-26 15:28:12	2014-05-26 15:28:12
-2	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36	Chrome	35.0.1916	2014-05-26 15:28:44	2014-05-26 15:28:44
 \.
 
 
@@ -2480,7 +2478,7 @@ COPY tracker_agents (id, name, browser, browser_version, created_at, updated_at)
 -- Name: tracker_agents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_agents_id_seq', 2, true);
+SELECT pg_catalog.setval('tracker_agents_id_seq', 1, false);
 
 
 --
@@ -2488,11 +2486,6 @@ SELECT pg_catalog.setval('tracker_agents_id_seq', 2, true);
 --
 
 COPY tracker_cookies (id, uuid, created_at, updated_at) FROM stdin;
-1	0ed1ee2c-c646-42c4-a82b-a165dd630a6a	2014-05-26 15:28:12	2014-05-26 15:28:12
-2	a3f8d333-1e42-451d-96cf-bc62b3084c17	2014-05-26 15:28:44	2014-05-26 15:28:44
-3	4b4f5101-1640-4b87-b74f-1c7af20a47fb	2014-05-26 15:33:19	2014-05-26 15:33:19
-4	b2681ef4-9dd7-4b3b-95bd-d0929d48a856	2014-05-26 15:34:08	2014-05-26 15:34:08
-5	906528d6-b82f-40a6-b5de-e38a0d07a6fa	2014-05-26 15:34:22	2014-05-26 15:34:22
 \.
 
 
@@ -2500,7 +2493,7 @@ COPY tracker_cookies (id, uuid, created_at, updated_at) FROM stdin;
 -- Name: tracker_cookies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_cookies_id_seq', 5, true);
+SELECT pg_catalog.setval('tracker_cookies_id_seq', 1, false);
 
 
 --
@@ -2508,8 +2501,6 @@ SELECT pg_catalog.setval('tracker_cookies_id_seq', 5, true);
 --
 
 COPY tracker_devices (id, kind, model, platform, platform_version, is_mobile, agent_id, created_at, updated_at) FROM stdin;
-1	Computer	unavailable	Other		f	1	2014-05-26 15:28:12	2014-05-26 15:28:12
-2	Computer	unavailable	Windows 8		f	2	2014-05-26 15:28:44	2014-05-26 15:28:44
 \.
 
 
@@ -2517,7 +2508,7 @@ COPY tracker_devices (id, kind, model, platform, platform_version, is_mobile, ag
 -- Name: tracker_devices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_devices_id_seq', 2, true);
+SELECT pg_catalog.setval('tracker_devices_id_seq', 1, false);
 
 
 --
@@ -2525,7 +2516,6 @@ SELECT pg_catalog.setval('tracker_devices_id_seq', 2, true);
 --
 
 COPY tracker_domains (id, domain, created_at, updated_at) FROM stdin;
-1	antoniocarlosribeiro.com	2014-05-26 15:28:44	2014-05-26 15:28:44
 \.
 
 
@@ -2533,7 +2523,7 @@ COPY tracker_domains (id, domain, created_at, updated_at) FROM stdin;
 -- Name: tracker_domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_domains_id_seq', 1, true);
+SELECT pg_catalog.setval('tracker_domains_id_seq', 1, false);
 
 
 --
@@ -2541,10 +2531,6 @@ SELECT pg_catalog.setval('tracker_domains_id_seq', 1, true);
 --
 
 COPY tracker_errors (id, code, message, created_at, updated_at) FROM stdin;
-9	500	Division by zero	2014-05-26 15:37:39	2014-05-26 15:37:39
-10	500	SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "action" violates not-null constraint\nDETAIL:  Failing row contains (12, test, null, 2014-05-26 16:25:41, 2014-05-26 16:25:41). (SQL: insert into "tracker_routes" ("name", "action", "updated_at", "created_at") values (test, , 2014-05-26 16:25:41, 2014-05-26 16:25:41) returning "id")	2014-05-26 16:25:41	2014-05-26 16:25:41
-11	500	SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "name" violates not-null constraint\nDETAIL:  Failing row contains (14, null, closure, 2014-05-26 17:36:10, 2014-05-26 17:36:10). (SQL: insert into "tracker_routes" ("name", "action", "updated_at", "created_at") values (, closure, 2014-05-26 17:36:10, 2014-05-26 17:36:10) returning "id")	2014-05-26 17:36:10	2014-05-26 17:36:10
-12	404		2014-05-26 18:22:01	2014-05-26 18:22:01
 \.
 
 
@@ -2552,7 +2538,7 @@ COPY tracker_errors (id, code, message, created_at, updated_at) FROM stdin;
 -- Name: tracker_errors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_errors_id_seq', 12, true);
+SELECT pg_catalog.setval('tracker_errors_id_seq', 1, false);
 
 
 --
@@ -2560,53 +2546,6 @@ SELECT pg_catalog.setval('tracker_errors_id_seq', 12, true);
 --
 
 COPY tracker_log (id, session_id, path_id, query_id, method, route_path_id, is_ajax, is_secure, is_json, wants_json, error_id, created_at, updated_at) FROM stdin;
-1	1	1	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:28:12	2014-05-26 15:28:12
-2	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:28:44	2014-05-26 15:28:44
-3	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:30:56	2014-05-26 15:30:56
-4	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:32:08	2014-05-26 15:32:08
-5	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:32:38	2014-05-26 15:32:38
-6	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:32:59	2014-05-26 15:32:59
-7	3	1	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:33:19	2014-05-26 15:33:19
-8	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:33:34	2014-05-26 15:33:34
-9	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:33:55	2014-05-26 15:33:55
-10	4	1	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:34:08	2014-05-26 15:34:08
-11	5	1	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:34:22	2014-05-26 15:34:22
-12	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:34:27	2014-05-26 15:34:27
-13	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:34:34	2014-05-26 15:34:34
-14	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:34:57	2014-05-26 15:34:57
-15	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:35:10	2014-05-26 15:35:10
-16	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:35:18	2014-05-26 15:35:18
-17	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:35:54	2014-05-26 15:35:54
-18	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:36:13	2014-05-26 15:36:13
-19	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:36:36	2014-05-26 15:36:36
-20	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:37:13	2014-05-26 15:37:13
-21	2	2	\N	GET	\N	f	f	f	f	\N	2014-05-26 15:37:38	2014-05-26 15:37:38
-22	2	2	\N	GET	\N	f	f	f	f	9	2014-05-26 15:38:18	2014-05-26 15:38:19
-23	2	2	\N	GET	\N	f	f	f	f	9	2014-05-26 16:02:27	2014-05-26 16:02:28
-24	2	2	\N	GET	1	f	f	f	f	\N	2014-05-26 16:02:51	2014-05-26 16:02:52
-25	2	3	\N	GET	2	f	f	f	f	\N	2014-05-26 16:03:00	2014-05-26 16:03:01
-26	2	4	\N	GET	3	f	f	f	f	\N	2014-05-26 16:03:08	2014-05-26 16:03:09
-27	2	5	\N	GET	4	f	f	f	f	\N	2014-05-26 16:03:13	2014-05-26 16:03:14
-28	2	6	\N	GET	5	f	f	f	f	\N	2014-05-26 16:06:25	2014-05-26 16:06:26
-29	2	7	\N	GET	6	f	f	f	f	\N	2014-05-26 16:06:27	2014-05-26 16:06:27
-30	2	7	\N	POST	7	f	f	f	f	\N	2014-05-26 16:06:31	2014-05-26 16:06:32
-31	2	6	\N	GET	5	f	f	f	f	\N	2014-05-26 16:06:34	2014-05-26 16:06:35
-32	2	8	\N	GET	8	f	f	f	f	\N	2014-05-26 16:06:37	2014-05-26 16:06:38
-33	2	9	\N	GET	9	f	f	f	f	\N	2014-05-26 16:06:51	2014-05-26 16:06:52
-34	2	10	\N	GET	10	f	f	f	f	\N	2014-05-26 16:06:54	2014-05-26 16:06:55
-35	2	11	\N	GET	11	f	f	f	f	\N	2014-05-26 16:06:57	2014-05-26 16:06:58
-36	2	12	\N	GET	12	f	f	f	f	\N	2014-05-26 16:07:05	2014-05-26 16:07:05
-37	2	13	\N	GET	13	f	f	f	f	\N	2014-05-26 16:07:14	2014-05-26 16:07:15
-38	2	13	\N	GET	13	f	f	f	f	\N	2014-05-26 16:09:20	2014-05-26 16:09:21
-39	2	14	\N	GET	\N	f	f	f	f	10	2014-05-26 16:25:40	2014-05-26 16:25:41
-40	2	14	\N	GET	14	f	f	f	f	\N	2014-05-26 17:35:32	2014-05-26 17:35:33
-41	2	14	\N	GET	\N	f	f	f	f	11	2014-05-26 17:36:09	2014-05-26 17:36:10
-42	2	14	\N	GET	15	f	f	f	f	\N	2014-05-26 17:37:19	2014-05-26 17:37:20
-43	2	1	\N	GET	16	f	f	f	f	\N	2014-05-26 17:57:58	2014-05-26 17:57:59
-44	2	15	\N	POST	17	f	f	f	f	\N	2014-05-26 17:58:39	2014-05-26 17:58:40
-45	2	16	\N	GET	\N	f	f	f	f	\N	2014-05-26 18:12:43	2014-05-26 18:12:43
-46	2	16	\N	GET	\N	f	f	f	f	\N	2014-05-26 18:19:21	2014-05-26 18:19:21
-47	2	16	\N	GET	\N	f	f	f	f	12	2014-05-26 18:22:01	2014-05-26 18:22:01
 \.
 
 
@@ -2614,7 +2553,7 @@ COPY tracker_log (id, session_id, path_id, query_id, method, route_path_id, is_a
 -- Name: tracker_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_log_id_seq', 47, true);
+SELECT pg_catalog.setval('tracker_log_id_seq', 1, false);
 
 
 --
@@ -2622,22 +2561,6 @@ SELECT pg_catalog.setval('tracker_log_id_seq', 47, true);
 --
 
 COPY tracker_paths (id, path, created_at, updated_at) FROM stdin;
-1	/	2014-05-26 15:28:12	2014-05-26 15:28:12
-2	technology/articles/environments-in-laravel-4	2014-05-26 15:28:44	2014-05-26 15:28:44
-3	technology/projects	2014-05-26 16:03:00	2014-05-26 16:03:00
-4	technology/php	2014-05-26 16:03:08	2014-05-26 16:03:08
-5	technology/bio	2014-05-26 16:03:13	2014-05-26 16:03:13
-6	admin	2014-05-26 16:06:25	2014-05-26 16:06:25
-7	login	2014-05-26 16:06:27	2014-05-26 16:06:27
-8	languages	2014-05-26 16:06:37	2014-05-26 16:06:37
-9	languages/translate	2014-05-26 16:06:51	2014-05-26 16:06:51
-10	languages/translation/next/pt-BR/pt-BR	2014-05-26 16:06:54	2014-05-26 16:06:54
-11	languages/stats	2014-05-26 16:06:57	2014-05-26 16:06:57
-12	admin/articles	2014-05-26 16:07:05	2014-05-26 16:07:05
-13	admin/articles/1/edit	2014-05-26 16:07:14	2014-05-26 16:07:14
-14	test	2014-05-26 16:25:40	2014-05-26 16:25:40
-15	contact/send	2014-05-26 17:58:39	2014-05-26 17:58:39
-16	fuck	2014-05-26 18:12:43	2014-05-26 18:12:43
 \.
 
 
@@ -2645,7 +2568,7 @@ COPY tracker_paths (id, path, created_at, updated_at) FROM stdin;
 -- Name: tracker_paths_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_paths_id_seq', 16, true);
+SELECT pg_catalog.setval('tracker_paths_id_seq', 1, false);
 
 
 --
@@ -2683,15 +2606,6 @@ SELECT pg_catalog.setval('tracker_query_arguments_id_seq', 1, false);
 --
 
 COPY tracker_referers (id, domain_id, referer, host, created_at, updated_at) FROM stdin;
-1	1	http://development.antoniocarlosribeiro.com:8000/technology	development.antoniocarlosribeiro.com	2014-05-26 15:28:44	2014-05-26 15:28:44
-2	1	http://development.antoniocarlosribeiro.com:8000/technology/articles/environments-in-laravel-4	development.antoniocarlosribeiro.com	2014-05-26 16:03:00	2014-05-26 16:03:00
-3	1	http://development.antoniocarlosribeiro.com:8000/technology/projects	development.antoniocarlosribeiro.com	2014-05-26 16:03:08	2014-05-26 16:03:08
-4	1	http://development.antoniocarlosribeiro.com:8000/technology/php	development.antoniocarlosribeiro.com	2014-05-26 16:03:13	2014-05-26 16:03:13
-5	1	http://development.antoniocarlosribeiro.com:8000/login	development.antoniocarlosribeiro.com	2014-05-26 16:06:31	2014-05-26 16:06:31
-6	1	http://development.antoniocarlosribeiro.com:8000/languages	development.antoniocarlosribeiro.com	2014-05-26 16:06:51	2014-05-26 16:06:51
-7	1	http://development.antoniocarlosribeiro.com:8000/languages/stats	development.antoniocarlosribeiro.com	2014-05-26 16:07:04	2014-05-26 16:07:04
-8	1	http://development.antoniocarlosribeiro.com:8000/admin/articles	development.antoniocarlosribeiro.com	2014-05-26 16:07:14	2014-05-26 16:07:14
-9	1	http://development.antoniocarlosribeiro.com:8000/	development.antoniocarlosribeiro.com	2014-05-26 17:58:39	2014-05-26 17:58:39
 \.
 
 
@@ -2699,7 +2613,7 @@ COPY tracker_referers (id, domain_id, referer, host, created_at, updated_at) FRO
 -- Name: tracker_referers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_referers_id_seq', 9, true);
+SELECT pg_catalog.setval('tracker_referers_id_seq', 1, false);
 
 
 --
@@ -2707,13 +2621,6 @@ SELECT pg_catalog.setval('tracker_referers_id_seq', 9, true);
 --
 
 COPY tracker_route_path_parameters (id, route_path_id, parameter, value, created_at, updated_at) FROM stdin;
-1	1	slug	environments-in-laravel-4	2014-05-26 16:02:52	2014-05-26 16:02:52
-2	2	page	projects	2014-05-26 16:03:01	2014-05-26 16:03:01
-3	3	page	php	2014-05-26 16:03:09	2014-05-26 16:03:09
-4	4	page	bio	2014-05-26 16:03:14	2014-05-26 16:03:14
-5	10	primaryLanguage	pt-BR	2014-05-26 16:06:55	2014-05-26 16:06:55
-6	10	secondaryLanguage	pt-BR	2014-05-26 16:06:55	2014-05-26 16:06:55
-7	13	id	1	2014-05-26 16:07:15	2014-05-26 16:07:15
 \.
 
 
@@ -2721,7 +2628,7 @@ COPY tracker_route_path_parameters (id, route_path_id, parameter, value, created
 -- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_route_path_parameters_id_seq', 7, true);
+SELECT pg_catalog.setval('tracker_route_path_parameters_id_seq', 1, false);
 
 
 --
@@ -2729,23 +2636,6 @@ SELECT pg_catalog.setval('tracker_route_path_parameters_id_seq', 7, true);
 --
 
 COPY tracker_route_paths (id, route_id, path, created_at, updated_at) FROM stdin;
-1	1	technology/articles/environments-in-laravel-4	2014-05-26 16:02:52	2014-05-26 16:02:52
-2	2	technology/projects	2014-05-26 16:03:01	2014-05-26 16:03:01
-3	2	technology/php	2014-05-26 16:03:09	2014-05-26 16:03:09
-4	2	technology/bio	2014-05-26 16:03:14	2014-05-26 16:03:14
-5	3	admin	2014-05-26 16:06:26	2014-05-26 16:06:26
-6	4	login	2014-05-26 16:06:27	2014-05-26 16:06:27
-7	5	login	2014-05-26 16:06:32	2014-05-26 16:06:32
-8	6	languages	2014-05-26 16:06:38	2014-05-26 16:06:38
-9	7	languages/translate	2014-05-26 16:06:52	2014-05-26 16:06:52
-10	8	languages/translation/next/pt-BR/pt-BR	2014-05-26 16:06:55	2014-05-26 16:06:55
-11	9	languages/stats	2014-05-26 16:06:58	2014-05-26 16:06:58
-12	10	admin/articles	2014-05-26 16:07:05	2014-05-26 16:07:05
-13	11	admin/articles/1/edit	2014-05-26 16:07:15	2014-05-26 16:07:15
-14	13	test	2014-05-26 17:35:33	2014-05-26 17:35:33
-15	15	test	2014-05-26 17:37:20	2014-05-26 17:37:20
-16	16	/	2014-05-26 17:57:59	2014-05-26 17:57:59
-17	17	contact/send	2014-05-26 17:58:40	2014-05-26 17:58:40
 \.
 
 
@@ -2753,7 +2643,7 @@ COPY tracker_route_paths (id, route_id, path, created_at, updated_at) FROM stdin
 -- Name: tracker_route_paths_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_route_paths_id_seq', 17, true);
+SELECT pg_catalog.setval('tracker_route_paths_id_seq', 1, false);
 
 
 --
@@ -2761,21 +2651,6 @@ SELECT pg_catalog.setval('tracker_route_paths_id_seq', 17, true);
 --
 
 COPY tracker_routes (id, name, action, created_at, updated_at) FROM stdin;
-1	blog.articles.show	ACR\\Controllers\\BlogController@show	2014-05-26 16:02:52	2014-05-26 16:02:52
-2	bio	ACR\\Controllers\\StaticPagesController@show	2014-05-26 16:03:01	2014-05-26 16:03:01
-3	admin	ACR\\Controllers\\Admin\\AdminController@index	2014-05-26 16:06:26	2014-05-26 16:06:26
-4	login.form	ACR\\Controllers\\LogonController@form	2014-05-26 16:06:27	2014-05-26 16:06:27
-5	login.do	ACR\\Controllers\\LogonController@login	2014-05-26 16:06:32	2014-05-26 16:06:32
-6	admin.languages.index	ACR\\Controllers\\Admin\\LanguagesController@index	2014-05-26 16:06:38	2014-05-26 16:06:38
-7	admin.languages.translate	ACR\\Controllers\\Admin\\LanguagesController@translate	2014-05-26 16:06:52	2014-05-26 16:06:52
-8	admin.translation.next	ACR\\Controllers\\Admin\\LanguagesController@next	2014-05-26 16:06:55	2014-05-26 16:06:55
-9	admin.languages.stats	ACR\\Controllers\\Admin\\LanguagesController@stats	2014-05-26 16:06:58	2014-05-26 16:06:58
-10	admin.articles.index	ACR\\Controllers\\Admin\\ArticlesController@index	2014-05-26 16:07:05	2014-05-26 16:07:05
-11	admin.articles.edit	ACR\\Controllers\\Admin\\ArticlesController@edit	2014-05-26 16:07:15	2014-05-26 16:07:15
-13	test	closure	2014-05-26 17:35:33	2014-05-26 17:35:33
-15		closure	2014-05-26 17:37:20	2014-05-26 17:37:20
-16	home	ACR\\Controllers\\HomeController@index	2014-05-26 17:57:59	2014-05-26 17:57:59
-17	contact.send	ACR\\Controllers\\ContactController@send	2014-05-26 17:58:40	2014-05-26 17:58:40
 \.
 
 
@@ -2783,7 +2658,7 @@ COPY tracker_routes (id, name, action, created_at, updated_at) FROM stdin;
 -- Name: tracker_routes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_routes_id_seq', 17, true);
+SELECT pg_catalog.setval('tracker_routes_id_seq', 1, false);
 
 
 --
@@ -2791,11 +2666,6 @@ SELECT pg_catalog.setval('tracker_routes_id_seq', 17, true);
 --
 
 COPY tracker_sessions (id, uuid, user_id, device_id, client_ip, referer_id, cookie_id, last_activity, created_at, updated_at) FROM stdin;
-1	d5cee6f2-481f-48c0-9aad-8d15a57f928a	\N	1	127.0.0.1	\N	1	2014-05-26 15:28:12	2014-05-26 15:28:12	2014-05-26 15:28:12
-2	b69b8e3b-1fa4-4411-bcea-bf4204e02e95	1	2	10.0.2.2	\N	2	2014-05-26 18:22:01	2014-05-26 15:28:44	2014-05-26 18:22:01
-3	f2077a46-c12f-46c7-9791-cfa4b10e3ded	\N	1	127.0.0.1	\N	3	2014-05-26 15:33:19	2014-05-26 15:33:19	2014-05-26 15:33:19
-4	22b389fc-0fe7-4e4c-a136-7fe430cfbda0	\N	1	127.0.0.1	\N	4	2014-05-26 15:34:08	2014-05-26 15:34:08	2014-05-26 15:34:08
-5	462c80cc-f861-41a0-b998-b96d3e456969	\N	1	127.0.0.1	\N	5	2014-05-26 15:34:22	2014-05-26 15:34:22	2014-05-26 15:34:22
 \.
 
 
@@ -2803,7 +2673,7 @@ COPY tracker_sessions (id, uuid, user_id, device_id, client_ip, referer_id, cook
 -- Name: tracker_sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
 --
 
-SELECT pg_catalog.setval('tracker_sessions_id_seq', 5, true);
+SELECT pg_catalog.setval('tracker_sessions_id_seq', 1, false);
 
 
 --
