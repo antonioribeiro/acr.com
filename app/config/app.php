@@ -116,6 +116,7 @@ return array(
 		'PragmaRX\Steroids\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Helpers\Vendor\Laravel\ServiceProvider',
+		'PragmaRX\SqlI\Vendor\Laravel\ServiceProvider',
 	),
 
 	/*
