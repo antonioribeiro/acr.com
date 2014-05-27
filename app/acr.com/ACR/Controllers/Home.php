@@ -2,7 +2,7 @@
 
 use View;
 
-class HomeController extends BaseController {
+class Home extends Base {
 
 	public function index()
 	{

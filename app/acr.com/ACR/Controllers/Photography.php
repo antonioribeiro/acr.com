@@ -4,7 +4,7 @@ use View;
 use Redirect;
 use ACR\Services\Photoreader;
 
-class Photography extends BaseController {
+class Photography extends Base {
 
 	public function __construct(Photoreader $reader)
 	{

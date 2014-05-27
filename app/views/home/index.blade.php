@@ -36,7 +36,7 @@
                             <p class="quote"><a href="{{ URL::to('/') }}/#/contact">{{g('IT Solutions, Systems Architecture, Web Solutions and Linux Servers. Click here to contact me.')}}</a></p>
                             <br>
                             <br>
-                            <p class="quote"><a href="{{ URL::route('blog') }}">{{g('I also write some articles about IT, development, solutions, PHP and Laravel. Click to access the Blog.')}}</a></p>
+                            <p class="quote"><a href="{{ URL::route('technology') }}">{{g('I also write some articles about IT, development, solutions, PHP and Laravel. Click to access the Blog.')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
             </div>
         </div>
     </section>
-    
+
     @include('home.contactForm')
 @stop
 

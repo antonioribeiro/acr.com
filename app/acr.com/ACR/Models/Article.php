@@ -13,17 +13,17 @@ class Article extends Eloquent {
 	public static $rules = array();
 
 	public function getCurrentTitleAttribute()
-	{	
+	{
 		$var = 'title_'.strtolower(Glottos::getLocaleAsText());
 
-		return $this->$var; 
+		return $this->$var;
 	}
 
 	public function getCurrentArticleAttribute()
-	{	
+	{
 		$var = 'article_'.strtolower(Glottos::getLocaleAsText());
 
-		return $this->$var; 
+		return $this->$var;
 	}
 
 	public function getSummaryAttribute()
@@ -43,7 +43,7 @@ class Article extends Eloquent {
 
 	public function getLinkAttribute()
 	{
-		return URL::route('blog.articles.show', [$this->slug, Glottos::getLocaleAsText()]);
+		return URL::route('technology.articles.show', [$this->slug, Glottos::getLocaleAsText()]);
 	}
 
 	public static function findBySlug($slug)
@@ -101,7 +101,7 @@ class Article extends Eloquent {
 			$key = $row->created_at->month.'|'.$row->created_at->year;
 
 			$result[$key] = [
-								'month' => $row->created_at->month, 
+								'month' => $row->created_at->month,
 								'year' => $row->created_at->year
 							];
 		}

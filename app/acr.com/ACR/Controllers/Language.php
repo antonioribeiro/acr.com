@@ -3,7 +3,7 @@
 use \Session;
 use \Redirect;
 
-class LanguageController extends BaseController {
+class Language extends Base {
 
 	public function select($lang)
 	{

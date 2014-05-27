@@ -9,7 +9,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>
-            Antonio Carlos Ribeiro - WebLog
+            Antonio Carlos Ribeiro - Technology
         </title>
 
         <!-- Bootstrap core CSS -->
@@ -47,7 +47,7 @@
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="brand" href="{{ URL::route('blog') }}">Antonio Carlos Ribeiro - Technology & Information</a>
+                        <a class="brand" href="{{ URL::route('technology') }}">Antonio Carlos Ribeiro - Technology & Information</a>
                     </div>
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -64,7 +64,7 @@
                                     </a>
 
                                     &nbsp;
-                                    
+
                                     @if(Glottos::getLocaleAsText() == 'pt_BR')
                                         <a target="_blank" href="http://twitter.com/iantoniocarlos">
                                     @else
@@ -87,12 +87,12 @@
             <!-- Begin page content -->
             <div class="container">
                 <div class="row">
-                    <p>                    
+                    <p>
                         <div class="languages text-right">
                             <a href="{{ $switchLanguageUrl }}">
                                 ({{ ($switchLanguageTitle == 'english' ? 'read in ' : 'ler em ') . $switchLanguageTitle }})
                             </a>
-                        </div>                    
+                        </div>
                     </p>
                 </div>
 
@@ -103,8 +103,8 @@
 
                     <div class="col-md-2 text-right right-panel">
                         <p>&nbsp;</p>
-                        
-                        @include('blog._partials.sidebar')
+
+                        @include('technology._partials.sidebar')
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
 
         <div id="footer">
             <div class="footer-text text-muted text-center">
-                &copy; 2013 Antonio Carlos Ribeiro. 
+                &copy; 2013 Antonio Carlos Ribeiro.
 
                 {{g('Sewed up with')}}
                 <a href="http://laravel.com/">

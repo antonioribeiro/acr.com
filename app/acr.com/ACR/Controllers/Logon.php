@@ -5,7 +5,7 @@ use \Auth;
 use \Redirect;
 use \Input;
 
-class LogonController extends BaseController {
+class Logon extends Base {
 
 	public function form()
 	{

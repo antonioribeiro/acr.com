@@ -8,7 +8,7 @@ use Session;
 use Mail;
 use User;
 
-class ContactController extends BaseController {
+class Contact extends Base {
 
     public function show()
     {

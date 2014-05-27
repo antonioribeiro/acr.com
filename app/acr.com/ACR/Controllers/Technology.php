@@ -5,7 +5,7 @@ use ACR\Models\Article;
 use Glottos;
 use Redirect;
 
-class BlogController extends BaseController {
+class Technology extends Base {
 
 	protected $article;
 
@@ -16,7 +16,7 @@ class BlogController extends BaseController {
 
 	public function index()
 	{
-		return View::make('blog.pages.index')
+		return View::make('technology.pages.index')
 				->with('articles', Article::published()->get())
 				->with('pageTitle', g('Recent Articles'))
 				->with('summary', true);
@@ -28,21 +28,21 @@ class BlogController extends BaseController {
 		{
 			Glottos::setLocale($language);
 
-			return Redirect::route('blog.articles.show', $slug);
+			return Redirect::route('technology.articles.show', $slug);
 		}
 
 		if ($article = Article::findBySlug($slug))
 		{
-			return View::make('blog.pages.article')
+			return View::make('technology.pages.article')
 					->with('article', $article);
 		}
 
-		return Redirect::route('blog');
+		return Redirect::route('technology');
 	}
 
 	public function months($month, $year)
 	{
-		return View::make('blog.pages.index')
+		return View::make('technology.pages.index')
 				->with('articles', Article::fromMonth($month, $year)->published()->get())
 				->with('pageTitle', g('Articles from ') . g(date("F", mktime(0, 0, 0, $month, 10))) . ' ' . $year )
 				->with('summary', true);

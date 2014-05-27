@@ -13,6 +13,12 @@
 
     <link href="{{ asset('assets//templates/sb-admin/css/sb-admin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets//templates/sb-admin/font-awesome/css/font-awesome.min.css') }}">
+
+	  <style>
+		  body {
+			  font-family: arial;
+		  }
+	  </style>
   </head>
 
   <body>

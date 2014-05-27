@@ -1,9 +1,9 @@
 <?php namespace ACR\Controllers\Admin;
 
-use ACR\Controllers\BaseController;
+use ACR\Controllers\Base;
 use \Redirect;
 
-class AdminController extends BaseController {
+class Admin extends Base {
 
 	public function index()
 	{

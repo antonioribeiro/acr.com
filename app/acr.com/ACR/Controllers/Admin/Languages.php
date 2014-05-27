@@ -1,7 +1,6 @@
 <?php namespace ACR\Controllers\Admin;
 
-use PragmaRX\Glottos\Support\Locale;
-use ACR\Controllers\BaseController;
+use ACR\Controllers\Base;
 use Glottos;
 use View;
 use Session;
@@ -11,7 +10,7 @@ use Redirect;
 use DB;
 
 
-class LanguagesController extends BaseController {
+class Languages extends Base {
 
 	public function index($filter = null)
 	{
@@ -32,7 +31,7 @@ class LanguagesController extends BaseController {
 				break;
 		}
 
-		return View::make('admin.pages.index')
+		return View::make('admin.languages.index')
 					->with('languages', $languages)
 					->with('filtered', $filtered);
 	}
@@ -60,7 +59,7 @@ class LanguagesController extends BaseController {
 
 		$stats = Glottos::getLanguageStats();
 
-		return View::make('admin.pages.stats')
+		return View::make('admin.languages.stats')
 					->with('stats', $stats[0])
 					->with('languages', $languages);
 	}
@@ -118,7 +117,7 @@ class LanguagesController extends BaseController {
 			// k($selectedPrimary);
 			// kk($selectedSecondary);
 
-		return View::make('admin.pages.translatedMessages')
+		return View::make('admin.languages.translatedMessages')
 					->with('localePrimary', $localePrimary)
 					->with('localeSecondary', $localeSecondary)
 					->with('languagesPrimary', $languagesPrimary)
@@ -187,7 +186,7 @@ class LanguagesController extends BaseController {
                                                             $localePrimary->language_id.'-'.$localePrimary->country_id, 
                                                             $localeSecondary->language_id.'-'.$localeSecondary->country_id
                                                         ]);
-		return View::make('admin.pages.translate')
+		return View::make('admin.languages.translate')
 					->with('formAction', $formAction)
 					->with('nextLink', $nextLink)
 					->with('localePrimary', $localePrimary)

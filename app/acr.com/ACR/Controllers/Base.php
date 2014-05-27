@@ -4,7 +4,7 @@ use \Controller;
 use \View;
 use \Event;
 
-class BaseController extends Controller {
+class Base extends Controller {
 
 	/**
 	 * Setup the layout used by the controller.

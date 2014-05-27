@@ -18,8 +18,8 @@
                                 <ul>
                                     <li><i  class="fa fa-building"></i> Rua Professor Quintino do Vale - Estácio</li>
                                     <li><i  class="fa-road"></i> Rio de Janeiro - Brasil - 20.250-030</li>
-                                </ul>                               
-                                <p><i class="fa fa-phone"></i> 
+                                </ul>
+                                <p><i class="fa fa-phone"></i>
                                 @if(Glottos::getLocaleAsText() == 'en')
                                     +
                                 @endif
@@ -57,13 +57,13 @@
                         <br><br>
                         <div class="row-fluid black">
                             <h1 class="big-h2-heading text-center">
-                                <a data-nav="scroll" title="Blog" href="{{ URL::route('blog') }}"><i class="fa fa-file-text-o"></i></a>
+                                <a data-nav="scroll" title="Technology" href="{{ URL::route('technology') }}"><i class="fa fa-file-text-o"></i></a>
                                 &nbsp;&nbsp;&nbsp;
 
                                 <a data-nav="scroll" title="Github" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>
 
                                 &nbsp;&nbsp;&nbsp;
-                                
+
                                 @if(Glottos::getLocaleAsText() == 'pt_BR')
                                     <a data-nav="scroll" title="Twitter" href="http://twitter.com/iantoniocarlos">
                                 @else

@@ -22,7 +22,7 @@
 	<link href="css/font-awesome-ie7.css" rel="stylesheet">
 	<![endif]-->
 
-   
+
 	<!--[if gte IE 9]>
 	<style type="text/css">
 	</style>
@@ -58,9 +58,9 @@
 
 							<div class="nav-collapse collapse">
 								<ul class="nav pull-right" id="navigation">
-									<li title="Blog"><a data-nav="scroll" href="{{ URL::route('blog') }}"><i class="fa fa-file-text-o"></i></a></li>
+									<li title="Technology"><a data-nav="scroll" href="{{ URL::route('technology') }}"><i class="fa fa-file-text-o"></i></a></li>
 									<li title="Github"><a data-nav="scroll" href="https://github.com/antonioribeiro"><i class="fa fa-github"></i></a></li>
-									
+
 									<li title="Twitter">
 										@if(Glottos::getLocaleAsText() == 'pt_BR')
 											<a data-nav="scroll" href="https://twitter.com/iantoniocarlos">

@@ -3,7 +3,7 @@
 use ACR\Services\Markdown;
 use Input;
 
-class ApiController extends BaseController {
+class Api extends Base {
 
 	public function markdown()
 	{

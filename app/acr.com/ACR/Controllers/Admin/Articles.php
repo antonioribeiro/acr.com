@@ -1,6 +1,6 @@
 <?php namespace ACR\Controllers\Admin;
 
-use ACR\Controllers\BaseController;
+use ACR\Controllers\Base;
 use ACR\Models\Article;
 use Redirect;
 use View;
@@ -8,7 +8,7 @@ use Input;
 use URL;
 use Str;
 
-class ArticlesController extends BaseController {
+class Articles extends Base {
 
 	public function index()
 	{
