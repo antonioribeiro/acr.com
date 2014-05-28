@@ -16,12 +16,12 @@ DROP INDEX public.tracker_routes_name_index;
 DROP INDEX public.tracker_routes_action_index;
 DROP INDEX public.tracker_route_paths_route_id_index;
 DROP INDEX public.tracker_route_path_parameters_route_path_id_index;
-DROP INDEX public.tracker_referers_referer_index;
+DROP INDEX public.tracker_referers_url_index;
 DROP INDEX public.tracker_referers_domain_id_index;
 DROP INDEX public.tracker_query_arguments_query_id_index;
 DROP INDEX public.tracker_queries_query_index;
 DROP INDEX public.tracker_paths_path_index;
-DROP INDEX public.tracker_domains_domain_index;
+DROP INDEX public.tracker_domains_name_index;
 DROP INDEX public.throttle_user_id_index;
 DROP INDEX public.pages_name_pt_br_index;
 DROP INDEX public.pages_name_en_index;
@@ -816,7 +816,7 @@ ALTER SEQUENCE tracker_devices_id_seq OWNED BY tracker_devices.id;
 
 CREATE TABLE tracker_domains (
     id integer NOT NULL,
-    domain character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1039,7 +1039,7 @@ ALTER SEQUENCE tracker_query_arguments_id_seq OWNED BY tracker_query_arguments.i
 CREATE TABLE tracker_referers (
     id integer NOT NULL,
     domain_id integer NOT NULL,
-    referer character varying(255) NOT NULL,
+    url character varying(255) NOT NULL,
     host character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -2581,7 +2581,7 @@ SELECT pg_catalog.setval('tracker_devices_id_seq', 1, false);
 -- Data for Name: tracker_domains; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
-COPY tracker_domains (id, domain, created_at, updated_at) FROM stdin;
+COPY tracker_domains (id, name, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -2671,7 +2671,7 @@ SELECT pg_catalog.setval('tracker_query_arguments_id_seq', 1, false);
 -- Data for Name: tracker_referers; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
-COPY tracker_referers (id, domain_id, referer, host, created_at, updated_at) FROM stdin;
+COPY tracker_referers (id, domain_id, url, host, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -3133,10 +3133,10 @@ CREATE INDEX throttle_user_id_index ON throttle USING btree (user_id);
 
 
 --
--- Name: tracker_domains_domain_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+-- Name: tracker_domains_name_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
-CREATE INDEX tracker_domains_domain_index ON tracker_domains USING btree (domain);
+CREATE INDEX tracker_domains_name_index ON tracker_domains USING btree (name);
 
 
 --
@@ -3168,10 +3168,10 @@ CREATE INDEX tracker_referers_domain_id_index ON tracker_referers USING btree (d
 
 
 --
--- Name: tracker_referers_referer_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+-- Name: tracker_referers_url_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
-CREATE INDEX tracker_referers_referer_index ON tracker_referers USING btree (referer);
+CREATE INDEX tracker_referers_url_index ON tracker_referers USING btree (url);
 
 
 --

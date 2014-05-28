@@ -65,13 +65,11 @@
         ]
     },
 
-    "post-install-cmd": [
-        "php artisan tracker:updateparser"
-    ],
 
     "config": {
         "preferred-install": "dist"
     },
+    
     "minimum-stability": "dev",
     "require-dev": {
     }
