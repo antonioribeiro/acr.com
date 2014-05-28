@@ -29,7 +29,7 @@ return array(
 	'log_enabled' => true,
 
 	/// this is a comment to try to fix things
-	
+
 	'store_cookie_tracker' => true,
 
 	'connection' => null,
