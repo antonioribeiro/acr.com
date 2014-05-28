@@ -34,7 +34,7 @@
 								<td>{{ $session->client_ip }}</td>
 								<td>{{ $session->user ? $session->user->email : 'guest' }}</td>
 								<td>{{ $session->device ? $session->device->kind . ' ' . ($session->device->model && $session->device->model !== 'unavailable' ? '['.$session->device->model.']' : '').' '.($session->device->platform ? ' ['.trim($session->device->platform.' '.$session->device->platform_version).']' : '').' '.($session->device->is_mobile ? ' [mobile device]' : '') : '' }}</td>
-								<td>{{ $session->device && $session->device->agent ? $session->device->agent->browser . ' ('.$session->device->agent->browser_version.')' : '' }}</td>
+								<td>{{ $session->agent && $session->agent ? $session->agent->browser . ' ('.$session->agent->browser_version.')' : '' }}</td>
 								<td>{{ $session->hits }}</td>
 								<td>{{ $session->updated_at->diffForHumans() }}</td>
 							</tr>

@@ -3,7 +3,6 @@
 --
 
 SET statement_timeout = 0;
-SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -219,7 +218,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: articles; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: articles; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE articles (
@@ -236,10 +235,10 @@ CREATE TABLE articles (
 );
 
 
-ALTER TABLE public.articles OWNER TO postgres;
+ALTER TABLE public.articles OWNER TO antoniocarlos;
 
 --
--- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE articles_id_seq
@@ -250,17 +249,17 @@ CREATE SEQUENCE articles_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.articles_id_seq OWNER TO postgres;
+ALTER TABLE public.articles_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
 
 
 --
--- Name: firewall; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: firewall; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE firewall (
@@ -272,10 +271,10 @@ CREATE TABLE firewall (
 );
 
 
-ALTER TABLE public.firewall OWNER TO homestead;
+ALTER TABLE public.firewall OWNER TO antoniocarlos;
 
 --
--- Name: firewall_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: firewall_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE firewall_id_seq
@@ -286,17 +285,17 @@ CREATE SEQUENCE firewall_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.firewall_id_seq OWNER TO homestead;
+ALTER TABLE public.firewall_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: firewall_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: firewall_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE firewall_id_seq OWNED BY firewall.id;
 
 
 --
--- Name: glottos_countries; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_countries; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE glottos_countries (
@@ -307,10 +306,10 @@ CREATE TABLE glottos_countries (
 );
 
 
-ALTER TABLE public.glottos_countries OWNER TO postgres;
+ALTER TABLE public.glottos_countries OWNER TO antoniocarlos;
 
 --
--- Name: glottos_countries_languages; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_countries_languages; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE glottos_countries_languages (
@@ -324,10 +323,10 @@ CREATE TABLE glottos_countries_languages (
 );
 
 
-ALTER TABLE public.glottos_countries_languages OWNER TO postgres;
+ALTER TABLE public.glottos_countries_languages OWNER TO antoniocarlos;
 
 --
--- Name: glottos_countries_languages_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: glottos_countries_languages_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE glottos_countries_languages_id_seq
@@ -338,17 +337,17 @@ CREATE SEQUENCE glottos_countries_languages_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.glottos_countries_languages_id_seq OWNER TO postgres;
+ALTER TABLE public.glottos_countries_languages_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: glottos_countries_languages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: glottos_countries_languages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE glottos_countries_languages_id_seq OWNED BY glottos_countries_languages.id;
 
 
 --
--- Name: glottos_domains; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_domains; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE glottos_domains (
@@ -359,10 +358,10 @@ CREATE TABLE glottos_domains (
 );
 
 
-ALTER TABLE public.glottos_domains OWNER TO postgres;
+ALTER TABLE public.glottos_domains OWNER TO antoniocarlos;
 
 --
--- Name: glottos_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: glottos_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE glottos_domains_id_seq
@@ -373,17 +372,17 @@ CREATE SEQUENCE glottos_domains_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.glottos_domains_id_seq OWNER TO postgres;
+ALTER TABLE public.glottos_domains_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: glottos_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: glottos_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE glottos_domains_id_seq OWNED BY glottos_domains.id;
 
 
 --
--- Name: glottos_languages; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_languages; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE glottos_languages (
@@ -395,10 +394,10 @@ CREATE TABLE glottos_languages (
 );
 
 
-ALTER TABLE public.glottos_languages OWNER TO postgres;
+ALTER TABLE public.glottos_languages OWNER TO antoniocarlos;
 
 --
--- Name: glottos_messages; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_messages; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE glottos_messages (
@@ -410,10 +409,10 @@ CREATE TABLE glottos_messages (
 );
 
 
-ALTER TABLE public.glottos_messages OWNER TO postgres;
+ALTER TABLE public.glottos_messages OWNER TO antoniocarlos;
 
 --
--- Name: glottos_messages_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: glottos_messages_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE glottos_messages_id_seq
@@ -424,17 +423,17 @@ CREATE SEQUENCE glottos_messages_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.glottos_messages_id_seq OWNER TO postgres;
+ALTER TABLE public.glottos_messages_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: glottos_messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: glottos_messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE glottos_messages_id_seq OWNED BY glottos_messages.id;
 
 
 --
--- Name: glottos_translations; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_translations; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE glottos_translations (
@@ -449,10 +448,10 @@ CREATE TABLE glottos_translations (
 );
 
 
-ALTER TABLE public.glottos_translations OWNER TO postgres;
+ALTER TABLE public.glottos_translations OWNER TO antoniocarlos;
 
 --
--- Name: glottos_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: glottos_translations_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE glottos_translations_id_seq
@@ -463,17 +462,17 @@ CREATE SEQUENCE glottos_translations_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.glottos_translations_id_seq OWNER TO postgres;
+ALTER TABLE public.glottos_translations_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: glottos_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: glottos_translations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE glottos_translations_id_seq OWNED BY glottos_translations.id;
 
 
 --
--- Name: groups; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: groups; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE groups (
@@ -485,10 +484,10 @@ CREATE TABLE groups (
 );
 
 
-ALTER TABLE public.groups OWNER TO postgres;
+ALTER TABLE public.groups OWNER TO antoniocarlos;
 
 --
--- Name: groups_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: groups_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE groups_id_seq
@@ -499,17 +498,17 @@ CREATE SEQUENCE groups_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.groups_id_seq OWNER TO postgres;
+ALTER TABLE public.groups_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
 
 
 --
--- Name: migrations; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: migrations; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE migrations (
@@ -518,10 +517,10 @@ CREATE TABLE migrations (
 );
 
 
-ALTER TABLE public.migrations OWNER TO postgres;
+ALTER TABLE public.migrations OWNER TO antoniocarlos;
 
 --
--- Name: pages; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: pages; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE pages (
@@ -535,10 +534,10 @@ CREATE TABLE pages (
 );
 
 
-ALTER TABLE public.pages OWNER TO homestead;
+ALTER TABLE public.pages OWNER TO antoniocarlos;
 
 --
--- Name: pages_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: pages_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE pages_id_seq
@@ -549,17 +548,17 @@ CREATE SEQUENCE pages_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.pages_id_seq OWNER TO homestead;
+ALTER TABLE public.pages_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: pages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE pages_id_seq OWNED BY pages.id;
 
 
 --
--- Name: password_reminders; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: password_reminders; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE password_reminders (
@@ -569,10 +568,10 @@ CREATE TABLE password_reminders (
 );
 
 
-ALTER TABLE public.password_reminders OWNER TO postgres;
+ALTER TABLE public.password_reminders OWNER TO antoniocarlos;
 
 --
--- Name: posts; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: posts; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE posts (
@@ -590,10 +589,10 @@ CREATE TABLE posts (
 );
 
 
-ALTER TABLE public.posts OWNER TO postgres;
+ALTER TABLE public.posts OWNER TO antoniocarlos;
 
 --
--- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE posts_id_seq
@@ -604,17 +603,17 @@ CREATE SEQUENCE posts_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.posts_id_seq OWNER TO postgres;
+ALTER TABLE public.posts_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
 
 
 --
--- Name: sessions; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: sessions; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE sessions (
@@ -624,10 +623,10 @@ CREATE TABLE sessions (
 );
 
 
-ALTER TABLE public.sessions OWNER TO postgres;
+ALTER TABLE public.sessions OWNER TO antoniocarlos;
 
 --
--- Name: tags; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: tags; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tags (
@@ -637,10 +636,10 @@ CREATE TABLE tags (
 );
 
 
-ALTER TABLE public.tags OWNER TO postgres;
+ALTER TABLE public.tags OWNER TO antoniocarlos;
 
 --
--- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: tags_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tags_id_seq
@@ -651,17 +650,17 @@ CREATE SEQUENCE tags_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tags_id_seq OWNER TO postgres;
+ALTER TABLE public.tags_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 
 
 --
--- Name: throttle; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: throttle; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE throttle (
@@ -677,10 +676,10 @@ CREATE TABLE throttle (
 );
 
 
-ALTER TABLE public.throttle OWNER TO postgres;
+ALTER TABLE public.throttle OWNER TO antoniocarlos;
 
 --
--- Name: throttle_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: throttle_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE throttle_id_seq
@@ -691,17 +690,17 @@ CREATE SEQUENCE throttle_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.throttle_id_seq OWNER TO postgres;
+ALTER TABLE public.throttle_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: throttle_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: throttle_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE throttle_id_seq OWNED BY throttle.id;
 
 
 --
--- Name: tracker_agents; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_agents; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_agents (
@@ -714,10 +713,10 @@ CREATE TABLE tracker_agents (
 );
 
 
-ALTER TABLE public.tracker_agents OWNER TO homestead;
+ALTER TABLE public.tracker_agents OWNER TO antoniocarlos;
 
 --
--- Name: tracker_agents_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_agents_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_agents_id_seq
@@ -728,17 +727,17 @@ CREATE SEQUENCE tracker_agents_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_agents_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_agents_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_agents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_agents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_agents_id_seq OWNED BY tracker_agents.id;
 
 
 --
--- Name: tracker_cookies; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_cookies; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_cookies (
@@ -749,10 +748,10 @@ CREATE TABLE tracker_cookies (
 );
 
 
-ALTER TABLE public.tracker_cookies OWNER TO homestead;
+ALTER TABLE public.tracker_cookies OWNER TO antoniocarlos;
 
 --
--- Name: tracker_cookies_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_cookies_id_seq
@@ -763,17 +762,17 @@ CREATE SEQUENCE tracker_cookies_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_cookies_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_cookies_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_cookies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_cookies_id_seq OWNED BY tracker_cookies.id;
 
 
 --
--- Name: tracker_devices; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_devices; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_devices (
@@ -783,16 +782,15 @@ CREATE TABLE tracker_devices (
     platform character varying(255) NOT NULL,
     platform_version character varying(255) NOT NULL,
     is_mobile boolean NOT NULL,
-    agent_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_devices OWNER TO homestead;
+ALTER TABLE public.tracker_devices OWNER TO antoniocarlos;
 
 --
--- Name: tracker_devices_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_devices_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_devices_id_seq
@@ -803,17 +801,17 @@ CREATE SEQUENCE tracker_devices_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_devices_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_devices_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_devices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_devices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_devices_id_seq OWNED BY tracker_devices.id;
 
 
 --
--- Name: tracker_domains; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_domains; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_domains (
@@ -824,10 +822,10 @@ CREATE TABLE tracker_domains (
 );
 
 
-ALTER TABLE public.tracker_domains OWNER TO homestead;
+ALTER TABLE public.tracker_domains OWNER TO antoniocarlos;
 
 --
--- Name: tracker_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_domains_id_seq
@@ -838,32 +836,32 @@ CREATE SEQUENCE tracker_domains_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_domains_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_domains_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_domains_id_seq OWNED BY tracker_domains.id;
 
 
 --
--- Name: tracker_errors; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_errors; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_errors (
     id integer NOT NULL,
     code character varying(255) NOT NULL,
-    message text NOT NULL,
+    message character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_errors OWNER TO homestead;
+ALTER TABLE public.tracker_errors OWNER TO antoniocarlos;
 
 --
--- Name: tracker_errors_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_errors_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_errors_id_seq
@@ -874,17 +872,17 @@ CREATE SEQUENCE tracker_errors_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_errors_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_errors_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_errors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_errors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_errors_id_seq OWNED BY tracker_errors.id;
 
 
 --
--- Name: tracker_log; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_log; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_log (
@@ -904,10 +902,10 @@ CREATE TABLE tracker_log (
 );
 
 
-ALTER TABLE public.tracker_log OWNER TO homestead;
+ALTER TABLE public.tracker_log OWNER TO antoniocarlos;
 
 --
--- Name: tracker_log_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_log_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_log_id_seq
@@ -918,31 +916,31 @@ CREATE SEQUENCE tracker_log_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_log_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_log_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_log_id_seq OWNED BY tracker_log.id;
 
 
 --
--- Name: tracker_paths; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_paths; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_paths (
     id integer NOT NULL,
-    path text NOT NULL,
+    path character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_paths OWNER TO homestead;
+ALTER TABLE public.tracker_paths OWNER TO antoniocarlos;
 
 --
--- Name: tracker_paths_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_paths_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_paths_id_seq
@@ -953,31 +951,31 @@ CREATE SEQUENCE tracker_paths_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_paths_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_paths_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_paths_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_paths_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_paths_id_seq OWNED BY tracker_paths.id;
 
 
 --
--- Name: tracker_queries; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_queries; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_queries (
     id integer NOT NULL,
-    query text NOT NULL,
+    query character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_queries OWNER TO homestead;
+ALTER TABLE public.tracker_queries OWNER TO antoniocarlos;
 
 --
--- Name: tracker_queries_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_queries_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_queries_id_seq
@@ -988,33 +986,33 @@ CREATE SEQUENCE tracker_queries_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_queries_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_queries_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_queries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_queries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_queries_id_seq OWNED BY tracker_queries.id;
 
 
 --
--- Name: tracker_query_arguments; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_query_arguments; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_query_arguments (
     id integer NOT NULL,
     query_id integer NOT NULL,
-    argument text NOT NULL,
-    value text NOT NULL,
+    argument character varying(255) NOT NULL,
+    value character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_query_arguments OWNER TO homestead;
+ALTER TABLE public.tracker_query_arguments OWNER TO antoniocarlos;
 
 --
--- Name: tracker_query_arguments_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_query_arguments_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_query_arguments_id_seq
@@ -1025,33 +1023,33 @@ CREATE SEQUENCE tracker_query_arguments_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_query_arguments_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_query_arguments_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_query_arguments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_query_arguments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_query_arguments_id_seq OWNED BY tracker_query_arguments.id;
 
 
 --
--- Name: tracker_referers; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_referers; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_referers (
     id integer NOT NULL,
     domain_id integer NOT NULL,
-    referer text NOT NULL,
-    host text NOT NULL,
+    referer character varying(255) NOT NULL,
+    host character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_referers OWNER TO homestead;
+ALTER TABLE public.tracker_referers OWNER TO antoniocarlos;
 
 --
--- Name: tracker_referers_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_referers_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_referers_id_seq
@@ -1062,33 +1060,33 @@ CREATE SEQUENCE tracker_referers_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_referers_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_referers_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_referers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_referers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_referers_id_seq OWNED BY tracker_referers.id;
 
 
 --
--- Name: tracker_route_path_parameters; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_route_path_parameters; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_route_path_parameters (
     id integer NOT NULL,
     route_path_id integer NOT NULL,
-    parameter text NOT NULL,
-    value text NOT NULL,
+    parameter character varying(255) NOT NULL,
+    value character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_route_path_parameters OWNER TO homestead;
+ALTER TABLE public.tracker_route_path_parameters OWNER TO antoniocarlos;
 
 --
--- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_route_path_parameters_id_seq
@@ -1099,32 +1097,32 @@ CREATE SEQUENCE tracker_route_path_parameters_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_route_path_parameters_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_route_path_parameters_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_route_path_parameters_id_seq OWNED BY tracker_route_path_parameters.id;
 
 
 --
--- Name: tracker_route_paths; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_route_paths; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_route_paths (
     id integer NOT NULL,
     route_id character varying(255) NOT NULL,
-    path text NOT NULL,
+    path character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
-ALTER TABLE public.tracker_route_paths OWNER TO homestead;
+ALTER TABLE public.tracker_route_paths OWNER TO antoniocarlos;
 
 --
--- Name: tracker_route_paths_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_route_paths_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_route_paths_id_seq
@@ -1135,17 +1133,17 @@ CREATE SEQUENCE tracker_route_paths_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_route_paths_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_route_paths_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_route_paths_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_route_paths_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_route_paths_id_seq OWNED BY tracker_route_paths.id;
 
 
 --
--- Name: tracker_routes; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_routes; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_routes (
@@ -1157,10 +1155,10 @@ CREATE TABLE tracker_routes (
 );
 
 
-ALTER TABLE public.tracker_routes OWNER TO homestead;
+ALTER TABLE public.tracker_routes OWNER TO antoniocarlos;
 
 --
--- Name: tracker_routes_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_routes_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_routes_id_seq
@@ -1171,17 +1169,17 @@ CREATE SEQUENCE tracker_routes_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_routes_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_routes_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_routes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_routes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_routes_id_seq OWNED BY tracker_routes.id;
 
 
 --
--- Name: tracker_sessions; Type: TABLE; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_sessions; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE tracker_sessions (
@@ -1189,6 +1187,7 @@ CREATE TABLE tracker_sessions (
     uuid character varying(255) NOT NULL,
     user_id integer,
     device_id integer NOT NULL,
+    agent_id integer NOT NULL,
     client_ip character varying(255) NOT NULL,
     referer_id integer,
     cookie_id integer,
@@ -1198,10 +1197,10 @@ CREATE TABLE tracker_sessions (
 );
 
 
-ALTER TABLE public.tracker_sessions OWNER TO homestead;
+ALTER TABLE public.tracker_sessions OWNER TO antoniocarlos;
 
 --
--- Name: tracker_sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: homestead
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE tracker_sessions_id_seq
@@ -1212,17 +1211,17 @@ CREATE SEQUENCE tracker_sessions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.tracker_sessions_id_seq OWNER TO homestead;
+ALTER TABLE public.tracker_sessions_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: tracker_sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: homestead
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE tracker_sessions_id_seq OWNED BY tracker_sessions.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE users (
@@ -1244,10 +1243,10 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE public.users OWNER TO postgres;
+ALTER TABLE public.users OWNER TO antoniocarlos;
 
 --
--- Name: users_groups; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+-- Name: users_groups; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE TABLE users_groups (
@@ -1256,10 +1255,10 @@ CREATE TABLE users_groups (
 );
 
 
-ALTER TABLE public.users_groups OWNER TO postgres;
+ALTER TABLE public.users_groups OWNER TO antoniocarlos;
 
 --
--- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
 --
 
 CREATE SEQUENCE users_id_seq
@@ -1270,199 +1269,199 @@ CREATE SEQUENCE users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO postgres;
+ALTER TABLE public.users_id_seq OWNER TO antoniocarlos;
 
 --
--- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
 --
 
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY firewall ALTER COLUMN id SET DEFAULT nextval('firewall_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY glottos_countries_languages ALTER COLUMN id SET DEFAULT nextval('glottos_countries_languages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY glottos_domains ALTER COLUMN id SET DEFAULT nextval('glottos_domains_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY glottos_messages ALTER COLUMN id SET DEFAULT nextval('glottos_messages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY glottos_translations ALTER COLUMN id SET DEFAULT nextval('glottos_translations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY pages ALTER COLUMN id SET DEFAULT nextval('pages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tags ALTER COLUMN id SET DEFAULT nextval('tags_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY throttle ALTER COLUMN id SET DEFAULT nextval('throttle_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_agents ALTER COLUMN id SET DEFAULT nextval('tracker_agents_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_cookies ALTER COLUMN id SET DEFAULT nextval('tracker_cookies_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_devices ALTER COLUMN id SET DEFAULT nextval('tracker_devices_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_domains ALTER COLUMN id SET DEFAULT nextval('tracker_domains_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_errors ALTER COLUMN id SET DEFAULT nextval('tracker_errors_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_log ALTER COLUMN id SET DEFAULT nextval('tracker_log_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_paths ALTER COLUMN id SET DEFAULT nextval('tracker_paths_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_queries ALTER COLUMN id SET DEFAULT nextval('tracker_queries_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_query_arguments ALTER COLUMN id SET DEFAULT nextval('tracker_query_arguments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_referers ALTER COLUMN id SET DEFAULT nextval('tracker_referers_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_route_path_parameters ALTER COLUMN id SET DEFAULT nextval('tracker_route_path_parameters_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_route_paths ALTER COLUMN id SET DEFAULT nextval('tracker_route_paths_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_routes ALTER COLUMN id SET DEFAULT nextval('tracker_routes_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: homestead
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY tracker_sessions ALTER COLUMN id SET DEFAULT nextval('tracker_sessions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
--- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY articles (id, title_en, article_en, slug, author_id, published_at, created_at, updated_at, title_pt_br, article_pt_br) FROM stdin;
@@ -1472,14 +1471,14 @@ COPY articles (id, title_en, article_en, slug, author_id, published_at, created_
 
 
 --
--- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('articles_id_seq', 2, true);
 
 
 --
--- Data for Name: firewall; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: firewall; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY firewall (id, ip_address, whitelisted, created_at, updated_at) FROM stdin;
@@ -1487,14 +1486,14 @@ COPY firewall (id, ip_address, whitelisted, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: firewall_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: firewall_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('firewall_id_seq', 1, false);
 
 
 --
--- Data for Name: glottos_countries; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: glottos_countries; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY glottos_countries (id, name, created_at, updated_at) FROM stdin;
@@ -1629,7 +1628,7 @@ ZW	Zimbabwe	2013-12-05 00:05:41	2013-12-05 00:05:41
 
 
 --
--- Data for Name: glottos_countries_languages; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: glottos_countries_languages; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY glottos_countries_languages (id, language_id, country_id, regional_name, enabled, created_at, updated_at) FROM stdin;
@@ -1960,14 +1959,14 @@ COPY glottos_countries_languages (id, language_id, country_id, regional_name, en
 
 
 --
--- Name: glottos_countries_languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: glottos_countries_languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('glottos_countries_languages_id_seq', 323, true);
 
 
 --
--- Data for Name: glottos_domains; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: glottos_domains; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY glottos_domains (id, name, created_at, updated_at) FROM stdin;
@@ -1976,14 +1975,14 @@ COPY glottos_domains (id, name, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: glottos_domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: glottos_domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('glottos_domains_id_seq', 1, true);
 
 
 --
--- Data for Name: glottos_languages; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: glottos_languages; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY glottos_languages (id, alphabet, name, created_at, updated_at) FROM stdin;
@@ -2120,7 +2119,7 @@ zu	n/a	isiZulu	2013-12-05 00:05:41	2013-12-05 00:05:41
 
 
 --
--- Data for Name: glottos_messages; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: glottos_messages; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY glottos_messages (id, hash, key, created_at, updated_at) FROM stdin;
@@ -2218,14 +2217,14 @@ COPY glottos_messages (id, hash, key, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: glottos_messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: glottos_messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('glottos_messages_id_seq', 336, true);
 
 
 --
--- Data for Name: glottos_translations; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: glottos_translations; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY glottos_translations (id, message_id, language_id, country_id, translation, translator_id, created_at, updated_at) FROM stdin;
@@ -2409,14 +2408,14 @@ COPY glottos_translations (id, message_id, language_id, country_id, translation,
 
 
 --
--- Name: glottos_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: glottos_translations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('glottos_translations_id_seq', 461, true);
 
 
 --
--- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY groups (id, name, permissions, created_at, updated_at) FROM stdin;
@@ -2424,14 +2423,14 @@ COPY groups (id, name, permissions, created_at, updated_at) FROM stdin;
 
 
 --
--- Name: groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('groups_id_seq', 1, false);
 
 
 --
--- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: migrations; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY migrations (migration, batch) FROM stdin;
@@ -2452,29 +2451,28 @@ COPY migrations (migration, batch) FROM stdin;
 2014_01_13_210503_create_article_languages	6
 2014_01_16_223832_create_user_telephone	7
 2013_12_18_221457_firewall	8
-2014_05_24_164954_create_tracker_tables	9
-2014_05_26_234754_create_pages_table	10
+2014_05_26_234754_create_pages_table	9
+2014_05_28_142100_create_tracker_tables	10
 \.
 
 
 --
--- Data for Name: pages; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: pages; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY pages (id, name_en, name_pt_br, text_en, text_pt_br, created_at, updated_at) FROM stdin;
-2	Projects	Projetos	text en 3	text pt	2014-05-27 01:20:54	2014-05-27 01:23:37
 \.
 
 
 --
--- Name: pages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: pages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('pages_id_seq', 2, true);
+SELECT pg_catalog.setval('pages_id_seq', 1, false);
 
 
 --
--- Data for Name: password_reminders; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: password_reminders; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY password_reminders (email, token, created_at) FROM stdin;
@@ -2482,7 +2480,7 @@ COPY password_reminders (email, token, created_at) FROM stdin;
 
 
 --
--- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY posts (id, title, slug, content, image, type, publish_date, active, created_at, updated_at, user_id) FROM stdin;
@@ -2490,14 +2488,14 @@ COPY posts (id, title, slug, content, image, type, publish_date, active, created
 
 
 --
--- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('posts_id_seq', 1, false);
 
 
 --
--- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY sessions (id, payload, last_activity) FROM stdin;
@@ -2505,7 +2503,7 @@ COPY sessions (id, payload, last_activity) FROM stdin;
 
 
 --
--- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tags (post_id, tag, id) FROM stdin;
@@ -2513,14 +2511,14 @@ COPY tags (post_id, tag, id) FROM stdin;
 
 
 --
--- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('tags_id_seq', 1, false);
 
 
 --
--- Data for Name: throttle; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: throttle; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY throttle (id, user_id, ip_address, attempts, suspended, banned, last_attempt_at, suspended_at, banned_at) FROM stdin;
@@ -2528,583 +2526,224 @@ COPY throttle (id, user_id, ip_address, attempts, suspended, banned, last_attemp
 
 
 --
--- Name: throttle_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: throttle_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('throttle_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_agents; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_agents; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_agents (id, name, browser, browser_version, created_at, updated_at) FROM stdin;
-1	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36	Chrome	35.0.1916	2014-05-26 22:49:59	2014-05-26 22:49:59
-2	Other	Other		2014-05-26 23:47:52	2014-05-26 23:47:52
-3	Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/534.57.2 (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2	Safari	5.1.7	2014-05-27 01:58:30	2014-05-27 01:58:30
-4	Mozilla/5.0 (Windows NT 6.2; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0	Firefox	27.0	2014-05-27 02:24:03	2014-05-27 02:24:03
-5	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; WOW64; Trident/6.0)	IE	10.0	2014-05-27 02:25:05	2014-05-27 02:25:05
 \.
 
 
 --
--- Name: tracker_agents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_agents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_agents_id_seq', 5, true);
+SELECT pg_catalog.setval('tracker_agents_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_cookies; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_cookies; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_cookies (id, uuid, created_at, updated_at) FROM stdin;
-1	a3f8d333-1e42-451d-96cf-bc62b3084c17	2014-05-26 22:49:59	2014-05-26 22:49:59
-2	ce805856-fb53-4af6-911a-c38b26a7ab0c	2014-05-26 23:47:53	2014-05-26 23:47:53
-3	77ffeff6-08d4-4983-8772-e93ccf702be5	2014-05-26 23:53:49	2014-05-26 23:53:49
-4	7928ddcc-8937-4859-9164-4637f3907b96	2014-05-26 23:54:33	2014-05-26 23:54:33
-5	97a06553-79a3-4c82-ad72-a86769776b02	2014-05-26 23:55:16	2014-05-26 23:55:16
-6	13ee0528-ff33-481f-beb5-9f24b30fcf2b	2014-05-27 01:45:28	2014-05-27 01:45:28
-7	73f77824-ad59-422e-acfe-bd2b641a77c7	2014-05-27 01:45:36	2014-05-27 01:45:36
-8	1be7152f-ca45-4875-9d95-7bdbefbf97d1	2014-05-27 01:46:11	2014-05-27 01:46:11
-9	9b286c95-487a-4a6d-89a4-568255ad4465	2014-05-27 01:58:30	2014-05-27 01:58:30
-10	6ce169ac-b528-4623-935e-b46b4bfea34b	2014-05-27 02:24:03	2014-05-27 02:24:03
-11	6a164e13-b944-4103-ba6e-2c44ab472fb7	2014-05-27 02:25:05	2014-05-27 02:25:05
-12	5788b677-ca23-44cc-ab28-ff530b132f52	2014-05-27 02:44:30	2014-05-27 02:44:30
-13	dd872ef2-c02a-4461-868e-13f3d8782a7c	2014-05-27 02:47:23	2014-05-27 02:47:23
-14	e4db0754-c7d8-4be0-9ed8-2b42d6d8eb85	2014-05-27 02:47:56	2014-05-27 02:47:56
-15	fea26a87-d54b-4b40-b44f-4fe3fee563be	2014-05-27 02:49:09	2014-05-27 02:49:09
-16	f79de974-bc44-44c8-92d7-dbb4e72df334	2014-05-27 02:50:32	2014-05-27 02:50:32
-17	275772fb-8784-4499-bbd0-f92d1b756a8b	2014-05-27 03:07:36	2014-05-27 03:07:36
 \.
 
 
 --
--- Name: tracker_cookies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_cookies_id_seq', 17, true);
+SELECT pg_catalog.setval('tracker_cookies_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_devices; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_devices; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
-COPY tracker_devices (id, kind, model, platform, platform_version, is_mobile, agent_id, created_at, updated_at) FROM stdin;
-1	Computer	unavailable	Windows 8		f	1	2014-05-26 22:49:59	2014-05-26 22:49:59
-2	Computer	unavailable	Other		f	2	2014-05-26 23:47:52	2014-05-26 23:47:52
+COPY tracker_devices (id, kind, model, platform, platform_version, is_mobile, created_at, updated_at) FROM stdin;
 \.
 
 
 --
--- Name: tracker_devices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_devices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_devices_id_seq', 2, true);
+SELECT pg_catalog.setval('tracker_devices_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_domains; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_domains; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_domains (id, domain, created_at, updated_at) FROM stdin;
-1	antoniocarlosribeiro.com	2014-05-26 22:55:38	2014-05-26 22:55:38
 \.
 
 
 --
--- Name: tracker_domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_domains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_domains_id_seq', 1, true);
+SELECT pg_catalog.setval('tracker_domains_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_errors; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_errors; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_errors (id, code, message, created_at, updated_at) FROM stdin;
-1	404		2014-05-26 22:49:59	2014-05-26 22:49:59
-2	500	Class ACR\\Controllers\\Admin\\Admin does not exist	2014-05-26 22:59:57	2014-05-26 22:59:57
-3	500	Class 'ACR\\Controllers\\BaseController' not found	2014-05-26 23:00:50	2014-05-26 23:00:50
-4	500	Route [admin.pages.index] not defined. (View: /home/vagrant/Code/antoniocarlosribeiro.com/app/views/admin/_partials/mainMenu.blade.php) (View: /home/vagrant/Code/antoniocarlosribeiro.com/app/views/admin/_partials/mainMenu.blade.php) (View: /home/vagrant/Code/antoniocarlosribeiro.com/app/views/admin/_partials/mainMenu.blade.php)	2014-05-26 23:41:07	2014-05-26 23:41:07
-5	500	Class ACR\\Controllers\\Pages does not exist	2014-05-26 23:41:39	2014-05-26 23:41:39
-6	500	Class 'ACR\\Controllers\\Admin\\View' not found	2014-05-26 23:46:00	2014-05-26 23:46:00
-7	500	Class 'ACR\\Controllers\\Admin\\Article' not found	2014-05-26 23:46:23	2014-05-26 23:46:23
-8	500	Route [admin.pages.publish] not defined. (View: /home/vagrant/Code/antoniocarlosribeiro.com/app/views/admin/pages/index.blade.php)	2014-05-26 23:58:16	2014-05-26 23:58:16
-9	500	Method [create] does not exist.	2014-05-27 00:00:48	2014-05-27 00:00:48
-10	500	View [admin.page.edit] not found.	2014-05-27 00:05:22	2014-05-27 00:05:22
-11	500	Class 'ACR\\Controllers\\Admin\\URL' not found	2014-05-27 00:07:33	2014-05-27 00:07:33
-12	500	Undefined variable: page (View: /home/vagrant/Code/antoniocarlosribeiro.com/app/views/admin/pages/edit.blade.php)	2014-05-27 00:07:49	2014-05-27 00:07:49
-13	405		2014-05-27 01:15:54	2014-05-27 01:15:54
-14	500	Method [store] does not exist.	2014-05-27 01:16:38	2014-05-27 01:16:38
-15	500	Class 'ACR\\Controllers\\Admin\\Input' not found	2014-05-27 01:17:57	2014-05-27 01:17:57
-16	500	SQLSTATE[42703]: Undefined column: 7 ERROR:  column "page_en" of relation "pages" does not exist\nLINE 1: insert into "pages" ("name_en", "name_pt_br", "page_en", "pa...\n                                                      ^ (SQL: insert into "pages" ("name_en", "name_pt_br", "page_en", "page_pt_br", "updated_at", "created_at") values (Projects, Projetos, Those are the projects I've been working lately:\r\n\r\n, Estes são os projetos nos quais venho trabalhando recentemente:, 2014-05-27 01:18:13, 2014-05-27 01:18:13) returning "id")	2014-05-27 01:18:13	2014-05-27 01:18:13
-17	500	SQLSTATE[42703]: Undefined column: 7 ERROR:  column "page_en" of relation "pages" does not exist\nLINE 1: insert into "pages" ("name_en", "name_pt_br", "page_en", "pa...\n                                                      ^ (SQL: insert into "pages" ("name_en", "name_pt_br", "page_en", "page_pt_br", "updated_at", "created_at") values (Projects, Projetos, , , 2014-05-27 01:18:36, 2014-05-27 01:18:36) returning "id")	2014-05-27 01:18:36	2014-05-27 01:18:36
-18	500	SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "text_en" violates not-null constraint\nDETAIL:  Failing row contains (1, Projects, Projetos, null, null, 2014-05-27 01:19:03, 2014-05-27 01:19:03). (SQL: insert into "pages" ("name_en", "name_pt_br", "text_en", "text_pt_br", "updated_at", "created_at") values (Projects, Projetos, , , 2014-05-27 01:19:03, 2014-05-27 01:19:03) returning "id")	2014-05-27 01:19:03	2014-05-27 01:19:03
-19	500	Method [edit] does not exist.	2014-05-27 01:21:01	2014-05-27 01:21:01
-20	500	Method [update] does not exist.	2014-05-27 01:22:55	2014-05-27 01:22:55
-21	500	Undefined variable: pages (View: /home/vagrant/Code/antoniocarlosribeiro.com/app/views/admin/pages/index.blade.php)	2014-05-27 01:42:18	2014-05-27 01:42:18
-22	500	View [admin.languages.index] not found.	2014-05-27 01:48:10	2014-05-27 01:48:10
-23	500	Undefined variable: filtered (View: /home/vagrant/Code/antoniocarlosribeiro.com/app/views/admin/pages/index.blade.php)	2014-05-27 01:53:36	2014-05-27 01:53:36
-24	500	Missing argument 2 for Illuminate\\Database\\Eloquent\\Model::setAttribute(), called in /home/vagrant/Code/antoniocarlosribeiro.com/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 2446 and defined	2014-05-27 02:49:21	2014-05-27 02:49:21
-25	500	Class 'ACR\\Controllers\\Page' not found	2014-05-27 03:24:08	2014-05-27 03:24:08
-26	500	Call to undefined function ACR\\Controllers\\lowercase()	2014-05-27 03:25:53	2014-05-27 03:25:53
 \.
 
 
 --
--- Name: tracker_errors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_errors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_errors_id_seq', 26, true);
+SELECT pg_catalog.setval('tracker_errors_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_log; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_log; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_log (id, session_id, path_id, query_id, method, route_path_id, is_ajax, is_secure, is_json, wants_json, error_id, created_at, updated_at) FROM stdin;
-1	1	1	\N	GET	\N	f	f	f	f	1	2014-05-26 22:49:59	2014-05-26 22:49:59
-2	1	1	\N	GET	\N	f	f	f	f	1	2014-05-26 22:55:31	2014-05-26 22:55:32
-3	1	2	\N	GET	1	f	f	f	f	\N	2014-05-26 22:55:38	2014-05-26 22:55:39
-4	1	3	\N	GET	2	f	f	f	f	\N	2014-05-26 22:59:46	2014-05-26 22:59:47
-5	1	4	\N	GET	3	f	f	f	f	\N	2014-05-26 22:59:49	2014-05-26 22:59:49
-6	1	4	\N	POST	4	f	f	f	f	\N	2014-05-26 22:59:53	2014-05-26 22:59:54
-44	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:16:30	2014-05-27 01:16:31
-7	1	3	\N	GET	2	f	f	f	f	2	2014-05-26 22:59:56	2014-05-26 22:59:57
-8	1	3	\N	GET	2	f	f	f	f	3	2014-05-26 23:00:49	2014-05-26 23:00:50
-9	1	3	\N	GET	2	f	f	f	f	\N	2014-05-26 23:01:38	2014-05-26 23:01:38
-10	1	5	\N	GET	5	f	f	f	f	\N	2014-05-26 23:01:39	2014-05-26 23:01:39
-11	1	6	\N	GET	6	f	f	f	f	\N	2014-05-26 23:01:47	2014-05-26 23:01:48
-64	1	13	\N	POST	\N	t	f	f	f	13	2014-05-27 01:22:25	2014-05-27 01:22:25
-12	1	6	\N	GET	6	f	f	f	f	4	2014-05-26 23:41:05	2014-05-26 23:41:07
-13	1	6	\N	GET	6	f	f	f	f	\N	2014-05-26 23:41:29	2014-05-26 23:41:30
-45	1	12	\N	POST	13	f	f	f	f	14	2014-05-27 01:16:37	2014-05-27 01:16:38
-14	1	7	\N	GET	7	f	f	f	f	5	2014-05-26 23:41:38	2014-05-26 23:41:39
-15	1	7	\N	GET	8	f	f	f	f	\N	2014-05-26 23:42:19	2014-05-26 23:42:20
-16	1	5	\N	GET	5	f	f	f	f	\N	2014-05-26 23:42:22	2014-05-26 23:42:22
-17	1	7	\N	GET	8	f	f	f	f	6	2014-05-26 23:45:59	2014-05-26 23:46:00
-18	1	7	\N	GET	8	f	f	f	f	7	2014-05-26 23:46:22	2014-05-26 23:46:23
-19	1	7	\N	GET	8	f	f	f	f	\N	2014-05-26 23:46:55	2014-05-26 23:46:55
-20	2	8	\N	GET	\N	f	f	f	f	\N	2014-05-26 23:47:53	2014-05-26 23:47:53
-21	3	8	\N	GET	\N	f	f	f	f	\N	2014-05-26 23:53:49	2014-05-26 23:53:49
-22	4	8	\N	GET	\N	f	f	f	f	\N	2014-05-26 23:54:33	2014-05-26 23:54:33
-23	5	8	\N	GET	\N	f	f	f	f	\N	2014-05-26 23:55:16	2014-05-26 23:55:16
-46	1	12	\N	POST	13	f	f	f	f	15	2014-05-27 01:17:56	2014-05-27 01:17:57
-24	1	7	\N	GET	8	f	f	f	f	8	2014-05-26 23:58:15	2014-05-26 23:58:16
-25	1	7	\N	GET	8	f	f	f	f	\N	2014-05-26 23:59:06	2014-05-26 23:59:06
-26	1	9	\N	GET	9	f	f	f	f	9	2014-05-27 00:00:47	2014-05-27 00:00:48
-27	1	7	\N	GET	8	f	f	f	f	\N	2014-05-27 00:00:52	2014-05-27 00:00:53
-65	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:22:34	2014-05-27 01:22:34
-28	1	9	\N	GET	9	f	f	f	f	9	2014-05-27 00:01:52	2014-05-27 00:01:53
-47	1	12	\N	POST	13	f	f	f	f	16	2014-05-27 01:18:12	2014-05-27 01:18:13
-29	1	9	\N	GET	9	f	f	f	f	10	2014-05-27 00:05:21	2014-05-27 00:05:22
-30	1	9	\N	GET	9	f	f	f	f	10	2014-05-27 00:06:59	2014-05-27 00:07:00
-31	1	9	\N	GET	9	f	f	f	f	11	2014-05-27 00:07:32	2014-05-27 00:07:33
-48	1	12	\N	POST	13	f	f	f	f	17	2014-05-27 01:18:36	2014-05-27 01:18:36
-32	1	9	\N	GET	9	f	f	f	f	12	2014-05-27 00:07:47	2014-05-27 00:07:49
-33	1	9	\N	GET	9	f	f	f	f	\N	2014-05-27 01:14:50	2014-05-27 01:14:51
-34	1	8	\N	GET	10	f	f	f	f	\N	2014-05-27 01:15:14	2014-05-27 01:15:15
-35	1	2	\N	GET	1	f	f	f	f	\N	2014-05-27 01:15:20	2014-05-27 01:15:21
-36	1	10	\N	GET	11	f	f	f	f	\N	2014-05-27 01:15:34	2014-05-27 01:15:35
-37	1	9	\N	POST	\N	t	f	f	f	13	2014-05-27 01:15:54	2014-05-27 01:15:54
-38	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:15:55	2014-05-27 01:15:55
-39	1	9	\N	POST	\N	t	f	f	f	13	2014-05-27 01:16:07	2014-05-27 01:16:08
-40	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:16:09	2014-05-27 01:16:09
-41	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:16:09	2014-05-27 01:16:09
-42	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:16:29	2014-05-27 01:16:29
-43	1	9	\N	POST	\N	t	f	f	f	13	2014-05-27 01:16:30	2014-05-27 01:16:30
-66	1	13	\N	POST	\N	t	f	f	f	13	2014-05-27 01:22:35	2014-05-27 01:22:35
-49	1	12	\N	POST	13	f	f	f	f	18	2014-05-27 01:19:03	2014-05-27 01:19:03
-50	1	12	\N	POST	13	f	f	f	f	\N	2014-05-27 01:19:32	2014-05-27 01:19:33
-51	1	9	\N	GET	9	f	f	f	f	\N	2014-05-27 01:20:16	2014-05-27 01:20:16
-52	1	9	\N	GET	9	f	f	f	f	\N	2014-05-27 01:20:22	2014-05-27 01:20:23
-53	1	9	\N	POST	\N	t	f	f	f	13	2014-05-27 01:20:37	2014-05-27 01:20:38
-54	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:20:38	2014-05-27 01:20:39
-55	1	12	\N	POST	13	f	f	f	f	\N	2014-05-27 01:20:39	2014-05-27 01:20:39
-56	1	12	\N	POST	13	f	f	f	f	\N	2014-05-27 01:20:53	2014-05-27 01:20:54
-57	1	7	\N	GET	8	f	f	f	f	\N	2014-05-27 01:20:55	2014-05-27 01:20:55
-58	1	13	\N	GET	14	f	f	f	f	19	2014-05-27 01:21:00	2014-05-27 01:21:01
-67	1	13	\N	POST	\N	t	f	f	f	13	2014-05-27 01:22:54	2014-05-27 01:22:54
-59	1	13	\N	GET	14	f	f	f	f	12	2014-05-27 01:21:49	2014-05-27 01:21:50
-60	1	13	\N	GET	14	f	f	f	f	\N	2014-05-27 01:22:10	2014-05-27 01:22:11
-61	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:22:19	2014-05-27 01:22:20
-62	1	13	\N	POST	\N	t	f	f	f	13	2014-05-27 01:22:20	2014-05-27 01:22:21
-63	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:22:24	2014-05-27 01:22:24
-76	1	14	\N	PATCH	15	f	f	f	f	\N	2014-05-27 01:23:37	2014-05-27 01:23:37
-68	1	14	\N	PATCH	15	f	f	f	f	20	2014-05-27 01:22:55	2014-05-27 01:22:55
-69	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:22:56	2014-05-27 01:22:56
-70	1	14	\N	PATCH	15	f	f	f	f	7	2014-05-27 01:23:11	2014-05-27 01:23:11
-71	1	14	\N	PATCH	15	f	f	f	f	\N	2014-05-27 01:23:21	2014-05-27 01:23:21
-72	1	7	\N	GET	8	f	f	f	f	\N	2014-05-27 01:23:22	2014-05-27 01:23:22
-73	1	13	\N	GET	14	f	f	f	f	\N	2014-05-27 01:23:28	2014-05-27 01:23:28
-74	1	13	\N	POST	\N	t	f	f	f	13	2014-05-27 01:23:35	2014-05-27 01:23:36
-75	1	11	\N	POST	12	t	f	f	f	\N	2014-05-27 01:23:36	2014-05-27 01:23:36
-77	1	7	\N	GET	8	f	f	f	f	\N	2014-05-27 01:23:39	2014-05-27 01:23:40
-78	1	7	\N	GET	8	f	f	f	f	\N	2014-05-27 01:38:54	2014-05-27 01:38:55
-79	1	8	\N	GET	10	f	f	f	f	\N	2014-05-27 01:39:01	2014-05-27 01:39:02
-80	1	3	\N	GET	\N	f	f	f	f	1	2014-05-27 01:41:21	2014-05-27 01:41:22
-81	1	3	\N	GET	\N	f	f	f	f	1	2014-05-27 01:41:22	2014-05-27 01:41:23
-82	1	3	\N	GET	2	f	f	f	f	\N	2014-05-27 01:42:16	2014-05-27 01:42:16
-84	1	15	\N	GET	16	f	f	f	f	21	2014-05-27 01:44:12	2014-05-27 01:44:14
-83	1	15	\N	GET	16	f	f	f	f	21	2014-05-27 01:42:17	2014-05-27 01:42:18
-89	1	3	\N	GET	2	f	f	f	f	\N	2014-05-27 01:46:44	2014-05-27 01:46:45
-85	6	8	\N	GET	\N	f	f	f	f	\N	2014-05-27 01:45:28	2014-05-27 01:45:28
-86	7	8	\N	GET	\N	f	f	f	f	\N	2014-05-27 01:45:36	2014-05-27 01:45:36
-87	8	8	\N	GET	\N	f	f	f	f	\N	2014-05-27 01:46:11	2014-05-27 01:46:11
-88	1	15	\N	GET	16	f	f	f	f	21	2014-05-27 01:46:38	2014-05-27 01:46:40
-90	1	3	\N	GET	2	f	f	f	f	\N	2014-05-27 01:46:45	2014-05-27 01:46:46
-92	1	15	\N	GET	16	f	f	f	f	\N	2014-05-27 01:47:30	2014-05-27 01:47:30
-91	1	15	\N	GET	16	f	f	f	f	21	2014-05-27 01:46:46	2014-05-27 01:46:47
-93	1	15	\N	GET	16	f	f	f	f	\N	2014-05-27 01:47:44	2014-05-27 01:47:45
-96	1	15	\N	GET	16	f	f	f	f	\N	2014-05-27 01:53:07	2014-05-27 01:53:08
-94	1	15	\N	GET	16	f	f	f	f	21	2014-05-27 01:47:54	2014-05-27 01:47:55
-95	1	15	\N	GET	16	f	f	f	f	22	2014-05-27 01:48:09	2014-05-27 01:48:10
-97	1	16	\N	GET	17	f	f	f	f	\N	2014-05-27 01:53:16	2014-05-27 01:53:17
-98	1	17	\N	GET	18	f	f	f	f	\N	2014-05-27 01:53:21	2014-05-27 01:53:21
-99	1	18	\N	GET	19	f	f	f	f	\N	2014-05-27 01:53:23	2014-05-27 01:53:24
-100	1	16	\N	GET	17	f	f	f	f	\N	2014-05-27 01:53:24	2014-05-27 01:53:24
-101	1	6	\N	GET	6	f	f	f	f	\N	2014-05-27 01:53:31	2014-05-27 01:53:31
-145	10	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:46:04	2014-05-27 02:46:04
-102	1	19	\N	GET	20	f	f	f	f	23	2014-05-27 01:53:35	2014-05-27 01:53:36
-103	1	19	\N	GET	20	f	f	f	f	\N	2014-05-27 01:54:18	2014-05-27 01:54:18
-104	1	3	\N	GET	2	f	f	f	f	\N	2014-05-27 01:55:18	2014-05-27 01:55:19
-105	1	3	\N	GET	2	f	f	f	f	\N	2014-05-27 01:55:19	2014-05-27 01:55:20
-106	1	15	\N	GET	16	f	f	f	f	\N	2014-05-27 01:55:21	2014-05-27 01:55:22
-107	1	15	\N	GET	16	f	f	f	f	\N	2014-05-27 01:57:30	2014-05-27 01:57:30
-108	1	16	\N	GET	17	f	f	f	f	\N	2014-05-27 01:57:37	2014-05-27 01:57:38
-109	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 01:57:43	2014-05-27 01:57:43
-110	9	20	\N	GET	21	f	f	f	f	\N	2014-05-27 01:58:30	2014-05-27 01:58:31
-111	9	4	\N	GET	3	f	f	f	f	\N	2014-05-27 01:58:32	2014-05-27 01:58:32
-112	9	4	\N	POST	4	f	f	f	f	\N	2014-05-27 01:58:42	2014-05-27 01:58:43
-113	9	20	\N	GET	21	f	f	f	f	\N	2014-05-27 01:58:43	2014-05-27 01:58:44
-114	10	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:24:03	2014-05-27 02:24:04
-115	10	4	\N	GET	3	f	f	f	f	\N	2014-05-27 02:24:06	2014-05-27 02:24:07
-116	10	4	\N	POST	4	f	f	f	f	\N	2014-05-27 02:24:21	2014-05-27 02:24:22
-117	10	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:24:22	2014-05-27 02:24:23
-118	11	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:25:05	2014-05-27 02:25:06
-119	11	4	\N	GET	3	f	f	f	f	\N	2014-05-27 02:25:11	2014-05-27 02:25:12
-120	11	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:25:14	2014-05-27 02:25:14
-121	11	4	\N	GET	3	f	f	f	f	\N	2014-05-27 02:25:15	2014-05-27 02:25:15
-122	11	21	\N	GET	\N	f	f	f	f	1	2014-05-27 02:25:17	2014-05-27 02:25:18
-123	11	4	\N	POST	4	f	f	f	f	\N	2014-05-27 02:25:27	2014-05-27 02:25:27
-124	11	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:25:29	2014-05-27 02:25:30
-125	11	22	\N	GET	\N	f	f	f	f	1	2014-05-27 02:25:31	2014-05-27 02:25:31
-126	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:30:24	2014-05-27 02:30:24
-127	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:30:30	2014-05-27 02:30:30
-128	1	2	\N	GET	1	f	f	f	f	\N	2014-05-27 02:31:12	2014-05-27 02:31:12
-129	1	23	\N	GET	22	f	f	f	f	\N	2014-05-27 02:31:18	2014-05-27 02:31:18
-130	1	2	\N	GET	1	f	f	f	f	\N	2014-05-27 02:31:20	2014-05-27 02:31:21
-131	1	24	\N	GET	23	f	f	f	f	\N	2014-05-27 02:31:29	2014-05-27 02:31:29
-132	1	25	\N	GET	24	f	f	f	f	\N	2014-05-27 02:31:30	2014-05-27 02:31:30
-133	1	25	\N	GET	24	f	f	f	f	\N	2014-05-27 02:31:37	2014-05-27 02:31:38
-134	1	25	\N	GET	24	f	f	f	f	\N	2014-05-27 02:32:45	2014-05-27 02:32:46
-135	1	26	\N	GET	\N	f	f	f	f	1	2014-05-27 02:36:03	2014-05-27 02:36:04
-136	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:36:42	2014-05-27 02:36:43
-137	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:37:46	2014-05-27 02:37:47
-138	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:37:53	2014-05-27 02:37:53
-139	1	26	\N	GET	\N	f	f	f	f	1	2014-05-27 02:37:57	2014-05-27 02:37:57
-140	10	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:44:30	2014-05-27 02:44:30
-141	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:45:04	2014-05-27 02:45:05
-142	1	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:45:09	2014-05-27 02:45:10
-143	1	26	\N	GET	\N	f	f	f	f	1	2014-05-27 02:45:13	2014-05-27 02:45:14
-144	10	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:45:20	2014-05-27 02:45:20
-146	10	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:47:24	2014-05-27 02:47:24
-147	10	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:47:56	2014-05-27 02:47:57
-148	9	4	\N	GET	3	f	f	f	f	\N	2014-05-27 02:49:09	2014-05-27 02:49:09
-167	12	15	\N	GET	16	f	f	f	f	\N	2014-05-27 03:07:38	2014-05-27 03:07:39
-149	9	4	\N	POST	4	f	f	f	f	24	2014-05-27 02:49:21	2014-05-27 02:49:21
-150	12	3	\N	GET	2	f	f	f	f	\N	2014-05-27 02:50:32	2014-05-27 02:50:33
-151	12	4	\N	GET	3	f	f	f	f	\N	2014-05-27 02:50:34	2014-05-27 02:50:35
-152	12	4	\N	GET	3	f	f	f	f	\N	2014-05-27 02:50:36	2014-05-27 02:50:36
-153	12	4	\N	POST	4	f	f	f	f	\N	2014-05-27 02:50:41	2014-05-27 02:50:41
-154	12	3	\N	GET	2	f	f	f	f	\N	2014-05-27 02:50:43	2014-05-27 02:50:44
-155	12	15	\N	GET	16	f	f	f	f	\N	2014-05-27 02:50:44	2014-05-27 02:50:45
-156	12	17	\N	GET	18	f	f	f	f	\N	2014-05-27 02:50:55	2014-05-27 02:50:55
-157	12	18	\N	GET	19	f	f	f	f	\N	2014-05-27 02:50:56	2014-05-27 02:50:56
-158	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 02:50:58	2014-05-27 02:50:58
-159	12	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:51:02	2014-05-27 02:51:03
-160	12	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:53:04	2014-05-27 02:53:05
-161	12	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:53:24	2014-05-27 02:53:25
-162	12	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:53:42	2014-05-27 02:53:43
-163	12	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:59:24	2014-05-27 02:59:25
-164	12	20	\N	GET	21	f	f	f	f	\N	2014-05-27 02:59:49	2014-05-27 02:59:49
-165	12	20	\N	GET	21	f	f	f	f	\N	2014-05-27 03:01:43	2014-05-27 03:01:44
-166	12	3	\N	GET	2	f	f	f	f	\N	2014-05-27 03:07:36	2014-05-27 03:07:37
-168	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:07:55	2014-05-27 03:07:56
-169	12	17	\N	GET	18	f	f	f	f	\N	2014-05-27 03:08:03	2014-05-27 03:08:04
-170	12	18	\N	GET	19	f	f	f	f	\N	2014-05-27 03:08:05	2014-05-27 03:08:06
-171	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:08:07	2014-05-27 03:08:07
-172	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:09:06	2014-05-27 03:09:06
-173	12	19	\N	GET	20	f	f	f	f	\N	2014-05-27 03:10:04	2014-05-27 03:10:05
-174	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:10:09	2014-05-27 03:10:10
-175	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:17:43	2014-05-27 03:17:44
-176	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:20:01	2014-05-27 03:20:02
-177	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:20:06	2014-05-27 03:20:07
-178	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:20:23	2014-05-27 03:20:24
-179	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:20:30	2014-05-27 03:20:30
-180	12	26	\N	GET	\N	f	f	f	f	1	2014-05-27 03:20:34	2014-05-27 03:20:35
-181	12	15	\N	GET	16	f	f	f	f	\N	2014-05-27 03:20:40	2014-05-27 03:20:41
-182	12	26	\N	GET	\N	f	f	f	f	1	2014-05-27 03:20:46	2014-05-27 03:20:47
-183	12	15	\N	GET	16	f	f	f	f	\N	2014-05-27 03:20:55	2014-05-27 03:20:56
-184	12	26	\N	GET	\N	f	f	f	f	1	2014-05-27 03:21:02	2014-05-27 03:21:03
-185	12	17	\N	GET	18	f	f	f	f	\N	2014-05-27 03:21:21	2014-05-27 03:21:21
-186	12	18	\N	GET	19	f	f	f	f	\N	2014-05-27 03:21:22	2014-05-27 03:21:22
-187	12	16	\N	GET	17	f	f	f	f	\N	2014-05-27 03:21:24	2014-05-27 03:21:24
-188	12	6	\N	GET	6	f	f	f	f	\N	2014-05-27 03:21:31	2014-05-27 03:21:31
-189	12	19	\N	GET	20	f	f	f	f	\N	2014-05-27 03:21:35	2014-05-27 03:21:36
-190	12	2	1	GET	1	f	f	f	f	\N	2014-05-27 03:23:59	2014-05-27 03:24:00
-192	12	10	\N	GET	11	f	f	f	f	\N	2014-05-27 03:24:34	2014-05-27 03:24:35
-191	12	10	\N	GET	11	f	f	f	f	25	2014-05-27 03:24:08	2014-05-27 03:24:08
-193	12	8	\N	GET	10	f	f	f	f	\N	2014-05-27 03:24:46	2014-05-27 03:24:46
-194	12	23	\N	GET	22	f	f	f	f	\N	2014-05-27 03:24:51	2014-05-27 03:24:52
-195	12	8	\N	GET	10	f	f	f	f	\N	2014-05-27 03:24:54	2014-05-27 03:24:54
-196	12	10	\N	GET	11	f	f	f	f	\N	2014-05-27 03:24:56	2014-05-27 03:24:56
-197	12	10	\N	GET	11	f	f	f	f	26	2014-05-27 03:25:52	2014-05-27 03:25:53
-198	12	10	\N	GET	11	f	f	f	f	\N	2014-05-27 03:26:05	2014-05-27 03:26:06
 \.
 
 
 --
--- Name: tracker_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_log_id_seq', 198, true);
+SELECT pg_catalog.setval('tracker_log_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_paths; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_paths; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_paths (id, path, created_at, updated_at) FROM stdin;
-1	fuck	2014-05-26 22:49:59	2014-05-26 22:49:59
-2	technology	2014-05-26 22:55:38	2014-05-26 22:55:38
-3	admin	2014-05-26 22:59:46	2014-05-26 22:59:46
-4	login	2014-05-26 22:59:49	2014-05-26 22:59:49
-5	languages	2014-05-26 23:01:39	2014-05-26 23:01:39
-6	admin/articles	2014-05-26 23:01:47	2014-05-26 23:01:47
-7	pages	2014-05-26 23:41:38	2014-05-26 23:41:38
-8	/	2014-05-26 23:47:53	2014-05-26 23:47:53
-9	pages/create	2014-05-27 00:00:47	2014-05-27 00:00:47
-10	technology/projects	2014-05-27 01:15:34	2014-05-27 01:15:34
-11	api/1.0/markdown	2014-05-27 01:15:55	2014-05-27 01:15:55
-12	pages/store	2014-05-27 01:16:37	2014-05-27 01:16:37
-13	pages/2/edit	2014-05-27 01:21:00	2014-05-27 01:21:00
-14	pages/2	2014-05-27 01:22:55	2014-05-27 01:22:55
-15	admin/languages	2014-05-27 01:42:17	2014-05-27 01:42:17
-16	admin/languages/stats	2014-05-27 01:53:16	2014-05-27 01:53:16
-17	admin/languages/translate	2014-05-27 01:53:21	2014-05-27 01:53:21
-18	admin/languages/translation/next/pt-BR/pt-BR	2014-05-27 01:53:23	2014-05-27 01:53:23
-19	admin/pages	2014-05-27 01:53:35	2014-05-27 01:53:35
-20	admin/languages/show/pt-BR	2014-05-27 01:57:43	2014-05-27 01:57:43
-21	docs-assets/js/ie8-responsive-file-warning.js	2014-05-27 02:25:17	2014-05-27 02:25:17
-22	admin/docs-assets/js/ie8-responsive-file-warning.js	2014-05-27 02:25:31	2014-05-27 02:25:31
-23	language/pt-br	2014-05-27 02:31:18	2014-05-27 02:31:18
-24	technology/articles/environments-in-laravel-4/pt_BR	2014-05-27 02:31:29	2014-05-27 02:31:29
-25	technology/articles/environments-in-laravel-4	2014-05-27 02:31:30	2014-05-27 02:31:30
-26	assets/templates/sb-admin/js/jquery.min.map	2014-05-27 02:36:03	2014-05-27 02:36:03
 \.
 
 
 --
--- Name: tracker_paths_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_paths_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_paths_id_seq', 26, true);
+SELECT pg_catalog.setval('tracker_paths_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_queries; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_queries; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_queries (id, query, created_at, updated_at) FROM stdin;
-1	search=google	2014-05-27 03:23:59	2014-05-27 03:23:59
 \.
 
 
 --
--- Name: tracker_queries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_queries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_queries_id_seq', 1, true);
+SELECT pg_catalog.setval('tracker_queries_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_query_arguments; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_query_arguments; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_query_arguments (id, query_id, argument, value, created_at, updated_at) FROM stdin;
-1	1	search	google	2014-05-27 03:23:59	2014-05-27 03:23:59
 \.
 
 
 --
--- Name: tracker_query_arguments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_query_arguments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_query_arguments_id_seq', 1, true);
+SELECT pg_catalog.setval('tracker_query_arguments_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_referers; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_referers; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_referers (id, domain_id, referer, host, created_at, updated_at) FROM stdin;
-1	1	http://development.antoniocarlosribeiro.com:8000/fuck	development.antoniocarlosribeiro.com	2014-05-26 22:55:38	2014-05-26 22:55:38
-2	1	http://development.antoniocarlosribeiro.com:8000/login	development.antoniocarlosribeiro.com	2014-05-26 22:59:53	2014-05-26 22:59:53
-3	1	http://development.antoniocarlosribeiro.com:8000/languages	development.antoniocarlosribeiro.com	2014-05-26 23:01:47	2014-05-26 23:01:47
-4	1	http://development.antoniocarlosribeiro.com:8000/admin/articles	development.antoniocarlosribeiro.com	2014-05-26 23:41:38	2014-05-26 23:41:38
-5	1	http://development.antoniocarlosribeiro.com:8000/pages	development.antoniocarlosribeiro.com	2014-05-27 00:00:47	2014-05-27 00:00:47
-6	1	http://development.antoniocarlosribeiro.com:8000/	development.antoniocarlosribeiro.com	2014-05-27 01:15:20	2014-05-27 01:15:20
-7	1	http://development.antoniocarlosribeiro.com:8000/technology	development.antoniocarlosribeiro.com	2014-05-27 01:15:34	2014-05-27 01:15:34
-8	1	http://development.antoniocarlosribeiro.com:8000/pages/create	development.antoniocarlosribeiro.com	2014-05-27 01:15:54	2014-05-27 01:15:54
-9	1	http://development.antoniocarlosribeiro.com:8000/pages/2/edit	development.antoniocarlosribeiro.com	2014-05-27 01:22:19	2014-05-27 01:22:19
-10	1	http://development.antoniocarlosribeiro.com:8000/admin/languages	development.antoniocarlosribeiro.com	2014-05-27 01:53:16	2014-05-27 01:53:16
-11	1	http://development.antoniocarlosribeiro.com:8000/admin/languages/stats	development.antoniocarlosribeiro.com	2014-05-27 01:53:21	2014-05-27 01:53:21
-12	1	http://development.antoniocarlosribeiro.com:8000/admin/languages/show/pt-BR	development.antoniocarlosribeiro.com	2014-05-27 02:25:31	2014-05-27 02:25:31
-13	1	http://development.antoniocarlosribeiro.com:8000/admin/pages	development.antoniocarlosribeiro.com	2014-05-27 03:10:09	2014-05-27 03:10:09
-14	1	http://development.antoniocarlosribeiro.com:8000/technology?search=google	development.antoniocarlosribeiro.com	2014-05-27 03:24:08	2014-05-27 03:24:08
 \.
 
 
 --
--- Name: tracker_referers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_referers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_referers_id_seq', 14, true);
+SELECT pg_catalog.setval('tracker_referers_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_route_path_parameters; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_route_path_parameters; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_route_path_parameters (id, route_path_id, parameter, value, created_at, updated_at) FROM stdin;
-1	11	page	projects	2014-05-27 01:15:35	2014-05-27 01:15:35
-2	12	version	1.0	2014-05-27 01:15:55	2014-05-27 01:15:55
-3	14	id	2	2014-05-27 01:21:01	2014-05-27 01:21:01
-4	15	id	2	2014-05-27 01:22:55	2014-05-27 01:22:55
-5	19	primaryLanguage	pt-BR	2014-05-27 01:53:24	2014-05-27 01:53:24
-6	19	secondaryLanguage	pt-BR	2014-05-27 01:53:24	2014-05-27 01:53:24
-7	21	primary	pt-BR	2014-05-27 01:57:43	2014-05-27 01:57:43
-8	22	lang	pt-br	2014-05-27 02:31:18	2014-05-27 02:31:18
-9	23	slug	environments-in-laravel-4	2014-05-27 02:31:29	2014-05-27 02:31:29
-10	23	lang	pt_BR	2014-05-27 02:31:29	2014-05-27 02:31:29
-11	24	slug	environments-in-laravel-4	2014-05-27 02:31:30	2014-05-27 02:31:30
 \.
 
 
 --
--- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_route_path_parameters_id_seq', 11, true);
+SELECT pg_catalog.setval('tracker_route_path_parameters_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_route_paths; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_route_paths; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_route_paths (id, route_id, path, created_at, updated_at) FROM stdin;
-1	1	technology	2014-05-26 22:55:39	2014-05-26 22:55:39
-2	2	admin	2014-05-26 22:59:47	2014-05-26 22:59:47
-3	3	login	2014-05-26 22:59:49	2014-05-26 22:59:49
-4	4	login	2014-05-26 22:59:54	2014-05-26 22:59:54
-5	5	languages	2014-05-26 23:01:39	2014-05-26 23:01:39
-6	6	admin/articles	2014-05-26 23:01:48	2014-05-26 23:01:48
-7	7	pages	2014-05-26 23:41:39	2014-05-26 23:41:39
-8	8	pages	2014-05-26 23:42:20	2014-05-26 23:42:20
-9	9	pages/create	2014-05-27 00:00:48	2014-05-27 00:00:48
-10	10	/	2014-05-27 01:15:15	2014-05-27 01:15:15
-11	11	technology/projects	2014-05-27 01:15:35	2014-05-27 01:15:35
-12	12	api/1.0/markdown	2014-05-27 01:15:55	2014-05-27 01:15:55
-13	13	pages/store	2014-05-27 01:16:38	2014-05-27 01:16:38
-14	14	pages/2/edit	2014-05-27 01:21:01	2014-05-27 01:21:01
-15	15	pages/2	2014-05-27 01:22:55	2014-05-27 01:22:55
-16	5	admin/languages	2014-05-27 01:42:17	2014-05-27 01:42:17
-17	16	admin/languages/stats	2014-05-27 01:53:17	2014-05-27 01:53:17
-18	17	admin/languages/translate	2014-05-27 01:53:21	2014-05-27 01:53:21
-19	18	admin/languages/translation/next/pt-BR/pt-BR	2014-05-27 01:53:24	2014-05-27 01:53:24
-20	8	admin/pages	2014-05-27 01:53:36	2014-05-27 01:53:36
-21	19	admin/languages/show/pt-BR	2014-05-27 01:57:43	2014-05-27 01:57:43
-22	20	language/pt-br	2014-05-27 02:31:18	2014-05-27 02:31:18
-23	21	technology/articles/environments-in-laravel-4/pt_BR	2014-05-27 02:31:29	2014-05-27 02:31:29
-24	21	technology/articles/environments-in-laravel-4	2014-05-27 02:31:30	2014-05-27 02:31:30
 \.
 
 
 --
--- Name: tracker_route_paths_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_route_paths_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_route_paths_id_seq', 24, true);
+SELECT pg_catalog.setval('tracker_route_paths_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_routes; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_routes; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY tracker_routes (id, name, action, created_at, updated_at) FROM stdin;
-1	technology	ACR\\Controllers\\Technology@index	2014-05-26 22:55:39	2014-05-26 22:55:39
-2	admin	ACR\\Controllers\\Admin\\Admin@index	2014-05-26 22:59:47	2014-05-26 22:59:47
-3	login.form	ACR\\Controllers\\Logon@form	2014-05-26 22:59:49	2014-05-26 22:59:49
-4	login.do	ACR\\Controllers\\Logon@login	2014-05-26 22:59:54	2014-05-26 22:59:54
-5	admin.languages.index	ACR\\Controllers\\Admin\\Languages@index	2014-05-26 23:01:39	2014-05-26 23:01:39
-6	admin.articles.index	ACR\\Controllers\\Admin\\Articles@index	2014-05-26 23:01:48	2014-05-26 23:01:48
-7	admin.pages.index	ACR\\Controllers\\Pages@index	2014-05-26 23:41:39	2014-05-26 23:41:39
-8	admin.pages.index	ACR\\Controllers\\Admin\\Pages@index	2014-05-26 23:42:20	2014-05-26 23:42:20
-9	admin.pages.create	ACR\\Controllers\\Admin\\Pages@create	2014-05-27 00:00:48	2014-05-27 00:00:48
-10	home	ACR\\Controllers\\Home@index	2014-05-27 01:15:15	2014-05-27 01:15:15
-11	bio	ACR\\Controllers\\StaticPages@show	2014-05-27 01:15:35	2014-05-27 01:15:35
-12	api.markdown	ACR\\Controllers\\Api@markdown	2014-05-27 01:15:55	2014-05-27 01:15:55
-13	admin.pages.store	ACR\\Controllers\\Admin\\Pages@store	2014-05-27 01:16:38	2014-05-27 01:16:38
-14	admin.pages.edit	ACR\\Controllers\\Admin\\Pages@edit	2014-05-27 01:21:01	2014-05-27 01:21:01
-15	admin.pages.update	ACR\\Controllers\\Admin\\Pages@update	2014-05-27 01:22:55	2014-05-27 01:22:55
-16	admin.languages.stats	ACR\\Controllers\\Admin\\Languages@stats	2014-05-27 01:53:17	2014-05-27 01:53:17
-17	admin.languages.translate	ACR\\Controllers\\Admin\\Languages@translate	2014-05-27 01:53:21	2014-05-27 01:53:21
-18	admin.translation.next	ACR\\Controllers\\Admin\\Languages@next	2014-05-27 01:53:24	2014-05-27 01:53:24
-19	admin.languages.show	ACR\\Controllers\\Admin\\Languages@show	2014-05-27 01:57:43	2014-05-27 01:57:43
-20	language.select	ACR\\Controllers\\Language@select	2014-05-27 02:31:18	2014-05-27 02:31:18
-21	technology.articles.show	ACR\\Controllers\\Technology@show	2014-05-27 02:31:29	2014-05-27 02:31:29
 \.
 
 
 --
--- Name: tracker_routes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_routes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_routes_id_seq', 21, true);
+SELECT pg_catalog.setval('tracker_routes_id_seq', 1, false);
 
 
 --
--- Data for Name: tracker_sessions; Type: TABLE DATA; Schema: public; Owner: homestead
+-- Data for Name: tracker_sessions; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
-COPY tracker_sessions (id, uuid, user_id, device_id, client_ip, referer_id, cookie_id, last_activity, created_at, updated_at) FROM stdin;
-12	bac7b75d-d04d-4476-9afc-237fba1c625d	1	1	10.0.2.2	14	17	2014-05-27 03:26:05	2014-05-27 02:50:32	2014-05-27 03:26:05
-1	0fee4bfc-de3d-4ed8-a315-8ebbb036ab91	1	1	10.0.2.2	12	1	2014-05-27 02:45:13	2014-05-26 22:49:59	2014-05-27 02:45:13
-2	dd6dbd1d-d8d1-4c4c-9f40-dd6030111528	\N	2	127.0.0.1	\N	2	2014-05-26 23:47:53	2014-05-26 23:47:53	2014-05-26 23:47:53
-3	e8bdcd9f-6df4-498d-8768-15d2d64cdda8	\N	2	127.0.0.1	\N	3	2014-05-26 23:53:49	2014-05-26 23:53:49	2014-05-26 23:53:49
-4	6f432f96-b198-4793-a335-0a42e405276a	\N	2	127.0.0.1	\N	4	2014-05-26 23:54:33	2014-05-26 23:54:33	2014-05-26 23:54:33
-5	f6ac35d0-d8d3-4f65-8ebc-f53f8f7b1211	\N	2	127.0.0.1	\N	5	2014-05-26 23:55:16	2014-05-26 23:55:16	2014-05-26 23:55:16
-10	a7f8565e-ff1d-41b7-83f6-ff3e9349d929	1	1	10.0.2.2	\N	14	2014-05-27 02:47:56	2014-05-27 02:24:03	2014-05-27 02:47:56
-9	2673425c-e746-4b1c-b4c8-d44a49e14112	1	1	10.0.2.2	2	15	2014-05-27 02:49:21	2014-05-27 01:58:30	2014-05-27 02:49:21
-11	194e12c3-5d05-47e7-a3ff-1da8a35916f9	1	1	10.0.2.2	12	11	2014-05-27 02:25:31	2014-05-27 02:25:05	2014-05-27 02:25:31
-6	f5280183-084d-4afe-aeec-0f88f532b581	\N	2	127.0.0.1	\N	6	2014-05-27 01:45:28	2014-05-27 01:45:28	2014-05-27 01:45:28
-7	2e985cd1-105e-43d0-a32f-ed2a17e5a1f1	\N	2	127.0.0.1	\N	7	2014-05-27 01:45:36	2014-05-27 01:45:36	2014-05-27 01:45:36
-8	3c25dbc5-495b-42c1-99ed-b1d9dd1da4f8	\N	2	127.0.0.1	\N	8	2014-05-27 01:46:11	2014-05-27 01:46:11	2014-05-27 01:46:11
+COPY tracker_sessions (id, uuid, user_id, device_id, agent_id, client_ip, referer_id, cookie_id, last_activity, created_at, updated_at) FROM stdin;
 \.
 
 
 --
--- Name: tracker_sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: homestead
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
-SELECT pg_catalog.setval('tracker_sessions_id_seq', 12, true);
+SELECT pg_catalog.setval('tracker_sessions_id_seq', 1, false);
 
 
 --
--- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY users (id, email, password, permissions, activated, activation_code, activated_at, last_login, persist_code, reset_password_code, first_name, last_name, created_at, updated_at, telephone) FROM stdin;
@@ -3115,7 +2754,7 @@ COPY users (id, email, password, permissions, activated, activation_code, activa
 
 
 --
--- Data for Name: users_groups; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: users_groups; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
 COPY users_groups (user_id, group_id) FROM stdin;
@@ -3123,14 +2762,14 @@ COPY users_groups (user_id, group_id) FROM stdin;
 
 
 --
--- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
 --
 
 SELECT pg_catalog.setval('users_id_seq', 4, true);
 
 
 --
--- Name: articles_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: articles_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY articles
@@ -3138,7 +2777,7 @@ ALTER TABLE ONLY articles
 
 
 --
--- Name: firewall_ip_address_unique; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: firewall_ip_address_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY firewall
@@ -3146,7 +2785,7 @@ ALTER TABLE ONLY firewall
 
 
 --
--- Name: firewall_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: firewall_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY firewall
@@ -3154,7 +2793,7 @@ ALTER TABLE ONLY firewall
 
 
 --
--- Name: glottos_countries_languages_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_countries_languages_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_countries_languages
@@ -3162,7 +2801,7 @@ ALTER TABLE ONLY glottos_countries_languages
 
 
 --
--- Name: glottos_countries_languages_regional_name_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_countries_languages_regional_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_countries_languages
@@ -3170,7 +2809,7 @@ ALTER TABLE ONLY glottos_countries_languages
 
 
 --
--- Name: glottos_countries_name_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_countries_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_countries
@@ -3178,7 +2817,7 @@ ALTER TABLE ONLY glottos_countries
 
 
 --
--- Name: glottos_countries_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_countries_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_countries
@@ -3186,7 +2825,7 @@ ALTER TABLE ONLY glottos_countries
 
 
 --
--- Name: glottos_domains_name_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_domains_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_domains
@@ -3194,7 +2833,7 @@ ALTER TABLE ONLY glottos_domains
 
 
 --
--- Name: glottos_domains_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_domains_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_domains
@@ -3202,7 +2841,7 @@ ALTER TABLE ONLY glottos_domains
 
 
 --
--- Name: glottos_languages_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_languages_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_languages
@@ -3210,7 +2849,7 @@ ALTER TABLE ONLY glottos_languages
 
 
 --
--- Name: glottos_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_messages
@@ -3218,7 +2857,7 @@ ALTER TABLE ONLY glottos_messages
 
 
 --
--- Name: glottos_translations_language_id_country_id_message_id_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_translations_language_id_country_id_message_id_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_translations
@@ -3226,7 +2865,7 @@ ALTER TABLE ONLY glottos_translations
 
 
 --
--- Name: glottos_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: glottos_translations_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY glottos_translations
@@ -3234,7 +2873,7 @@ ALTER TABLE ONLY glottos_translations
 
 
 --
--- Name: groups_name_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: groups_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY groups
@@ -3242,7 +2881,7 @@ ALTER TABLE ONLY groups
 
 
 --
--- Name: groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: groups_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY groups
@@ -3250,7 +2889,7 @@ ALTER TABLE ONLY groups
 
 
 --
--- Name: pages_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: pages_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY pages
@@ -3258,7 +2897,7 @@ ALTER TABLE ONLY pages
 
 
 --
--- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY posts
@@ -3266,7 +2905,7 @@ ALTER TABLE ONLY posts
 
 
 --
--- Name: sessions_id_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: sessions_id_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY sessions
@@ -3274,7 +2913,7 @@ ALTER TABLE ONLY sessions
 
 
 --
--- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: tags_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tags
@@ -3282,7 +2921,7 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: tags_post_id_tag_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: tags_post_id_tag_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tags
@@ -3290,7 +2929,7 @@ ALTER TABLE ONLY tags
 
 
 --
--- Name: throttle_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: throttle_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY throttle
@@ -3298,7 +2937,7 @@ ALTER TABLE ONLY throttle
 
 
 --
--- Name: tracker_agents_name_unique; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_agents_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_agents
@@ -3306,7 +2945,7 @@ ALTER TABLE ONLY tracker_agents
 
 
 --
--- Name: tracker_agents_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_agents_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_agents
@@ -3314,7 +2953,7 @@ ALTER TABLE ONLY tracker_agents
 
 
 --
--- Name: tracker_cookies_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_cookies_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_cookies
@@ -3322,7 +2961,7 @@ ALTER TABLE ONLY tracker_cookies
 
 
 --
--- Name: tracker_cookies_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_cookies_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_cookies
@@ -3330,7 +2969,7 @@ ALTER TABLE ONLY tracker_cookies
 
 
 --
--- Name: tracker_devices_kind_model_platform_platform_version_unique; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_devices_kind_model_platform_platform_version_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_devices
@@ -3338,7 +2977,7 @@ ALTER TABLE ONLY tracker_devices
 
 
 --
--- Name: tracker_devices_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_devices_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_devices
@@ -3346,7 +2985,7 @@ ALTER TABLE ONLY tracker_devices
 
 
 --
--- Name: tracker_domains_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_domains_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_domains
@@ -3354,7 +2993,7 @@ ALTER TABLE ONLY tracker_domains
 
 
 --
--- Name: tracker_errors_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_errors_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_errors
@@ -3362,7 +3001,7 @@ ALTER TABLE ONLY tracker_errors
 
 
 --
--- Name: tracker_log_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_log_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_log
@@ -3370,7 +3009,7 @@ ALTER TABLE ONLY tracker_log
 
 
 --
--- Name: tracker_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_paths
@@ -3378,7 +3017,7 @@ ALTER TABLE ONLY tracker_paths
 
 
 --
--- Name: tracker_queries_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_queries_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_queries
@@ -3386,7 +3025,7 @@ ALTER TABLE ONLY tracker_queries
 
 
 --
--- Name: tracker_query_arguments_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_query_arguments_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_query_arguments
@@ -3394,7 +3033,7 @@ ALTER TABLE ONLY tracker_query_arguments
 
 
 --
--- Name: tracker_referers_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_referers_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_referers
@@ -3402,7 +3041,7 @@ ALTER TABLE ONLY tracker_referers
 
 
 --
--- Name: tracker_route_path_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_route_path_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_route_path_parameters
@@ -3410,7 +3049,7 @@ ALTER TABLE ONLY tracker_route_path_parameters
 
 
 --
--- Name: tracker_route_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_route_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_route_paths
@@ -3418,7 +3057,7 @@ ALTER TABLE ONLY tracker_route_paths
 
 
 --
--- Name: tracker_routes_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_routes_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_routes
@@ -3426,7 +3065,7 @@ ALTER TABLE ONLY tracker_routes
 
 
 --
--- Name: tracker_sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_sessions
@@ -3434,7 +3073,7 @@ ALTER TABLE ONLY tracker_sessions
 
 
 --
--- Name: tracker_sessions_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_sessions_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY tracker_sessions
@@ -3442,7 +3081,7 @@ ALTER TABLE ONLY tracker_sessions
 
 
 --
--- Name: users_email_unique; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: users_email_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -3450,7 +3089,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: users_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: users_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY users_groups
@@ -3458,7 +3097,7 @@ ALTER TABLE ONLY users_groups
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -3466,112 +3105,112 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: articles_slug_index; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+-- Name: articles_slug_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX articles_slug_index ON articles USING btree (slug);
 
 
 --
--- Name: pages_name_en_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: pages_name_en_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX pages_name_en_index ON pages USING btree (name_en);
 
 
 --
--- Name: pages_name_pt_br_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: pages_name_pt_br_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX pages_name_pt_br_index ON pages USING btree (name_pt_br);
 
 
 --
--- Name: throttle_user_id_index; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+-- Name: throttle_user_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX throttle_user_id_index ON throttle USING btree (user_id);
 
 
 --
--- Name: tracker_domains_domain_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_domains_domain_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_domains_domain_index ON tracker_domains USING btree (domain);
 
 
 --
--- Name: tracker_paths_path_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_paths_path_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_paths_path_index ON tracker_paths USING btree (path);
 
 
 --
--- Name: tracker_queries_query_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_queries_query_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_queries_query_index ON tracker_queries USING btree (query);
 
 
 --
--- Name: tracker_query_arguments_query_id_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_query_arguments_query_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_query_arguments_query_id_index ON tracker_query_arguments USING btree (query_id);
 
 
 --
--- Name: tracker_referers_domain_id_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_referers_domain_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_referers_domain_id_index ON tracker_referers USING btree (domain_id);
 
 
 --
--- Name: tracker_referers_referer_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_referers_referer_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_referers_referer_index ON tracker_referers USING btree (referer);
 
 
 --
--- Name: tracker_route_path_parameters_route_path_id_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_route_path_parameters_route_path_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_route_path_parameters_route_path_id_index ON tracker_route_path_parameters USING btree (route_path_id);
 
 
 --
--- Name: tracker_route_paths_route_id_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_route_paths_route_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_route_paths_route_id_index ON tracker_route_paths USING btree (route_id);
 
 
 --
--- Name: tracker_routes_action_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_routes_action_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_routes_action_index ON tracker_routes USING btree (action);
 
 
 --
--- Name: tracker_routes_name_index; Type: INDEX; Schema: public; Owner: homestead; Tablespace: 
+-- Name: tracker_routes_name_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX tracker_routes_name_index ON tracker_routes USING btree (name);
 
 
 --
--- Name: users_activation_code_index; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+-- Name: users_activation_code_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX users_activation_code_index ON users USING btree (activation_code);
 
 
 --
--- Name: users_reset_password_code_index; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+-- Name: users_reset_password_code_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
 CREATE INDEX users_reset_password_code_index ON users USING btree (reset_password_code);
@@ -3585,6 +3224,258 @@ REVOKE ALL ON SCHEMA public FROM PUBLIC;
 REVOKE ALL ON SCHEMA public FROM postgres;
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- Name: articles; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE articles FROM PUBLIC;
+REVOKE ALL ON TABLE articles FROM antoniocarlos;
+GRANT ALL ON TABLE articles TO antoniocarlos;
+
+
+--
+-- Name: articles_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE articles_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE articles_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE articles_id_seq TO antoniocarlos;
+
+
+--
+-- Name: firewall; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE firewall FROM PUBLIC;
+REVOKE ALL ON TABLE firewall FROM antoniocarlos;
+GRANT ALL ON TABLE firewall TO antoniocarlos;
+
+
+--
+-- Name: firewall_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE firewall_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE firewall_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE firewall_id_seq TO antoniocarlos;
+
+
+--
+-- Name: glottos_countries; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE glottos_countries FROM PUBLIC;
+REVOKE ALL ON TABLE glottos_countries FROM antoniocarlos;
+GRANT ALL ON TABLE glottos_countries TO antoniocarlos;
+
+
+--
+-- Name: glottos_countries_languages; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE glottos_countries_languages FROM PUBLIC;
+REVOKE ALL ON TABLE glottos_countries_languages FROM antoniocarlos;
+GRANT ALL ON TABLE glottos_countries_languages TO antoniocarlos;
+
+
+--
+-- Name: glottos_countries_languages_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE glottos_countries_languages_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE glottos_countries_languages_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE glottos_countries_languages_id_seq TO antoniocarlos;
+
+
+--
+-- Name: glottos_domains; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE glottos_domains FROM PUBLIC;
+REVOKE ALL ON TABLE glottos_domains FROM antoniocarlos;
+GRANT ALL ON TABLE glottos_domains TO antoniocarlos;
+
+
+--
+-- Name: glottos_domains_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE glottos_domains_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE glottos_domains_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE glottos_domains_id_seq TO antoniocarlos;
+
+
+--
+-- Name: glottos_languages; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE glottos_languages FROM PUBLIC;
+REVOKE ALL ON TABLE glottos_languages FROM antoniocarlos;
+GRANT ALL ON TABLE glottos_languages TO antoniocarlos;
+
+
+--
+-- Name: glottos_messages; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE glottos_messages FROM PUBLIC;
+REVOKE ALL ON TABLE glottos_messages FROM antoniocarlos;
+GRANT ALL ON TABLE glottos_messages TO antoniocarlos;
+
+
+--
+-- Name: glottos_messages_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE glottos_messages_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE glottos_messages_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE glottos_messages_id_seq TO antoniocarlos;
+
+
+--
+-- Name: glottos_translations; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE glottos_translations FROM PUBLIC;
+REVOKE ALL ON TABLE glottos_translations FROM antoniocarlos;
+GRANT ALL ON TABLE glottos_translations TO antoniocarlos;
+
+
+--
+-- Name: glottos_translations_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE glottos_translations_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE glottos_translations_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE glottos_translations_id_seq TO antoniocarlos;
+
+
+--
+-- Name: groups; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE groups FROM PUBLIC;
+REVOKE ALL ON TABLE groups FROM antoniocarlos;
+GRANT ALL ON TABLE groups TO antoniocarlos;
+
+
+--
+-- Name: groups_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE groups_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE groups_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE groups_id_seq TO antoniocarlos;
+
+
+--
+-- Name: migrations; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE migrations FROM PUBLIC;
+REVOKE ALL ON TABLE migrations FROM antoniocarlos;
+GRANT ALL ON TABLE migrations TO antoniocarlos;
+
+
+--
+-- Name: password_reminders; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE password_reminders FROM PUBLIC;
+REVOKE ALL ON TABLE password_reminders FROM antoniocarlos;
+GRANT ALL ON TABLE password_reminders TO antoniocarlos;
+
+
+--
+-- Name: posts; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE posts FROM PUBLIC;
+REVOKE ALL ON TABLE posts FROM antoniocarlos;
+GRANT ALL ON TABLE posts TO antoniocarlos;
+
+
+--
+-- Name: posts_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE posts_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE posts_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE posts_id_seq TO antoniocarlos;
+
+
+--
+-- Name: sessions; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE sessions FROM PUBLIC;
+REVOKE ALL ON TABLE sessions FROM antoniocarlos;
+GRANT ALL ON TABLE sessions TO antoniocarlos;
+
+
+--
+-- Name: tags; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tags FROM PUBLIC;
+REVOKE ALL ON TABLE tags FROM antoniocarlos;
+GRANT ALL ON TABLE tags TO antoniocarlos;
+
+
+--
+-- Name: tags_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tags_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tags_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tags_id_seq TO antoniocarlos;
+
+
+--
+-- Name: throttle; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE throttle FROM PUBLIC;
+REVOKE ALL ON TABLE throttle FROM antoniocarlos;
+GRANT ALL ON TABLE throttle TO antoniocarlos;
+
+
+--
+-- Name: throttle_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE throttle_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE throttle_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE throttle_id_seq TO antoniocarlos;
+
+
+--
+-- Name: users; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE users FROM PUBLIC;
+REVOKE ALL ON TABLE users FROM antoniocarlos;
+GRANT ALL ON TABLE users TO antoniocarlos;
+
+
+--
+-- Name: users_groups; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE users_groups FROM PUBLIC;
+REVOKE ALL ON TABLE users_groups FROM antoniocarlos;
+GRANT ALL ON TABLE users_groups TO antoniocarlos;
+
+
+--
+-- Name: users_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE users_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE users_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE users_id_seq TO antoniocarlos;
 
 
 --
