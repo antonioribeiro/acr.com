@@ -118,6 +118,12 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 
 			    Route::get('messages/{messageId}/delete', array('as' => 'admin.languages.messages.delete', 'uses' => 'Admin\Languages@deleteMessage'));
 		    });
+
+		    Route::group(array('prefix' => 'tracker'), function()
+		    {
+			    Route::get('/', array('as' => 'admin.tracker.index', 'uses' => 'Admin\Tracker@index'));
+		    });
 	    });
+
 	});
 });

@@ -6,6 +6,7 @@
 			<li><a href="{{ URL::route('admin.languages.translate') }}"><i class="fa fa-table"></i> Translate</a></li>
 			<li><a href="{{ URL::route('admin.articles.index') }}"><i class="fa fa-table"></i> Articles</a></li>
 			<li><a href="{{ URL::route('admin.pages.index') }}"><i class="fa fa-table"></i> Pages</a></li>
+			<li><a href="{{ URL::route('admin.tracker.index') }}"><i class="fa fa-table"></i> Tracker</a></li>
 			<li><a href="{{ URL::route('logout.do') }}"><i class="fa fa-table"></i> Logout</a></li>
 		</ul>
 	</div>
