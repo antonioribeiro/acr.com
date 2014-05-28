@@ -14,7 +14,13 @@
 Route::any('test', function()
 {
 
-    dd( Route::current() );
+    $parser = new PragmaRX\Tracker\Support\UserAgentParser('/var/www/antoniocarlosribeiro.com/vendor/tobie/ua-parser');
+
+    d([
+    	$parser->originalUserAgent,
+	   	$parser->userAgent,
+	   	$parser->operatingSystem,
+    ]);
 
 });
 
