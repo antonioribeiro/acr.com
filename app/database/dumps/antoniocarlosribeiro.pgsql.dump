@@ -21,6 +21,8 @@ DROP INDEX public.tracker_referers_domain_id_index;
 DROP INDEX public.tracker_query_arguments_query_id_index;
 DROP INDEX public.tracker_queries_query_index;
 DROP INDEX public.tracker_paths_path_index;
+DROP INDEX public.tracker_geoip_longitude_index;
+DROP INDEX public.tracker_geoip_latitude_index;
 DROP INDEX public.tracker_domains_name_index;
 DROP INDEX public.throttle_user_id_index;
 DROP INDEX public.pages_name_pt_br_index;
@@ -39,6 +41,7 @@ ALTER TABLE ONLY public.tracker_query_arguments DROP CONSTRAINT tracker_query_ar
 ALTER TABLE ONLY public.tracker_queries DROP CONSTRAINT tracker_queries_pkey;
 ALTER TABLE ONLY public.tracker_paths DROP CONSTRAINT tracker_paths_pkey;
 ALTER TABLE ONLY public.tracker_log DROP CONSTRAINT tracker_log_pkey;
+ALTER TABLE ONLY public.tracker_geoip DROP CONSTRAINT tracker_geoip_pkey;
 ALTER TABLE ONLY public.tracker_errors DROP CONSTRAINT tracker_errors_pkey;
 ALTER TABLE ONLY public.tracker_domains DROP CONSTRAINT tracker_domains_pkey;
 ALTER TABLE ONLY public.tracker_devices DROP CONSTRAINT tracker_devices_pkey;
@@ -47,6 +50,7 @@ ALTER TABLE ONLY public.tracker_cookies DROP CONSTRAINT tracker_cookies_uuid_uni
 ALTER TABLE ONLY public.tracker_cookies DROP CONSTRAINT tracker_cookies_pkey;
 ALTER TABLE ONLY public.tracker_agents DROP CONSTRAINT tracker_agents_pkey;
 ALTER TABLE ONLY public.tracker_agents DROP CONSTRAINT tracker_agents_name_unique;
+ALTER TABLE ONLY public.tracker_accesses DROP CONSTRAINT tracker_accesses_pkey;
 ALTER TABLE ONLY public.throttle DROP CONSTRAINT throttle_pkey;
 ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_post_id_tag_unique;
 ALTER TABLE ONLY public.tags DROP CONSTRAINT tags_pkey;
@@ -78,11 +82,13 @@ ALTER TABLE public.tracker_query_arguments ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_queries ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_paths ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_log ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tracker_geoip ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_errors ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_domains ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_devices ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_cookies ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tracker_agents ALTER COLUMN id DROP DEFAULT;
+ALTER TABLE public.tracker_accesses ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.throttle ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.tags ALTER COLUMN id DROP DEFAULT;
 ALTER TABLE public.posts ALTER COLUMN id DROP DEFAULT;
@@ -115,6 +121,8 @@ DROP SEQUENCE public.tracker_paths_id_seq;
 DROP TABLE public.tracker_paths;
 DROP SEQUENCE public.tracker_log_id_seq;
 DROP TABLE public.tracker_log;
+DROP SEQUENCE public.tracker_geoip_id_seq;
+DROP TABLE public.tracker_geoip;
 DROP SEQUENCE public.tracker_errors_id_seq;
 DROP TABLE public.tracker_errors;
 DROP SEQUENCE public.tracker_domains_id_seq;
@@ -125,6 +133,8 @@ DROP SEQUENCE public.tracker_cookies_id_seq;
 DROP TABLE public.tracker_cookies;
 DROP SEQUENCE public.tracker_agents_id_seq;
 DROP TABLE public.tracker_agents;
+DROP SEQUENCE public.tracker_accesses_id_seq;
+DROP TABLE public.tracker_accesses;
 DROP SEQUENCE public.throttle_id_seq;
 DROP TABLE public.throttle;
 DROP SEQUENCE public.tags_id_seq;
@@ -700,6 +710,42 @@ ALTER SEQUENCE throttle_id_seq OWNED BY throttle.id;
 
 
 --
+-- Name: tracker_accesses; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_accesses (
+    id integer NOT NULL,
+    session_id character varying(255) NOT NULL,
+    path_info character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_accesses OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_accesses_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_accesses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_accesses_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_accesses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_accesses_id_seq OWNED BY tracker_accesses.id;
+
+
+--
 -- Name: tracker_agents; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
@@ -879,6 +925,52 @@ ALTER TABLE public.tracker_errors_id_seq OWNER TO antoniocarlos;
 --
 
 ALTER SEQUENCE tracker_errors_id_seq OWNED BY tracker_errors.id;
+
+
+--
+-- Name: tracker_geoip; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_geoip (
+    id integer NOT NULL,
+    latitude real,
+    longitude real,
+    country_code character varying(2),
+    country_code3 character varying(3),
+    country_name character varying(255),
+    region character varying(2),
+    city character varying(50),
+    postal_code character varying(20),
+    area_code integer,
+    dma_code real,
+    metro_code real,
+    continent_code character varying(2),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_geoip OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_geoip_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_geoip_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_geoip_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_geoip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_geoip_id_seq OWNED BY tracker_geoip.id;
 
 
 --
@@ -1191,7 +1283,7 @@ CREATE TABLE tracker_sessions (
     client_ip character varying(255) NOT NULL,
     referer_id integer,
     cookie_id integer,
-    last_activity timestamp without time zone NOT NULL,
+    geoip_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1359,6 +1451,13 @@ ALTER TABLE ONLY throttle ALTER COLUMN id SET DEFAULT nextval('throttle_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
 --
 
+ALTER TABLE ONLY tracker_accesses ALTER COLUMN id SET DEFAULT nextval('tracker_accesses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
 ALTER TABLE ONLY tracker_agents ALTER COLUMN id SET DEFAULT nextval('tracker_agents_id_seq'::regclass);
 
 
@@ -1388,6 +1487,13 @@ ALTER TABLE ONLY tracker_domains ALTER COLUMN id SET DEFAULT nextval('tracker_do
 --
 
 ALTER TABLE ONLY tracker_errors ALTER COLUMN id SET DEFAULT nextval('tracker_errors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_geoip ALTER COLUMN id SET DEFAULT nextval('tracker_geoip_id_seq'::regclass);
 
 
 --
@@ -2533,6 +2639,23 @@ SELECT pg_catalog.setval('throttle_id_seq', 1, false);
 
 
 --
+-- Data for Name: tracker_accesses; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY tracker_accesses (id, session_id, path_info, created_at, updated_at) FROM stdin;
+1	45	deploy	2014-01-21 23:03:09	2014-01-21 23:03:09
+2	46	deploy	2014-01-21 23:03:22	2014-01-21 23:03:22
+\.
+
+
+--
+-- Name: tracker_accesses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('tracker_accesses_id_seq', 2, true);
+
+
+--
 -- Data for Name: tracker_agents; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
@@ -2605,6 +2728,21 @@ COPY tracker_errors (id, code, message, created_at, updated_at) FROM stdin;
 --
 
 SELECT pg_catalog.setval('tracker_errors_id_seq', 1, false);
+
+
+--
+-- Data for Name: tracker_geoip; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
+--
+
+COPY tracker_geoip (id, latitude, longitude, country_code, country_code3, country_name, region, city, postal_code, area_code, dma_code, metro_code, continent_code, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: tracker_geoip_id_seq; Type: SEQUENCE SET; Schema: public; Owner: antoniocarlos
+--
+
+SELECT pg_catalog.setval('tracker_geoip_id_seq', 1, false);
 
 
 --
@@ -2731,7 +2869,7 @@ SELECT pg_catalog.setval('tracker_routes_id_seq', 1, false);
 -- Data for Name: tracker_sessions; Type: TABLE DATA; Schema: public; Owner: antoniocarlos
 --
 
-COPY tracker_sessions (id, uuid, user_id, device_id, agent_id, client_ip, referer_id, cookie_id, last_activity, created_at, updated_at) FROM stdin;
+COPY tracker_sessions (id, uuid, user_id, device_id, agent_id, client_ip, referer_id, cookie_id, geoip_id, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -2937,6 +3075,14 @@ ALTER TABLE ONLY throttle
 
 
 --
+-- Name: tracker_accesses_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_accesses
+    ADD CONSTRAINT tracker_accesses_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: tracker_agents_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
 --
 
@@ -2998,6 +3144,14 @@ ALTER TABLE ONLY tracker_domains
 
 ALTER TABLE ONLY tracker_errors
     ADD CONSTRAINT tracker_errors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_geoip_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_geoip
+    ADD CONSTRAINT tracker_geoip_pkey PRIMARY KEY (id);
 
 
 --
@@ -3137,6 +3291,20 @@ CREATE INDEX throttle_user_id_index ON throttle USING btree (user_id);
 --
 
 CREATE INDEX tracker_domains_name_index ON tracker_domains USING btree (name);
+
+
+--
+-- Name: tracker_geoip_latitude_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_geoip_latitude_index ON tracker_geoip USING btree (latitude);
+
+
+--
+-- Name: tracker_geoip_longitude_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_geoip_longitude_index ON tracker_geoip USING btree (longitude);
 
 
 --
@@ -3380,6 +3548,24 @@ GRANT ALL ON TABLE migrations TO antoniocarlos;
 
 
 --
+-- Name: pages; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE pages FROM PUBLIC;
+REVOKE ALL ON TABLE pages FROM antoniocarlos;
+GRANT ALL ON TABLE pages TO antoniocarlos;
+
+
+--
+-- Name: pages_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE pages_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE pages_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE pages_id_seq TO antoniocarlos;
+
+
+--
 -- Name: password_reminders; Type: ACL; Schema: public; Owner: antoniocarlos
 --
 
@@ -3449,6 +3635,24 @@ GRANT ALL ON TABLE throttle TO antoniocarlos;
 REVOKE ALL ON SEQUENCE throttle_id_seq FROM PUBLIC;
 REVOKE ALL ON SEQUENCE throttle_id_seq FROM antoniocarlos;
 GRANT ALL ON SEQUENCE throttle_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_accesses; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_accesses FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_accesses FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_accesses TO antoniocarlos;
+
+
+--
+-- Name: tracker_accesses_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_accesses_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_accesses_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_accesses_id_seq TO antoniocarlos;
 
 
 --

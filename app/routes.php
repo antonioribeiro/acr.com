@@ -14,13 +14,15 @@
 Route::any('test', function()
 {
 
-    $parser = new PragmaRX\Tracker\Support\UserAgentParser('/var/www/antoniocarlosribeiro.com/vendor/tobie/ua-parser');
+    $geo = new PragmaRX\Support\GeoIp();
 
-    d([
-    	$parser->originalUserAgent,
-	   	$parser->userAgent,
-	   	$parser->operatingSystem,
-    ]);
+//	dd($geo->byAddr('186.228.127.245'));
+//	dd($geo->byAddr('173.194.118.142'));
+	if($geo->byAddr('173.194.118.142'))
+	{
+		dd('yeah!!!');
+	}
+//	dd();
 
 });
 

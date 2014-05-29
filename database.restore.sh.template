@@ -1,4 +1,4 @@
-DB=antoniocarlosribeiro_staging
+export DB=antoniocarlosribeiro
 
 cp database.create-database.sql.template /tmp/database.create-database.sql
 cp database.create-database.sql /tmp

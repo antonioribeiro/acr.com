@@ -23,7 +23,8 @@
         "pragmarx/helpers": "dev-master",
         "pragmarx/sqli": "0.*",
         "itsgoingd/clockwork": "1.*",
-        "intervention/image": "1.*"
+        "intervention/image": "1.*",
+        "geoip/geoip": "~1.14"
     },
 
     "repositories": [

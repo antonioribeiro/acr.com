@@ -1,4 +1,4 @@
 CREATE USER antoniocarlos WITH PASSWORD '5f6gh4jkl;4389g7h6jk5l4;23hj2k87gh6jk5l4g78hj6k5';
-GRANT ALL PRIVILEGES ON DATABASE antoniocarlosribeiro_staging to antoniocarlos;
+GRANT ALL PRIVILEGES ON DATABASE antoniocarlosribeiro to antoniocarlos;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO antoniocarlos;
 GRANT ALL ON ALL TABLES IN SCHEMA public TO antoniocarlos;

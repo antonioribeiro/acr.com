@@ -19,6 +19,7 @@
 						<tr>
 							<th>ID</th>
 							<th>IP address</th>
+							<th>Country</th>
 							<th>User</th>
 							<th>Device</th>
 							<th>Browser</th>
@@ -30,9 +31,19 @@
 
 					<tbody>
 						@foreach($sessions as $session)
+							<?php
+								$countryName = $session->geoip ? $session->geoip->country_name : '';
+								$countryCode = strtolower($session->geoip ? $session->geoip->country_code : '');
+
+								$flag = $countryCode
+										? "<img src=\"\" class=\"flag flag-$countryCode\" alt=\"$countryName\" />"
+										: '';
+							?>
+
 							<tr>
 								<td>{{ $session->id }}</td>
 								<td>{{ $session->client_ip }}</td>
+								<td>{{ $flag }} {{ $countryName }}</td>
 								<td>{{ $session->user ? $session->user->email : 'guest' }}</td>
 								<td>{{ $session->device ? $session->device->kind . ' ' . ($session->device->model && $session->device->model !== 'unavailable' ? '['.$session->device->model.']' : '').' '.($session->device->platform ? ' ['.trim($session->device->platform.' '.$session->device->platform_version).']' : '').' '.($session->device->is_mobile ? ' [mobile device]' : '') : '' }}</td>
 								<td>{{ $session->agent && $session->agent ? $session->agent->browser . ' ('.$session->agent->browser_version.')' : '' }}</td>
