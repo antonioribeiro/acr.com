@@ -19,7 +19,7 @@
 						<tr>
 							<th>ID</th>
 							<th>IP address</th>
-							<th>Country</th>
+							<th>Country / City</th>
 							<th>User</th>
 							<th>Device</th>
 							<th>Browser</th>
@@ -32,7 +32,8 @@
 					<tbody>
 						@foreach($sessions as $session)
 							<?php
-								$countryName = $session->geoip ? $session->geoip->country_name : '';
+								$cityName = $session->geoip && $session->geoip->city ? ' - '.$session->geoip->city : '';
+								$countryName = ($session->geoip ? $session->geoip->country_name : '') . $cityName;
 								$countryCode = strtolower($session->geoip ? $session->geoip->country_code : '');
 
 								$flag = $countryCode
