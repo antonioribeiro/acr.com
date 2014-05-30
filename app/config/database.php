@@ -41,6 +41,17 @@ return array(
 			'schema'   => 'public',
 		],
 
+		'tracker' => [
+			'driver'   => 'pgsql',
+			'host'     => 'localhost',
+			'database' => 'tracker',
+			'username' => 'antoniocarlos',
+			'password' => 'foda-se',
+			'charset'  => 'utf8',
+			'prefix'   => '',
+			'schema'   => 'public',
+		],
+
 	],
 
 	/*

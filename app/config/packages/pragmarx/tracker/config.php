@@ -14,7 +14,7 @@ return array(
 
 	'do_no_track' => array('127.0.0.1'),
 
-	'connection' => null,
+	'connection' => 'tracker',
 
 	'tracker_session_name' => 'tracker_session',
 

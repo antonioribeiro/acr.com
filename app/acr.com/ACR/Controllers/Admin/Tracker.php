@@ -3,20 +3,21 @@
 use ACR\Controllers\Base;
 use View;
 use Input;
-use Tracker as T;
+use Tracker as TrackerInstance;
 
 class Tracker extends Base {
 
 	public function index()
 	{
 		return View::make('admin.tracker.index')
-				 ->with('sessions', T::lastSessions(60 * 24));
+				 ->with('sessions', TrackerInstance::lastSessions(60 * 24))
+				 ->with('pageViews', TrackerInstance::pageViews());
 	}
 	
 	public function log($uuid)
 	{
 		return View::make('admin.tracker.log')
-				 ->with('log', T::sessionLog($uuid));
+				 ->with('log', TrackerInstance::sessionLog($uuid));
 	}
 
 }
