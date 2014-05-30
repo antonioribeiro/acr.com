@@ -13,4 +13,10 @@ class Tracker extends Base {
 				 ->with('sessions', T::lastSessions(60 * 24));
 	}
 	
+	public function log($uuid)
+	{
+		return View::make('admin.tracker.log')
+				 ->with('log', T::sessionLog($uuid));
+	}
+
 }

@@ -42,7 +42,7 @@
 							?>
 
 							<tr>
-								<td>{{ $session->id }}</td>
+								<td>{{ link_to_route('admin.tracker.log', $session->id, ['uuid' => $session->uuid]) }}</td>
 								<td>{{ $session->client_ip }}</td>
 								<td>{{ $flag }} {{ $countryName }}</td>
 								<td>{{ $session->user ? $session->user->email : 'guest' }}</td>
