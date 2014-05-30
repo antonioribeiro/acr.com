@@ -55,7 +55,7 @@
 
 							<tr>
 								<td>{{ $entry->method }}</td>
-								<td>{{ $entry->routePath->route->name . '<br>' . $entry->routePath->route->action }}</td>
+								<td>{{ $entry->routePath ? $entry->routePath->route->name . '<br>' . $entry->routePath->route->action : $entry->path->path }}</td>
 								<td>{{ $route }}</td>
 								<td>{{ $query }}</td>
 								<td>{{ $entry->is_ajax ? 'true' : '' }}</td>
