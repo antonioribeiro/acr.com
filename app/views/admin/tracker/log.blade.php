@@ -33,15 +33,23 @@
 						@foreach($log as $entry)
 							<?php
 								$query = null;
-								foreach($entry->logQuery->arguments as $argument)
+
+								if ($entry->logQuery)
 								{
-									$query .= ($query ? '<br>' : '') . $argument->argument . '=' . $argument->value;
+									foreach($entry->logQuery->arguments as $argument)
+									{
+										$query .= ($query ? '<br>' : '') . $argument->argument . '=' . $argument->value;
+									}
 								}
 
 								$route = null;
-								foreach($entry->routePath->parameters as $parameter)
+
+								if ($entry->routePath)
 								{
-									$route .= ($route ? '<br>' : '') . $parameter->parameter . '=' . $parameter->value;
+									foreach($entry->routePath->parameters as $parameter)
+									{
+										$route .= ($route ? '<br>' : '') . $parameter->parameter . '=' . $parameter->value;
+									}
 								}
 							?>
 
