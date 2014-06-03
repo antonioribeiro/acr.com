@@ -2,30 +2,28 @@
 
 return array(
 
-	'create_tracker_alias' => true,
-
-	'tracker_alias' => 'Tracker',
-
 	'enabled' => true,
 
 	'log_enabled' => true,
 
-	'store_cookie_tracker' => true,
+	'log_sql_queries' => true,
 
-	'do_no_track' => array('127.0.0.1'),
+	'log_sql_queries_bindings' => true,
+
+	'do_not_log_sql_queries_connections' => array(
+		'tracker'
+	),
+
+	'do_not_track_ips' => array(
+		'127.0.0.1' /// range 127.0.0.1 - 127.0.0.255
+	),
+
+	'do_not_track_environments' => array(
+
+	),
 
 	'connection' => 'tracker',
 
-	'tracker_session_name' => 'tracker_session',
-
-	'tracker_cookie_name' => 'please_change_this_cookie_name',
-
-	'authentication_ioc_binding' => 'auth',
-
-	'authenticated_check_method' => 'check',
-
-	'authenticated_user_method' => 'user',
-
-	'authenticated_user_id_column' => 'id',
+	'user_model' => 'User',
 
 );

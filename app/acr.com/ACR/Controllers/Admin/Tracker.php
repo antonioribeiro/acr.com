@@ -10,7 +10,7 @@ class Tracker extends Base {
 	public function index()
 	{
 		return View::make('admin.tracker.index')
-				 ->with('sessions', TrackerInstance::lastSessions(60 * 24))
+				 ->with('sessions', TrackerInstance::lastSessions(60 * Input::get('hours') ?: 24))
 				 ->with('pageViews', TrackerInstance::pageViews());
 	}
 	

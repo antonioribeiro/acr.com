@@ -1,22 +1,52 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 Route::any('test', function()
 {
+	dd(DB::getSchemaBuilder());
+
+	$ips = ['127.0.0.1', '127.0.0.2/24', '192.168.1.0/24', '172.17.0.0/16', '192.168.0.0/255.255.255.0'];
+
+	echo "------- all false<br>";
+	echo ipv4_in_range('127.0.0.5', '127.0.0.1-127.0.0.4') ? 'true<br>' : 'false<br>';
+	echo ipv4_in_range('127.0.0.0', '127.0.0.1-127.0.0.4') ? 'true<br>' : 'false<br>';
+	echo ipv4_in_range('127.0.1.1', '127.0.0.0/24') ? 'true<br>' : 'false<br>';
+
+	echo "------- all true<br>";
+	echo ipv4_in_range('127.0.0.1', '127.0.0.1-127.0.0.4') ? 'true<br>' : 'false<br>';
+	echo ipv4_in_range('127.0.0.1', '127.0.0.0/24') ? 'true<br>' : 'false<br>';
+	echo ipv4_in_range('127.0.0.2', '127.0.0.0/24') ? 'true<br>' : 'false<br>';
+	echo ipv4_in_range('127.0.0.254', '127.0.0.0/24') ? 'true<br>' : 'false<br>';
+	echo ipv4_in_range('127.0.0.3', $ips) ? 'true<br>' : 'false<br>';
+	echo ipv4_in_range('127.0.0.3', $ips) ? 'true<br>' : 'false<br>';
+
+	echo ipv4_in_range('173.194.118.142', '0.0.0.0-255.255.255.255') ? 'true<br>' : 'false<br>';
+
+	dd(1);
+
+	echo net_match('127.0.0.1', '127.0.0.1') ? 'true<br>' : 'false<br>';
+	echo net_match('172.17.0.0/255.255.0.0', '172.17.1.100') ? 'true<br>' : 'false<br>';
+
+	$f = new IP4Filter($ips);
+
+	echo $f->check('127.0.0.1') ? 'true<br>' : 'false<br>';
+	echo $f->check('127.0.0.2') ? 'true<br>' : 'false<br>';
+	echo $f->check('127.0.0.3') ? 'true<br>' : 'false<br>';
+	echo $f->check('172.17.1.100') ? 'true<br>' : 'false<br>';
+	echo $f->check('192.168.3.1') ? 'true<br>' : 'false<br>';
+	echo $f->check('192.168.0.151') ? 'true<br>' : 'false<br>';
+	echo net_match('127.0.0.3', '172.17.1.100') ? 'true<br>' : 'false<br>';
+	dd($f);
+
+	list($long_startIp , $long_endIp) = getIpRange( "56.15.0.6/16" );
+	dd($long_startIp ." - ". $long_endIp);
 
     $geo = new PragmaRX\Support\GeoIp();
 
-//	dd($geo->byAddr('186.228.127.245'));
+	dd($geo);
+	dd($geo->byAddr('173.194.118.142'));
+//	dd($geo->byAddr('177.194.7.173'));
+	dd($geo->byAddr('186.228.127.245'));
+
 //	dd($geo->byAddr('173.194.118.142'));
 	if($geo->byAddr('173.194.118.142'))
 	{
@@ -129,7 +159,7 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 
 		    Route::group(array('prefix' => 'tracker'), function()
 		    {
-			    Route::get('/', array('as' => 'admin.tracker.index', 'uses' => 'Admin\Tracker@index'));
+			    Route::any('/', array('as' => 'admin.tracker.index', 'uses' => 'Admin\Tracker@index'));
 			    
 			    Route::get('log/{uuid}', array('as' => 'admin.tracker.log', 'uses' => 'Admin\Tracker@log'));
 		    });

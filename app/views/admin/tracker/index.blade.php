@@ -11,13 +11,13 @@
 @section('content')
 	<div class="row">
 		<div class="col-lg-10 col-md-offset-1">
-			<div class="table-responsive">
 
-				<?php
-					@foreach ($logCount as $element)
-						{{-- expr --}}
-					@endforeach
-				?>
+			{{ Form::open(['route' => 'admin.tracker.index']) }}
+				{{ Form::label('Hours') }}
+				{{ Form::text('hours', Input::get('hours') ?: 24) }}
+			{{ Form::close() }}
+
+			<div class="table-responsive">
 
 				<table class="table table-bordered table-striped">
 					<thead>
