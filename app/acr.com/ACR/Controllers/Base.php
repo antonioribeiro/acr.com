@@ -18,17 +18,4 @@ class Base extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
-
-	public function __construct()
-	{
-		// $this->beforeFilter(function()
-		// {
-		//     Event::fire('clockwork.controller.start');
-		// });
-
-		// $this->afterFilter(function()
-		// {
-		//     Event::fire('clockwork.controller.end');
-		// });
-	}
 }

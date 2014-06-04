@@ -2,7 +2,7 @@
 
 Route::any('test', function()
 {
-	return Firewall::blockAccess('you have been blocked', 400);
+	return Input::all();
 
 	dd(1);
 

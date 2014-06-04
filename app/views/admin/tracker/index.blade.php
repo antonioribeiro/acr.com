@@ -12,11 +12,6 @@
 	<div class="row">
 		<div class="col-lg-10 col-md-offset-1">
 
-			{{ Form::open(['route' => 'admin.tracker.index']) }}
-				{{ Form::label('Hours') }}
-				{{ Form::text('hours', Input::get('hours') ?: 24) }}
-			{{ Form::close() }}
-
 			@include('admin.tracker._partials.menu')
 
 			<div class="table-responsive">
