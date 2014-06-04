@@ -14,7 +14,7 @@
 
     <link href="{{ asset('assets/templates/sb-admin/css/sb-admin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/templates/sb-admin/font-awesome/css/font-awesome.min.css') }}">
-	<link rel="stylesheet" href="http://cdn.oesmith.co.uk/morris-0.4.3.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/layouts/admin/css/morris-0.4.3.min.css') }}">
 
 	  <style>
 		  body {
@@ -54,8 +54,9 @@
     <!-- JavaScript -->
     <script src="{{ asset('assets/templates/sb-admin/js/jquery-1.10.2.js') }}"></script>
     <script src="{{ asset('assets/templates/sb-admin/js/bootstrap.js') }}"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-    <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+
+    <script src="{{ asset('assets/layouts/admin/js/raphael-min.js') }}"></script>
+    <script src="{{ asset('assets/layouts/admin/js/morris-0.4.3.min.js') }}"></script>
 
     <script type="text/javascript">
     	@yield('inline-javascript')
@@ -112,14 +113,4 @@
 		</div> <!-- /container 
 
 	</body>
-</html> 
-
-
-
-
-
-
-
-
-
-
+</html>

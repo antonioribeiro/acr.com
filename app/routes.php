@@ -2,7 +2,9 @@
 
 Route::any('test', function()
 {
-	dd(DB::getSchemaBuilder());
+	return Firewall::blockAccess('you have been blocked', 400);
+
+	dd(1);
 
 	$ips = ['127.0.0.1', '127.0.0.2/24', '192.168.1.0/24', '172.17.0.0/16', '192.168.0.0/255.255.255.0'];
 
