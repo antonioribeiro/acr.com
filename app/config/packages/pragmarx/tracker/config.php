@@ -2,7 +2,7 @@
 
 return array(
 
-	'enabled' => true,
+	'enabled' => false,
 
 	'log_enabled' => true,
 

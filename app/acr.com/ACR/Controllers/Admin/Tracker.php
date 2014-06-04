@@ -12,9 +12,9 @@ class Tracker extends Base {
 	{
 		// parent::__construct();
 
-		Session::put('tracker.days', Input::get('days', 1));
+		Session::put('tracker.days', $this->getValue('days', 1));
 
-		Session::put('tracker.page', Input::get('page', 'main'));
+		Session::put('tracker.page', $this->getValue('page', 'main'));
 	}
 
 	public function index()
@@ -40,7 +40,7 @@ class Tracker extends Base {
 	public function main()
 	{
 		return View::make('admin.tracker.index')
-				 ->with('sessions', TrackerInstance::lastSessions(60 * 24 * Session::get('tracker.days')));
+				 ->with('sessions', TrackerInstance::lastSessions(60 * 24 * Session::get('tracker.zays')));
 	}
 		
 	public function log($uuid)
@@ -57,6 +57,20 @@ class Tracker extends Base {
 	public function apiPageviews()
 	{
 		return TrackerInstance::pageViews()->toJson();
+	}
+
+	public function getValue($variable, $default = null)
+	{
+		if (Input::has($variable))
+		{
+			$value = Input::get($variable);
+		}
+		else
+		{
+			$value = Session::get('tracker.'.$variable, $default);
+		}
+
+		return $value;
 	}
 
 }
