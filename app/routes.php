@@ -166,6 +166,8 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 			    Route::get('log/{uuid}', array('as' => 'admin.tracker.log', 'uses' => 'Admin\Tracker@log'));
 
 			    Route::get('api/pageviews', array('as' => 'admin.tracker.api.pageviews', 'uses' => 'Admin\Tracker@apiPageviews'));
+
+			    Route::get('api/pageviewsbycountry', array('as' => 'admin.tracker.api.pageviewsbycountry', 'uses' => 'Admin\Tracker@apiPageviewsByCountry'));
 		    });
 	    });
 	});

@@ -70,6 +70,13 @@ class Tracker extends Base {
 		)->toJson();
 	}
 
+	public function apiPageviewsByCountry()
+	{
+		return TrackerInstance::pageViewsByCountry(
+			60 * 24 * Session::get('tracker.days')
+		)->toJson();
+	}
+
 	public function getValue($variable, $default = null)
 	{
 		if (Input::has($variable))
