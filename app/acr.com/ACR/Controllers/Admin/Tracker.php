@@ -34,24 +34,33 @@ class Tracker extends Base {
 			default:
 				return $this->main();
 				break;
+
+			case 'users':
+			default:
+				return $this->users();
+				break;
 		}
 	}
 
 	public function main()
 	{
 		return View::make('admin.tracker.index')
-				 ->with('sessions', TrackerInstance::lastSessions(60 * 24 * Session::get('tracker.days')));
+				->with('sessions', TrackerInstance::lastSessions(60 * 24 * Session::get('tracker.days')))
+				->with('title', 'Last activity log');
 	}
 		
 	public function log($uuid)
 	{
 		return View::make('admin.tracker.log')
-				 ->with('log', TrackerInstance::sessionLog($uuid));
+				->with('log', TrackerInstance::sessionLog($uuid))
+				->with('title', 'Log');
 	}
 
 	public function summary()
 	{
-		return View::make('admin.tracker.summary');
+		return 
+			View::make('admin.tracker.summary')
+				->with('title', 'Summary');
 	}
 
 	public function apiPageviews()
@@ -73,6 +82,13 @@ class Tracker extends Base {
 		}
 
 		return $value;
+	}
+
+	public function users()
+	{
+		return View::make('admin.tracker.users')
+				->with('users', TrackerInstance::users(60 * 24 * Session::get('tracker.days')))
+				->with('title', 'Users');
 	}
 
 }

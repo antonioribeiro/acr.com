@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-lg-8">
 		<div class="panel panel-default">
-			<div class="panel-heading">Page</div>
+			<div class="panel-heading">Reports and Charts</div>
 			<div class="panel-body">
 				<div class="bs-example">
 					<ul class="nav nav-pills">
@@ -11,6 +11,10 @@
 
 						<li {{ Session::get('tracker.page') == 'summary' ? 'class="active"' : '' }}>
 							<a href="{{URL::route('admin.tracker.index')}}?page=summary">Summary</a>
+						</li>
+
+						<li {{ Session::get('tracker.page') == 'users' ? 'class="active"' : '' }}>
+							<a href="{{URL::route('admin.tracker.index')}}?page=users">Users</a>
 						</li>
 					</ul>
 				</div>

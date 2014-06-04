@@ -1,35 +1,9 @@
-@extends('admin.layout')
+@extends('admin.tracker.layout')
 
-@section('pageHeader')
-	<div class="row">
-		<div class="col-lg-12">
-		<h1>Tracker</h1>
-		</div>
-	</div>
-@stop
+@section('tracker.main.content')
 
-@section('content')
-	<div class="row">
-		<div class="col-lg-10 col-md-offset-1">
+	<div id="stats-container" style="height: 250px;"></div>
 
-			@include('admin.tracker._partials.menu')
-
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-primary">
-						<div class="panel-heading">
-							<h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Page hits</h3>
-						</div>
-						<div class="panel-body">
-							<div class="flot-chart">
-								<div id="stats-container" style="height: 250px;"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div><!-- /.row -->
-		</div>
-	</div>
 @stop
 
 @section('inline-javascript')
