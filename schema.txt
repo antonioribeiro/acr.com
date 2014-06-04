@@ -1,0 +1,1081 @@
+CREATE SCHEMA public;
+
+
+ALTER SCHEMA public OWNER TO postgres;
+
+--
+-- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON SCHEMA public IS 'standard public schema';
+
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: migrations; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE migrations (
+    migration character varying(255) NOT NULL,
+    batch integer NOT NULL
+);
+
+
+ALTER TABLE public.migrations OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_agents; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_agents (
+    id bigint NOT NULL,
+    name character varying(255) NOT NULL,
+    browser character varying(255) NOT NULL,
+    browser_version character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_agents OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_agents_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_agents_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_agents_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_agents_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_agents_id_seq OWNED BY tracker_agents.id;
+
+
+
+--
+-- Name: tracker_cookies; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_cookies (
+    id bigint NOT NULL,
+    uuid character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_cookies OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_cookies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_cookies_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_cookies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_cookies_id_seq OWNED BY tracker_cookies.id;
+
+
+--
+-- Name: tracker_devices; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_devices (
+    id bigint NOT NULL,
+    kind character varying(255) NOT NULL,
+    model character varying(255) NOT NULL,
+    platform character varying(255) NOT NULL,
+    platform_version character varying(255) NOT NULL,
+    is_mobile boolean NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_devices OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_devices_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_devices_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_devices_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_devices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_devices_id_seq OWNED BY tracker_devices.id;
+
+
+--
+-- Name: tracker_domains; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_domains (
+    id bigint NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_domains OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_domains_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_domains_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_domains_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_domains_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_domains_id_seq OWNED BY tracker_domains.id;
+
+
+--
+-- Name: tracker_errors; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_errors (
+    id bigint NOT NULL,
+    code character varying(255) NOT NULL,
+    message character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_errors OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_errors_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_errors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_errors_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_errors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_errors_id_seq OWNED BY tracker_errors.id;
+
+
+--
+-- Name: tracker_geoip; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_geoip (
+    id bigint NOT NULL,
+    latitude real,
+    longitude real,
+    country_code character varying(2),
+    country_code3 character varying(3),
+    country_name character varying(255),
+    region character varying(2),
+    city character varying(50),
+    postal_code character varying(20),
+    area_code bigint,
+    dma_code real,
+    metro_code real,
+    continent_code character varying(2),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_geoip OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_geoip_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_geoip_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_geoip_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_geoip_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_geoip_id_seq OWNED BY tracker_geoip.id;
+
+
+--
+-- Name: tracker_log; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_log (
+    id bigint NOT NULL,
+    session_id bigint NOT NULL,
+    path_id bigint NOT NULL,
+    query_id bigint,
+    method character varying(10) NOT NULL,
+    route_path_id bigint,
+    is_ajax boolean NOT NULL,
+    is_secure boolean NOT NULL,
+    is_json boolean NOT NULL,
+    wants_json boolean NOT NULL,
+    error_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_log OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_log_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_log_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_log_id_seq OWNED BY tracker_log.id;
+
+
+--
+-- Name: tracker_paths; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_paths (
+    id bigint NOT NULL,
+    path character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_paths OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_paths_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_paths_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_paths_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_paths_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_paths_id_seq OWNED BY tracker_paths.id;
+
+
+--
+-- Name: tracker_queries; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_queries (
+    id bigint NOT NULL,
+    query character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_queries OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_queries_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_queries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_queries_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_queries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_queries_id_seq OWNED BY tracker_queries.id;
+
+
+--
+-- Name: tracker_query_arguments; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_query_arguments (
+    id bigint NOT NULL,
+    query_id bigint NOT NULL,
+    argument character varying(255) NOT NULL,
+    value character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_query_arguments OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_query_arguments_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_query_arguments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_query_arguments_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_query_arguments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_query_arguments_id_seq OWNED BY tracker_query_arguments.id;
+
+
+--
+-- Name: tracker_referers; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_referers (
+    id bigint NOT NULL,
+    domain_id bigint NOT NULL,
+    url character varying(255) NOT NULL,
+    host character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_referers OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_referers_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_referers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_referers_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_referers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_referers_id_seq OWNED BY tracker_referers.id;
+
+
+--
+-- Name: tracker_route_path_parameters; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_route_path_parameters (
+    id bigint NOT NULL,
+    route_path_id bigint NOT NULL,
+    parameter character varying(255) NOT NULL,
+    value character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_route_path_parameters OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_route_path_parameters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_route_path_parameters_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_route_path_parameters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_route_path_parameters_id_seq OWNED BY tracker_route_path_parameters.id;
+
+
+--
+-- Name: tracker_route_paths; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_route_paths (
+    id bigint NOT NULL,
+    route_id character varying(255) NOT NULL,
+    path character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_route_paths OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_route_paths_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_route_paths_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_route_paths_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_route_paths_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_route_paths_id_seq OWNED BY tracker_route_paths.id;
+
+
+--
+-- Name: tracker_routes; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_routes (
+    id bigint NOT NULL,
+    name character varying(255) NOT NULL,
+    action character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_routes OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_routes_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_routes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_routes_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_routes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_routes_id_seq OWNED BY tracker_routes.id;
+
+
+--
+-- Name: tracker_sessions; Type: TABLE; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE TABLE tracker_sessions (
+    id bigint NOT NULL,
+    uuid character varying(255) NOT NULL,
+    user_id bigint,
+    device_id bigint NOT NULL,
+    agent_id bigint NOT NULL,
+    client_ip character varying(255) NOT NULL,
+    referer_id bigint,
+    cookie_id bigint,
+    geoip_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.tracker_sessions OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: antoniocarlos
+--
+
+CREATE SEQUENCE tracker_sessions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tracker_sessions_id_seq OWNER TO antoniocarlos;
+
+--
+-- Name: tracker_sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: antoniocarlos
+--
+
+ALTER SEQUENCE tracker_sessions_id_seq OWNED BY tracker_sessions.id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_agents ALTER COLUMN id SET DEFAULT nextval('tracker_agents_id_seq'::regclass);
+
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_cookies ALTER COLUMN id SET DEFAULT nextval('tracker_cookies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_devices ALTER COLUMN id SET DEFAULT nextval('tracker_devices_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_domains ALTER COLUMN id SET DEFAULT nextval('tracker_domains_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_errors ALTER COLUMN id SET DEFAULT nextval('tracker_errors_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+
+
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_geoip ALTER COLUMN id SET DEFAULT nextval('tracker_geoip_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_log ALTER COLUMN id SET DEFAULT nextval('tracker_log_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_paths ALTER COLUMN id SET DEFAULT nextval('tracker_paths_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_queries ALTER COLUMN id SET DEFAULT nextval('tracker_queries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_query_arguments ALTER COLUMN id SET DEFAULT nextval('tracker_query_arguments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_referers ALTER COLUMN id SET DEFAULT nextval('tracker_referers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_route_path_parameters ALTER COLUMN id SET DEFAULT nextval('tracker_route_path_parameters_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_route_paths ALTER COLUMN id SET DEFAULT nextval('tracker_route_paths_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_routes ALTER COLUMN id SET DEFAULT nextval('tracker_routes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+ALTER TABLE ONLY tracker_sessions ALTER COLUMN id SET DEFAULT nextval('tracker_sessions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+
+
+
+
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: antoniocarlos
+--
+
+
+
+--
+-- Name: tracker_agents_name_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_agents
+    ADD CONSTRAINT tracker_agents_name_unique UNIQUE (name);
+
+
+--
+-- Name: tracker_agents_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_agents
+    ADD CONSTRAINT tracker_agents_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_cookies_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_cookies
+    ADD CONSTRAINT tracker_cookies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_cookies_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_cookies
+    ADD CONSTRAINT tracker_cookies_uuid_unique UNIQUE (uuid);
+
+
+--
+-- Name: tracker_devices_kind_model_platform_platform_version_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_devices
+    ADD CONSTRAINT tracker_devices_kind_model_platform_platform_version_unique UNIQUE (kind, model, platform, platform_version);
+
+
+--
+-- Name: tracker_devices_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_devices
+    ADD CONSTRAINT tracker_devices_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_domains_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_domains
+    ADD CONSTRAINT tracker_domains_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_errors_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_errors
+    ADD CONSTRAINT tracker_errors_pkey PRIMARY KEY (id);
+
+
+
+
+
+--
+-- Name: tracker_geoip_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_geoip
+    ADD CONSTRAINT tracker_geoip_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_log_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_log
+    ADD CONSTRAINT tracker_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_paths
+    ADD CONSTRAINT tracker_paths_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_queries_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_queries
+    ADD CONSTRAINT tracker_queries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_query_arguments_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_query_arguments
+    ADD CONSTRAINT tracker_query_arguments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_referers_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_referers
+    ADD CONSTRAINT tracker_referers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_route_path_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_route_path_parameters
+    ADD CONSTRAINT tracker_route_path_parameters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_route_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_route_paths
+    ADD CONSTRAINT tracker_route_paths_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_routes_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_routes
+    ADD CONSTRAINT tracker_routes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_sessions
+    ADD CONSTRAINT tracker_sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tracker_sessions_uuid_unique; Type: CONSTRAINT; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+ALTER TABLE ONLY tracker_sessions
+    ADD CONSTRAINT tracker_sessions_uuid_unique UNIQUE (uuid);
+
+
+
+
+
+
+
+
+
+
+--
+-- Name: tracker_devices_kind_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_devices_kind_index ON tracker_devices USING btree (kind);
+
+
+--
+-- Name: tracker_devices_model_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_devices_model_index ON tracker_devices USING btree (model);
+
+
+--
+-- Name: tracker_devices_platform_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_devices_platform_index ON tracker_devices USING btree (platform);
+
+
+--
+-- Name: tracker_devices_platform_version_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_devices_platform_version_index ON tracker_devices USING btree (platform_version);
+
+
+--
+-- Name: tracker_domains_name_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_domains_name_index ON tracker_domains USING btree (name);
+
+
+--
+-- Name: tracker_errors_code_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_errors_code_index ON tracker_errors USING btree (code);
+
+
+--
+-- Name: tracker_errors_message_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_errors_message_index ON tracker_errors USING btree (message);
+
+
+--
+-- Name: tracker_geoip_latitude_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_geoip_latitude_index ON tracker_geoip USING btree (latitude);
+
+
+--
+-- Name: tracker_geoip_longitude_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_geoip_longitude_index ON tracker_geoip USING btree (longitude);
+
+
+--
+-- Name: tracker_paths_path_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_paths_path_index ON tracker_paths USING btree (path);
+
+
+--
+-- Name: tracker_queries_query_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_queries_query_index ON tracker_queries USING btree (query);
+
+
+--
+-- Name: tracker_query_arguments_query_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_query_arguments_query_id_index ON tracker_query_arguments USING btree (query_id);
+
+
+--
+-- Name: tracker_referers_domain_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_referers_domain_id_index ON tracker_referers USING btree (domain_id);
+
+
+--
+-- Name: tracker_referers_url_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_referers_url_index ON tracker_referers USING btree (url);
+
+
+--
+-- Name: tracker_route_path_parameters_route_path_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_route_path_parameters_route_path_id_index ON tracker_route_path_parameters USING btree (route_path_id);
+
+
+--
+-- Name: tracker_route_paths_route_id_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_route_paths_route_id_index ON tracker_route_paths USING btree (route_id);
+
+
+--
+-- Name: tracker_routes_action_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_routes_action_index ON tracker_routes USING btree (action);
+
+
+--
+-- Name: tracker_routes_name_index; Type: INDEX; Schema: public; Owner: antoniocarlos; Tablespace: 
+--
+
+CREATE INDEX tracker_routes_name_index ON tracker_routes USING btree (name);
+
+
+
+
+
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

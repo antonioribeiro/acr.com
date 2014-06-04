@@ -22,6 +22,12 @@ return array(
 
 	),
 
+	'do_not_log_events' => array(
+		'eloquent.*'
+	),
+
+	'log_events' => true,
+
 	'connection' => 'tracker',
 
 	'user_model' => 'User',

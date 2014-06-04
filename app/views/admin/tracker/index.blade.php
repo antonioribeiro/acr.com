@@ -17,6 +17,8 @@
 				{{ Form::text('hours', Input::get('hours') ?: 24) }}
 			{{ Form::close() }}
 
+			@include('admin.tracker._partials.menu')
+
 			<div class="table-responsive">
 
 				<table class="table table-bordered table-striped">
