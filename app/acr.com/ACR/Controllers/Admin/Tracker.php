@@ -40,7 +40,7 @@ class Tracker extends Base {
 	public function main()
 	{
 		return View::make('admin.tracker.index')
-				 ->with('sessions', TrackerInstance::lastSessions(60 * 24 * Session::get('tracker.zays')));
+				 ->with('sessions', TrackerInstance::lastSessions(60 * 24 * Session::get('tracker.days')));
 	}
 		
 	public function log($uuid)
@@ -56,7 +56,9 @@ class Tracker extends Base {
 
 	public function apiPageviews()
 	{
-		return TrackerInstance::pageViews()->toJson();
+		return TrackerInstance::pageViews(
+			60 * 24 * Session::get('tracker.days')
+		)->toJson();
 	}
 
 	public function getValue($variable, $default = null)
