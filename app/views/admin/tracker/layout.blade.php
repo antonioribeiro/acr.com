@@ -27,6 +27,4 @@
 			</div><!-- /.row -->
 		</div>
 	</div>
-
-	@yield('tracker.secondary.content')
 @stop
