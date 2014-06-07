@@ -3,10 +3,10 @@
 use ACR\Controllers\Base;
 use View;
 use Input;
-use Tracker as TrackerInstance;
+use Tracker;
 use Session;
 
-class Tracker extends Base {
+class UsageTracker extends Base {
 
 	public function __construct()
 	{
@@ -31,13 +31,19 @@ class Tracker extends Base {
 				break;
 
 			case 'main':
-			default:
 				return $this->main();
 				break;
 
 			case 'users':
-			default:
 				return $this->users();
+				break;
+
+			case 'events':
+				return $this->events();
+				break;
+
+			case 'errors':
+				return $this->errors();
 				break;
 		}
 	}
@@ -45,14 +51,14 @@ class Tracker extends Base {
 	public function main()
 	{
 		return View::make('admin.tracker.index')
-				->with('sessions', TrackerInstance::lastSessions(60 * 24 * Session::get('tracker.days')))
-				->with('title', 'Last activity log');
+				->with('sessions', Tracker::lastSessions(60 * 24 * Session::get('tracker.days')))
+				->with('title', 'Visits');
 	}
 		
 	public function log($uuid)
 	{
 		return View::make('admin.tracker.log')
-				->with('log', TrackerInstance::sessionLog($uuid))
+				->with('log', Tracker::sessionLog($uuid))
 				->with('title', 'Log');
 	}
 
@@ -60,19 +66,19 @@ class Tracker extends Base {
 	{
 		return 
 			View::make('admin.tracker.summary')
-				->with('title', 'Summary');
+				->with('title', 'Page Views Summary');
 	}
 
 	public function apiPageviews()
 	{
-		return TrackerInstance::pageViews(
+		return Tracker::pageViews(
 			60 * 24 * Session::get('tracker.days')
 		)->toJson();
 	}
 
 	public function apiPageviewsByCountry()
 	{
-		return TrackerInstance::pageViewsByCountry(
+		return Tracker::pageViewsByCountry(
 			60 * 24 * Session::get('tracker.days')
 		)->toJson();
 	}
@@ -94,8 +100,22 @@ class Tracker extends Base {
 	public function users()
 	{
 		return View::make('admin.tracker.users')
-				->with('users', TrackerInstance::users(60 * 24 * Session::get('tracker.days')))
+				->with('users', Tracker::users(60 * 24 * Session::get('tracker.days')))
 				->with('title', 'Users');
+	}
+
+	private function events()
+	{
+		return View::make('admin.tracker.events')
+			->with('events', Tracker::events(60 * 24 * Session::get('tracker.days')))
+			->with('title', 'Events');
+	}
+
+	public function errors()
+	{
+		return View::make('admin.tracker.errors')
+			->with('error_log', Tracker::errors(60 * 24 * Session::get('tracker.days')))
+			->with('title', 'Errors');
 	}
 
 }

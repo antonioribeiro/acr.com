@@ -6,15 +6,23 @@
 				<div class="bs-example">
 					<ul class="nav nav-pills">
 						<li {{ Session::get('tracker.page') == 'main' ? 'class="active"' : '' }}>
-							<a href="{{URL::route('admin.tracker.index')}}?page=main">Main</a>
+							<a href="{{URL::route('admin.tracker.index')}}?page=main">Visits</a>
 						</li>
 
 						<li {{ Session::get('tracker.page') == 'summary' ? 'class="active"' : '' }}>
-							<a href="{{URL::route('admin.tracker.index')}}?page=summary">Summary</a>
+							<a href="{{URL::route('admin.tracker.index')}}?page=summary">Page Views Summary</a>
 						</li>
 
 						<li {{ Session::get('tracker.page') == 'users' ? 'class="active"' : '' }}>
 							<a href="{{URL::route('admin.tracker.index')}}?page=users">Users</a>
+						</li>
+
+						<li {{ Session::get('tracker.page') == 'events' ? 'class="active"' : '' }}>
+							<a href="{{URL::route('admin.tracker.index')}}?page=events">Events</a>
+						</li>
+
+						<li {{ Session::get('tracker.page') == 'errors' ? 'class="active"' : '' }}>
+							<a href="{{URL::route('admin.tracker.index')}}?page=errors">Errors</a>
 						</li>
 					</ul>
 				</div>

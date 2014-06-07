@@ -9,7 +9,7 @@
 		<div class="col-lg-12">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-sun-o"></i> Hits by Country</h3>
+					<h3 class="panel-title"><i class="fa fa-sun-o"></i> Page Views by Country</h3>
 				</div>
 				<div class="panel-body">
 					<div id="pageViewsByCountry" style="height: 450px;"></div>
@@ -28,7 +28,7 @@
 			data: [0,0],
 			xkey: 'date',
 			ykeys: ['total'],
-			labels: ['Hits']
+			labels: ['Page Views']
 		});
 
 		$.ajax({
