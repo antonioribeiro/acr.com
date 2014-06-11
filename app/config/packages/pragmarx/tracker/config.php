@@ -23,7 +23,11 @@ return array(
 	),
 
 	'do_not_log_events' => array(
-		'eloquent.*'
+		'eloquent.*',
+		'illuminate.log',
+		'router.*',
+		'composing: *',
+		'creating: *',
 	),
 
 	'log_events' => true,
