@@ -16,7 +16,7 @@
 	<body>
 		<div class="header">
 			<div class="header menu">
-				<h1><a href="{{ URL::to('/') }}">Antonio Carlos Ribeiro</a></h1>
+				<h1><img class="photography-logo" src="{{ asset('assets/layouts/img/favicons') }}/favicon-32x32.png"> Antonio Carlos Ribeiro</h1>
 
 				<ul class="filter-items alignLeft">
 					<li class="filter-label active">{{g('All Photos')}}</li>
@@ -25,6 +25,25 @@
 						<li>•</li><li class="filter-label" data-filter=".category-{{$type}}">{{g(ucwords($type))}}</li>
 					@endforeach
 				</ul>
+			</div>
+
+			<div class="header-icons">
+				<a href="{{ URL::to('/') }}">
+					<i class="fa fa-home header-icon"></i>
+				</a>
+
+				<a target="_blank" href="http://github.com/antonioribeiro">
+					<i class="fa fa-github header-icon"></i>
+				</a>
+
+				<a target="_blank" href="http://twitter.com/iantonioribeiro">
+					<i class="fa fa-twitter header-icon"></i>
+				</a>
+
+				<a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro">
+					<i class="fa fa-stack-overflow header-icon"></i>
+				</a>
+
 			</div>
 		</div>
 

@@ -65,11 +65,7 @@
 
                                     &nbsp;
 
-                                    @if(Glottos::getLocaleAsText() == 'pt_BR')
-                                        <a target="_blank" href="http://twitter.com/iantoniocarlos">
-                                    @else
-                                        <a target="_blank" href="http://twitter.com/iantonioribeiro">
-                                    @endif
+                                    <a target="_blank" href="http://twitter.com/iantonioribeiro">
 
                                     <i class="fa fa-twitter"></i>
                                     </a>
