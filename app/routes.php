@@ -68,7 +68,7 @@ Route::any('test', function()
 
 Route::any('deploy', function()
 {
-    return Deeployer::run();
+//    return Deeployer::run();
 });
 
 Route::group(['namespace' => 'ACR\Controllers'], function()

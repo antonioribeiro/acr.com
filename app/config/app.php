@@ -114,7 +114,7 @@ return array(
 
 		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Firewall\Vendor\Laravel\ServiceProvider',
-		'PragmaRX\Deeployer\Vendor\Laravel\ServiceProvider',
+		// 'PragmaRX\Deeployer\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Steroids\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Helpers\Vendor\Laravel\ServiceProvider',
