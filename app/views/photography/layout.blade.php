@@ -2,9 +2,7 @@
 <html>
 	<head>
 		<title>Antonio Carlos Ribeiro - {{g('Photography')}}</title>
-		<meta content="text/html; charset=utf-8" http-equiv="content-type">
-		<meta name="description" content="Antonio Carlos Ribeiro - Photography" />
-		<meta name="keywords" content="javascript, dynamic, grid, layout, jquery plugin, fit zone"/>
+
 		<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/style2.css') }}" />
 		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 		<script type='text/javascript' src='{{ asset('assets/layouts/photography/js/jquery.min.js') }}'></script>

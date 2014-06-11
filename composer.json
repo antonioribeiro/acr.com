@@ -18,7 +18,6 @@
         "michelf/php-markdown": "1.4.*@dev",
         "pragmarx/glottos": "dev-master",
         "pragmarx/firewall": "dev-master",
-        "pragmarx/deeployer": "dev-master",
         "pragmarx/steroids": "dev-master",
         "pragmarx/tracker": "dev-master",
         "pragmarx/helpers": "dev-master",

@@ -3,11 +3,6 @@
 @section('html-head')
 	<title>Antonio Carlos Ribeiro.com</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Page description" />
-	<meta name="author" content="Antonio Carlos Ribeiro" />
-	<meta charset="utf-8" />
-
 	<link href="{{ asset('assets/layouts/home/css/bootstrap.min.css') }}" rel="stylesheet" media="screen" />
 	<link href="{{ asset('assets/layouts/home/css/font-awesome.min.css') }}" rel="stylesheet" media="screen" />
 	<link href="{{ asset('assets/layouts/home/css/flexslider.css') }}" rel="stylesheet" media="screen" />
@@ -58,7 +53,7 @@
 
 							<div class="nav-collapse collapse">
 								<ul class="nav pull-right" id="navigation">
-									<li title="Technology"><a data-nav="scroll" href="{{ URL::to('/') }}/#/tech"><i class="fa fa-laptop"></i></a></li>
+									<li title="Technology"><a data-nav="scroll" href="{{ URL::to('/') }}/technology"><i class="fa fa-laptop"></i></a></li>
 									<li title="Photography"><a data-nav="scroll" href="{{ URL::to('/') }}/photography"><i class="fa fa-camera"></i></a></li>
 									<li title="Github"><a data-nav="scroll" href="https://github.com/antonioribeiro"><i class="fa fa-github"></i></a></li>
 

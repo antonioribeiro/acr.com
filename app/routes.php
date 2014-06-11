@@ -6,7 +6,7 @@ Route::any('test', function()
 {
 	$m = new MobileDetect();
 
-	dd($m->isRobot());
+	dd($m->device());
 
 	dd(Agent::isPositivoTablet());
 
