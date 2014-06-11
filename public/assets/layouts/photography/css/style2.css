@@ -278,6 +278,7 @@ img.photo {
 
 .brick {
     background-color: black;
+    border: 4px solid white;
     float: left;
     cursor: default;
     overflow: hidden;

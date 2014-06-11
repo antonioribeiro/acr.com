@@ -31,7 +31,7 @@
 		<div class="layout">
 			<div id="freewall" class="free-wall">
 				@foreach($photos as $key => $photo)
-					<div class="brick size{{$photo['size']}} category-all category-{{$photo['type']}}" style="border: 1px solid white;">
+					<div class="brick size{{$photo['size']}} category-all category-{{$photo['type']}}">
 						<img class="photo" src="{{$photo['thumbnail']}}" data-original="{{$photo['photography']}}"/>
 						<div class="imageOverlay"><i class="fa fa-camera camera"></i></div>
 					</div>
