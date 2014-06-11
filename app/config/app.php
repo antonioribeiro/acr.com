@@ -119,6 +119,8 @@ return array(
 		'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Helpers\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\SqlI\Vendor\Laravel\ServiceProvider',
+
+		'Jenssegers\Agent\AgentServiceProvider',
 	),
 
 	/*
@@ -187,6 +189,8 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Stopwatch' 	  => 'Onigoetz\Profiler\Stopwatch',
 		'Clockwork'       => 'Clockwork\Support\Laravel\Facade',
+
+		'Agent'            => 'Jenssegers\Agent\Facades\Agent',
 	),
 
 );

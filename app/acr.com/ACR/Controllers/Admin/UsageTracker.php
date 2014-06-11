@@ -51,10 +51,10 @@ class UsageTracker extends Base {
 	public function main()
 	{
 		return View::make('admin.tracker.index')
-				->with('sessions', Tracker::lastSessions(60 * 24 * Session::get('tracker.days')))
+				->with('sessions', Tracker::sessions(60 * 24 * Session::get('tracker.days')))
 				->with('title', 'Visits');
 	}
-		
+
 	public function log($uuid)
 	{
 		return View::make('admin.tracker.log')

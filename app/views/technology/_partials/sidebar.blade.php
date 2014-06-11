@@ -1,4 +1,4 @@
-<p><a href="{{ URL::route('technology') }}/bio">{{g('Bio')}}</a></p>
+<p><a href="{{ URL::route('technology') }}/about me">{{g('About Me')}}</a></p>
 
 <p><a href="{{ URL::route('technology') }}/php">{{g('PHP & Laravel')}}</a></p>
 

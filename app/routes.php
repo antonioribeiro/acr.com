@@ -1,7 +1,15 @@
 <?php
 
+use PragmaRX\Tracker\Support\MobileDetect;
+
 Route::any('test', function()
 {
+	$m = new MobileDetect();
+
+	dd($m->isRobot());
+
+	dd(Agent::isPositivoTablet());
+
 	return Input::all();
 
 	dd(1);
