@@ -359,6 +359,7 @@ a:visited {
     width: 170px;
     padding-right: 15px;
     opacity: 0.2;
+    z-index: 2;
 }
 
 ul li {
