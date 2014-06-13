@@ -36,4 +36,13 @@ return array(
 
 	'user_model' => 'User',
 
+	'log_geoip' => false,
+	'log_user_agents' => false,
+	'log_users' => false,
+	'log_devices' => false,
+	'log_referers' => false,
+	'log_paths' => false,
+	'log_queries' => false,
+	'log_routes' => false,
+
 );
