@@ -11,6 +11,11 @@
 	<script type="text/javascript" src="{{ asset('assets/vendor/bower/freewall/freewall.js') }}"></script>
 	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
+	<script type='text/javascript' src="{{ asset('assets/vendor/bower/jquery/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/vendor/bower/fancybox/source/jquery.fancybox.js') }}"></script>
+
+	<link href="{{ asset('assets/vendor/bower/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet">
+
 	<script type="text/javascript" src="{{ asset('assets/layouts/photography/js/jquery.lightbox.min.js') }}"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/jquery.lightbox.css') }}" />
 </head>
@@ -59,7 +64,7 @@
 		@foreach($photos as $key => $photo)
 			<div class="brick size{{$photo['size']}} category-all category-{{$photo['type']}}">
 				<div class="img-container" data-original="{{$photo['photography']}}">
-					<img class="photo" src="{{$photo['thumbnail']}}" />
+					<img class="photo fancybox" src="{{$photo['thumbnail']}}" />
 					<div class="imageOverlay"><i class="fa fa-picture-o"></i></div>
 				</div>
 			</div>
@@ -68,15 +73,49 @@
 </div>
 
 <script type="text/javascript">
-	$("div.img-container").click(function() {
-		$.lightbox(jQuery(this).attr('data-original'));
+	jQuery(document).ready(function()
+	{
+		jQuery('div.img-container').on('click', function()
+		{
+			jQuery.fancybox( {href : jQuery(this).attr('data-original')} );
+
+			return false;
+		});
+
+		jQuery('div.img-container').on('touchstart', function()
+		{
+			showPicture = true;
+
+			return false;
+		});
+
+		jQuery('div.img-container').on('touchend', function()
+		{
+			if(showPicture)
+			{
+				jQuery.fancybox( {href : jQuery(this).attr('data-original')} );
+			}
+
+			return false;
+		});
+
+		jQuery('div.img-container').on('touchmove', function()
+		{
+			showPicture = false;
+
+			return false;
+		});
+
+		jQuery(window).on('mousemove', function() {
+			jQuery('body').attr('rel', Math.random());
+		});
 	});
 
-	$('.imageOverlay').hover(function(){
-		$(this).prev('img').toggleClass('hovered');
+	jQuery('.imageOverlay').hover(function(){
+		//jQuery(this).prev('img').toggleClass('hovered');
 	});
 
-	$(function() {
+	jQuery(function() {
 		var wall = new freewall("#freewall");
 
 		wall.reset({
@@ -90,9 +129,9 @@
 			}
 		});
 
-		$(".filter-label").click(function() {
-			$(".filter-label").removeClass("active");
-			var filter = $(this).addClass('active').data('filter');
+		jQuery(".filter-label").click(function() {
+			jQuery(".filter-label").removeClass("active");
+			var filter = jQuery(this).addClass('active').data('filter');
 			if (filter) {
 				wall.filter(filter);
 			} else {
