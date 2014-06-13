@@ -4,6 +4,10 @@ use PragmaRX\Tracker\Support\MobileDetect;
 
 Route::any('test', function()
 {
+	$model = new \PragmaRX\Tracker\Vendor\Laravel\Models\Session;
+
+	dd($model);
+
 	$m = new MobileDetect();
 
 	dd($m->device());

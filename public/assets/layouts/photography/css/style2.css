@@ -303,21 +303,24 @@ img.photo:hover {
     text-align: center;
     width: 100%;
     display:none;
+    color: white;
+}
+
+.hovered {
+    background-color: #FFFFFF;
+    opacity: 0.4;
+    -webkit-filter: grayscale(100%);
 }
 
 .brick:hover .imageOverlay {
-    display:block;
-}
-
-.camera {
-    font-size: 2em;
+    display: block;
+    font-size: 3em;
 }
 
 .header {
     top: 0px;
     left: -10px;
-    height: 75px;
-    padding: 15px;
+    height: 113px;
     background: #FFFFFF;
     margin: auto;
 }
@@ -327,18 +330,34 @@ img.photo:hover {
     z-index: 2;
     opacity: 0.8;
     background: #FFFFFF;
-    width: 99%;
+    width: 100%;
     color: black;
     overflow:auto;
 }
 
 .header .menu .left {
     float: left;
+    padding: 15px;
 }
 
 .header .menu .right {
     float: right;
-    background-color: #ffff00;
+    font-size: 2em;
+}
+
+.header .menu .right .icons {
+    line-height: 113px;
+    padding-right: 15px;
+}
+
+.header .menu .right .icons .icon {
+    padding-right: 10px;
+    opacity: 0.4;
+}
+
+.header .menu .right .icons .icon:hover {
+    opacity: 1;
+    color: #9d0000;
 }
 
 ul li {

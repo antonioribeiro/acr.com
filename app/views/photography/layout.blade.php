@@ -17,35 +17,39 @@
 
 <body>
 <div class="header">
-	<div class="menu">
-		<div class="left">
-			<h1><img class="photography-logo" src="{{ asset('assets/layouts/img/favicons') }}/favicon-32x32.png"> Antonio Carlos Ribeiro</h1>
+	<div class="translucid">
+		<div class="menu">
+			<div class="left">
+				<h1><img class="photography-logo" src="{{ asset('assets/layouts/img/favicons') }}/favicon-32x32.png"> Antonio Carlos Ribeiro</h1>
 
-			<ul class="filter-items alignLeft">
-				<li class="filter-label active">{{g('All Photos')}}</li>
+				<ul class="filter-items alignLeft">
+					<li class="filter-label active">{{g('All Photos')}}</li>
 
-				@foreach($types as $type)
-				<li>•</li><li class="filter-label" data-filter=".category-{{$type}}">{{g(ucwords($type))}}</li>
-				@endforeach
-			</ul>
-		</div>
+					@foreach($types as $type)
+					<li>•</li><li class="filter-label" data-filter=".category-{{$type}}">{{g(ucwords($type))}}</li>
+					@endforeach
+				</ul>
+			</div>
 
-		<div class="right">
-			<a href="{{ URL::to('/') }}">
-				<i class="fa fa-home header-icon"></i>
-			</a>
+			<div class="right">
+				<div class="icons">
+					<a href="{{ URL::to('/') }}" title="{{ g('Go to main site') }}">
+						<i class="fa fa-home icon"></i>
+					</a>
 
-			<a target="_blank" href="http://github.com/antonioribeiro">
-				<i class="fa fa-github header-icon"></i>
-			</a>
+					<a target="_blank" href="http://github.com/antonioribeiro" title="Github">
+						<i class="fa fa-github icon"></i>
+					</a>
 
-			<a target="_blank" href="http://twitter.com/iantonioribeiro">
-				<i class="fa fa-twitter header-icon"></i>
-			</a>
+					<a target="_blank" href="http://twitter.com/iantonioribeiro" title="Twitter">
+						<i class="fa fa-twitter icon"></i>
+					</a>
 
-			<a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro">
-				<i class="fa fa-stack-overflow header-icon"></i>
-			</a>
+					<a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro" title="StackOverflow">
+						<i class="fa fa-stack-overflow icon"></i>
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -53,17 +57,23 @@
 <div class="layout">
 	<div id="freewall" class="free-wall">
 		@foreach($photos as $key => $photo)
-		<div class="brick size{{$photo['size']}} category-all category-{{$photo['type']}}">
-			<img class="photo" src="{{$photo['thumbnail']}}" data-original="{{$photo['photography']}}"/>
-			<div class="imageOverlay"><i class="fa fa-camera camera"></i></div>
-		</div>
+			<div class="brick size{{$photo['size']}} category-all category-{{$photo['type']}}">
+				<div class="img-container" data-original="{{$photo['photography']}}">
+					<img class="photo" src="{{$photo['thumbnail']}}" />
+					<div class="imageOverlay"><i class="fa fa-picture-o"></i></div>
+				</div>
+			</div>
 		@endforeach
 	</div>
 </div>
 
 <script type="text/javascript">
-	$("img.photo").click(function() {
+	$("div.img-container").click(function() {
 		$.lightbox(jQuery(this).attr('data-original'));
+	});
+
+	$('.imageOverlay').hover(function(){
+		$(this).prev('img').toggleClass('hovered');
 	});
 
 	$(function() {
