@@ -7,16 +7,22 @@ View::composer('*', function($view)
 	if (is_null($lang) || $lang === 'en')
 	{
 		$title = 'português';
+		$hint = 'ver em português';
 		$url = URL::route('language.select', ['pt-br']);
+		$flag = 'brazil';
 	}
 	else
 	{
 		$title = 'english';
+		$hint = 'view in english';
 		$url = URL::route('language.select', ['en']);
+		$flag = 'england';
 	}
 
     $view->with('switchLanguageTitle', $title);
  	$view->with('switchLanguageUrl', $url);
+	$view->with('switchLanguageHint', $hint);
+	$view->with('switchLanguageFlag', $flag);
 });
 
 View::composer('*', function($view)

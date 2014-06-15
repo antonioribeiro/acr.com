@@ -87,11 +87,6 @@ a {
     color: white;
 }
 
-a:hover {
-    color: white;
-    opacity: 0.9;
-}
-
 a:visited {
     color: black;
 }
@@ -156,14 +151,9 @@ html, body {
     padding: 15px;
 }
 
-.filter-label.active,
-.filter-label.active:hover {
+.filter-label.active {
     background: #9d0000;
     color: #FFFFFF;
-}
-
-.filter-label:hover {
-    background: rgb(180, 180, 180);
 }
 
 .size2-2 {
@@ -287,12 +277,6 @@ img.photo {
     background-position: center;
 }
 
-img.photo:hover {
-    background-color: #FFFFFF;
-    opacity: 0.4;
-    -webkit-filter: grayscale(100%);
-}
-
 .photography-logo {
     height: 25px;
 }
@@ -310,11 +294,6 @@ img.photo:hover {
     background-color: #FFFFFF;
     opacity: 0.4;
     -webkit-filter: grayscale(100%);
-}
-
-.brick:hover .imageOverlay {
-    display: block;
-    font-size: 3em;
 }
 
 .header {
@@ -351,13 +330,9 @@ img.photo:hover {
 }
 
 .header .menu .right .icons .icon {
+    color: #000000;
     padding-right: 10px;
     opacity: 0.4;
-}
-
-.header .menu .right .icons .icon:hover {
-    opacity: 1;
-    color: #9d0000;
 }
 
 ul li {
@@ -373,9 +348,38 @@ ul.filter-items {
     padding: 6px 0px;
 }
 
+a:hover {
+    color: white;
+    opacity: 0.9;
+}
+
 li.filter-label:hover {
     color: black;
     cursor: hand;
     cursor: pointer;
 }
 
+.filter-label.active:hover {
+    background: #9d0000;
+    color: #FFFFFF;
+}
+
+.filter-label:hover {
+    background: rgb(180, 180, 180);
+}
+
+img.photo:hover {
+    background-color: #FFFFFF;
+    opacity: 0.4;
+    -webkit-filter: grayscale(100%);
+}
+
+.brick:hover .imageOverlay {
+    display: block;
+    font-size: 3em;
+}
+
+.header .menu .right .icons .icon:hover {
+    opacity: 1;
+    color: #9d0000;
+}

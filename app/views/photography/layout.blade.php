@@ -53,6 +53,10 @@
 					<a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro" title="StackOverflow">
 						<i class="fa fa-stack-overflow icon"></i>
 					</a>
+
+					<a href="{{ $switchLanguageUrl }}" title="{{ $switchLanguageHint }}">
+						<img class="icon" src="{{ asset('assets/custom/img/'.$switchLanguageFlag.'-bw.png') }}">
+					</a>
 				</div>
 			</div>
 		</div>
@@ -85,8 +89,6 @@
 		jQuery('div.img-container').on('touchstart', function()
 		{
 			showPicture = true;
-
-			return false;
 		});
 
 		jQuery('div.img-container').on('touchend', function()
@@ -94,25 +96,19 @@
 			if(showPicture)
 			{
 				jQuery.fancybox( {href : jQuery(this).attr('data-original')} );
-			}
 
-			return false;
+				return false;
+			}
 		});
 
 		jQuery('div.img-container').on('touchmove', function()
 		{
 			showPicture = false;
-
-			return false;
 		});
 
 		jQuery(window).on('mousemove', function() {
 			jQuery('body').attr('rel', Math.random());
 		});
-	});
-
-	jQuery('.imageOverlay').hover(function(){
-		//jQuery(this).prev('img').toggleClass('hovered');
 	});
 
 	jQuery(function() {
