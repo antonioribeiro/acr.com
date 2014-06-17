@@ -10,6 +10,8 @@ return array(
 
 	'log_sql_queries_bindings' => true,
 
+	'connection' => 'tracker',
+
 	'do_not_log_sql_queries_connections' => array(
 		'tracker'
 	),
@@ -32,17 +34,15 @@ return array(
 
 	'log_events' => true,
 
-	'connection' => 'tracker',
-
 	'user_model' => 'User',
 
-	'log_geoip' => false,
-	'log_user_agents' => false,
-	'log_users' => false,
-	'log_devices' => false,
-	'log_referers' => false,
-	'log_paths' => false,
-	'log_queries' => false,
-	'log_routes' => false,
+	'log_geoip' => true,
+	'log_user_agents' => true,
+	'log_users' => true,
+	'log_devices' => true,
+	'log_referers' => true,
+	'log_paths' => true,
+	'log_queries' => true,
+	'log_routes' => true,
 
 );
