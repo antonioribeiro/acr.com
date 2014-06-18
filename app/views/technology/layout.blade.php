@@ -47,7 +47,7 @@
             <div class="navbar navbar-default navbar-fixed-top" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="brand" href="{{ URL::route('technology') }}">Antonio Carlos Ribeiro - Technology & Information</a>
+                        <a class="brand" href="{{ URL::route('technology') }}">Antonio Carlos Ribeiro - {{ g('Technology') }}</a>
                     </div>
                     <div class="navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
