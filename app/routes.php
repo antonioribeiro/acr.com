@@ -2,38 +2,13 @@
 
 use PragmaRX\Tracker\Support\MobileDetect;
 
-function valid_ipv4_cidr_mask($cidr, $must_cidr = false)
-{
-	if (!preg_match("/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}(\/[0-9]{1,2})?$/", $cidr))
-	{
-		$return = false;
-	} else
-	{
-		$return = true;
-	}
-	if ($return == true)
-	{
-		$parts = explode("/", $cidr);
-		$ip = $parts[0];
-		$netmask = $parts[1];
-		$octets = explode(".", $ip);
-		foreach ($octets as $octet)
-		{
-			if ($octet > 255)
-			{
-				$return = false;
-			}
-		}
-		if ((($netmask != "") && ($netmask > 32) && !$must_cidr) || (($netmask == ""||$netmask > 32) && $must_cidr))
-		{
-			$return = false;
-		}
-	}
-	return $return;
-}
-
 Route::any('test', function()
 {
+	if (session_status() == PHP_SESSION_NONE)
+	{
+		session_start();
+	}
+
 	$range = Input::get('range');
 
 	$geo = new PragmaRX\Support\GeoIp();

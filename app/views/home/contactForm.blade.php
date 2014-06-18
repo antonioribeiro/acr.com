@@ -57,8 +57,13 @@
                         <br><br>
                         <div class="row-fluid black">
                             <h1 class="big-h2-heading text-center">
-                                <a data-nav="scroll" title="Technology" href="{{ URL::route('technology') }}"><i class="fa fa-file-text-o"></i></a>
+                                <a data-nav="scroll" title="Technology" href="{{ URL::route('technology') }}"><i class="fa fa-laptop"></i></a>
+
                                 &nbsp;&nbsp;&nbsp;
+
+	                            <a data-nav="scroll" href="{{ URL::to('/') }}/photography"><i class="fa fa-camera"></i></a>
+
+	                            &nbsp;&nbsp;&nbsp;
 
                                 <a data-nav="scroll" title="Github" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>
 
