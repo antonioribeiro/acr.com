@@ -1,6 +1,7 @@
 <?php namespace ACR\Controllers;
 
 use ACR\Models\Page;
+use ACR\Services\Markdown;
 use Controller;
 use View;
 use Event;
@@ -14,7 +15,8 @@ class StaticPages extends Base {
 
 		$lang = strtolower(Glottos::getLocaleAsText());
 
-		return View::make('technology.pages.static')->with('page', $page->{'text_'.$lang});
+		return View::make('technology.pages.static')
+				->with('page', Markdown::transform($page->{'text_'.$lang}));
 	}
 
 }
