@@ -10,7 +10,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/templates/sb-admin/css/bootstrap.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/layouts/admin/css/flags.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/layouts/admin/css/flags.css') }}" rel="stylesheet">
 
     <link href="{{ asset('assets/templates/sb-admin/css/sb-admin.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/templates/sb-admin/font-awesome/css/font-awesome.min.css') }}">

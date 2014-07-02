@@ -4,6 +4,10 @@ return array(
 
 	'enabled' => true,
 
+	'stats_panel_enabled' => true,
+
+	'stats_route_before_filter' => 'auth',
+
 	'log_enabled' => true,
 
 	'log_sql_queries' => true,
