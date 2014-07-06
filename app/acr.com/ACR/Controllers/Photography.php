@@ -2,6 +2,7 @@
 
 use File;
 use Illuminate\Support\Facades\Response;
+use Intervention;
 use View;
 use App;
 use Event;
@@ -28,13 +29,21 @@ class Photography extends Base {
 	{
 		$file = public_path()."/".$this->assetsPath."/$type/$file";
 
-		\Log::info($file);
-
 		if (File::exists($file))
 		{
 			Event::fire('photography.api.download', $file);
 
-			return Response::download($file);
+			$response = Response::download($file);
+
+			$response->setTtl(600);
+
+			$response->expire(600);
+
+			$response->setExpires(\Carbon\Carbon::now()->addDay(30));
+
+			$response->setSharedMaxAge(600);
+
+			return $response;
 		}
 
 		App::abort(404);

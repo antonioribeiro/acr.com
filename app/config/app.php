@@ -123,6 +123,8 @@ return array(
 		'PragmaRX\SqlI\Vendor\Laravel\ServiceProvider',
 
 		'Jenssegers\Agent\AgentServiceProvider',
+
+		'Intervention\Image\ImageServiceProvider',
 	),
 
 	/*
@@ -192,7 +194,9 @@ return array(
 		'Stopwatch' 	  => 'Onigoetz\Profiler\Stopwatch',
 		'Clockwork'       => 'Clockwork\Support\Laravel\Facade',
 
-		'Agent'            => 'Jenssegers\Agent\Facades\Agent',
+		'Agent'           => 'Jenssegers\Agent\Facades\Agent',
+
+		'Intervention'    => 'Intervention\Image\Facades\Image',
 	),
 
 );
