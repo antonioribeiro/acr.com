@@ -12,12 +12,9 @@
 	<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 	<script type='text/javascript' src="{{ asset('assets/vendor/bower/jquery/jquery.min.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/vendor/bower/fancybox/source/jquery.fancybox.js') }}"></script>
 
-	<link href="{{ asset('assets/vendor/bower/fancybox/source/jquery.fancybox.css') }}" rel="stylesheet">
-
-	<script type="text/javascript" src="{{ asset('assets/layouts/photography/js/jquery.lightbox.min.js') }}"></script>
-	<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/jquery.lightbox.css') }}" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.css">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.js"></script>
 </head>
 
 <body>
@@ -77,13 +74,21 @@
 </div>
 
 <script type="text/javascript">
+	Shadowbox.init({
+		skipSetup: true,
+		players: ["img"]
+	});
+
 	jQuery(document).ready(function()
 	{
 		jQuery('div.img-container').on('click', function()
 		{
-			jQuery.fancybox( {href : jQuery(this).attr('data-original')} );
+			Shadowbox.open({
+				content: jQuery(this).attr('data-original'),
+				player: 'img'
+			});
 
-			return false;
+			console.log('show!');
 		});
 
 		jQuery('div.img-container').on('touchstart', function()
@@ -95,7 +100,10 @@
 		{
 			if(showPicture)
 			{
-				jQuery.fancybox( {href : jQuery(this).attr('data-original')} );
+				Shadowbox.open({
+					content: jQuery(this).attr('data-original'),
+					player: 'img'
+				});
 
 				return false;
 			}
@@ -106,7 +114,8 @@
 			showPicture = false;
 		});
 
-		jQuery(window).on('mousemove', function() {
+		jQuery(window).on('mousemove', function()
+		{
 			jQuery('body').attr('rel', Math.random());
 		});
 	});

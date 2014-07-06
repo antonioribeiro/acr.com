@@ -2,6 +2,8 @@
 
 return array(
 
+	'photograpy.assets.path' => 'assets/layouts/photography/img/photos',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode

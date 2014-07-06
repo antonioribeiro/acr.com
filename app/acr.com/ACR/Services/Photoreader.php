@@ -4,6 +4,7 @@ namespace ACR\Services;
 use File;
 use Intervention\Image\Image;
 use URL;
+use Config;
 
 class Photoreader {
 
@@ -15,9 +16,9 @@ class Photoreader {
 
 	public function __construct()
 	{
-		$assetsPath = '/assets/layouts/photography/img/photos';
+		$assetsPath = Config::get('app.photograpy.assets.path');
 
-		$this->htmlPath = URL::to('/') . $assetsPath;
+		$this->htmlPath = URL::to('/') . '/' . $assetsPath;
 
 		$this->systemPath = public_path() . '/' . $assetsPath;
 
@@ -71,7 +72,7 @@ class Photoreader {
 				{
 					$this->checkThumbnail($type, $photo, $thumbnailName);
 
-					$link = $this->htmlPath.'/'.$type.'/'.basename($photo);
+					$link = route('photography.api.download', ['type' => $type, 'photo' => basename($photo)]);
 
 					$thumbLink = $this->htmlPath.'/'.$type.'/'.$thumbnailName;
 
