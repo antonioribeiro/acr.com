@@ -74,9 +74,9 @@ class Photoreader {
 
 					$link = route('photography.api.download', ['type' => $type, 'photo' => basename($photo)]);
 
-					// $thumbLink = $this->htmlPath.'/'.$type.'/'.$thumbnailName;
+					$thumbLink = $this->htmlPath.'/'.$type.'/'.$thumbnailName;
 
-					$thumbLink = route('photography.api.download.thumbnail', ['type' => $type, 'photo' => basename($photo)]);
+//					$thumbLink = route('photography.api.download.thumbnail', ['type' => $type, 'photo' => basename($photo)]);
 
 					$info = getimagesize($photo);
 
@@ -109,7 +109,7 @@ class Photoreader {
 
 		$file = $this->systemPath . '/' . $type . '/' . basename($photo);
 
-		// $this->generateThumbnail($file, $thumbFile);
+		$this->generateThumbnail($file, $thumbFile);
 	}
 
 	private function generateThumbnail($file, $thumbFile)
@@ -118,21 +118,11 @@ class Photoreader {
 		{
 			$image = Intervention::make($file);
 
-			if ($image->height() > $image->width())
-			{
-				$height = 750;
-				$width = 500;
-			}
-			else
-			{
-				$height = 500;
-				$width = 750;
-			}
+			$width = $image->height() > $image->width()
+						? 750
+						: 500;
 
-			// Crop to portrait
-			// $image->crop($image->height / 1.5, $image->height)->resize(300, null, true)->save($thumbFile);
-
-			$image->resize($width, $height, true)->save($thumbFile);
+			$image->widen($width)->save($thumbFile);
 		}
 	}
 

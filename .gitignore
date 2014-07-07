@@ -15,3 +15,4 @@ app/storage
 .idea
 .env*
 _ide_helper.php
+*thumb.jpg
