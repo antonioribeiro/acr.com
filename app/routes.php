@@ -123,10 +123,17 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 		Route::group(array('prefix' => 'api'), function()
 		{
 			Route::get('download/{type}/{photo}',
-			           array(
-							'as' => 'photography.api.download',
-							'uses' => 'Photography@apiDownload'
-						)
+	           array(
+					'as' => 'photography.api.download',
+					'uses' => 'Photography@apiDownloadPhoto'
+				)
+			);
+
+			Route::get('download/thumbnail/{type}/{photo}',
+	           array(
+		           'as' => 'photography.api.download.thumbnail',
+		           'uses' => 'Photography@apiDownloadThumbnail'
+	           )
 			);
 		});
 	});

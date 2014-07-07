@@ -25,7 +25,7 @@ class Photography extends Base {
 					->with('types', $this->reader->getTypes());
 	}
 
-	public function apiDownload($type, $file)
+	public function apiDownloadPhoto($type, $file)
 	{
 		$file = public_path()."/".$this->assetsPath."/$type/$file";
 
@@ -48,4 +48,51 @@ class Photography extends Base {
 
 		App::abort(404);
 	}
+
+	public function apiDownloadThumbnail($type, $file)
+	{
+		if ($image = $this->getImage($type, $file, true))
+		{
+			return $this->makeResponse($image);
+		}
+
+		App::abort(404);
+	}
+
+	private function getImage($type, $file, $thumbnail = false)
+	{
+		$file = public_path()."/".$this->assetsPath."/$type/$file";
+
+		if (File::exists($file))
+		{
+			return
+				Intervention::cache(function($image) use ($file, $thumbnail)
+				{
+					$image = $image->make($file);
+
+					if ($thumbnail)
+					{
+						$image->widen(750);
+					}
+				});
+		}
+
+		return false;
+	}
+
+	private function makeResponse($image)
+	{
+		$response = Response::make($image, 200, ['Content-Type' => 'image/jpeg']);
+
+		$response->setTtl(600);
+
+		$response->expire(600);
+
+		$response->setExpires(\Carbon\Carbon::now()->addDay(30));
+
+		$response->setSharedMaxAge(600);
+
+		return $response;
+	}
+
 }
