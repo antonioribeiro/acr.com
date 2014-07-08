@@ -9,7 +9,7 @@ class CreateArticleLanguages extends Migration {
      *
      * @return void
      */
-    public function up()
+    public function migrateUp()
     {
         Schema::table('articles', function($table)
         {
@@ -25,7 +25,7 @@ class CreateArticleLanguages extends Migration {
      *
      * @return void
      */
-    public function down()
+    public function migrateDown()
     {
         Schema::table('articles', function($table)
         {

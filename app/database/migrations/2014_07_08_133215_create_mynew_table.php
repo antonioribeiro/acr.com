@@ -10,7 +10,7 @@ class CreateMynewTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function migrateUp()
 	{
 		//
 	}
@@ -20,7 +20,7 @@ class CreateMynewTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function migrateDown()
 	{
 		//
 	}

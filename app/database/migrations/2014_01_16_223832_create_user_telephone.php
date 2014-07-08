@@ -9,7 +9,7 @@ class CreateUserTelephone extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function migrateUp()
 	{
         Schema::table('users', function($table)
         {
@@ -22,7 +22,7 @@ class CreateUserTelephone extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function migrateDown()
 	{
         Schema::table('users', function($table)
         {

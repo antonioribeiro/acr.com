@@ -9,7 +9,7 @@ class Users extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function migrateUp()
 	{
 		$user = new User;
 		$user->first_name = 'Antonio Carlos';
@@ -24,7 +24,7 @@ class Users extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function migrateDown()
 	{
 	}
 
