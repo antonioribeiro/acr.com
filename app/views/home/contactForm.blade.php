@@ -65,21 +65,21 @@
 
 	                            &nbsp;&nbsp;&nbsp;
 
-                                <a data-nav="scroll" title="Github" href="http://github.com/antonioribeiro"><i class="fa fa-github"></i></a>
+	                            <a data-nav="scroll" title="Linkedin" href="https://br.linkedin.com/in/iantonioribeiro/" target="_blank"><i class="fa fa-linkedin"></i></a>
+
+	                            &nbsp;&nbsp;&nbsp;
+
+                                <a data-nav="scroll" title="Github" href="http://github.com/antonioribeiro" target="_blank"><i class="fa fa-github"></i></a>
 
                                 &nbsp;&nbsp;&nbsp;
 
-                                @if(Glottos::getLocaleAsText() == 'pt_BR')
-                                    <a data-nav="scroll" title="Twitter" href="http://twitter.com/iantoniocarlos">
-                                @else
-                                    <a data-nav="scroll" title="Twitter" href="http://twitter.com/iantonioribeiro">
-                                @endif
-                                <i class="fa fa-twitter"></i>
+                                <a data-nav="scroll" title="Twitter" href="http://twitter.com/iantonioribeiro" target="_blank">
+	                                <i class="fa fa-twitter"></i>
                                 </a>
 
                                 &nbsp;&nbsp;&nbsp;
 
-                                <a data-nav="scroll" title="Stack Overflow" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>
+                                <a data-nav="scroll" title="Stack Overflow" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro" target="_blank"><i class="fa fa-stack-overflow"></i></a>
                             </h1>
                         </div>
                     </div>

@@ -57,22 +57,27 @@
                                         <i class="fa fa-home"></i>
                                     </a>
 
-                                    &nbsp;
+	                                &nbsp;
 
-                                    <a target="_blank" href="http://github.com/antonioribeiro">
+	                                <a target="_blank" href="https://br.linkedin.com/in/iantonioribeiro/" title="Linkedin">
+		                                <i class="fa fa-linkedin"></i>
+	                                </a>
+
+	                                &nbsp;
+
+                                    <a target="_blank" href="http://github.com/antonioribeiro" title="Github">
                                         <i class="fa fa-github"></i>
                                     </a>
 
                                     &nbsp;
 
-                                    <a target="_blank" href="http://twitter.com/iantonioribeiro">
-
-                                    <i class="fa fa-twitter"></i>
+                                    <a target="_blank" href="http://twitter.com/iantonioribeiro" title="Twitter">
+	                                    <i class="fa fa-twitter"></i>
                                     </a>
 
                                     &nbsp;
 
-                                    <a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a>
+                                    <a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow" title="StackOverflow"></i></a>
                                 </h2>
                             </li>
                         </ul>

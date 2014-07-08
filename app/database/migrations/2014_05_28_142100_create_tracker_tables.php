@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use PragmaRX\Support\Migration;
 
 use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 

@@ -39,6 +39,10 @@
 							<i class="fa fa-home icon"></i>
 						</a>
 
+						<a target="_blank" href="https://br.linkedin.com/in/iantonioribeiro/" title="Linkedin">
+							<i class="fa fa-linkedin icon"></i>
+						</a>
+
 						<a target="_blank" href="http://github.com/antonioribeiro" title="Github">
 							<i class="fa fa-github icon"></i>
 						</a>
