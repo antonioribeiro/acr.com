@@ -30,8 +30,9 @@ class Pages extends Base {
 
 	public function saveInput($page)
 	{
-		$page->name_en = Input::get('name_en');
-		$page->name_pt_br = Input::get('name_pt_br');
+		$page->name = Input::get('name');
+		$page->title_en = Input::get('title_en');
+		$page->title_pt_br = Input::get('title_pt_br');
 		$page->text_en = Input::get('text_en');
 		$page->text_pt_br = Input::get('text_pt_br');
 

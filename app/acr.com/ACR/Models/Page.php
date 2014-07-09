@@ -22,4 +22,20 @@ class Page extends Eloquent {
 		return Markdown::transform($this->text_pt_br);
 	}
 
+	public static function getForRendering()
+	{
+		return [
+
+			[
+				'name' => 'summary',
+				'title' => Page::where('name', 'summary')->first()->getAttribute('title_'.strtolower(Glottos::getLocaleAsText()))
+			],
+
+			[
+				'name' => 'projects',
+				'title' => Page::where('name', 'projects')->first()->getAttribute('title_'.strtolower(Glottos::getLocaleAsText()))
+			],
+
+		];
+	}
 }

@@ -2,6 +2,7 @@
 
 use View;
 use ACR\Models\Article;
+use ACR\Models\Page;
 use Glottos;
 use Redirect;
 
@@ -16,7 +17,9 @@ class Technology extends Base {
 
 	public function index()
 	{
+
 		return View::make('technology.pages.index')
+				->with('pages', Page::getForRendering())
 				->with('articles', Article::published()->orderBy('created_at', 'desc')->get())
 				->with('pageTitle', g('Recent Articles'))
 				->with('summary', true);
