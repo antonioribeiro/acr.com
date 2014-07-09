@@ -3,11 +3,13 @@
   "dependencies": {
     "jquery": "~2.0.3",
     "bootstrap": "~3.0.3",
-    "font-awesome": "~4.0.3",
+    "font-awesome": "4.*",
     "google-code-prettify": "~1.0.1",
     "pirobox": "*",
     "lightbox": "~2.7.1",
     "freewall": "*",
-    "fancybox": "~2.1.5"
+    "fancybox": "~2.1.5",
+    "jquery.lazyload": "~1.9.3",
+    "echojs": "~1.6.0"
   }
 }

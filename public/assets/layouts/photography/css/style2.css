@@ -34,9 +34,9 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-    background: #000000;
+    background: #dddddd;
     line-height: 1.125em;
-    color: black;
+    color: white;
     max-width: 1920px;
     margin: 0 auto;
     position: relative;
@@ -256,6 +256,10 @@ html, body {
     height: 160px;
 }
 
+.img-container {
+    position: relative;
+}
+
 img.photo {
     max-width: 100%;
     -webkit-transition: all 0.5s ease;
@@ -264,21 +268,8 @@ img.photo {
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
     -webkit-overflow-scrolling: touch;
-}
-
-.brick {
-    background-color: black;
-    float: left;
-    cursor: default;
-    overflow: hidden;
-    border: 4px solid white;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.photography-logo {
-    height: 25px;
+    display: block;
+    margin: 0px auto;
 }
 
 .imageOverlay {
@@ -288,6 +279,20 @@ img.photo {
     width: 100%;
     display:none;
     color: white;
+}
+
+.brick {
+    background-color: white;
+    float: left;
+    cursor: default;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.photography-logo {
+    height: 25px;
 }
 
 .hovered {
@@ -321,7 +326,7 @@ img.photo {
 
 .header .menu .right {
     float: right;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .header .menu .right .icons {

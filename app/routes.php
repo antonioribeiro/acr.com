@@ -120,6 +120,8 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 	{
 		Route::get('/', array('as' => 'photography', 'uses' => 'Photography@index'));
 
+		Route::post('contact/send', array('as' => 'photography.contact.send', 'uses' => 'Photography@send'));
+
 		Route::group(array('prefix' => 'api'), function()
 		{
 			Route::get('download/{type}/{photo}',
