@@ -10,7 +10,7 @@ return array(
 
 	'log_enabled' => true,
 
-	'log_sql_queries' => true,
+	'log_sql_queries' => false,
 
 	'log_sql_queries_bindings' => true,
 
