@@ -15,8 +15,9 @@
 			<div class="table-responsive">
 
 				{{ Form::model($page, ['method' => $method, 'url' => $url]) }}
-					{{ FormField::name_en() }}
-					{{ FormField::name_pt_br() }}
+					{{ FormField::name() }}
+					{{ FormField::title_en() }}
+					{{ FormField::title_pt_br() }}
 
 					<div class="row">
 						<div class="col-lg-6">

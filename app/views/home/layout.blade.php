@@ -55,19 +55,16 @@
 								<ul class="nav pull-right" id="navigation">
 									<li title="Technology"><a data-nav="scroll" href="{{ URL::to('/') }}/technology"><i class="fa fa-laptop"></i></a></li>
 									<li title="Photography"><a data-nav="scroll" href="{{ URL::to('/') }}/photography"><i class="fa fa-camera"></i></a></li>
-									<li title="Github"><a data-nav="scroll" href="https://github.com/antonioribeiro"><i class="fa fa-github"></i></a></li>
+									<li title="Linkedin"><a data-nav="scroll" href="https://br.linkedin.com/in/iantonioribeiro/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+									<li title="Github"><a data-nav="scroll" href="https://github.com/antonioribeiro" target="_blank"><i class="fa fa-github"></i></a></li>
 
 									<li title="Twitter">
-										@if(Glottos::getLocaleAsText() == 'pt_BR')
-											<a data-nav="scroll" href="https://twitter.com/iantoniocarlos">
-										@else
-											<a data-nav="scroll" href="https://twitter.com/iantonioribeiro">
-										@endif
-										<i class="fa fa-twitter"></i>
+										<a data-nav="scroll" href="https://twitter.com/iantonioribeiro" target="_blank">
+											<i class="fa fa-twitter"></i>
 										</a>
 									</li>
 
-									<li title="Stack Overflow"><a data-nav="scroll" href="https://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow"></i></a></li>
+									<li title="Stack Overflow"><a data-nav="scroll" href="https://stackoverflow.com/users/1959747/antonio-carlos-ribeiro" target="_blank"><i class="fa fa-stack-overflow"></i></a></li>
 									<li title="Contact"><a data-nav="scroll" href="{{ URL::to('/') }}/#/contact"><i class="fa fa-envelope"></i></a></li>
 								</ul>
 							</div>

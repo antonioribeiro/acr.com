@@ -24,7 +24,7 @@
 			<table class="table table-bordered table-striped">
 				@foreach($pages as $page)
 				<tr>
-					<td>{{ $page->name_en }}
+					<td>{{ $page->title_en }}
 						<div  class="pull-right">
 							<a href="{{ URL::route('admin.pages.edit', $page->id) }}">
 								<button type="button" class="btn btn-primary btn-xs">

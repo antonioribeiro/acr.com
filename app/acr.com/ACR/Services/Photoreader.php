@@ -2,8 +2,9 @@
 namespace ACR\Services;
 
 use File;
-use Intervention\Image\Image;
+use Intervention;
 use URL;
+use Config;
 
 class Photoreader {
 
@@ -15,9 +16,9 @@ class Photoreader {
 
 	public function __construct()
 	{
-		$assetsPath = '/assets/layouts/photography/img/photos';
+		$assetsPath = Config::get('app.photograpy.assets.path');
 
-		$this->htmlPath = URL::to('/') . $assetsPath;
+		$this->htmlPath = URL::to('/') . '/' . $assetsPath;
 
 		$this->systemPath = public_path() . '/' . $assetsPath;
 
@@ -71,9 +72,11 @@ class Photoreader {
 				{
 					$this->checkThumbnail($type, $photo, $thumbnailName);
 
-					$link = $this->htmlPath.'/'.$type.'/'.basename($photo);
+					$link = route('photography.api.download', ['type' => $type, 'photo' => basename($photo)]);
 
 					$thumbLink = $this->htmlPath.'/'.$type.'/'.$thumbnailName;
+
+//					$thumbLink = route('photography.api.download.thumbnail', ['type' => $type, 'photo' => basename($photo)]);
 
 					$info = getimagesize($photo);
 
@@ -113,25 +116,13 @@ class Photoreader {
 	{
 		if ( ! File::exists($thumbFile))
 		{
-			$image = Image::make($file);
+			$image = Intervention::make($file);
 
-			$name = strtolower(basename($file));
+			$width = $image->height() > $image->width()
+						? 750
+						: 500;
 
-			if ($image->height > $image->width)
-			{
-				$height = 750;
-				$width = 500;
-			}
-			else
-			{
-				$height = 500;
-				$width = 750;
-			}
-
-			// Crop to portrait
-			// $image->crop($image->height / 1.5, $image->height)->resize(300, null, true)->save($thumbFile);
-
-			$image->resize($width, $height, true)->save($thumbFile);
+			$image->widen($width)->save($thumbFile);
 		}
 	}
 
@@ -145,4 +136,3 @@ class Photoreader {
 		return in_array(strtolower(pathinfo($file, PATHINFO_EXTENSION)), ['jpg', 'gif', 'png']);
 	}
 }
-

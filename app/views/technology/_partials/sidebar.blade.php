@@ -1,6 +1,6 @@
-<p><a href="{{ URL::route('technology') }}/about me">{{g('About Me')}}</a></p>
-
-<p><a href="{{ URL::route('technology') }}/projects">{{g('Projects')}}</a></p>
+@foreach($pages as $page)
+	<p><a href="{{ URL::route('technology') }}/{{$page['name']}}">{{$page['title']}}</a></p>
+@endforeach
 
 <hr>
 

@@ -24,6 +24,8 @@ return array(
 
     'firewall_alias' => 'Firewall',
 
+    'enable_country_search' => true,
+
     /*
     |--------------------------------------------------------------------------
     | Code and message for blocked responses

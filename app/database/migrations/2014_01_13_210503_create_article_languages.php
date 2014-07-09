@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use PragmaRX\Support\Migration;
 
 class CreateArticleLanguages extends Migration {
 
@@ -9,7 +9,7 @@ class CreateArticleLanguages extends Migration {
      *
      * @return void
      */
-    public function up()
+    public function migrateUp()
     {
         Schema::table('articles', function($table)
         {
@@ -25,7 +25,7 @@ class CreateArticleLanguages extends Migration {
      *
      * @return void
      */
-    public function down()
+    public function migrateDown()
     {
         Schema::table('articles', function($table)
         {

@@ -12,7 +12,7 @@ class StaticPages extends Base {
 
 	public function show($page)
 	{
-		$page = Page::where('name_en', ucwords($page))->first();
+		$page = Page::where('name', $page)->first();
 
 		if ( ! $page)
 		{
@@ -22,6 +22,8 @@ class StaticPages extends Base {
 		$lang = strtolower(Glottos::getLocaleAsText());
 
 		return View::make('technology.pages.static')
+				->with('pages', Page::getForRendering())
+				->with('title', Markdown::transform($page->{'title_'.$lang}))
 				->with('page', Markdown::transform($page->{'text_'.$lang}));
 	}
 

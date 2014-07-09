@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use PragmaRX\Support\Migration;
 
 use PragmaRX\Firewall\Vendor\Laravel\Facade as Firewall;
 
@@ -11,7 +11,7 @@ class CreateFirewallTables extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function migrateUp()
 	{
 		Firewall::getMigrator()->up();
 	}
@@ -21,7 +21,7 @@ class CreateFirewallTables extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function migrateDown()
 	{
 		Firewall::getMigrator()->down();
 	}

@@ -2,6 +2,7 @@
 
 use View;
 use ACR\Models\Article;
+use ACR\Models\Page;
 use Glottos;
 use Redirect;
 
@@ -16,8 +17,10 @@ class Technology extends Base {
 
 	public function index()
 	{
+
 		return View::make('technology.pages.index')
-				->with('articles', Article::published()->get())
+				->with('pages', Page::getForRendering())
+				->with('articles', Article::published()->orderBy('created_at', 'desc')->get())
 				->with('pageTitle', g('Recent Articles'))
 				->with('summary', true);
 	}
@@ -43,7 +46,7 @@ class Technology extends Base {
 	public function months($month, $year)
 	{
 		return View::make('technology.pages.index')
-				->with('articles', Article::fromMonth($month, $year)->published()->get())
+				->with('articles', Article::fromMonth($month, $year)->published()->orderBy('created_at', 'desc')->get())
 				->with('pageTitle', g('Articles from ') . g(date("F", mktime(0, 0, 0, $month, 10))) . ' ' . $year )
 				->with('summary', true);
 	}

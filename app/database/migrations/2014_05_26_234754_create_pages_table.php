@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use PragmaRX\Support\Migration;
 
 class CreatePagesTable extends Migration {
 
@@ -9,7 +9,7 @@ class CreatePagesTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function migrateUp()
 	{
 		Schema::create('pages', function($table)
 		{
@@ -29,7 +29,7 @@ class CreatePagesTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function migrateDown()
 	{
 		Schema::dropIfExists('pages');
 	}

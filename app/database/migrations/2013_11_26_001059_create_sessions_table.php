@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use PragmaRX\Support\Migration;
 
 class CreateSessionsTable extends Migration {
 
@@ -9,7 +9,7 @@ class CreateSessionsTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function migrateUp()
 	{
 		Schema::create('sessions', function($table)
 		{
@@ -24,7 +24,7 @@ class CreateSessionsTable extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function migrateDown()
 	{
 		Schema::dropIfExists('sessions');
 	}

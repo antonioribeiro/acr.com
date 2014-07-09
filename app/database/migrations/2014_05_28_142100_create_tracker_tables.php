@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use PragmaRX\Support\Migration;
 
 use PragmaRX\Tracker\Vendor\Laravel\Facade as Tracker;
 
@@ -11,7 +11,7 @@ class CreateTrackerTables extends Migration {
 	 *
 	 * @return void
 	 */
-	public function up()
+	public function migrateUp()
 	{
 		Tracker::getMigrator()->up();
 	}
@@ -21,7 +21,7 @@ class CreateTrackerTables extends Migration {
 	 *
 	 * @return void
 	 */
-	public function down()
+	public function migrateDown()
 	{
 		Tracker::getMigrator()->down();
 	}
