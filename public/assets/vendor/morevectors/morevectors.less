@@ -1,0 +1,161 @@
+// out: morevectors.css, compress: true, strictMath: true
+
+@mv-font-path:          "./fonts/";
+@mv-font-name: morevectors;
+@mv-font-name-short: mv;
+@mv-font-svg-id: morevectors;
+
+// Import the fonts
+@font-face {
+  font-family: '@{mv-font-name}';
+  src: ~"url('@{mv-font-path}@{mv-font-name}.eot')";
+  src: ~"url('@{mv-font-path}@{mv-font-name}.eot?#iefix') format('embedded-opentype')",
+       ~"url('@{mv-font-path}@{mv-font-name}.woff') format('woff')",
+       ~"url('@{mv-font-path}@{mv-font-name}.ttf') format('truetype')",
+       ~"url('@{mv-font-path}@{mv-font-name}.svg#@{mv-font-svg-id}') format('svg')";
+}
+
+.@{mv-font-name-short} {
+	font-family: '@{mv-font-name}';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Individual icons
+.@{mv-font-name-short}-aim               { &:before { content: "\e600"; } }
+.@{mv-font-name-short}-amazon            { &:before { content: "\e601"; } }
+.@{mv-font-name-short}-android           { &:before { content: "\e602"; } }
+.@{mv-font-name-short}-apple             { &:before { content: "\e603"; } }
+.@{mv-font-name-short}-apple-app-store   { &:before { content: "\e604"; } }
+.@{mv-font-name-short}-avatar            { &:before { content: "\e605"; } }
+.@{mv-font-name-short}-aws               { &:before { content: "\e606"; } }
+.@{mv-font-name-short}-badoo             { &:before { content: "\e607"; } }
+.@{mv-font-name-short}-basecamp          { &:before { content: "\e608"; } }
+.@{mv-font-name-short}-bazaar            { &:before { content: "\e609"; } }
+.@{mv-font-name-short}-behance           { &:before { content: "\e60a"; } }
+.@{mv-font-name-short}-bing              { &:before { content: "\e60b"; } }
+.@{mv-font-name-short}-bitbucket         { &:before { content: "\e60c"; } }
+.@{mv-font-name-short}-bitcoin           { &:before { content: "\e60d"; } }
+.@{mv-font-name-short}-blackberry        { &:before { content: "\e60e"; } }
+.@{mv-font-name-short}-blip              { &:before { content: "\e60f"; } }
+.@{mv-font-name-short}-blogger           { &:before { content: "\e610"; } }
+.@{mv-font-name-short}-cc                { &:before { content: "\e611"; } }
+.@{mv-font-name-short}-cc-by             { &:before { content: "\e612"; } }
+.@{mv-font-name-short}-cc-nc             { &:before { content: "\e613"; } }
+.@{mv-font-name-short}-cc-nc-eu          { &:before { content: "\e614"; } }
+.@{mv-font-name-short}-cc-nc-jp          { &:before { content: "\e615"; } }
+.@{mv-font-name-short}-cc-nd             { &:before { content: "\e616"; } }
+.@{mv-font-name-short}-cc-pd             { &:before { content: "\e617"; } }
+.@{mv-font-name-short}-cc-remix          { &:before { content: "\e618"; } }
+.@{mv-font-name-short}-cc-sa             { &:before { content: "\e619"; } }
+.@{mv-font-name-short}-cc-sampling       { &:before { content: "\e61a"; } }
+.@{mv-font-name-short}-cc-sampling-plus  { &:before { content: "\e61b"; } }
+.@{mv-font-name-short}-cc-share          { &:before { content: "\e61c"; } }
+.@{mv-font-name-short}-cc-zero           { &:before { content: "\e61d"; } }
+.@{mv-font-name-short}-coroflot          { &:before { content: "\e61e"; } }
+.@{mv-font-name-short}-css3              { &:before { content: "\e61f"; } }
+.@{mv-font-name-short}-delicious         { &:before { content: "\e620"; } }
+.@{mv-font-name-short}-designmoo         { &:before { content: "\e621"; } }
+.@{mv-font-name-short}-deviantart        { &:before { content: "\e622"; } }
+.@{mv-font-name-short}-digg              { &:before { content: "\e623"; } }
+.@{mv-font-name-short}-digg-alt          { &:before { content: "\e624"; } }
+.@{mv-font-name-short}-dribble           { &:before { content: "\e625"; } }
+.@{mv-font-name-short}-dropbox           { &:before { content: "\e626"; } }
+.@{mv-font-name-short}-drupal            { &:before { content: "\e627"; } }
+.@{mv-font-name-short}-ebay              { &:before { content: "\e628"; } }
+.@{mv-font-name-short}-ember             { &:before { content: "\e629"; } }
+.@{mv-font-name-short}-envelope          { &:before { content: "\e62a"; } }
+.@{mv-font-name-short}-etsy              { &:before { content: "\e62b"; } }
+.@{mv-font-name-short}-evernote          { &:before { content: "\e62c"; } }
+.@{mv-font-name-short}-facebook          { &:before { content: "\e62d"; } }
+.@{mv-font-name-short}-facebook-places   { &:before { content: "\e62e"; } }
+.@{mv-font-name-short}-feedburner        { &:before { content: "\e62f"; } }
+.@{mv-font-name-short}-flickr            { &:before { content: "\e630"; } }
+.@{mv-font-name-short}-forrst            { &:before { content: "\e631"; } }
+.@{mv-font-name-short}-foursquare        { &:before { content: "\e632"; } }
+.@{mv-font-name-short}-git               { &:before { content: "\e633"; } }
+.@{mv-font-name-short}-github            { &:before { content: "\e634"; } }
+.@{mv-font-name-short}-gnome             { &:before { content: "\e635"; } }
+.@{mv-font-name-short}-google            { &:before { content: "\e636"; } }
+.@{mv-font-name-short}-google-hangouts   { &:before { content: "\e637"; } }
+.@{mv-font-name-short}-google-play       { &:before { content: "\e638"; } }
+.@{mv-font-name-short}-google-plus       { &:before { content: "\e639"; } }
+.@{mv-font-name-short}-grooveshark       { &:before { content: "\e63a"; } }
+.@{mv-font-name-short}-html5             { &:before { content: "\e63b"; } }
+.@{mv-font-name-short}-hype-machine      { &:before { content: "\e63c"; } }
+.@{mv-font-name-short}-hyves             { &:before { content: "\e63d"; } }
+.@{mv-font-name-short}-icloud            { &:before { content: "\e63e"; } }
+.@{mv-font-name-short}-icq               { &:before { content: "\e63f"; } }
+.@{mv-font-name-short}-identica          { &:before { content: "\e640"; } }
+.@{mv-font-name-short}-instagram         { &:before { content: "\e641"; } }
+.@{mv-font-name-short}-instapaper        { &:before { content: "\e642"; } }
+.@{mv-font-name-short}-itunes            { &:before { content: "\e643"; } }
+.@{mv-font-name-short}-joomla            { &:before { content: "\e644"; } }
+.@{mv-font-name-short}-kde               { &:before { content: "\e645"; } }
+.@{mv-font-name-short}-lastfm            { &:before { content: "\e646"; } }
+.@{mv-font-name-short}-launchpad         { &:before { content: "\e647"; } }
+.@{mv-font-name-short}-linkedin          { &:before { content: "\e648"; } }
+.@{mv-font-name-short}-linux             { &:before { content: "\e649"; } }
+.@{mv-font-name-short}-livejournal       { &:before { content: "\e64a"; } }
+.@{mv-font-name-short}-mercurial         { &:before { content: "\e64b"; } }
+.@{mv-font-name-short}-metacafe          { &:before { content: "\e64c"; } }
+.@{mv-font-name-short}-myspace           { &:before { content: "\e64d"; } }
+.@{mv-font-name-short}-newsvine          { &:before { content: "\e64e"; } }
+.@{mv-font-name-short}-openid            { &:before { content: "\e64f"; } }
+.@{mv-font-name-short}-orkut             { &:before { content: "\e650"; } }
+.@{mv-font-name-short}-paypal            { &:before { content: "\e651"; } }
+.@{mv-font-name-short}-phone             { &:before { content: "\e652"; } }
+.@{mv-font-name-short}-photobucket       { &:before { content: "\e653"; } }
+.@{mv-font-name-short}-picasa            { &:before { content: "\e654"; } }
+.@{mv-font-name-short}-pinterest         { &:before { content: "\e655"; } }
+.@{mv-font-name-short}-podcast           { &:before { content: "\e656"; } }
+.@{mv-font-name-short}-quik              { &:before { content: "\e657"; } }
+.@{mv-font-name-short}-rdio              { &:before { content: "\e658"; } }
+.@{mv-font-name-short}-reddit            { &:before { content: "\e659"; } }
+.@{mv-font-name-short}-retweet           { &:before { content: "\e65a"; } }
+.@{mv-font-name-short}-rss               { &:before { content: "\e65b"; } }
+.@{mv-font-name-short}-scribd            { &:before { content: "\e65c"; } }
+.@{mv-font-name-short}-sharethis         { &:before { content: "\e65d"; } }
+.@{mv-font-name-short}-skype             { &:before { content: "\e65e"; } }
+.@{mv-font-name-short}-slashdot          { &:before { content: "\e65f"; } }
+.@{mv-font-name-short}-slideshare        { &:before { content: "\e660"; } }
+.@{mv-font-name-short}-smugmug           { &:before { content: "\e661"; } }
+.@{mv-font-name-short}-soundcloud        { &:before { content: "\e662"; } }
+.@{mv-font-name-short}-spotify           { &:before { content: "\e663"; } }
+.@{mv-font-name-short}-springme          { &:before { content: "\e664"; } }
+.@{mv-font-name-short}-squarespace       { &:before { content: "\e665"; } }
+.@{mv-font-name-short}-squidoo           { &:before { content: "\e666"; } }
+.@{mv-font-name-short}-stackoverflow     { &:before { content: "\e667"; } }
+.@{mv-font-name-short}-steam             { &:before { content: "\e668"; } }
+.@{mv-font-name-short}-stumbleupon       { &:before { content: "\e669"; } }
+.@{mv-font-name-short}-subversion        { &:before { content: "\e66a"; } }
+.@{mv-font-name-short}-tagged            { &:before { content: "\e66b"; } }
+.@{mv-font-name-short}-technorati        { &:before { content: "\e66c"; } }
+.@{mv-font-name-short}-tumblr            { &:before { content: "\e66d"; } }
+.@{mv-font-name-short}-twitter           { &:before { content: "\e66e"; } }
+.@{mv-font-name-short}-ubuntu            { &:before { content: "\e66f"; } }
+.@{mv-font-name-short}-viddler           { &:before { content: "\e670"; } }
+.@{mv-font-name-short}-vimeo             { &:before { content: "\e671"; } }
+.@{mv-font-name-short}-vine              { &:before { content: "\e672"; } }
+.@{mv-font-name-short}-virb              { &:before { content: "\e673"; } }
+.@{mv-font-name-short}-w3                { &:before { content: "\e674"; } }
+.@{mv-font-name-short}-weibo             { &:before { content: "\e675"; } }
+.@{mv-font-name-short}-wikipedia         { &:before { content: "\e676"; } }
+.@{mv-font-name-short}-wordpress         { &:before { content: "\e677"; } }
+.@{mv-font-name-short}-xing              { &:before { content: "\e678"; } }
+.@{mv-font-name-short}-xmpp              { &:before { content: "\e679"; } }
+.@{mv-font-name-short}-yahoo             { &:before { content: "\e67a"; } }
+.@{mv-font-name-short}-yahoo-messenger   { &:before { content: "\e67b"; } }
+.@{mv-font-name-short}-windows           { &:before { content: "\e67c"; } }
+.@{mv-font-name-short}-yelp              { &:before { content: "\e67d"; } }
+.@{mv-font-name-short}-youtube-play      { &:before { content: "\e67e"; } }
+.@{mv-font-name-short}-zootool           { &:before { content: "\e67f"; } }
+.@{mv-font-name-short}-youtube           { &:before { content: "\e680"; } }
