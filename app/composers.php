@@ -25,6 +25,11 @@ View::composer('*', function($view)
 	$view->with('switchLanguageFlag', $flag);
 });
 
+View::composer('technology.*', function($view)
+{
+	$view->with('pages', ACR\Models\Page::getForRendering());
+});
+
 View::composer('*', function($view)
 {
 	$article = new ACR\Models\Article;

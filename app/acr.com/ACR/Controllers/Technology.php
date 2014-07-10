@@ -19,7 +19,6 @@ class Technology extends Base {
 	{
 
 		return View::make('technology.pages.index')
-				->with('pages', Page::getForRendering())
 				->with('articles', Article::published()->orderBy('created_at', 'desc')->get())
 				->with('pageTitle', g('Recent Articles'))
 				->with('summary', true);
