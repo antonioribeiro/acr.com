@@ -85,10 +85,6 @@
 		</div>
 	</div>
 
-	<div id="contactModal" hidden="hidden">
-		@include('photography._contact')
-	</div>
-
 	<script type="text/javascript">
 		Shadowbox.init({
 			skipSetup: true,
