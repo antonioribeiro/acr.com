@@ -2,6 +2,9 @@
 
 @section('content')
 	<article>
+		<img src="{{ asset('/assets/custom/img/blog/'.$photo['file']) }}" class="img-responsive" alt="Responsive image">
+		<small>{{$photo['title_'.strtolower(Glottos::getLocaleAsText())]}}</small>
+
 		<h1>
 			@include('technology._partials.articleTitle')
 		</h1>

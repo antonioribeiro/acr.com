@@ -5,6 +5,7 @@ use ACR\Models\Article;
 use ACR\Models\Page;
 use Glottos;
 use Redirect;
+use ACR\Services\RandomArticlePhoto;
 
 class Technology extends Base {
 
@@ -22,6 +23,7 @@ class Technology extends Base {
 				->with('articles', Article::published()->orderBy('created_at', 'desc')->get())
 				->with('pageTitle', g('Recent Articles'))
 				->with('summary', true);
+
 	}
 
 	public function show($slug, $language = null)
@@ -36,7 +38,8 @@ class Technology extends Base {
 		if ($article = Article::findBySlug($slug))
 		{
 			return View::make('technology.pages.article')
-					->with('article', $article);
+					->with('article', $article)
+					->with('photo', RandomArticlePhoto::random());
 		}
 
 		return Redirect::route('technology');
