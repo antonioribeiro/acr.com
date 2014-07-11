@@ -149,6 +149,8 @@
 		        players: ["img", "html"]
 	        });
 
+	        Shadowbox.lang.loading = "{{g('loading')}}";
+
 	        jQuery(document).ready(function()
 	        {
 		        jQuery('img.img-responsive').on('click touchend', function()
@@ -157,8 +159,6 @@
 				        content: jQuery(this).attr('data-original'),
 				        player: 'img'
 			        });
-
-			        console.log('show!');
 		        });
 	        });
 

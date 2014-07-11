@@ -108,7 +108,7 @@
 					player: 'img'
 				});
 
-				console.log('show!');
+				Shadowbox.lang.loading = "{{g('loading')}}";
 			});
 
 			jQuery('div.img-container').on('touchstart', function()
