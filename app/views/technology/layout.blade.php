@@ -26,6 +26,8 @@
 
         <link rel="stylesheet" type="text/css" href="{{URL::to('/')}}/assets/blog/css/prettify-desert.css"/>
 
+	    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.css" />
+
         <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -138,17 +140,56 @@
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="{{ URL::to('/') }}/assets/vendor/bower/jquery/jquery.js"></script>
         <script src="{{ URL::to('/') }}/assets/vendor/bower/bootstrap/dist/js/bootstrap.min.js"></script>
-
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.js"></script>
         <script src="{{ URL::to('/').'/assets/vendor/bower/google-code-prettify/src/prettify.js' }}"></script>
 
-        @include('global._partials.google-analytics')
+        <script type="text/javascript">
+	        Shadowbox.init({
+		        skipSetup: true,
+		        players: ["img", "html"]
+	        });
 
-        <script>
-            var _gaq=[["_setAccount","UA-2508361-5"],["_trackPageview"]];
-            (function(d,t){
-                var g=d.createElement(t);
-                var s=d.getElementsByTagName(t)[0];
-                g.src="//www.google-analytics.com/ga.js";s.parentNode.insertBefore(g,s)}(document,"script"));
+	        jQuery(document).ready(function()
+	        {
+		        jQuery('img.img-responsive').on('click touchend', function()
+		        {
+			        Shadowbox.open({
+				        content: jQuery(this).attr('data-original'),
+				        player: 'img'
+			        });
+
+			        console.log('show!');
+		        });
+	        });
+
+	        jQuery(function() {
+		        var wall = new freewall("#freewall");
+
+		        wall.reset({
+			        selector: '.brick',
+			        animate: true,
+			        cellW: 163,
+			        cellH: 160,
+			        fixSize: 0,
+			        onResize: function() {
+				        wall.refresh();
+			        }
+		        });
+
+		        jQuery(".filter-label").click(function() {
+			        jQuery(".filter-label").removeClass("active");
+			        var filter = jQuery(this).addClass('active').data('filter');
+			        if (filter) {
+				        wall.filter(filter);
+			        } else {
+				        wall.unFilter();
+			        }
+		        });
+
+		        wall.fitWidth();
+	        });
         </script>
+
+        @include('global._partials.google-analytics')
     </body>
 </html>

@@ -63,6 +63,7 @@ h6,
 .navbar-default {
   background-color: #FFF;
   border-color: #F0F0F0;
+  z-index: 1;
 }
 
 .languages {

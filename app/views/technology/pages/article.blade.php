@@ -2,7 +2,9 @@
 
 @section('content')
 	<article>
-		<img src="{{ asset('/assets/custom/img/blog/'.$photo['file']) }}" class="img-responsive" alt="Responsive image">
+		<a href="#">
+			<img src="{{ asset('/assets/custom/img/blog/'.$photo['file']) }}" class="img-responsive" alt="image" data-original="{{ asset('/assets/layouts/photography/img/photos/'.$photo['file_original']) }}">
+		</a>
 		<small>{{$photo['title_'.strtolower(Glottos::getLocaleAsText())]}}</small>
 
 		<h1>

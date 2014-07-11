@@ -19,8 +19,6 @@
 
 	<script type="text/javascript" src="{{ asset('assets/vendor/bower/echojs/src/echo.js') }}"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.js"></script>
-
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.js"></script>
 @stop
 
 @section('html-body')

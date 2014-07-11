@@ -8,7 +8,6 @@
 
 namespace ACR\Services;
 
-
 use Illuminate\Support\Facades\Session;
 
 class RandomArticlePhoto {
@@ -16,11 +15,13 @@ class RandomArticlePhoto {
 	private static $photos = [
 		[
 			'file' => 'eiffel.png',
+			'file_original' => 'landscape/Paris-TourEiffel.jpg',
 		    'title_en' => 'Paris, France, 09/2010',
 		    'title_pt_br' => 'Paris, França, 09/2010',
 		],
 		[
 			'file' => 'venice.jpg',
+			'file_original' => 'landscape/Venice.jpg',
 			'title_en' => 'Venice, Italy, 09/2010',
 			'title_pt_br' => 'Veneza, Itália, 09/2010',
 		],
