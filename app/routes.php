@@ -126,3 +126,73 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 	    });
 	});
 });
+
+Route::get('keybase.txt', function() {
+
+	return '==================================================================
+			https://keybase.io/antonioribeiro
+			--------------------------------------------------------------------
+
+			I hereby claim:
+
+			  * I am an admin of https://antoniocarlosribeiro.com
+			  * I am antonioribeiro (https://keybase.io/antonioribeiro) on keybase.
+			  * I have a public key with fingerprint 8E5E 0BAE 09D7 5F91 4E89  111F 5A6C 7BCA BBC9 E0F7
+
+			To claim this, I am signing this object:
+
+			{
+			    "body": {
+			        "key": {
+			            "fingerprint": "8e5e0bae09d75f914e89111f5a6c7bcabbc9e0f7",
+			            "host": "keybase.io",
+			            "key_id": "5a6c7bcabbc9e0f7",
+			            "uid": "e777b2152fdca1522977f0cec49d2d00",
+			            "username": "antonioribeiro"
+			        },
+			        "service": {
+			            "hostname": "antoniocarlosribeiro.com",
+			            "protocol": "https:"
+			        },
+			        "type": "web_service_binding",
+			        "version": 1
+			    },
+			    "ctime": 1405097787,
+			    "expire_in": 157680000,
+			    "prev": "197821018e9a7aa6078cb19f560394db1ff4197568df6880f93f6806a5279d9d",
+			    "seqno": 5,
+			    "tag": "signature"
+			}
+
+			with the aforementioned key, yielding the PGP signature:
+
+			-----BEGIN PGP MESSAGE-----
+			Version: Keybase OpenPGP v0.1.23
+			Comment: https://keybase.io/crypto
+
+			yMHwAnicbZFdSBRtFIB3zX+S7A8p0XIMpBCZWXfmnXe96Er7uTG0UiNZ5+ed9XV1
+			ZpsZt0QXL0K7+b6wPiVFirCPLKlEiewjwZ8ikixCCMvyu1l2rUBLyw00zXfELoLm
+			5jDnPOc5h/c8SdpkS7SnN5f9tVwairY/H4mutRUPp+TVU6Im11GuesqL1oOCVQ/S
+			fTpWTcpF8YhFtCggGsqAVSDjRDxkGEZhBU4CoiSIogQRrQAqm6rUDKuDaETBQDlY
+			Izny48Yyyf6Br10vIACA6GBYhyJLAgkOCIBCS0hyQtkh07QFGkhXhRpEaEE1NRVr
+			OhYR1jUqkE2Rmh9LpFa/vsDvnCTo1ZqxQedIWg2x+XTN1CStmlCVpukzXJbFrPNZ
+			bWeR6N4QukWsyuQpSIcf6QbWVMrFEFIysTWBcdIsTVblQTaFzvmwjtzYIljA8TT5
+			rDnIT5QMBLyDoRkeQQEIAkcDXhIZqLAcnQudssgoipMwLMfLCsfztAJzSaQ5gXUA
+			KEOZzDfQGVWjXCxZU/AQpYE9qmDW6ogKjA6fjrbZE22xMVHWMW2JCcm/TvwiK24l
+			metrGkorDHrf/Nc4nzr0+FVa99PFANw2V3A//KE8WEEtTN1OnmkJf9p+6WTG3SOR
+			v3tmDpWLHed7H1wMRk6VRcYr5r038/T9nQmL8Ke0q/ja8p7SjqMnbh3HrsBC078P
+			b/gOHyxZCm5eCU0vtv+TubeNG8/qdx6YfTQWw8X3dwdKUnq73ke8c1dDTaNGAbt6
+			paOl6OPWH3bWU8q8DX9ra703xqVfb27ouvxuIMM9kT/zur1guurr9/hBMNY72HMB
+			HzO2LBmZA/xUnNAZ2meutkaNDNwZysx/OWm4/seVgOvraaz6XDPpL5xoS909mbTj
+			y86iWPPZRMNs2FbkjKwB2y4lYQ==
+			=MtLv
+			-----END PGP MESSAGE-----
+
+			And finally, I am proving ownership of this host by posting or
+			appending to this document.
+
+			View my publicly-auditable identity here: https://keybase.io/antonioribeiro
+
+			==================================================================
+	';
+});
