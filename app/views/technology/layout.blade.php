@@ -78,6 +78,12 @@
                                     &nbsp;
 
                                     <a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro"><i class="fa fa-stack-overflow" title="StackOverflow"></i></a>
+
+	                                &nbsp;
+
+	                                <a href="{{ route('home') }}/#/contact" title="Contact" id="contact">
+		                                <i class="fa fa-envelope icon"></i>
+	                                </a>
                                 </h2>
                             </li>
                         </ul>

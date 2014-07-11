@@ -34,7 +34,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-    background: #dddddd;
+    background: #e3e3e3;
     line-height: 1.125em;
     color: white;
     max-width: 1920px;
@@ -312,7 +312,7 @@ img.photo {
 .header .menu {
     position: fixed;
     z-index: 2;
-    opacity: 0.8;
+    opacity: 0.95;
     background: #FFFFFF;
     width: 100%;
     color: black;

@@ -8,9 +8,11 @@
 
 	<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/style2.css') }}" />
 	<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/layouts/photography/css/contact.css') }}" />
-	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.css">
+	<link rel="stylesheet" type="text/css" media="all" href="{{ asset('assets/vendor/morevectors/morevectors.css') }}" />
+
+	<link rel='stylesheet' type="text/css" href='https://fonts.googleapis.com/css?family=Oxygen'>
+	<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/shadowbox/3.0.3/shadowbox.css" />
 
 	<script type='text/javascript' src="{{ asset('assets/vendor/bower/jquery/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/vendor/bower/freewall/freewall.js') }}"></script>
@@ -47,16 +49,12 @@
 							<i class="fa fa-linkedin icon"></i>
 						</a>
 
-						<a target="_blank" href="http://github.com/antonioribeiro" title="Github">
-							<i class="fa fa-github icon"></i>
-						</a>
-
 						<a target="_blank" href="http://twitter.com/iantonioribeiro" title="Twitter">
 							<i class="fa fa-twitter icon"></i>
 						</a>
 
-						<a target="_blank" href="http://stackoverflow.com/users/1959747/antonio-carlos-ribeiro" title="StackOverflow">
-							<i class="fa fa-stack-overflow icon"></i>
+						<a target="_blank" href="https://antoniocarlosribeiro.smugmug.com" title="Smugmug" id="contact">
+							<i class="mv mv-smugmug icon"></i>
 						</a>
 
 						<a href="{{ route('home') }}/#/contact" title="Contact" id="contact">
@@ -83,10 +81,6 @@
 				</div>
 			@endforeach
 		</div>
-	</div>
-
-	<div id="contactModal" hidden="hidden">
-		@include('photography._contact')
 	</div>
 
 	<script type="text/javascript">
