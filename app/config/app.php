@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'debug' => getenv('DEBUG_MODE') ?: false,
+	'debug' => env('DEBUG_MODE') && env('DEBUG_MODE') !== 'false',
 
 	/*
 	|--------------------------------------------------------------------------
