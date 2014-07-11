@@ -59,7 +59,7 @@
                 <div class="row-fluid">
                     <div class="span12 content">
                         <div class="row-fluid">
-                            <p class="quote"><a href="{{ URL::to('/') }}/photography" title="{{g("Click to see some shots")}}">{{g("I'm also a concert, landscape and portrait photographer, click to see some of my shots and contact me.")}}</a></p>
+                            <p class="quote"><a href="{{ URL::to('/') }}/photography" title="{{g("Click to see some shots")}}">{{g("Concert, landscape and portrait photographer.")}}</a></p>
 	                        <br>
 	                        <br>
 	                        <p class="quote"><a href="{{ URL::to('/') }}/photography" title="{{g("Click to see some shots")}}"><i class="fa fa-camera"></i></a></p>
