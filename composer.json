@@ -26,7 +26,8 @@
         "intervention/image": "~2",
         "intervention/imagecache": "~2",
         "geoip/geoip": "~1.14",
-        "jenssegers/agent": "*"
+        "jenssegers/agent": "*",
+        "guzzlehttp/guzzle": "~4"
     },
 
     "repositories": [

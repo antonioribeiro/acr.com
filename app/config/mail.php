@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'mandrill',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -55,8 +55,8 @@ return array(
 	*/
 
 	'from' => array(
-						'address' => getenv('SMTP.FROM.EMAIL'), 
-						'name' => getenv('SMTP.FROM.NAME')
+						'address' => getenv('MAIL.FROM.EMAIL'),
+						'name' => getenv('MAIL.FROM.NAME')
 					),
 
 	/*

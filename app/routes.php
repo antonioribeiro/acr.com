@@ -116,7 +116,7 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 		    Route::group(array('prefix' => 'tracker'), function()
 		    {
 			    Route::any('/', array('as' => 'admin.tracker.index', 'uses' => 'Admin\UsageTracker@index'));
-			    
+
 			    Route::get('log/{uuid}', array('as' => 'admin.tracker.log', 'uses' => 'Admin\UsageTracker@log'));
 
 			    Route::get('api/pageviews', array('as' => 'admin.tracker.api.pageviews', 'uses' => 'Admin\UsageTracker@apiPageviews'));
