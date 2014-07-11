@@ -36,7 +36,7 @@
                             <p class="quote"><a href="{{ URL::route('technology') }}">{{g('IT Solutions, Systems Architecture, Web Solutions and Linux Servers.')}}</a></p>
                             <br>
                             <br>
-                            <p class="quote"><a href="{{ URL::route('technology') }}">{{g('I also write some articles about IT, development, solutions, PHP and Laravel. Click to access the Blog.')}}</a></p>
+                            <p class="quote"><a href="{{ URL::route('technology') }}"><i class="fa fa-laptop" style="font-size: 30"></i></a></p>
                         </div>
                     </div>
                 </div>
@@ -60,6 +60,9 @@
                     <div class="span12 content">
                         <div class="row-fluid">
                             <p class="quote"><a href="{{ URL::to('/') }}/photography">{{g("I'm also a concert, landscape and portrait photographer, click to see some of my shots and contact me.")}}</a></p>
+	                        <br>
+	                        <br>
+	                        <p class="quote"><a href="{{ URL::to('/') }}/photography"><i class="fa fa-camera" style="font-size: 30"></i></a></p>
                         </div>
                     </div>
                 </div>
