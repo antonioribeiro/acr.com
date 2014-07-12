@@ -27,7 +27,8 @@
         "intervention/imagecache": "~2",
         "geoip/geoip": "~1.14",
         "jenssegers/agent": "*",
-        "guzzlehttp/guzzle": "~4"
+        "guzzlehttp/guzzle": "~4",
+        "heybigname/backup-manager": "0.3.*"
     },
 
     "repositories": [

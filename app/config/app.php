@@ -125,6 +125,8 @@ return array(
 		'Jenssegers\Agent\AgentServiceProvider',
 
 		'Intervention\Image\ImageServiceProvider',
+
+		'BigName\BackupManager\Integrations\Laravel\BackupManagerServiceProvider',
 	),
 
 	/*
