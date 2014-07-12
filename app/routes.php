@@ -1,5 +1,10 @@
 <?php
 
+Route::any('test', function()
+{
+	dd();
+});
+
 Route::group(['namespace' => 'ACR\Controllers'], function()
 {
 	Route::get('/', array('as' => 'home', 'uses' => 'Home@index'));
