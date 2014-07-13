@@ -49,8 +49,6 @@ Log::useFiles(storage_path().'/logs/laravel' . (php_sapi_name() !== 'cli' ? '' :
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
-
-	Log::error(serialize($_SERVER));
 });
 
 /*

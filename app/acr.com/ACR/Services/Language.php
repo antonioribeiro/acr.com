@@ -4,8 +4,6 @@ class Language {
 
 	public static function guess($userRepository = null, $session, $glottos)
 	{
-		\Log::info('get!'.$session->get('glottos.lang'));
-
 		if( ! $lang = $session->get('glottos.lang'))
 		{
 			if( ! is_null($userRepository) && ! is_null($userRepository->locale))
@@ -25,7 +23,6 @@ class Language {
 	        }
 		}
 
-		\Log::info('put!'.$lang);
 		$session->put('glottos.lang', $lang);
 
 		$glottos->setLocale($lang);
