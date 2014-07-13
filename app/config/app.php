@@ -127,6 +127,8 @@ return array(
 		'Intervention\Image\ImageServiceProvider',
 
 		'BigName\BackupManager\Integrations\Laravel\BackupManagerServiceProvider',
+
+		'Jenssegers\Rollbar\RollbarServiceProvider',
 	),
 
 	/*

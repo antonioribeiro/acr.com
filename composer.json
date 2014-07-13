@@ -28,7 +28,8 @@
         "geoip/geoip": "~1.14",
         "jenssegers/agent": "*",
         "guzzlehttp/guzzle": "~4",
-        "heybigname/backup-manager": "dev-prefix"
+        "heybigname/backup-manager": "dev-prefix",
+        "jenssegers/rollbar": "*"
     },
 
     "repositories": [

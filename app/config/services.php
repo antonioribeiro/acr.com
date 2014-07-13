@@ -3,11 +3,11 @@
 return array(
 
 	'mandrill' => array(
-		'secret' => env('MANDRILL.API.KEY'),
+		'secret' => getenv('MANDRILL.API.KEY'),
 	),
 
 	'rollbar' => array(
-		'access_token' => '76b59245987545ec8350ab318b9b49e6',
+		'access_token' => 'ed1c7fae39ce4a7f950935cbbc735ddc',
 	),
 
 );
