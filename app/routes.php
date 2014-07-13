@@ -2,7 +2,7 @@
 
 Route::any('test', function()
 {
-	dd();
+	dd(1);
 });
 
 Route::group(['namespace' => 'ACR\Controllers'], function()
