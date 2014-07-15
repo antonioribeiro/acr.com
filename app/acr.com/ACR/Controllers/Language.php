@@ -1,7 +1,8 @@
 <?php namespace ACR\Controllers;
 
-use \Session;
-use \Redirect;
+use Session;
+use Redirect;
+use Request;
 
 class Language extends Base {
 
