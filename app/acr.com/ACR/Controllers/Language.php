@@ -9,7 +9,7 @@ class Language extends Base {
 	{
 		Session::put('glottos.lang', $lang);
 
-		return Redirect::back();
+		return Redirect::back('/');
 	}
 
 }
