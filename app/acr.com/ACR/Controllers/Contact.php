@@ -23,7 +23,7 @@ class Contact extends Base {
         $validator = Validator::make(
             $input,
             array(
-                    'name' => 'required|min:5',
+                    'name' => 'required|min:4',
                     'email' => 'required|email',
                     'telephone' => 'required',
                     'subject' => 'required',
