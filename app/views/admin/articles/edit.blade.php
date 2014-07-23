@@ -73,14 +73,10 @@
 	function formatText() {
 	    var str = $( '#article_' + language ).val();
 
-		var jqxhr = $.post( "", function() {
-		  console.log()
-		});
-
 		$.post( "{{ URL::route('api.markdown', ['version' => '1.0']) }}", { text: str })
 			  .done(function( data ) {
 			    $( "#preview_" + language ).html( data.markdown );
-			  });		
+			  });
 
 	}
 
