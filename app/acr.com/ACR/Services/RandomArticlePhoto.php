@@ -25,6 +25,12 @@ class RandomArticlePhoto {
 			'title_en' => 'Venice, Italy, 09/2010',
 			'title_pt_br' => 'Veneza, Itália, 09/2010',
 		],
+		[
+			'file' => 'pier.jpg',
+			'file_original' => 'landscape/RioDasOstras-Pier.jpg',
+			'title_en' => 'Rio das Ostras, Brazil, 06/2010',
+			'title_pt_br' => 'Rio das Ostras, Brasil, 06/2010',
+		],
 	];
 
 	public static function random()
