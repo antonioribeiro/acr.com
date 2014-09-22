@@ -1,4 +1,4 @@
-@extends('pragmarx/sdk::html')
+@extends('technology.html')
 
 @section('html.head')
     <style>

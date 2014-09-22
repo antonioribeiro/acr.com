@@ -22,7 +22,6 @@
         "pragmarx/steroids": "dev-master",
         "pragmarx/tracker": "dev-master",
         "pragmarx/helpers": "dev-master",
-        "pragmarx/support": "dev-master as 0.2.11",
         "pragmarx/sqli": "0.*",
         "itsgoingd/clockwork": "1.*",
         "intervention/image": "~2",
@@ -32,8 +31,7 @@
         "guzzlehttp/guzzle": "~4",
         "heybigname/backup-manager": "dev-prefix",
         "jenssegers/rollbar": "*",
-        "pragmarx/google2fa": "dev-master",
-        "pragmarx/sdk": "dev-master"
+        "pragmarx/google2fa": "0.1.*"
     },
 
     "repositories": [
