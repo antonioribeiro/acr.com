@@ -20,6 +20,10 @@ Route::group(['namespace' => 'ACR\Controllers'], function()
 	{
 	    Route::get('/', array('as' => 'technology', 'uses' => 'Technology@index'));
 
+		Route::get('google2fa', array('as' => 'google2fa', 'uses' => 'GoogleTwoFactor@show'));
+
+		Route::post('google2fa', array('as' => 'google2fa', 'uses' => 'GoogleTwoFactor@get'));
+
 	    Route::get('months/{month}/{year}', array('as' => 'technology.months', 'uses' => 'Technology@months'));
 
 	    Route::get('articles/{slug}/{lang?}', array('as' => 'technology.articles.show', 'uses' => 'Technology@show'));

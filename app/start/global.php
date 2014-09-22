@@ -82,3 +82,5 @@ require app_path().'/filters.php';
 require app_path().'/composers.php';
 require app_path().'/blade.php';
 require app_path().'/handlers.php';
+
+View::addNamespace('pragmarx/sdk', base_path().'/vendor/pragmarx/sdk/src/views');

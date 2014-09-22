@@ -12,15 +12,17 @@
         "doctrine/dbal": "dev-master",
         "cartalyst/sentry": "dev-master",
         "cartalyst/sentinel": "dev-master",
-        "way/generators": "dev-master",
-        "onigoetz/profiler": "dev-master",
+        "cartalyst/support": "dev-master",
+        "way/generators": "2.*",
         "way/form": "dev-master",
+        "onigoetz/profiler": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
         "pragmarx/glottos": "dev-master",
         "pragmarx/firewall": "dev-master",
         "pragmarx/steroids": "dev-master",
         "pragmarx/tracker": "dev-master",
         "pragmarx/helpers": "dev-master",
+        "pragmarx/support": "dev-master as 0.2.11",
         "pragmarx/sqli": "0.*",
         "itsgoingd/clockwork": "1.*",
         "intervention/image": "~2",
@@ -29,7 +31,9 @@
         "jenssegers/agent": "*",
         "guzzlehttp/guzzle": "~4",
         "heybigname/backup-manager": "dev-prefix",
-        "jenssegers/rollbar": "*"
+        "jenssegers/rollbar": "*",
+        "pragmarx/google2fa": "dev-master",
+        "pragmarx/sdk": "dev-master"
     },
 
     "repositories": [
@@ -47,7 +51,19 @@
         },
         {
             "type": "vcs",
+            "url":  "https://github.com/cartalyst/support.git"
+        },
+        {
+            "type": "vcs",
             "url":  "https://github.com/antonioribeiro/backup-manager.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/antonioribeiro/google2fa.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/antonioribeiro/sdk.git"
         }
     ],
 

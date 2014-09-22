@@ -111,24 +111,19 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		'Way\Form\FormServiceProvider',
-		// 'Clockwork\Support\Laravel\ClockworkServiceProvider',
-
+		'PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Glottos\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Firewall\Vendor\Laravel\ServiceProvider',
-		// 'PragmaRX\Deeployer\Vendor\Laravel\ServiceProvider',
 		'PragmaRX\Steroids\Vendor\Laravel\ServiceProvider',
-		'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
-		'PragmaRX\Helpers\Vendor\Laravel\ServiceProvider',
-		'PragmaRX\SqlI\Vendor\Laravel\ServiceProvider',
-
-		'Jenssegers\Agent\AgentServiceProvider',
+//		'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
+//		'PragmaRX\Helpers\Vendor\Laravel\ServiceProvider',
+//		'PragmaRX\SqlI\Vendor\Laravel\ServiceProvider',
 
 		'Intervention\Image\ImageServiceProvider',
-
 		'BigName\BackupManager\Integrations\Laravel\BackupManagerServiceProvider',
-
 		'Jenssegers\Rollbar\RollbarServiceProvider',
+		'Jenssegers\Agent\AgentServiceProvider',
+		'Way\Form\FormServiceProvider',
 	),
 
 	/*
@@ -201,6 +196,8 @@ return array(
 		'Agent'           => 'Jenssegers\Agent\Facades\Agent',
 
 		'Intervention'    => 'Intervention\Image\Facades\Image',
+
+		'Google2FA'       => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
 	),
 
 );
