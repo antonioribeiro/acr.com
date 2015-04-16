@@ -31,7 +31,8 @@
         "guzzlehttp/guzzle": "~4",
         "heybigname/backup-manager": "dev-prefix",
         "jenssegers/rollbar": "*",
-        "pragmarx/google2fa": "0.1.*"
+        "pragmarx/google2fa": "0.1.*",
+        "pda/pheanstalk": "~2"
     },
 
     "repositories": [

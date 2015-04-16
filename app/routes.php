@@ -1,8 +1,15 @@
 <?php
 
+function stringEval($string)
+{
+	eval("\$str = \"$string\";");
+
+	return $str;
+}
+
 Route::any('test', function()
 {
-	dd(1);
+	dd( stringEval('foo\nbar') );
 });
 
 Route::group(['namespace' => 'ACR\Controllers'], function()
