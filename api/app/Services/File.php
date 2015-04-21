@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
+use Illuminate\Cache\CacheManager;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use Symfony\Component\Finder\Finder;
@@ -25,13 +27,26 @@ class File {
 
 	private $image;
 
-	public function __construct($request, FileFinder $fileFinder, Filesystem $filesystem)
+	private $urlHash;
+
+	private $transformed = false;
+
+	private $transformedFileName;
+
+	/**
+	 * @var CacheManager
+	 */
+	private $cache;
+
+	public function __construct($request, CacheManager $cache, FileFinder $fileFinder, Filesystem $filesystem)
 	{
 		$this->request = $request;
 
 		$this->fileFinder = $fileFinder;
 
 		$this->filesystem = $filesystem;
+
+		$this->cache = $cache;
 
 		$this->parseRequest();
 	}
@@ -45,7 +60,12 @@ class File {
 			$this->error = 'URL not provided.';
 		}
 
-		$this->findFile($this->url);
+//		if (Cache::has('what'))
+//		{
+//			dd(1);
+//		}
+
+		$this->findFile();
 
 		$this->processTransformations();
 	}
@@ -62,16 +82,34 @@ class File {
 
 	public function download()
 	{
-		return [
-			'success' => true,
-		];
+		$filetype = $this->filesystem->mimeType($this->getFinalFileName());
+
+		$response = response()->make(file_get_contents($this->getRealFilename($this->getFinalFileName())), 200);
+
+		$response->header('Content-Type', $filetype);
+
+		$response->header("Content-Disposition", "filename=" . $this->getOriginalFileName());
+
+		$response->setTtl(600);
+
+		$response->expire(600);
+
+		$response->setExpires(Carbon::now()->addDay(30));
+
+		$response->setSharedMaxAge(600);
+
+		return $response;
 	}
 
-	private function findFile($url)
+	private function findFile()
 	{
-		$this->parseFileName($url);
+		$this->parseFileName($this->url);
 
-		if ( ! $this->fileFinder->find($this->fileName))
+		if ($this->fileFinder->find($this->transformedFileName = $this->getTransformedFileName()))
+		{
+			$this->transformed = true;
+		}
+		elseif ( ! $this->fileFinder->find($this->fileName))
 		{
 			$this->fetchOriginal();
 		}
@@ -83,13 +121,11 @@ class File {
 
 		$extension = $this->getExtension($url);
 
-		$this->fileName =
-			$this->getBaseDir() .
-			DIRECTORY_SEPARATOR .
-			$this->makeDeepPath($this->urlHash) .
-			DIRECTORY_SEPARATOR .
-			$this->urlHash .
-			'.' . $extension;
+		$path = $this->getBaseDir() . DIRECTORY_SEPARATOR . $this->makeDeepPath($this->urlHash);
+
+		$this->fileName = $path . DIRECTORY_SEPARATOR . $this->urlHash . '.' . $extension;
+
+		$this->makeTransformedFileName($path);
 	}
 
 	private function makeDeepPath($string)
@@ -118,20 +154,21 @@ class File {
 
 	private function processTransformations()
 	{
-		$transformed = false;
-
-		foreach ($this->request->except('url') as $transformation)
+		if  ( ! $this->transformed)
 		{
-			$this->instantiateImage();
+			foreach ($this->request->except('url') as $command => $value)
+			{
+				$this->instantiateImage();
 
-			$this->image = $this->transformImage($this->image, $transformation);
+				$this->image = $this->transformImage($this->image, $command, $value);
 
-			$transformed = true;
-		}
+				$this->transformed = true;
+			}
 
-		if ($transformed)
-		{
-			$this->image->save($this->getTransformedName());
+			if ($this->transformed)
+			{
+				$this->image->save($this->getRealFilename($this->getTransformedFileName()));
+			}
 		}
 	}
 
@@ -142,31 +179,82 @@ class File {
 			$manager = new ImageManager(array('driver' => 'imagick'));
 
 			$this->image = $manager->make(
-				$this->filesystem->getDriver()->getAdapter()->applyPathPrefix($this->fileName)
+				$this->getRealFilename()
 			);
 		}
 	}
 
-	private function getTransformedName()
+	private function getTransformedFileName()
 	{
-		$name = $this->fileName;
+		return $this->transformedFileName;
+	}
 
-		foreach ($this->request->except('url') as $transformation)
+	private function getExtension($fileName)
+	{
+		return pathinfo($fileName, PATHINFO_EXTENSION);
+	}
+
+	private function getFileName($fileName)
+	{
+		return pathinfo($fileName, PATHINFO_FILENAME);
+	}
+
+	private function transformImage($image, $command, $value)
+	{
+		if ($command == 'width')
 		{
-			$name .= '+' . $transformation;
+			$image->resize($value, null, function ($constraint)
+			{
+				$constraint->aspectRatio();
+			});
 		}
 
-		return str_slug($name);
-	}
-
-	private function getExtension($url)
-	{
-		return pathinfo($url, PATHINFO_EXTENSION);
-	}
-
-	private function transformImage($image, $transformation)
-	{
 		return $image;
+	}
+
+	private function getRealFilename($fileName = null)
+	{
+		return $this
+				->filesystem
+				->getDriver()
+				->getAdapter()
+				->applyPathPrefix($fileName ?: $this->fileName);
+	}
+
+	private function getOriginalFileName()
+	{
+		return basename($this->url);
+	}
+
+	private function makeTransformedFileName($path)
+	{
+		$path = $path ? $path . DIRECTORY_SEPARATOR : $path;
+
+		if ($this->transformedFileName)
+		{
+			return $this->transformedFileName;
+		}
+
+		$extension = $this->getExtension($this->fileName);
+
+		$filename = $this->getFileName($this->fileName);
+
+		foreach ($this->request->except('url') as $key => $transformation)
+		{
+			$filename .= '_' . $key . '_' . $transformation;
+		}
+
+		return $this->transformedFileName = $path . str_slug($filename) . '.' . $extension;
+	}
+
+	private function getFinalFileName()
+	{
+		if ($this->transformed)
+		{
+			return $this->transformedFileName;
+		}
+
+		return $this->fileName;
 	}
 
 }
