@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -3653,6 +3654,276 @@ GRANT ALL ON TABLE tracker_accesses TO antoniocarlos;
 REVOKE ALL ON SEQUENCE tracker_accesses_id_seq FROM PUBLIC;
 REVOKE ALL ON SEQUENCE tracker_accesses_id_seq FROM antoniocarlos;
 GRANT ALL ON SEQUENCE tracker_accesses_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_agents; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_agents FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_agents FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_agents TO antoniocarlos;
+
+
+--
+-- Name: tracker_agents_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_agents_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_agents_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_agents_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_cookies; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_cookies FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_cookies FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_cookies TO antoniocarlos;
+
+
+--
+-- Name: tracker_cookies_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_cookies_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_cookies_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_cookies_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_devices; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_devices FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_devices FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_devices TO antoniocarlos;
+
+
+--
+-- Name: tracker_devices_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_devices_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_devices_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_devices_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_domains; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_domains FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_domains FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_domains TO antoniocarlos;
+
+
+--
+-- Name: tracker_domains_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_domains_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_domains_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_domains_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_errors; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_errors FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_errors FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_errors TO antoniocarlos;
+
+
+--
+-- Name: tracker_errors_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_errors_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_errors_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_errors_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_geoip; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_geoip FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_geoip FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_geoip TO antoniocarlos;
+
+
+--
+-- Name: tracker_geoip_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_geoip_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_geoip_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_geoip_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_log; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_log FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_log FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_log TO antoniocarlos;
+
+
+--
+-- Name: tracker_log_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_log_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_log_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_log_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_paths; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_paths FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_paths FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_paths TO antoniocarlos;
+
+
+--
+-- Name: tracker_paths_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_paths_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_paths_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_paths_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_queries; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_queries FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_queries FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_queries TO antoniocarlos;
+
+
+--
+-- Name: tracker_queries_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_queries_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_queries_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_queries_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_query_arguments; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_query_arguments FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_query_arguments FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_query_arguments TO antoniocarlos;
+
+
+--
+-- Name: tracker_query_arguments_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_query_arguments_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_query_arguments_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_query_arguments_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_referers; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_referers FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_referers FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_referers TO antoniocarlos;
+
+
+--
+-- Name: tracker_referers_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_referers_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_referers_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_referers_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_route_path_parameters; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_route_path_parameters FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_route_path_parameters FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_route_path_parameters TO antoniocarlos;
+
+
+--
+-- Name: tracker_route_path_parameters_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_route_path_parameters_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_route_path_parameters_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_route_path_parameters_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_route_paths; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_route_paths FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_route_paths FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_route_paths TO antoniocarlos;
+
+
+--
+-- Name: tracker_route_paths_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_route_paths_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_route_paths_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_route_paths_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_routes; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_routes FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_routes FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_routes TO antoniocarlos;
+
+
+--
+-- Name: tracker_routes_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_routes_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_routes_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_routes_id_seq TO antoniocarlos;
+
+
+--
+-- Name: tracker_sessions; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON TABLE tracker_sessions FROM PUBLIC;
+REVOKE ALL ON TABLE tracker_sessions FROM antoniocarlos;
+GRANT ALL ON TABLE tracker_sessions TO antoniocarlos;
+
+
+--
+-- Name: tracker_sessions_id_seq; Type: ACL; Schema: public; Owner: antoniocarlos
+--
+
+REVOKE ALL ON SEQUENCE tracker_sessions_id_seq FROM PUBLIC;
+REVOKE ALL ON SEQUENCE tracker_sessions_id_seq FROM antoniocarlos;
+GRANT ALL ON SEQUENCE tracker_sessions_id_seq TO antoniocarlos;
 
 
 --
