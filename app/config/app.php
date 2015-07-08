@@ -198,6 +198,8 @@ return array(
 		'Intervention'    => 'Intervention\Image\Facades\Image',
 
 		'Google2FA'       => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
+
+		'Glottos'         => 'PragmaRX\Glottos\Vendor\Laravel\Facades\Glottos'
 	),
 
 );
