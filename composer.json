@@ -17,7 +17,7 @@
         "way/form": "dev-master",
         "onigoetz/profiler": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
-        "pragmarx/glottos": "dev-master",
+        "pragmarx/glottos": "~1.5",
         "pragmarx/firewall": "~0.5",
         "pragmarx/steroids": "~0.8",
         "pragmarx/tracker": "~1.0",

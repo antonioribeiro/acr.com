@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c01fc942c449e0e37802fc21dae8b6e8",
+    "hash": "8dd357ed91afb51c096722eda202f0a5",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2506,16 +2506,16 @@
         },
         {
             "name": "pragmarx/glottos",
-            "version": "dev-master",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/glottos.git",
-                "reference": "af620948fa759ff2ab6c5947cfb4f821347b6b65"
+                "reference": "7fe975c595e230b350ec21a079f582160827c7c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/glottos/zipball/af620948fa759ff2ab6c5947cfb4f821347b6b65",
-                "reference": "af620948fa759ff2ab6c5947cfb4f821347b6b65",
+                "url": "https://api.github.com/repos/antonioribeiro/glottos/zipball/7fe975c595e230b350ec21a079f582160827c7c4",
+                "reference": "7fe975c595e230b350ec21a079f582160827c7c4",
                 "shasum": ""
             },
             "require": {
@@ -2569,7 +2569,7 @@
                 "localization",
                 "translation"
             ],
-            "time": "2015-03-03 20:38:50"
+            "time": "2015-02-21 20:16:41"
         },
         {
             "name": "pragmarx/google2fa",
@@ -4317,7 +4317,6 @@
         "way/form": 20,
         "onigoetz/profiler": 20,
         "michelf/php-markdown": 20,
-        "pragmarx/glottos": 20,
         "pragmarx/helpers": 20,
         "heybigname/backup-manager": 20
     },
