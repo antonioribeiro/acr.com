@@ -70,6 +70,34 @@
         </div>
     </section>
 
+    <!-- services -->
+    <section id="services" class="box">
+        <div class="container">
+            <div class="panel">
+                <div class="row-fluid">
+                    <div class="span12 header">
+                        <hgroup>
+                            <h2>{{g('Services')}}</h2>
+                            <h3></h3>
+                        </hgroup>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12 content">
+                        <div class="row-fluid">
+                            <p class="quote"><a href="{{ URL::to('/') }}/#contact/" title="">{{g("key::services-text")}}</a></p>
+                            <br>
+                            <br>
+                            <p class="quote">
+                                <a href="#contact" class="btn btn-danger btn-large" style="color:white;">{{g("key::hire-me")}}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     @include('home.contactForm')
 @stop
 
