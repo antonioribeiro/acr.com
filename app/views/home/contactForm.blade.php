@@ -14,7 +14,7 @@
             <div class="row-fluid">
                 <div class="span12 content">
                     <h2>{{g('Contact To Hire Me.')}}</h2>
-
+                    <br><br><br>
                     <div class="row-fluid">
                         <div class="span6">
                             <h2 class="big-h2-heading"><i  class="fa fa-map-marker"></i> {{g('Find Me')}}</h2>

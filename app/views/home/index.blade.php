@@ -89,7 +89,7 @@
                             <br>
                             <br>
                             <p class="quote">
-                                <a href="#contact" class="btn btn-danger btn-large" style="color:white;">{{g("key::hire-me")}}</a>
+                                <a href="{{ URL::to('/') }}/#contact/" class="btn btn-danger btn-large" style="color:white;">{{g("key::hire-me")}}</a>
                             </p>
                         </div>
                     </div>
