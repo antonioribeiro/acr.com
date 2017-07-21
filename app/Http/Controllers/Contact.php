@@ -8,9 +8,10 @@ use View;
 use Session;
 use Mail;
 use App\Data\Models\User;
+use App\Data\Models\ContactMessage;
 
-class Contact extends Base {
-
+class Contact extends Base
+{
     public function show()
     {
         return View::make('home.contact')
@@ -31,6 +32,8 @@ class Contact extends Base {
                     'message' => 'required',
                 )
         );
+
+        $this->storeMessage($input);
 
         if ($validator->fails())
         {
@@ -53,4 +56,15 @@ class Contact extends Base {
                 ->with('message', 'Your message has been received.');
     }
 
+    private function storeMessage($input)
+    {
+        ContactMessage::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'telephone' => $input['telephone'],
+            'subject' => $input['subject'],
+            'message' => $input['message'],
+            'ip_address' => request()->ip()
+        ]);
+    }
 }
