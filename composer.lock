@@ -1848,12 +1848,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/FormField.git",
-                "reference": "6ecb832724cd12dda46340f0a89bfec5a8987938"
+                "reference": "6da6b646c4daa43d0be58323bc3a4d1d235ba5af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/FormField/zipball/6ecb832724cd12dda46340f0a89bfec5a8987938",
-                "reference": "6ecb832724cd12dda46340f0a89bfec5a8987938",
+                "url": "https://api.github.com/repos/antonioribeiro/FormField/zipball/6da6b646c4daa43d0be58323bc3a4d1d235ba5af",
+                "reference": "6da6b646c4daa43d0be58323bc3a4d1d235ba5af",
                 "shasum": ""
             },
             "require": {
@@ -1866,7 +1866,6 @@
                     "Way\\Form": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
                     "name": "Jeffrey de Vreede",
@@ -1875,11 +1874,15 @@
             ],
             "description": "Make form handling in Laravel simpler.",
             "keywords": [
-                "Forms",
+                "forms",
                 "laravel",
                 "laravel5"
             ],
-            "time": "2015-06-23 18:15:18"
+            "support": {
+                "source": "https://github.com/antonioribeiro/FormField/tree/v0.0.1",
+                "issues": "https://github.com/antonioribeiro/FormField/issues"
+            },
+            "time": "2017-07-21T06:06:10+00:00"
         },
         {
             "name": "michelf/php-markdown",
