@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "116eaeec3466264e4cebb4449ab57449",
+    "content-hash": "b60136c22c7c75bb4952bc408af25b59",
     "packages": [
         {
             "name": "cartalyst/sentinel",
@@ -2741,23 +2741,23 @@
         },
         {
             "name": "pragmarx/steroids",
-            "version": "v0.8.0",
+            "version": "v0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/antonioribeiro/steroids.git",
-                "reference": "9ad212aeb70f139145d3be3be992516dc1319af2"
+                "reference": "1df08ca7956e558a1dd4ff356fd7f2d155e11963"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/antonioribeiro/steroids/zipball/9ad212aeb70f139145d3be3be992516dc1319af2",
-                "reference": "9ad212aeb70f139145d3be3be992516dc1319af2",
+                "url": "https://api.github.com/repos/antonioribeiro/steroids/zipball/1df08ca7956e558a1dd4ff356fd7f2d155e11963",
+                "reference": "1df08ca7956e558a1dd4ff356fd7f2d155e11963",
                 "shasum": ""
             },
             "require": {
                 "illuminate/filesystem": ">=4.1",
                 "illuminate/support": ">=4.1",
                 "php": ">=5.3.7",
-                "pragmarx/support": "~0.2"
+                "pragmarx/support": "~0.6"
             },
             "require-dev": {
                 "mockery/mockery": "0.8.0",
@@ -2778,23 +2778,23 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
-                    "name": "eRobin",
+                    "name": "Antonio Carlos Ribeiro",
                     "email": "acr@antoniocarlosribeiro.com",
                     "role": "Creator"
                 }
             ],
             "description": "Laravel 4 Blade on Steroids",
             "keywords": [
-                "blacklist",
+                "blade",
                 "laravel",
-                "steroids",
-                "whitelist"
+                "template",
+                "view"
             ],
-            "time": "2014-03-18T23:43:50+00:00"
+            "time": "2017-07-21T06:17:01+00:00"
         },
         {
             "name": "pragmarx/support",
