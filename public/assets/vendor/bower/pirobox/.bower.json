@@ -1,0 +1,17 @@
+{
+  "name": "pirobox",
+  "main": [
+    "./css_pirobox/style_1/style.css",
+    "./js/pirobox_extended.js"
+  ],
+  "homepage": "https://github.com/juliobetta/pirobox",
+  "_release": "22dd3486a5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "22dd3486a5251a88897e38f45924e349da2b4e98"
+  },
+  "_source": "git://github.com/juliobetta/pirobox.git",
+  "_target": "*",
+  "_originalSource": "pirobox"
+}
